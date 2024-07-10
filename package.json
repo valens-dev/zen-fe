@@ -11,8 +11,13 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@mui/material": "^5.16.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.24.1",
+    "tss-react": "^4.9.10"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
@@ -34,7 +39,9 @@
     "lint-staged": "^15.2.7",
     "prettier": "3.3.2",
     "typescript": "^5.2.2",
-    "vite": "^5.3.1"
+    "vite": "^5.3.1",
+    "vite-plugin-svgr": "^4.2.0",
+    "vite-tsconfig-paths": "^4.3.2"
   },
   "lint-staged": {
     "*": "prettier --write --ignore-unknown",
