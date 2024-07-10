@@ -1,8 +1,9 @@
+/* eslint-disable import/no-default-export */
 import { Box, Typography } from '@mui/material';
 
 import { useStyles } from './styles';
 
-export function HomePage(): React.ReactNode {
+export default function HomePage(): React.ReactNode {
   const { classes } = useStyles();
 
   return (

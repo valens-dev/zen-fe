@@ -2,25 +2,13 @@ import { tss } from '@/styles/theme';
 
 export const useStyles = tss.create(({ theme }) => {
   return {
-    logoContainer: {
-      marginBottom: '16px',
-      marginTop: '8px',
-    },
-    sidebar: {
-      width: '264px',
-      height: '100vh',
-      display: 'flex',
-      flexDirection: 'column',
-      padding: '16px',
-      backgroundColor: theme.palette.white.primary,
-    },
     navItem: {
-      height: '40px',
+      height: '2.5rem',
       display: 'flex',
       alignItems: 'center',
-      padding: '10px',
-      margin: '2px 0',
-      borderRadius: '8px',
+      padding: '0.625rem',
+      margin: '0.125rem 0',
+      borderRadius: '0.5rem',
       cursor: 'pointer',
       '&:hover': {
         backgroundColor: theme.palette.white.secondary,
@@ -32,13 +20,13 @@ export const useStyles = tss.create(({ theme }) => {
     navText: {
       color: theme.palette.main.primary,
       fontWeight: theme.typography.fontWeight.medium,
-      marginLeft: '8px',
-      fontSize: '14px',
-      lineHeight: '20px',
+      marginLeft: '0.5rem',
+      fontSize: '0.875rem',
+      lineHeight: '1.25rem',
     },
     icon: {
-      width: '20px',
-      height: '20px',
+      width: '1.25rem',
+      height: '1.25rem',
     },
     activeNavItem: {
       backgroundColor: theme.palette.light.primary,

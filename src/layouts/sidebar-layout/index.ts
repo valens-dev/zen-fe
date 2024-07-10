@@ -1,1 +1,1 @@
-export * from './sidebar-layout';
+export * from './root-layout';

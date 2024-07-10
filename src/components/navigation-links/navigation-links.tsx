@@ -1,31 +1,34 @@
-import { IconStyle } from '@/types/icon-style';
+import { IconStyle } from '@/types/icon';
 import { Box, Typography } from '@mui/material';
-import Logo from '@/assets/icon/logo.svg?react';
 import { NAV_LINKS } from '@/constants/navigation';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 import { useStyles } from './styles';
 
-export function Sidebar(): React.ReactNode {
+export function NavigationLinks(): React.ReactNode {
   const { classes, cx } = useStyles();
   const navigate = useNavigate();
   const location = useLocation();
 
+  function isLinkActive(href: string): boolean {
+    return location.pathname.includes(href);
+  }
+
+  function getActiveClass(iconStyle: IconStyle): string {
+    return iconStyle === IconStyle.Stroke
+      ? classes.activeIconStroke
+      : classes.activeIconFill;
+  }
+
   return (
-    <Box className={classes.sidebar}>
-      <Box className={classes.logoContainer}>
-        <Logo />
-      </Box>
+    <Box>
       {NAV_LINKS.map(({ icon: Icon, label, href, iconStyle }) => {
-        const isActive = location.pathname.includes(href);
-        const activeClass =
-          iconStyle === IconStyle.Stroke
-            ? classes.activeIconStroke
-            : classes.activeIconFill;
+        const isActive = isLinkActive(href);
+        const activeClass = getActiveClass(iconStyle);
 
         return (
           <Box
-            key={`${label}_${href}`}
+            key={href}
             className={cx(classes.navItem, {
               [classes.activeNavItem]: isActive,
             })}
