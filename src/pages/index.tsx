@@ -1,8 +1,9 @@
 import { lazy, Suspense } from 'react';
-import { Box, CircularProgress } from '@mui/material';
 import { Route, Routes, Navigate, HashRouter } from 'react-router-dom';
 
-import { RootLayout } from '../layouts/sidebar-layout';
+import { Box, CircularProgress } from '@mui/material';
+
+import { RootLayout } from '../layouts/root-layout';
 
 const HomePage = lazy(() => {
   return import('@/pages/home-page/home-page');
