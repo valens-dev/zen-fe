@@ -1,14 +1,25 @@
 import { lazy, Suspense } from 'react';
-import { Route, Routes, HashRouter, Navigate } from 'react-router-dom';
 import { Box, CircularProgress } from '@mui/material';
+import { Route, Routes, Navigate, HashRouter } from 'react-router-dom';
 
 import { SidebarLayout } from '../layouts/sidebar-layout';
 
-const HomePage = lazy(() => import('@/pages/home-page/home-page'));
-const MaterialPage = lazy(() => import('@/pages/material-page/material-page'));
-const StationPage = lazy(() => import('@/pages/station-page/station-page'));
+const HomePage = lazy(() => {
+  return import('@/pages/home-page/home-page').then((module) => {
+    return { default: module.HomePage };
+  });
+});
+const MaterialPage = lazy(() => {
+  return import('@/pages/material-page/material-page').then((module) => {
+    return { default: module.MaterialPage };
+  });
+});
+const StationPage = lazy(async () => {
+  const module = await import('@/pages/station-page/station-page');
+  return { default: module.StationPage };
+});
 
-function PageLoader() {
+function PageLoader(): React.ReactNode {
   return (
     <Box
       sx={{
@@ -23,7 +34,7 @@ function PageLoader() {
   );
 }
 
-export function App() {
+export function App(): React.ReactNode {
   return (
     <HashRouter>
       <Suspense fallback={<PageLoader />}>

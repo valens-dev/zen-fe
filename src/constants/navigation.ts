@@ -1,7 +1,7 @@
-import IconHome from '@/assets/icon/home.svg?react';
-import IconMaterial from '@/assets/icon/material.svg?react';
-import IconStation from '@/assets/icon/station.svg?react';
 import { IconStyle } from '@/types/icon-style';
+import IconHome from '@/assets/icon/home.svg?react';
+import IconStation from '@/assets/icon/station.svg?react';
+import IconMaterial from '@/assets/icon/material.svg?react';
 
 export const NAV_LINKS = [
   { icon: IconHome, iconStyle: IconStyle.Stroke, label: 'Home', href: 'home' },

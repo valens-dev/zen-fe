@@ -2,7 +2,7 @@ import { Box, Typography } from '@mui/material';
 
 import { useStyles } from './styles';
 
-export default function HomePage(): React.ReactNode {
+export function HomePage(): React.ReactNode {
   const { classes } = useStyles();
 
   return (

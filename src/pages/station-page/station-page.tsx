@@ -2,7 +2,7 @@ import { Box, Typography } from '@mui/material';
 
 import { useStyles } from './styles';
 
-export default function StationPage(): React.ReactNode {
+export function StationPage(): React.ReactNode {
   const { classes } = useStyles();
 
   return (
