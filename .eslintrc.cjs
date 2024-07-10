@@ -665,15 +665,74 @@ module.exports = {
       {
         type: 'line-length',
         order: 'asc',
+        'ignore-case': true,
         groups: [
+          /** React and React-related imports */
+          'react',
+          /** Node.js built-in modules */
           'builtin',
+          /** Packages */
           'external',
-          'internal',
+          /** Aliased modules */
+          'context',
+          /** Material-UI imports */
+          'mui',
+          'shared',
+          'components',
+          'layouts',
+          'pages',
+          'types',
+          'constants',
+          'utils',
+          'assets',
+          'styles',
+          /** Relative parent */
           'parent',
+          'parent-extended',
+          /** Relative sibling */
           'sibling',
+          'sibling-extended',
+          /** Relative index */
           'index',
-          'object',
+          /** Component styles */
+          'component-styles',
         ],
+        'custom-groups': {
+          value: {
+            react: ['react', 'react-*', 'react-*/*'],
+            mui: '@mui/*',
+            context: '@/context/**',
+            shared: '@/shared/**',
+            components: '@/components/**',
+            layouts: '@/layouts/**',
+            pages: '@/pages/**',
+            types: '@/types/**',
+            constants: '@/constants/**',
+            utils: '@/utils/**',
+            assets: '@/assets/**',
+            styles: '@/styles/**',
+            'parent-extended': ['../types'],
+            'sibling-extended': ['./types', './constants', './utils'],
+            'component-styles': './styles',
+          },
+          type: {
+            react: 'react',
+            mui: 'mui',
+            context: 'context',
+            shared: 'shared',
+            components: 'components',
+            layouts: 'layouts',
+            pages: 'pages',
+            types: 'types',
+            constants: 'constants',
+            utils: 'utils',
+            assets: 'assets',
+            styles: 'styles',
+            'parent-extended': 'parent-extended',
+            'sibling-extended': 'sibling-extended',
+            'component-styles': 'component-styles',
+          },
+        },
         'newlines-between': 'always',
       },
     ],

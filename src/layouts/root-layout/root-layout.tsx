@@ -1,5 +1,7 @@
-import { Box } from '@mui/material';
 import { Outlet } from 'react-router-dom';
+
+import { Box } from '@mui/material';
+
 import { Sidebar } from '@/layouts/sidebar/sidebar';
 
 import { useStyles } from './styles';

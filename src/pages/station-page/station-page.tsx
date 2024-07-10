@@ -1,8 +1,8 @@
-/* eslint-disable import/no-default-export */
 import { Box, Typography } from '@mui/material';
 
 import { useStyles } from './styles';
 
+/* eslint-disable import/no-default-export */
 export default function StationPage(): React.ReactNode {
   const { classes } = useStyles();
 
