@@ -5,11 +5,10 @@ export const useStyles = tss.create(({ theme }) => {
     wrapper: {
       color: theme.palette.main.primary,
       display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'flex-start',
-      backgroundColor: '#F8FAFC',
-      marginTop: '12px',
-      borderTopLeftRadius: '28px',
+      justifyContent: 'center',
+      alignItems: 'center',
+      textAlign: 'center',
+      height: '100vh',
     },
   };
 });
