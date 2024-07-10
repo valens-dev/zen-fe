@@ -1,0 +1,51 @@
+name: Deploy static content to Pages
+
+on:
+  push:
+    branches: ['main']
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+      - name: Install pnpm
+        run: npm install pnpm
+      - name: Install dependencies
+        run: pnpm install
+      - name: Build
+        run: pnpm build
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: './dist'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+      - name: Discord Commits
+        uses: Sniddl/discord-commits@v1.6
+        with:
+          webhook: https://discord.com/api/webhooks/1258026240951193651/mJWRf3ie2_OTyReuaWXm6pgoaZ9XSgqA5hTShl3ZS3FB8tbpLUJ2-3UNQhilRbJ2_LaE
+          message: 'Deployment done, check it out: https://zen.valens.dev/'
