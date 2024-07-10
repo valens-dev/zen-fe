@@ -8,5 +8,5 @@ import './styles/global.css';
 createRoot(document.querySelector('#root')!).render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
+  </React.StrictMode>
 );

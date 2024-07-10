@@ -18,7 +18,7 @@ function useContext(): { theme: ITheme } {
       },
       text: {
         primary: '#0055FF',
-      }
+      },
     },
     typography: {
       fontWeight: {
