@@ -1,6 +1,8 @@
 import { Box } from '@mui/material';
-import Logo from '@/assets/icon/logo.svg?react';
+
 import { NavigationLinks } from '@/components/navigation-links';
+
+import Logo from '@/assets/icon/logo.svg?react';
 
 import { useStyles } from './styles';
 

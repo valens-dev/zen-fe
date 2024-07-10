@@ -1,7 +1,10 @@
-import { IconStyle } from '@/types/icon';
-import { Box, Typography } from '@mui/material';
-import { NAV_LINKS } from '@/constants/navigation';
 import { useNavigate, useLocation } from 'react-router-dom';
+
+import { Box, Typography } from '@mui/material';
+
+import { IconStyle } from '@/types/icon';
+
+import { NAV_LINKS } from '@/constants/navigation';
 
 import { useStyles } from './styles';
 
