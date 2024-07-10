@@ -7,7 +7,7 @@ export const useStyles = tss.create(() => {
     },
     content: {
       flex: '1',
-      padding: '1.25rem',
+      padding: '20px',
     },
   };
 });

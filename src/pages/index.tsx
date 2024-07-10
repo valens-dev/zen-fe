@@ -7,9 +7,11 @@ import { RootLayout } from '../layouts/sidebar-layout';
 const HomePage = lazy(() => {
   return import('@/pages/home-page/home-page');
 });
+
 const MaterialPage = lazy(() => {
   return import('@/pages/material-page/material-page');
 });
+
 const StationPage = lazy(() => {
   return import('@/pages/station-page/station-page');
 });
