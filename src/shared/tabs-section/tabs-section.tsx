@@ -2,7 +2,7 @@ import { Tab, Box, Tabs } from '@mui/material';
 
 import { useStyles } from './styles';
 
-export interface ITabSectionProps {
+interface ITabSectionProps {
   tabs: { label: string; component: React.ElementType }[];
   selectedTab: number;
   handleChange: (event: React.SyntheticEvent, newValue: number) => void;
