@@ -2,10 +2,10 @@ import { useTabSelection } from '@/hooks/use-tab-selection';
 
 import { Box } from '@mui/material';
 
-import { TabsSection } from '@/layouts/tabs-section/tabs-section';
-import { type ITabSectionProps } from '@/layouts/tabs-section/types';
+import { Header } from '@/shared/header';
+import { TabsSection, type ITabSectionProps } from '@/shared/tabs-section';
 
-import { MATERIAL_TABS } from '@/constants/material-tabs';
+import { MATERIAL_TABS } from './constants';
 
 import { useStyles } from './styles';
 
@@ -15,7 +15,6 @@ export default function MaterialPage(): React.ReactNode {
   const { selectedTab, handleChange } = useTabSelection();
 
   const headerProps: ITabSectionProps = {
-    title: 'Material',
     tabs: MATERIAL_TABS,
     selectedTab,
     handleChange,
@@ -23,6 +22,7 @@ export default function MaterialPage(): React.ReactNode {
 
   return (
     <Box className={classes.wrapper}>
+      <Header title="Material" />
       <TabsSection {...headerProps} />
     </Box>
   );

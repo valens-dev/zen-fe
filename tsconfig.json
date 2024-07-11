@@ -9,7 +9,8 @@
       "@/pages/*": ["pages/*"],
       "@/styles/*": ["styles/*"],
       "@/types/*": ["types/*"],
-      "@/hooks/*": ["hooks/*"]
+      "@/hooks/*": ["hooks/*"],
+      "@/shared/*": ["shared/*"]
     },
     "target": "ES2020",
     "useDefineForClassFields": true,

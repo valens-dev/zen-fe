@@ -1,22 +1,24 @@
-import { createElement } from 'react';
-
-import { Tab, Box, Tabs, Typography } from '@mui/material';
-
-import { type ITabSectionProps } from './types';
+import { Tab, Box, Tabs } from '@mui/material';
 
 import { useStyles } from './styles';
 
+export interface ITabSectionProps {
+  tabs: { label: string; component: React.ElementType }[];
+  selectedTab: number;
+  handleChange: (event: React.SyntheticEvent, newValue: number) => void;
+}
+
 export function TabsSection({
-  title,
   tabs,
   selectedTab,
   handleChange,
 }: ITabSectionProps): React.ReactElement {
   const { classes } = useStyles();
 
+  const ActiveTabComponent = tabs[selectedTab].component;
+
   return (
     <>
-      <Typography className={classes.title}>{title}</Typography>
       <Tabs
         value={selectedTab}
         onChange={handleChange}
@@ -34,9 +36,7 @@ export function TabsSection({
       </Tabs>
       <Box className={classes.line} />
       <Box className={classes.tabContent}>
-        {tabs[selectedTab]?.component
-          ? createElement(tabs[selectedTab].component)
-          : undefined}
+        <ActiveTabComponent />
       </Box>
     </>
   );
