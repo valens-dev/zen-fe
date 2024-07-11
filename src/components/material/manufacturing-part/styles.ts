@@ -8,7 +8,7 @@ export const useStyles = tss.create(({ theme }) => {
       justifyContent: 'center',
       alignItems: 'center',
       textAlign: 'center',
-      height: '100vh',
+      height: '100%',
     },
   };
 });

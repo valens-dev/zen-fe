@@ -1,13 +1,17 @@
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
+
+import { MaterialTable } from '@/components/material-table';
+
+import { rows } from '../data';
 
 import { useStyles } from './styles';
 
-export function Product(): React.ReactNode {
+export function Product(): JSX.Element {
   const { classes } = useStyles();
 
   return (
     <Box className={classes.wrapper}>
-      <Typography variant="h3">Product</Typography>
+      <MaterialTable rows={rows} />
     </Box>
   );
 }
