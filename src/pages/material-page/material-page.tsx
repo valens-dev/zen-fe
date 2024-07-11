@@ -2,8 +2,8 @@ import { useState } from 'react';
 
 import { Box } from '@mui/material';
 
-import { Header } from '@/layouts/header';
-import { type IHeaderProps } from '@/layouts/header/types';
+import { TabSection } from '@/layouts/tab-section';
+import { type IHeaderProps } from '@/layouts/tab-section/types';
 
 import { Product } from './product/product';
 import { PurchasingPart } from './purchasing-part/purchasing-part';
@@ -33,7 +33,7 @@ export default function MaterialPage(): React.ReactNode {
 
   return (
     <Box className={classes.wrapper}>
-      <Header {...headerProps} />
+      <TabSection {...headerProps} />
     </Box>
   );
 }

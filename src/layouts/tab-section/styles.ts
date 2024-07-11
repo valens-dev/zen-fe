@@ -1,12 +1,12 @@
 import { tss } from '@/styles/theme';
 
-export const useStyles = tss.create(() => {
+export const useStyles = tss.create(({ theme }) => {
   return {
     title: {
       paddingTop: '32px',
       paddingLeft: '32px',
-      fontWeight: 600,
-      fontSize: '24px',
+      fontWeight: theme.typography.fontWeight.semiBold,
+      fontSize: '1.5rem',
       lineHeight: '32px',
       marginBottom: '16px',
     },
@@ -15,19 +15,19 @@ export const useStyles = tss.create(() => {
       paddingLeft: '15px',
     },
     tab: {
-      fontWeight: 500,
-      fontSize: '14px',
+      fontWeight: theme.typography.fontWeight.medium,
+      fontSize: '0.875rem',
       lineHeight: '20px',
-      color: '#475569',
+      color: theme.palette.main.primary,
       textTransform: 'none',
       padding: '12px 8px',
     },
     tabSelected: {
-      color: '#0055FF',
+      color: theme.palette.text.primary,
     },
     line: {
       width: '100%',
-      borderTop: '1px solid #E2E8F0',
+      borderTop: `1px solid ${theme.palette.border.primary}`,
       marginTop: '-1px',
     },
     tabContent: {

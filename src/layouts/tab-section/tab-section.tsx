@@ -1,9 +1,10 @@
 import { Tab, Box, Tabs, Typography } from '@mui/material';
 
-import { useStyles } from './styles';
 import { type IHeaderProps } from './types';
 
-export function Header({
+import { useStyles } from './styles';
+
+export function TabSection({
   title,
   tabs,
   selectedTab,
@@ -13,9 +14,7 @@ export function Header({
 
   return (
     <>
-      <Typography variant="h3" className={classes.title}>
-        {title}
-      </Typography>
+      <Typography className={classes.title}>{title}</Typography>
       <Tabs
         value={selectedTab}
         onChange={handleChange}
