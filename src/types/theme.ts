@@ -24,6 +24,7 @@ interface IPalette {
   white: IColor;
   light: IColor;
   text: IColor;
+  border: IColor;
 }
 
 export interface ITheme {

@@ -15,9 +15,13 @@ function useContext(): { theme: ITheme } {
       },
       light: {
         primary: '#EFF8FF',
+        secondary: '#F8FAFC',
       },
       text: {
         primary: '#0055FF',
+      },
+      border: {
+        primary: '#E2E8F0',
       },
     },
     typography: {
