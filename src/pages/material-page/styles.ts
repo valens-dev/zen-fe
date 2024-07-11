@@ -7,7 +7,7 @@ export const useStyles = tss.create(({ theme }) => {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'flex-start',
-      backgroundColor: '#F8FAFC',
+      backgroundColor: theme.palette.light.secondary,
       marginTop: '12px',
       borderTopLeftRadius: '28px',
     },

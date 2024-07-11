@@ -15,6 +15,7 @@ function useContext(): { theme: ITheme } {
       },
       light: {
         primary: '#EFF8FF',
+        secondary: '#F8FAFC',
       },
       text: {
         primary: '#0055FF',
