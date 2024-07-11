@@ -62,4 +62,6 @@ jobs:
         uses: Sniddl/discord-commits@v1.6
         with:
           webhook: https://discord.com/api/webhooks/1258026240951193651/mJWRf3ie2_OTyReuaWXm6pgoaZ9XSgqA5hTShl3ZS3FB8tbpLUJ2-3UNQhilRbJ2_LaE
+          template: "avatar-with-link"
+          include-extras: true
           message: 'Deployment done, check it out: https://zen.valens.dev/'
