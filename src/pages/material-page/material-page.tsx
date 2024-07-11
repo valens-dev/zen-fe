@@ -1,39 +1,29 @@
-import { useState } from 'react';
+import { useTabSelection } from '@/hooks/use-tab-selection';
 
 import { Box } from '@mui/material';
 
-import { TabSection } from '@/layouts/tab-section';
-import { type IHeaderProps } from '@/layouts/tab-section/types';
+import { TabsSection } from '@/layouts/tabs-section/tabs-section';
+import { type ITabSectionProps } from '@/layouts/tabs-section/types';
 
-import { Product } from './product/product';
-import { PurchasingPart } from './purchasing-part/purchasing-part';
-import { ManufacturingPart } from './manufacturing-part/manufacturing-part';
+import { MATERIAL_TABS } from '@/constants/material-tabs';
 
 import { useStyles } from './styles';
 
 /* eslint-disable import/no-default-export */
 export default function MaterialPage(): React.ReactNode {
   const { classes } = useStyles();
-  const [selectedTab, setSelectedTab] = useState(0);
+  const { selectedTab, handleChange } = useTabSelection();
 
-  function handleChange(_event: React.SyntheticEvent, newValue: number): void {
-    setSelectedTab(newValue);
-  }
-
-  const headerProps: IHeaderProps = {
+  const headerProps: ITabSectionProps = {
     title: 'Material',
-    tabs: [
-      { label: 'Product', component: <Product /> },
-      { label: 'Manufacturing part', component: <ManufacturingPart /> },
-      { label: 'Purchasing part', component: <PurchasingPart /> },
-    ],
+    tabs: MATERIAL_TABS,
     selectedTab,
     handleChange,
   };
 
   return (
     <Box className={classes.wrapper}>
-      <TabSection {...headerProps} />
+      <TabsSection {...headerProps} />
     </Box>
   );
 }

@@ -1,15 +1,17 @@
+import { createElement } from 'react';
+
 import { Tab, Box, Tabs, Typography } from '@mui/material';
 
-import { type IHeaderProps } from './types';
+import { type ITabSectionProps } from './types';
 
 import { useStyles } from './styles';
 
-export function TabSection({
+export function TabsSection({
   title,
   tabs,
   selectedTab,
   handleChange,
-}: IHeaderProps): JSX.Element {
+}: ITabSectionProps): React.ReactElement {
   const { classes } = useStyles();
 
   return (
@@ -23,7 +25,7 @@ export function TabSection({
         {tabs.map((tab) => {
           return (
             <Tab
-              key={`${title}_${tab.label}`}
+              key={tab.label}
               label={tab.label}
               classes={{ root: classes.tab, selected: classes.tabSelected }}
             />
@@ -31,7 +33,11 @@ export function TabSection({
         })}
       </Tabs>
       <Box className={classes.line} />
-      <Box className={classes.tabContent}>{tabs[selectedTab]?.component}</Box>
+      <Box className={classes.tabContent}>
+        {tabs[selectedTab]?.component
+          ? createElement(tabs[selectedTab].component)
+          : undefined}
+      </Box>
     </>
   );
 }
