@@ -44,6 +44,7 @@ export const useStyles = tss.create(({ theme }) => {
       height: '24px',
       marginRight: '8px',
       verticalAlign: 'middle',
+      objectFit: 'cover',
     },
     textContainer: {
       display: 'inline-block',
