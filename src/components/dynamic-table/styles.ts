@@ -33,15 +33,10 @@ export const useStyles = tss.create(({ theme }) => {
     bodyCell: {
       fontSize: '0.75rem',
       lineHeight: '16px',
-    },
-    nameCell: {
-      width: '22.30%',
+      width: '15.54%',
       whiteSpace: 'nowrap',
       overflow: 'hidden',
       textOverflow: 'ellipsis',
-    },
-    otherCell: {
-      width: '15.54%',
     },
     image: {
       width: '38px',

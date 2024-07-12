@@ -50,12 +50,9 @@ export function DynamicTable({
         <Table className={classes.table}>
           <TableHead>
             <TableRow className={classes.headerRow}>
-              {headers.map((header, index) => {
+              {headers.map((header) => {
                 return (
-                  <TableCell
-                    key={header}
-                    className={`${classes.headerCell} ${index === 0 ? classes.nameCell : classes.otherCell}`}
-                  >
+                  <TableCell key={header} className={classes.headerCell}>
                     {header}
                   </TableCell>
                 );
@@ -71,10 +68,7 @@ export function DynamicTable({
                   <TableRow key={index} className={classes.bodyRow}>
                     {Object.keys(fieldMap).map((field) => {
                       return fieldMap[field] === imageField && row.imageUrl ? (
-                        <TableCell
-                          key={field}
-                          className={`${classes.bodyCell} ${classes.nameCell}`}
-                        >
+                        <TableCell key={field} className={classes.bodyCell}>
                           <Box className={classes.tableRow}>
                             <img
                               className={classes.image}
@@ -89,10 +83,7 @@ export function DynamicTable({
                           </Box>
                         </TableCell>
                       ) : (
-                        <TableCell
-                          key={field}
-                          className={`${classes.bodyCell} ${classes.otherCell}`}
-                        >
+                        <TableCell key={field} className={classes.bodyCell}>
                           {row[fieldMap[field]]}
                         </TableCell>
                       );
