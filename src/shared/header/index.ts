@@ -1,1 +1,1 @@
-export * from './tabs-section';
+export * from './header';

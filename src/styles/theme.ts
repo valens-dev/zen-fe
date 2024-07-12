@@ -24,6 +24,9 @@ function useContext(): { theme: ITheme } {
       border: {
         primary: '#E2E8F0',
       },
+      background: {
+        primary: '#0045D6',
+      },
     },
     typography: {
       fontWeight: {

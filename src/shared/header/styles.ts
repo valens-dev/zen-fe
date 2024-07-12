@@ -9,6 +9,7 @@ export const useStyles = tss.create(({ theme }) => {
       fontSize: '1.5rem',
       lineHeight: '32px',
       marginBottom: '16px',
+      color: theme.palette.text.secondary,
     },
     tabs: {
       marginBottom: '0px',

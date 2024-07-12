@@ -37,7 +37,6 @@ export const useStyles = tss.create(({ theme }) => {
       margin: '0 16px',
     },
     tabContent: {
-      marginTop: '16px',
       width: '100%',
     },
     tabIndicator: {
