@@ -23,6 +23,7 @@ export function TabsSection({
         value={selectedTab}
         onChange={handleChange}
         className={classes.tabs}
+        TabIndicatorProps={{ className: classes.tabIndicator }}
       >
         {tabs.map((tab) => {
           return (
