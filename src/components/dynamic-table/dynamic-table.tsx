@@ -20,9 +20,17 @@ import { useStyles } from './styles';
 
 interface IProductTableProps {
   rows: ProductData[];
+  headers: string[];
+  fieldMap: Record<string, keyof ProductData>;
+  imageField?: keyof ProductData;
 }
 
-export function MaterialTable({ rows }: IProductTableProps): React.ReactNode {
+export function DynamicTable({
+  rows,
+  headers,
+  fieldMap,
+  imageField,
+}: IProductTableProps): React.ReactNode {
   const { classes } = useStyles();
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -35,23 +43,6 @@ export function MaterialTable({ rows }: IProductTableProps): React.ReactNode {
     setRowsPerPage(Number(event.target.value));
     setPage(0);
   }
-
-  const headers = [
-    'Name',
-    'Höhe',
-    'Material',
-    'Gewicht',
-    'Bestand',
-    'Netto Preis',
-  ];
-
-  const fieldMap: Record<string, keyof ProductData> = {
-    height: 'height',
-    material: 'material',
-    weight: 'weight',
-    stock: 'stock',
-    price: 'price',
-  };
 
   return (
     <Box className={classes.container}>
@@ -78,24 +69,26 @@ export function MaterialTable({ rows }: IProductTableProps): React.ReactNode {
                 return (
                   // eslint-disable-next-line react/no-array-index-key
                   <TableRow key={index} className={classes.bodyRow}>
-                    <TableCell
-                      className={`${classes.bodyCell} ${classes.nameCell}`}
-                    >
-                      <Box className={classes.tableRow}>
-                        <img
-                          className={classes.image}
-                          src={row.imageUrl}
-                          alt={row.name}
-                          height={24}
-                          width={38}
-                        />
-                        <Typography className={classes.textContainer}>
-                          {row.name}
-                        </Typography>
-                      </Box>
-                    </TableCell>
                     {Object.keys(fieldMap).map((field) => {
-                      return (
+                      return fieldMap[field] === imageField && row.imageUrl ? (
+                        <TableCell
+                          key={field}
+                          className={`${classes.bodyCell} ${classes.nameCell}`}
+                        >
+                          <Box className={classes.tableRow}>
+                            <img
+                              className={classes.image}
+                              src={row.imageUrl}
+                              alt={String(row[fieldMap[field]])}
+                              height={24}
+                              width={38}
+                            />
+                            <Typography className={classes.textContainer}>
+                              {row[fieldMap[field]]}
+                            </Typography>
+                          </Box>
+                        </TableCell>
+                      ) : (
                         <TableCell
                           key={field}
                           className={`${classes.bodyCell} ${classes.otherCell}`}

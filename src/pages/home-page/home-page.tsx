@@ -1,4 +1,6 @@
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
+
+import { Header } from '@/shared/header';
 
 import { useStyles } from './styles';
 
@@ -8,7 +10,7 @@ export default function HomePage(): React.ReactNode {
 
   return (
     <Box className={classes.wrapper}>
-      <Typography variant="h3">Home page</Typography>
+      <Header title="Home" />
     </Box>
   );
 }

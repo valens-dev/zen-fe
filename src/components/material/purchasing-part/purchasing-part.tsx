@@ -1,20 +1,26 @@
 import { Box } from '@mui/material';
 
-import { MaterialTable } from '@/components/material-table';
+import { DynamicTable } from '@/components/dynamic-table';
 
-import { rows } from '../data';
+import {
+  purchasingRows,
+  materialFieldMap,
+  materialTableHeaders,
+} from '../constants';
 
 import { useStyles } from './styles';
 
-export function PurchasingPart(): React.ReactNode {
+export function PurchasingPart(): JSX.Element {
   const { classes } = useStyles();
-  const purchasingRows = rows.filter((row) => {
-    return row.materialType === 'purchasing-part';
-  });
 
   return (
     <Box className={classes.wrapper}>
-      <MaterialTable rows={purchasingRows} />
+      <DynamicTable
+        rows={purchasingRows}
+        headers={materialTableHeaders}
+        fieldMap={materialFieldMap}
+        imageField="name"
+      />
     </Box>
   );
 }

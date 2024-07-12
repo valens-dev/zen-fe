@@ -1,20 +1,26 @@
 import { Box } from '@mui/material';
 
-import { MaterialTable } from '@/components/material-table';
+import { DynamicTable } from '@/components/dynamic-table';
 
-import { rows } from '../data';
+import {
+  materialFieldMap,
+  manufactorintRows,
+  materialTableHeaders,
+} from '../constants';
 
 import { useStyles } from './styles';
 
-export function ManufacturingPart(): React.ReactNode {
+export function ManufacturingPart(): JSX.Element {
   const { classes } = useStyles();
-  const manufacturingRows = rows.filter((row) => {
-    return row.materialType === 'manufactoring-part';
-  });
 
   return (
     <Box className={classes.wrapper}>
-      <MaterialTable rows={manufacturingRows} />
+      <DynamicTable
+        rows={manufactorintRows}
+        headers={materialTableHeaders}
+        fieldMap={materialFieldMap}
+        imageField="name"
+      />
     </Box>
   );
 }

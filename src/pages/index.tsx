@@ -17,6 +17,10 @@ const StationPage = lazy(() => {
   return import('@/pages/station-page/station-page');
 });
 
+const OrderPage = lazy(() => {
+  return import('@/pages/order-page/order-page');
+});
+
 function PageLoader(): React.ReactNode {
   return (
     <Box
@@ -42,6 +46,7 @@ export function App(): React.ReactNode {
             <Route path="home" element={<HomePage />} />
             <Route path="material" element={<MaterialPage />} />
             <Route path="station" element={<StationPage />} />
+            <Route path="order" element={<OrderPage />} />
           </Route>
         </Routes>
       </Suspense>

@@ -1,20 +1,26 @@
 import { Box } from '@mui/material';
 
-import { MaterialTable } from '@/components/material-table';
+import { DynamicTable } from '@/components/dynamic-table';
 
-import { rows } from '../data';
+import {
+  productRows,
+  materialFieldMap,
+  materialTableHeaders,
+} from '../constants';
 
 import { useStyles } from './styles';
 
 export function Product(): JSX.Element {
   const { classes } = useStyles();
-  const productRows = rows.filter((row) => {
-    return row.materialType === 'product';
-  });
 
   return (
     <Box className={classes.wrapper}>
-      <MaterialTable rows={productRows} />
+      <DynamicTable
+        rows={productRows}
+        headers={materialTableHeaders}
+        fieldMap={materialFieldMap}
+        imageField="name"
+      />
     </Box>
   );
 }
