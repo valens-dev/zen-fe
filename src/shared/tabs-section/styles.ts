@@ -21,9 +21,14 @@ export const useStyles = tss.create(({ theme }) => {
       color: theme.palette.main.primary,
       textTransform: 'none',
       padding: '12px 8px',
+      '&:hover': {
+        color: theme.palette.text.primary,
+      },
     },
     tabSelected: {
-      color: theme.palette.text.primary,
+      '&.Mui-selected': {
+        color: theme.palette.text.primary,
+      },
     },
     line: {
       width: '100%',
@@ -32,8 +37,10 @@ export const useStyles = tss.create(({ theme }) => {
       margin: '0 16px',
     },
     tabContent: {
-      marginTop: '16px',
       width: '100%',
+    },
+    tabIndicator: {
+      backgroundColor: theme.palette.text.primary,
     },
   };
 });

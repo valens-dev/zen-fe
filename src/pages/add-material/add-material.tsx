@@ -5,12 +5,12 @@ import { Header } from '@/shared/header';
 import { useStyles } from './styles';
 
 /* eslint-disable import/no-default-export */
-export default function StationPage(): React.ReactNode {
+export default function AddMaterial(): React.ReactNode {
   const { classes } = useStyles();
 
   return (
     <Box className={classes.wrapper}>
-      <Header title="Stations" />
+      <Header title="Add material" />
     </Box>
   );
 }

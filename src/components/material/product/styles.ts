@@ -4,11 +4,8 @@ export const useStyles = tss.create(({ theme }) => {
   return {
     wrapper: {
       color: theme.palette.main.primary,
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      textAlign: 'center',
-      height: '100vh',
+      height: '100%',
+      margin: '0 16px 16px 16px',
     },
   };
 });

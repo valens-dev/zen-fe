@@ -9,6 +9,7 @@ export const useStyles = tss.create(({ theme }) => {
       fontSize: '1.5rem',
       lineHeight: '32px',
       marginBottom: '16px',
+      color: theme.palette.text.secondary,
     },
     tabs: {
       marginBottom: '0px',
@@ -28,7 +29,6 @@ export const useStyles = tss.create(({ theme }) => {
     line: {
       width: '100%',
       borderTop: `1px solid ${theme.palette.border.primary}`,
-      marginTop: '-1px',
       margin: '0 16px',
     },
     tabContent: {

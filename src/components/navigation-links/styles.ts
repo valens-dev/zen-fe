@@ -11,7 +11,7 @@ export const useStyles = tss.create(({ theme }) => {
       borderRadius: '8px',
       cursor: 'pointer',
       '&:hover': {
-        backgroundColor: theme.palette.white.secondary,
+        backgroundColor: theme.palette.light.secondary,
       },
       '&:active': {
         backgroundColor: theme.palette.white.tertiary,
