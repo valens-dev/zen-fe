@@ -8,10 +8,13 @@ import { useStyles } from './styles';
 
 export function ManufacturingPart(): React.ReactNode {
   const { classes } = useStyles();
+  const manufacturingRows = rows.filter((row) => {
+    return row.materialType === 'manufactoring-part';
+  });
 
   return (
     <Box className={classes.wrapper}>
-      <MaterialTable rows={rows} />
+      <MaterialTable rows={manufacturingRows} />
     </Box>
   );
 }

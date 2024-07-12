@@ -8,10 +8,13 @@ import { useStyles } from './styles';
 
 export function PurchasingPart(): React.ReactNode {
   const { classes } = useStyles();
+  const purchasingRows = rows.filter((row) => {
+    return row.materialType === 'purchasing-part';
+  });
 
   return (
     <Box className={classes.wrapper}>
-      <MaterialTable rows={rows} />
+      <MaterialTable rows={purchasingRows} />
     </Box>
   );
 }
