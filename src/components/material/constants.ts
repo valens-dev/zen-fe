@@ -1,4 +1,4 @@
-import { rows, type ProductData } from './data';
+import { rows, type IProductData } from './data';
 
 export const productRows = rows.filter((row) => {
   return row.materialType === 'product';
@@ -20,7 +20,7 @@ export const materialTableHeaders = [
   'Price',
 ];
 
-export const materialFieldMap: Record<string, keyof ProductData> = {
+export const materialFieldMap: Record<string, keyof IProductData> = {
   name: 'name',
   height: 'height',
   material: 'material',

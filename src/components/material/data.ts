@@ -1,5 +1,4 @@
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export interface ProductData {
+export interface IProductData {
   materialType: IMaterialType[keyof IMaterialType];
   imageUrl: string;
   name: string;
@@ -26,7 +25,7 @@ export const createData = (
   weight: string,
   stock: string,
   price: string,
-): ProductData => {
+): IProductData => {
   return {
     materialType,
     imageUrl,
@@ -39,7 +38,7 @@ export const createData = (
   };
 };
 
-export const rows: ProductData[] = [
+export const rows: IProductData[] = [
   createData(
     'product',
     'https://www.zeka.ba/media/3a/01/a1/1714395695/djeCije-biciklo-ty-952-16-17887.jpg',

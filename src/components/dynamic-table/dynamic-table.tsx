@@ -13,24 +13,23 @@ import {
   type SelectChangeEvent,
 } from '@mui/material';
 
-import { type ProductData } from '../material/data';
 import { Pagination } from '../pagination/pagination';
 
 import { useStyles } from './styles';
 
-interface IProductTableProps {
-  rows: ProductData[];
+interface IProductTableProps<T> {
+  rows: T[];
   headers: string[];
-  fieldMap: Record<string, keyof ProductData>;
-  imageField?: keyof ProductData;
+  fieldMap: Record<string, keyof T>;
+  imageField?: keyof T;
 }
 
-export function DynamicTable({
+export function DynamicTable<T>({
   rows,
   headers,
   fieldMap,
   imageField,
-}: IProductTableProps): React.ReactNode {
+}: IProductTableProps<T>): React.ReactNode {
   const { classes } = useStyles();
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -63,28 +62,29 @@ export function DynamicTable({
             {rows
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row, index) => {
+                const rowWithImageUrl = row as T & { imageUrl?: string };
                 return (
                   // eslint-disable-next-line react/no-array-index-key
                   <TableRow key={index} className={classes.bodyRow}>
                     {Object.keys(fieldMap).map((field) => {
-                      return fieldMap[field] === imageField && row.imageUrl ? (
+                      return (
                         <TableCell key={field} className={classes.bodyCell}>
-                          <Box className={classes.tableRow}>
-                            <img
-                              className={classes.image}
-                              src={row.imageUrl}
-                              alt={String(row[fieldMap[field]])}
-                              height={24}
-                              width={38}
-                            />
-                            <Typography className={classes.textContainer}>
-                              {row[fieldMap[field]]}
-                            </Typography>
-                          </Box>
-                        </TableCell>
-                      ) : (
-                        <TableCell key={field} className={classes.bodyCell}>
-                          {row[fieldMap[field]]}
+                          {fieldMap[field] === imageField && row[imageField] ? (
+                            <Box className={classes.tableRow}>
+                              <img
+                                className={classes.image}
+                                src={rowWithImageUrl.imageUrl}
+                                alt={String(row[fieldMap[field]])}
+                                height={24}
+                                width={38}
+                              />
+                              <Typography className={classes.textContainer}>
+                                {row[fieldMap[field]] as string}
+                              </Typography>
+                            </Box>
+                          ) : (
+                            <>{row[fieldMap[field]] as string}</>
+                          )}
                         </TableCell>
                       );
                     })}
