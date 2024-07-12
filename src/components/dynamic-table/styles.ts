@@ -28,7 +28,6 @@ export const useStyles = tss.create(({ theme }) => {
       fontWeight: theme.typography.fontWeight.medium,
       fontSize: '0.75rem',
       lineHeight: '16px',
-      textAlign: 'center',
     },
     bodyCell: {
       fontSize: '0.75rem',
@@ -37,7 +36,6 @@ export const useStyles = tss.create(({ theme }) => {
       whiteSpace: 'nowrap',
       overflow: 'hidden',
       textOverflow: 'ellipsis',
-      textAlign: 'center',
     },
     image: {
       width: '38px',
