@@ -27,6 +27,10 @@ export function Header({ title }: IHeaderProps): React.ReactElement {
     setSelectedLanguage(lang);
   }
 
+  function getVariant(lang: string): 'contained' | 'outlined' {
+    return selectedLanguage === lang ? 'contained' : 'outlined';
+  }
+
   return (
     <Box className={classes.header}>
       <Typography className={classes.title}>{title}</Typography>
@@ -37,7 +41,7 @@ export function Header({ title }: IHeaderProps): React.ReactElement {
           onClick={(): void => {
             return handleChangeLanguage('en');
           }}
-          variant={selectedLanguage === 'en' ? 'contained' : 'outlined'}
+          variant={getVariant('en')}
         >
           EN
         </Button>
@@ -47,7 +51,7 @@ export function Header({ title }: IHeaderProps): React.ReactElement {
           onClick={(): void => {
             return handleChangeLanguage('de');
           }}
-          variant={selectedLanguage === 'de' ? 'contained' : 'outlined'}
+          variant={getVariant('de')}
         >
           DE
         </Button>
