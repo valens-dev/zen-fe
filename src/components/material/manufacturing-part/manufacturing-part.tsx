@@ -14,7 +14,7 @@ import {
 
 import { useStyles } from './styles';
 
-export function ManufacturingPart(): JSX.Element {
+export function ManufacturingPart(): React.ReactNode {
   const { classes } = useStyles();
   const navigate = useNavigate();
 

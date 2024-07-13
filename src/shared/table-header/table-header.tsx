@@ -16,7 +16,7 @@ export function TableHeader({
   title,
   onButtonClick,
   buttonText,
-}: IHeaderProps): React.ReactElement {
+}: IHeaderProps): React.ReactNode {
   const { classes } = useStyles();
 
   return (

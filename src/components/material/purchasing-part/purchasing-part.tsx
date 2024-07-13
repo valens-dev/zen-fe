@@ -14,7 +14,7 @@ import {
 
 import { useStyles } from './styles';
 
-export function PurchasingPart(): JSX.Element {
+export function PurchasingPart(): React.ReactNode {
   const { classes } = useStyles();
   const navigate = useNavigate();
 
