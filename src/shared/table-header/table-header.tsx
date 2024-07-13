@@ -2,7 +2,7 @@ import { Box, Typography } from '@mui/material';
 
 import AddIcon from '@/assets/icon/add.svg?react';
 
-import { PrimaryButton } from '../primary-button';
+import { Button } from '../button';
 
 import { useStyles } from './styles';
 
@@ -22,10 +22,10 @@ export function TableHeader({
   return (
     <Box className={classes.headerContainer}>
       <Typography className={classes.title}>{title}</Typography>
-      <PrimaryButton onClick={onButtonClick}>
+      <Button onClick={onButtonClick}>
         <AddIcon />
         <Typography className={classes.buttonText}>{buttonText}</Typography>
-      </PrimaryButton>
+      </Button>
     </Box>
   );
 }
