@@ -23,8 +23,5 @@ export const useStyles = tss.create(({ theme }) => {
       lineHeight: '20px',
       textTransform: 'none',
     },
-    button: {
-      marginLeft: 'auto',
-    },
   };
 });
