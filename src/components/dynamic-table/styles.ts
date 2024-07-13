@@ -9,10 +9,7 @@ export const useStyles = tss.create(({ theme }) => {
       borderRadius: '16px',
       background: theme.palette.white.primary,
     },
-    tableContainer: {
-      borderRadius: '16px',
-    },
-    table: {
+    borderRadius: {
       borderRadius: '16px',
     },
     headerRow: {

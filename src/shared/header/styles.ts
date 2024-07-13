@@ -1,6 +1,6 @@
 import { tss } from '@/styles/theme';
 
-export const useStyles = tss.create(() => {
+export const useStyles = tss.create(({ theme }) => {
   return {
     header: {
       display: 'flex',
@@ -9,6 +9,8 @@ export const useStyles = tss.create(() => {
       width: '100%',
     },
     title: {
+      color: theme.palette.text.secondary,
+      fontWeight: theme.typography.fontWeight.semiBold,
       fontSize: '1.5rem',
     },
     languageButtons: {

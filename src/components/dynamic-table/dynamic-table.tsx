@@ -45,8 +45,8 @@ export function DynamicTable<T>({
 
   return (
     <Box className={classes.container}>
-      <TableContainer component={Paper} className={classes.tableContainer}>
-        <Table className={classes.table}>
+      <TableContainer component={Paper} className={classes.borderRadius}>
+        <Table className={classes.borderRadius}>
           <TableHead>
             <TableRow className={classes.headerRow}>
               {headers.map((header) => {

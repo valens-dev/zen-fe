@@ -1,5 +1,7 @@
 import { createTss } from 'tss-react';
 
+import { createTheme } from '@mui/material';
+
 import { type ITheme } from '@/types/theme';
 
 function useContext(): { theme: ITheme } {
@@ -44,6 +46,12 @@ function useContext(): { theme: ITheme } {
 
   return { theme };
 }
+
+export const theme = createTheme({
+  typography: {
+    fontFamily: 'Inter, sans-serif',
+  },
+});
 
 export const { tss } = createTss({ useContext });
 
