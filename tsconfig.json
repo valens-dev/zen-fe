@@ -10,7 +10,8 @@
       "@/styles/*": ["styles/*"],
       "@/types/*": ["types/*"],
       "@/hooks/*": ["hooks/*"],
-      "@/shared/*": ["shared/*"]
+      "@/shared/*": ["shared/*"],
+      "@/services/*": ["services/*"]
     },
     "target": "ES2020",
     "useDefineForClassFields": true,
