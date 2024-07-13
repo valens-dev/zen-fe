@@ -13,7 +13,6 @@ export const useStyles = tss.create(({ theme }) => {
       borderRadius: '16px',
     },
     table: {
-      border: `1px solid ${theme.palette.border.primary}`,
       borderRadius: '16px',
     },
     headerRow: {
