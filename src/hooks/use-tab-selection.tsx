@@ -1,11 +1,11 @@
 import { useState } from 'react';
 
-interface ITabSelectionState {
+interface IUseTabSelectionProps {
   selectedTab: number;
   handleChange: (_event: React.SyntheticEvent, newValue: number) => void;
 }
 
-export function useTabSelection(initialTab = 0): ITabSelectionState {
+export function useTabSelection(initialTab = 0): IUseTabSelectionProps {
   const [selectedTab, setSelectedTab] = useState(initialTab);
 
   function handleChange(_event: React.SyntheticEvent, newValue: number): void {
