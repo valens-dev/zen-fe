@@ -2,6 +2,8 @@ import { createColumnHelper } from '@tanstack/react-table';
 
 import { Box, Typography } from '@mui/material';
 
+import { LazyImage } from '@/shared/lazy-image/lazy-image';
+
 import { MaterialType, type IProduct } from './types';
 
 export function createData(
@@ -521,7 +523,7 @@ export const columns = [
 
       return (
         <Box display="flex" alignItems="center">
-          <img src={imageUrl} alt={name} height={30} width={30} />
+          <LazyImage src={imageUrl} alt={name} height={30} width={30} />
           <Typography>{name}</Typography>
         </Box>
       );
