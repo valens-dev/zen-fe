@@ -5,7 +5,7 @@ import { Header } from '@/layouts/header';
 import { useStyles } from './styles';
 
 /* eslint-disable import/no-default-export */
-export default function AddMaterial(): React.ReactNode {
+export default function AddMaterialPage(): React.ReactNode {
   const { classes } = useStyles();
 
   return (
