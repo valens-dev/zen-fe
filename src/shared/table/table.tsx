@@ -22,7 +22,7 @@ import {
 } from '@mui/material';
 
 interface ITableProps<T> {
-  columns: ColumnDef<T>[];
+  columns: ColumnDef<T, string>[];
   data: T[];
 }
 

@@ -28,7 +28,7 @@ export function createData(
 
 export const data: IProduct[] = [
   createData(
-    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/30',
     '32 cm',
     'Plastic',
     MaterialType.ManufactoringPart,
@@ -38,7 +38,7 @@ export const data: IProduct[] = [
     '2.34 kg',
   ),
   createData(
-    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/30',
     '45 cm',
     'Metal',
     MaterialType.Product,
@@ -48,7 +48,7 @@ export const data: IProduct[] = [
     '4.56 kg',
   ),
   createData(
-    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/30',
     '78 cm',
     'Wood',
     MaterialType.PurchasingPart,
@@ -58,7 +58,7 @@ export const data: IProduct[] = [
     '3.89 kg',
   ),
   createData(
-    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/30',
     '90 cm',
     'Plastic',
     MaterialType.ManufactoringPart,
@@ -68,7 +68,7 @@ export const data: IProduct[] = [
     '6.78 kg',
   ),
   createData(
-    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/30',
     '12 cm',
     'Metal',
     MaterialType.Product,
@@ -78,7 +78,7 @@ export const data: IProduct[] = [
     '1.45 kg',
   ),
   createData(
-    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/30',
     '34 cm',
     'Wood',
     MaterialType.PurchasingPart,
@@ -88,7 +88,7 @@ export const data: IProduct[] = [
     '5.67 kg',
   ),
   createData(
-    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/30',
     '23 cm',
     'Plastic',
     MaterialType.ManufactoringPart,
@@ -98,7 +98,7 @@ export const data: IProduct[] = [
     '2.12 kg',
   ),
   createData(
-    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/30',
     '56 cm',
     'Metal',
     MaterialType.Product,
@@ -108,7 +108,7 @@ export const data: IProduct[] = [
     '4.23 kg',
   ),
   createData(
-    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/30',
     '78 cm',
     'Wood',
     MaterialType.PurchasingPart,
@@ -118,7 +118,7 @@ export const data: IProduct[] = [
     '7.89 kg',
   ),
   createData(
-    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/30',
     '67 cm',
     'Plastic',
     MaterialType.ManufactoringPart,
@@ -128,7 +128,7 @@ export const data: IProduct[] = [
     '6.12 kg',
   ),
   createData(
-    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/30',
     '45 cm',
     'Metal',
     MaterialType.Product,
@@ -138,7 +138,7 @@ export const data: IProduct[] = [
     '3.45 kg',
   ),
   createData(
-    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/30',
     '23 cm',
     'Wood',
     MaterialType.PurchasingPart,
@@ -148,7 +148,7 @@ export const data: IProduct[] = [
     '2.89 kg',
   ),
   createData(
-    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/30',
     '56 cm',
     'Plastic',
     MaterialType.ManufactoringPart,
@@ -158,7 +158,7 @@ export const data: IProduct[] = [
     '5.23 kg',
   ),
   createData(
-    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/30',
     '89 cm',
     'Metal',
     MaterialType.Product,
@@ -168,7 +168,7 @@ export const data: IProduct[] = [
     '9.34 kg',
   ),
   createData(
-    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/30',
     '34 cm',
     'Wood',
     MaterialType.PurchasingPart,
@@ -178,7 +178,7 @@ export const data: IProduct[] = [
     '3.12 kg',
   ),
   createData(
-    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/30',
     '90 cm',
     'Plastic',
     MaterialType.ManufactoringPart,
@@ -188,7 +188,7 @@ export const data: IProduct[] = [
     '8.45 kg',
   ),
   createData(
-    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/30',
     '12 cm',
     'Metal',
     MaterialType.Product,
@@ -198,7 +198,7 @@ export const data: IProduct[] = [
     '1.23 kg',
   ),
   createData(
-    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/30',
     '45 cm',
     'Wood',
     MaterialType.PurchasingPart,
@@ -208,7 +208,7 @@ export const data: IProduct[] = [
     '3.78 kg',
   ),
   createData(
-    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/30',
     '67 cm',
     'Plastic',
     MaterialType.ManufactoringPart,
@@ -218,7 +218,7 @@ export const data: IProduct[] = [
     '6.23 kg',
   ),
   createData(
-    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/30',
     '78 cm',
     'Metal',
     MaterialType.Product,
@@ -228,7 +228,7 @@ export const data: IProduct[] = [
     '7.34 kg',
   ),
   createData(
-    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/30',
     '56 cm',
     'Wood',
     MaterialType.PurchasingPart,
@@ -238,7 +238,7 @@ export const data: IProduct[] = [
     '5.78 kg',
   ),
   createData(
-    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/30',
     '23 cm',
     'Plastic',
     MaterialType.ManufactoringPart,
@@ -248,7 +248,7 @@ export const data: IProduct[] = [
     '2.56 kg',
   ),
   createData(
-    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/30',
     '90 cm',
     'Metal',
     MaterialType.Product,
@@ -258,7 +258,7 @@ export const data: IProduct[] = [
     '9.78 kg',
   ),
   createData(
-    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/30',
     '12 cm',
     'Wood',
     MaterialType.PurchasingPart,
@@ -268,7 +268,7 @@ export const data: IProduct[] = [
     '1.34 kg',
   ),
   createData(
-    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/30',
     '34 cm',
     'Plastic',
     MaterialType.ManufactoringPart,
@@ -278,7 +278,7 @@ export const data: IProduct[] = [
     '3.45 kg',
   ),
   createData(
-    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/30',
     '45 cm',
     'Metal',
     MaterialType.Product,
@@ -288,7 +288,7 @@ export const data: IProduct[] = [
     '4.12 kg',
   ),
   createData(
-    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/30',
     '78 cm',
     'Wood',
     MaterialType.PurchasingPart,
@@ -298,7 +298,7 @@ export const data: IProduct[] = [
     '7.45 kg',
   ),
   createData(
-    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/30',
     '67 cm',
     'Plastic',
     MaterialType.ManufactoringPart,
@@ -308,7 +308,7 @@ export const data: IProduct[] = [
     '6.67 kg',
   ),
   createData(
-    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/30',
     '23 cm',
     'Metal',
     MaterialType.Product,
@@ -318,7 +318,7 @@ export const data: IProduct[] = [
     '2.89 kg',
   ),
   createData(
-    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/30',
     '56 cm',
     'Wood',
     MaterialType.PurchasingPart,
@@ -328,7 +328,7 @@ export const data: IProduct[] = [
     '5.12 kg',
   ),
   createData(
-    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/30',
     '78 cm',
     'Plastic',
     MaterialType.ManufactoringPart,
@@ -338,7 +338,7 @@ export const data: IProduct[] = [
     '7.89 kg',
   ),
   createData(
-    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/30',
     '45 cm',
     'Metal',
     MaterialType.Product,
@@ -348,7 +348,7 @@ export const data: IProduct[] = [
     '4.45 kg',
   ),
   createData(
-    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/30',
     '12 cm',
     'Wood',
     MaterialType.PurchasingPart,
@@ -358,7 +358,7 @@ export const data: IProduct[] = [
     '1.56 kg',
   ),
   createData(
-    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/30',
     '90 cm',
     'Plastic',
     MaterialType.ManufactoringPart,
@@ -368,7 +368,7 @@ export const data: IProduct[] = [
     '8.12 kg',
   ),
   createData(
-    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/30',
     '67 cm',
     'Metal',
     MaterialType.Product,
@@ -378,7 +378,7 @@ export const data: IProduct[] = [
     '6.34 kg',
   ),
   createData(
-    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/30',
     '34 cm',
     'Wood',
     MaterialType.PurchasingPart,
@@ -388,7 +388,7 @@ export const data: IProduct[] = [
     '3.78 kg',
   ),
   createData(
-    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/30',
     '23 cm',
     'Plastic',
     MaterialType.ManufactoringPart,
@@ -398,7 +398,7 @@ export const data: IProduct[] = [
     '2.12 kg',
   ),
   createData(
-    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/30',
     '56 cm',
     'Metal',
     MaterialType.Product,
@@ -408,7 +408,7 @@ export const data: IProduct[] = [
     '4.89 kg',
   ),
   createData(
-    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/30',
     '45 cm',
     'Wood',
     MaterialType.PurchasingPart,
@@ -418,7 +418,7 @@ export const data: IProduct[] = [
     '3.23 kg',
   ),
   createData(
-    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/30',
     '78 cm',
     'Plastic',
     MaterialType.ManufactoringPart,
@@ -428,7 +428,7 @@ export const data: IProduct[] = [
     '7.45 kg',
   ),
   createData(
-    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/30',
     '12 cm',
     'Metal',
     MaterialType.Product,
@@ -438,7 +438,7 @@ export const data: IProduct[] = [
     '1.67 kg',
   ),
   createData(
-    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/30',
     '90 cm',
     'Wood',
     MaterialType.PurchasingPart,
@@ -448,7 +448,7 @@ export const data: IProduct[] = [
     '9.12 kg',
   ),
   createData(
-    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/30',
     '34 cm',
     'Plastic',
     MaterialType.ManufactoringPart,
@@ -458,7 +458,7 @@ export const data: IProduct[] = [
     '3.56 kg',
   ),
   createData(
-    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/30',
     '45 cm',
     'Metal',
     MaterialType.Product,
@@ -468,7 +468,7 @@ export const data: IProduct[] = [
     '4.23 kg',
   ),
   createData(
-    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/30',
     '67 cm',
     'Wood',
     MaterialType.PurchasingPart,
@@ -478,7 +478,7 @@ export const data: IProduct[] = [
     '6.45 kg',
   ),
   createData(
-    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/30',
     '78 cm',
     'Plastic',
     MaterialType.ManufactoringPart,
@@ -488,7 +488,7 @@ export const data: IProduct[] = [
     '7.67 kg',
   ),
   createData(
-    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/30',
     '23 cm',
     'Metal',
     MaterialType.Product,
@@ -521,7 +521,7 @@ export const columns = [
 
       return (
         <Box display="flex" alignItems="center">
-          <img src={imageUrl} alt={name} height={24} width={38} />
+          <img src={imageUrl} alt={name} height={30} width={30} />
           <Typography>{name}</Typography>
         </Box>
       );
