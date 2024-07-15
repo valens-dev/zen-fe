@@ -523,8 +523,8 @@ export const columns = [
 
       return (
         <Box display="flex" alignItems="center">
-          <LazyImage src={imageUrl} alt={name} height={30} width={30} />
-          <Typography>{name}</Typography>
+          <LazyImage src={imageUrl} alt={name} height={24} width={34} />
+          <Typography style={{ marginLeft: '8px' }}>{name}</Typography>
         </Box>
       );
     },

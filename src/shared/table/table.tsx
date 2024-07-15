@@ -10,6 +10,7 @@ import {
 } from '@tanstack/react-table';
 
 import {
+  Box,
   Paper,
   TableRow,
   TableBody,
@@ -21,12 +22,15 @@ import {
   Table as BaseTable,
 } from '@mui/material';
 
+import { useStyles } from './styles';
+
 interface ITableProps<T> {
   columns: ColumnDef<T, string>[];
   data: T[];
 }
 
 export function Table<T>({ columns, data }: ITableProps<T>): React.ReactNode {
+  const { classes } = useStyles();
   const [pagination, setPagination] = useState<PaginationState>({
     pageIndex: 0,
     pageSize: 10,
@@ -44,61 +48,62 @@ export function Table<T>({ columns, data }: ITableProps<T>): React.ReactNode {
   });
 
   return (
-    <TableContainer component={Paper}>
-      <BaseTable>
-        <TableHead>
-          {table.getHeaderGroups().map((headerGroup) => {
-            return (
-              <TableRow key={headerGroup.id}>
-                {headerGroup.headers.map((header) => {
-                  return (
-                    <TableCell key={header.id}>
-                      {flexRender(
-                        header.column.columnDef.header,
-                        header.getContext(),
-                      )}
-                    </TableCell>
-                  );
-                })}
-              </TableRow>
-            );
-          })}
-        </TableHead>
-        <TableBody>
-          {table.getRowModel().rows.map((row) => {
-            return (
-              <TableRow key={row.id}>
-                {row.getVisibleCells().map((cell) => {
-                  return (
-                    <TableCell key={cell.id}>
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext(),
-                      )}
-                    </TableCell>
-                  );
-                })}
-              </TableRow>
-            );
-          })}
-        </TableBody>
-        <TableFooter>
-          <TableRow>
-            <TablePagination
-              rowsPerPageOptions={[10, 20, 50]}
-              count={data.length}
-              rowsPerPage={pagination.pageSize}
-              page={pagination.pageIndex}
-              onPageChange={(_event, newPage) => {
-                table.setPageIndex(newPage);
-              }}
-              onRowsPerPageChange={(event) => {
-                table.setPageSize(Number(event.target.value));
-              }}
-            />
-          </TableRow>
-        </TableFooter>
-      </BaseTable>
+    <TableContainer component={Paper} className={classes.wrapper}>
+      <Box className={classes.tableContainer}>
+        <BaseTable component={Paper} className={classes.baseTable}>
+          <TableHead>
+            {table.getHeaderGroups().map((headerGroup) => {
+              return (
+                <TableRow key={headerGroup.id} className={classes.headerRow}>
+                  {headerGroup.headers.map((header) => {
+                    return (
+                      <TableCell key={header.id}>
+                        {flexRender(
+                          header.column.columnDef.header,
+                          header.getContext(),
+                        )}
+                      </TableCell>
+                    );
+                  })}
+                </TableRow>
+              );
+            })}
+          </TableHead>
+          <TableBody>
+            {table.getRowModel().rows.map((row) => {
+              return (
+                <TableRow key={row.id}>
+                  {row.getVisibleCells().map((cell) => {
+                    return (
+                      <TableCell key={cell.id}>
+                        {flexRender(
+                          cell.column.columnDef.cell,
+                          cell.getContext(),
+                        )}
+                      </TableCell>
+                    );
+                  })}
+                </TableRow>
+              );
+            })}
+          </TableBody>
+        </BaseTable>
+      </Box>
+      <TableFooter className={classes.tableFooter}>
+        <TablePagination
+          rowsPerPageOptions={[10, 20, 50]}
+          count={data.length}
+          rowsPerPage={pagination.pageSize}
+          page={pagination.pageIndex}
+          onPageChange={(_event, newPage) => {
+            table.setPageIndex(newPage);
+          }}
+          onRowsPerPageChange={(event) => {
+            table.setPageSize(Number(event.target.value));
+          }}
+          className={classes.tablePagination}
+        />
+      </TableFooter>
     </TableContainer>
   );
 }

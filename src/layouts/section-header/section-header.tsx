@@ -1,5 +1,7 @@
 import { Box, Typography } from '@mui/material';
 
+import { useStyles } from './styles';
+
 interface ISectionHeaderProps {
   title: string;
   actions: React.ReactNode;
@@ -9,10 +11,12 @@ export function SctionHeader({
   title,
   actions,
 }: ISectionHeaderProps): React.ReactNode {
+  const { classes } = useStyles();
+
   return (
-    <Box display="flex" justifyContent="space-between">
+    <Box className={classes.wrapper}>
       <Box>
-        <Typography variant="h6">{title}</Typography>
+        <Typography className={classes.title}>{title}</Typography>
       </Box>
       <Box>{actions}</Box>
     </Box>
