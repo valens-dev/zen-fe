@@ -10,7 +10,6 @@ import {
 } from '@tanstack/react-table';
 
 import {
-  Box,
   Paper,
   TableRow,
   TableBody,
@@ -31,6 +30,7 @@ interface ITableProps<T> {
 
 export function Table<T>({ columns, data }: ITableProps<T>): React.ReactNode {
   const { classes } = useStyles();
+
   const [pagination, setPagination] = useState<PaginationState>({
     pageIndex: 0,
     pageSize: 10,
@@ -48,47 +48,45 @@ export function Table<T>({ columns, data }: ITableProps<T>): React.ReactNode {
   });
 
   return (
-    <TableContainer component={Paper} className={classes.wrapper}>
-      <Box className={classes.tableContainer}>
-        <BaseTable component={Paper} className={classes.baseTable}>
-          <TableHead>
-            {table.getHeaderGroups().map((headerGroup) => {
-              return (
-                <TableRow key={headerGroup.id} className={classes.headerRow}>
-                  {headerGroup.headers.map((header) => {
-                    return (
-                      <TableCell key={header.id}>
-                        {flexRender(
-                          header.column.columnDef.header,
-                          header.getContext(),
-                        )}
-                      </TableCell>
-                    );
-                  })}
-                </TableRow>
-              );
-            })}
-          </TableHead>
-          <TableBody>
-            {table.getRowModel().rows.map((row) => {
-              return (
-                <TableRow key={row.id}>
-                  {row.getVisibleCells().map((cell) => {
-                    return (
-                      <TableCell key={cell.id}>
-                        {flexRender(
-                          cell.column.columnDef.cell,
-                          cell.getContext(),
-                        )}
-                      </TableCell>
-                    );
-                  })}
-                </TableRow>
-              );
-            })}
-          </TableBody>
-        </BaseTable>
-      </Box>
+    <TableContainer component={Paper} className={classes.tableContainer}>
+      <BaseTable component={Paper} className={classes.baseTable}>
+        <TableHead>
+          {table.getHeaderGroups().map((headerGroup) => {
+            return (
+              <TableRow key={headerGroup.id} className={classes.headerRow}>
+                {headerGroup.headers.map((header) => {
+                  return (
+                    <TableCell key={header.id}>
+                      {flexRender(
+                        header.column.columnDef.header,
+                        header.getContext(),
+                      )}
+                    </TableCell>
+                  );
+                })}
+              </TableRow>
+            );
+          })}
+        </TableHead>
+        <TableBody>
+          {table.getRowModel().rows.map((row) => {
+            return (
+              <TableRow key={row.id}>
+                {row.getVisibleCells().map((cell) => {
+                  return (
+                    <TableCell key={cell.id}>
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext(),
+                      )}
+                    </TableCell>
+                  );
+                })}
+              </TableRow>
+            );
+          })}
+        </TableBody>
+      </BaseTable>
       <TableFooter className={classes.tableFooter}>
         <TablePagination
           rowsPerPageOptions={[10, 20, 50]}

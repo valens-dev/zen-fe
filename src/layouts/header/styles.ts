@@ -7,7 +7,7 @@ export const useStyles = tss.create(({ theme }) => {
       paddingLeft: '32px',
       fontWeight: theme.typography.fontWeight.semiBold,
       fontSize: '1.5rem',
-      lineHeight: '32px',
+      lineHeight: 1.42,
       marginBottom: '16px',
       color: theme.palette.text.secondary,
     },
@@ -18,7 +18,7 @@ export const useStyles = tss.create(({ theme }) => {
     tab: {
       fontWeight: theme.typography.fontWeight.medium,
       fontSize: '0.875rem',
-      lineHeight: '20px',
+      lineHeight: 1.42,
       color: theme.palette.main.primary,
       textTransform: 'none',
       padding: '12px 8px',

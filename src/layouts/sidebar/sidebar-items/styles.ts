@@ -22,7 +22,7 @@ export const useStyles = tss.create(({ theme }) => {
       fontWeight: theme.typography.fontWeight.medium,
       marginLeft: '8px',
       fontSize: '0.875rem',
-      lineHeight: '20px',
+      lineHeight: 1.42,
     },
     icon: {
       width: '20px',

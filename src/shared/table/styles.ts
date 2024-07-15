@@ -2,7 +2,7 @@ import { tss } from '@/styles/theme';
 
 export const useStyles = tss.create(({ theme }) => {
   return {
-    wrapper: {
+    tableContainer: {
       width: '100%',
       padding: '16px',
       border: `1px solid ${theme.palette.border.primary}`,
@@ -12,12 +12,9 @@ export const useStyles = tss.create(({ theme }) => {
     baseTable: {
       width: '100%',
       padding: '16px',
-      borderRadius: '16px',
-      overflow: 'hidden',
-    },
-    tableContainer: {
       border: `1px solid ${theme.palette.border.primary}`,
       borderRadius: '16px',
+      overflow: 'hidden',
     },
     headerRow: {
       height: '40px',

@@ -11,8 +11,8 @@ export const useStyles = tss.create(({ theme }) => {
     title: {
       fontWeight: theme.typography.fontWeight.semiBold,
       color: theme.palette.text.secondary,
-      fontSize: '20px',
-      lineHeight: '24px',
+      fontSize: '1.25rem',
+      lineHeight: 1.5,
     },
   };
 });

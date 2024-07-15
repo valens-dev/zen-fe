@@ -524,7 +524,7 @@ export const columns = [
       return (
         <Box display="flex" alignItems="center">
           <LazyImage src={imageUrl} alt={name} height={24} width={34} />
-          <Typography style={{ marginLeft: '8px' }}>{name}</Typography>
+          <Typography sx={{ marginLeft: '8px' }}>{name}</Typography>
         </Box>
       );
     },
