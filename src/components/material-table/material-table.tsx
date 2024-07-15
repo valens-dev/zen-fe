@@ -6,6 +6,8 @@ import { TableHeader } from '@/shared/table-header';
 
 import { DynamicTable } from '@/components/dynamic-table';
 
+import { type MaterialType } from '@/pages/material-page/constants';
+
 import { type IProductData } from './data';
 
 import { useStyles } from './styles';
@@ -17,6 +19,7 @@ interface IMaterialTableProps {
   headers: string[];
   fieldMap: Record<string, keyof IProductData>;
   imageField?: keyof IProductData;
+  materialType: MaterialType;
 }
 
 export function MaterialTable({
@@ -26,12 +29,13 @@ export function MaterialTable({
   headers,
   fieldMap,
   imageField,
+  materialType,
 }: IMaterialTableProps): React.ReactNode {
   const { classes } = useStyles();
   const navigate = useNavigate();
 
   function handleOpenAddPage(): void {
-    navigate('/material/add-material');
+    navigate('/material/add-material', { state: { materialType } });
   }
 
   return (

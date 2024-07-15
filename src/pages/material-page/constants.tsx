@@ -6,6 +6,12 @@ import {
   materialTableHeaders,
 } from '@/components/material-table/constants';
 
+export enum MaterialType {
+  Product = 'product',
+  Manufacturing = 'manufacturing-part',
+  Purchasing = 'purchasing-part',
+}
+
 export const MATERIAL_TABS: { label: string; component: React.ElementType }[] =
   [
     {
@@ -19,6 +25,7 @@ export const MATERIAL_TABS: { label: string; component: React.ElementType }[] =
             headers={materialTableHeaders}
             fieldMap={materialFieldMap}
             imageField="name"
+            materialType={MaterialType.Product}
           />
         );
       },
@@ -34,6 +41,7 @@ export const MATERIAL_TABS: { label: string; component: React.ElementType }[] =
             headers={materialTableHeaders}
             fieldMap={materialFieldMap}
             imageField="name"
+            materialType={MaterialType.Manufacturing}
           />
         );
       },
@@ -49,6 +57,7 @@ export const MATERIAL_TABS: { label: string; component: React.ElementType }[] =
             headers={materialTableHeaders}
             fieldMap={materialFieldMap}
             imageField="name"
+            materialType={MaterialType.Purchasing}
           />
         );
       },
