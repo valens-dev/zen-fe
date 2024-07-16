@@ -9,8 +9,7 @@ export const useStyles = tss.create(({ theme }) => {
       backgroundColor: theme.palette.light.secondary,
       marginTop: '12px',
       borderTopLeftRadius: '28px',
-      minHeight: '100vh',
-      boxSizing: 'border-box',
+      height: '100vh',
     },
   };
 });

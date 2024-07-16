@@ -13,11 +13,5 @@ export const useStyles = tss.create(({ theme }) => {
       fontWeight: theme.typography.fontWeight.semiBold,
       fontSize: '1.5rem',
     },
-    languageButtons: {
-      marginLeft: 'auto',
-    },
-    button: {
-      margin: '0 5px',
-    },
   };
 });

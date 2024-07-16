@@ -8,9 +8,9 @@ import { TabsSection } from '@/shared/tabs-section';
 
 import { Header } from '@/layouts/header';
 
-import { MATERIAL_TABS } from './constants';
+import { useStyles } from '../styles';
 
-import { useStyles } from './styles';
+import { MATERIAL_TABS } from './constants';
 
 /* eslint-disable import/no-default-export */
 export default function MaterialPage(): React.ReactNode {
