@@ -12,7 +12,7 @@ export function TabsSection({
   tabs,
   selectedTab,
   handleChange,
-}: ITabSectionProps): React.ReactElement {
+}: ITabSectionProps): React.ReactNode {
   const { classes } = useStyles();
 
   const ActiveTabComponent = tabs[selectedTab].component;

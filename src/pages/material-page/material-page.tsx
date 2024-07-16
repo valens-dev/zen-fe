@@ -2,8 +2,9 @@ import { useTabSelection } from '@/hooks/use-tab-selection';
 
 import { Box } from '@mui/material';
 
-import { Header } from '@/shared/header';
 import { TabsSection } from '@/shared/tabs-section';
+
+import { Header } from '@/layouts/header';
 
 import { MATERIAL_TABS } from './constants';
 

@@ -5,7 +5,7 @@ import IconOrder from '@/assets/icon/order.svg?react';
 import IconStation from '@/assets/icon/station.svg?react';
 import IconMaterial from '@/assets/icon/material.svg?react';
 
-export const NAV_LINKS = [
+export const SIDEBAR_ITEMS = [
   { icon: IconHome, iconStyle: IconStyle.Stroke, label: 'Home', href: 'home' },
   {
     icon: IconOrder,

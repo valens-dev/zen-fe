@@ -7,7 +7,7 @@ export const useStyles = tss.create(({ theme }) => {
       paddingLeft: '32px',
       fontWeight: theme.typography.fontWeight.semiBold,
       fontSize: '1.5rem',
-      lineHeight: '32px',
+      lineHeight: 2.28,
       marginBottom: '16px',
     },
     tabs: {
@@ -17,17 +17,17 @@ export const useStyles = tss.create(({ theme }) => {
     tab: {
       fontWeight: theme.typography.fontWeight.medium,
       fontSize: '0.875rem',
-      lineHeight: '20px',
+      lineHeight: 1.42,
       color: theme.palette.main.primary,
       textTransform: 'none',
       padding: '12px 8px',
       '&:hover': {
-        color: theme.palette.text.primary,
+        color: theme.palette.light.tertiary,
       },
     },
     tabSelected: {
       '&.Mui-selected': {
-        color: theme.palette.text.primary,
+        color: theme.palette.light.tertiary,
       },
     },
     line: {
@@ -40,7 +40,7 @@ export const useStyles = tss.create(({ theme }) => {
       width: '100%',
     },
     tabIndicator: {
-      backgroundColor: theme.palette.text.primary,
+      backgroundColor: theme.palette.light.tertiary,
     },
   };
 });

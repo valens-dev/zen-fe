@@ -1,42 +1,26 @@
-import { useNavigate } from 'react-router-dom';
-
 import { Box } from '@mui/material';
 
-import { TableHeader } from '@/shared/table-header';
+import { Table } from '@/shared/table';
+import { Button } from '@/shared/button';
 
-import { DynamicTable } from '@/components/dynamic-table';
+import { SctionHeader } from '@/layouts/section-header';
 
-import {
-  productRows,
-  materialFieldMap,
-  materialTableHeaders,
-} from '../constants';
+import AddIcon from '@/assets/icon/add.svg?react';
+
+import { columns, productData } from '../constants';
 
 import { useStyles } from './styles';
 
-export function Product(): JSX.Element {
+export function Product(): React.ReactNode {
   const { classes } = useStyles();
-  const navigate = useNavigate();
-
-  function handleOpenAddProductPage(): void {
-    //TODO: additionaly we will send type of material which will be created
-    //TODO: consider using one function for all materials
-    navigate('/material/add-material');
-  }
 
   return (
     <Box className={classes.wrapper}>
-      <TableHeader
+      <SctionHeader
         title="Product"
-        buttonText="Add Product"
-        onButtonClick={handleOpenAddProductPage}
+        actions={<Button startIcon={<AddIcon />}>Add Product</Button>}
       />
-      <DynamicTable
-        rows={productRows}
-        headers={materialTableHeaders}
-        fieldMap={materialFieldMap}
-        imageField="name"
-      />
+      <Table columns={columns} data={productData} />
     </Box>
   );
 }
