@@ -10,7 +10,7 @@ export const useStyles = tss.create(({ theme }) => {
       padding: '0 16px 0 8px',
     },
     primary: {
-      backgroundColor: theme.palette.text.primary,
+      backgroundColor: theme.palette.light.tertiary,
       '&:hover': {
         backgroundColor: theme.palette.background.primary,
       },

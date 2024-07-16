@@ -24,7 +24,7 @@ export const useStyles = tss.create(({ theme }) => {
       padding: '12px 8px',
     },
     tabSelected: {
-      color: theme.palette.text.primary,
+      color: theme.palette.light.tertiary,
     },
     line: {
       width: '100%',

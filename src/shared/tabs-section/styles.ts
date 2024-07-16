@@ -22,12 +22,12 @@ export const useStyles = tss.create(({ theme }) => {
       textTransform: 'none',
       padding: '12px 8px',
       '&:hover': {
-        color: theme.palette.text.primary,
+        color: theme.palette.light.tertiary,
       },
     },
     tabSelected: {
       '&.Mui-selected': {
-        color: theme.palette.text.primary,
+        color: theme.palette.light.tertiary,
       },
     },
     line: {
@@ -40,7 +40,7 @@ export const useStyles = tss.create(({ theme }) => {
       width: '100%',
     },
     tabIndicator: {
-      backgroundColor: theme.palette.text.primary,
+      backgroundColor: theme.palette.light.tertiary,
     },
   };
 });
