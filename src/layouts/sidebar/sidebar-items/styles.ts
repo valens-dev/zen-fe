@@ -22,7 +22,7 @@ export const useStyles = tss.create(({ theme }) => {
       fontWeight: theme.typography.fontWeight.medium,
       marginLeft: '8px',
       fontSize: '0.875rem',
-      lineHeight: '20px',
+      lineHeight: 1.42,
     },
     icon: {
       width: '20px',
@@ -32,16 +32,16 @@ export const useStyles = tss.create(({ theme }) => {
       backgroundColor: theme.palette.light.primary,
     },
     activeNavText: {
-      color: theme.palette.text.primary,
+      color: theme.palette.light.tertiary,
     },
     activeIconStroke: {
       '& path': {
-        stroke: theme.palette.text.primary,
+        stroke: theme.palette.light.tertiary,
       },
     },
     activeIconFill: {
       '& path': {
-        fill: theme.palette.text.primary,
+        fill: theme.palette.light.tertiary,
       },
     },
   };

@@ -18,10 +18,10 @@ function useContext(): { theme: ITheme } {
       light: {
         primary: '#EFF8FF',
         secondary: '#F8FAFC',
+        tertiary: '#0055FF',
       },
       text: {
-        primary: '#0055FF',
-        secondary: '#132339',
+        primary: '#132339',
       },
       border: {
         primary: '#E2E8F0',

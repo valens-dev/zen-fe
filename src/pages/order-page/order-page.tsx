@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 import { Box } from '@mui/material';
 
-import { Header } from '@/shared/header';
+import { Header } from '@/layouts/header';
 
 import { useStyles } from './styles';
 

@@ -11,7 +11,7 @@ interface IHeaderProps {
   title: string;
 }
 
-export function Header({ title }: IHeaderProps): React.ReactElement {
+export function Header({ title }: IHeaderProps): React.ReactNode {
   const { classes } = useStyles();
   const { i18n } = useTranslation();
   const [selectedLanguage, setSelectedLanguage] = useState<string>(
