@@ -10,7 +10,9 @@ interface IRootProviderProps {
   children: React.ReactNode;
 }
 
-export function RootProvider({ children }: IRootProviderProps): JSX.Element {
+export function RootProvider({
+  children,
+}: IRootProviderProps): React.ReactElement {
   return (
     <React.StrictMode>
       <ThemeProvider theme={theme}>
