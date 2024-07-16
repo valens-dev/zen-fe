@@ -17,9 +17,11 @@ import {
   TableHead,
   TableFooter,
   TableContainer,
-  TablePagination,
   Table as BaseTable,
+  type SelectChangeEvent,
 } from '@mui/material';
+
+import { Pagination } from './pagination';
 
 import { useStyles } from './styles';
 
@@ -46,6 +48,17 @@ export function Table<T>({ columns, data }: ITableProps<T>): React.ReactNode {
     getPaginationRowModel: getPaginationRowModel(),
     onPaginationChange: setPagination,
   });
+
+  function handlePageChange(
+    _event: React.ChangeEvent<unknown>,
+    page: number,
+  ): void {
+    table.setPageIndex(page - 1);
+  }
+
+  function handlePageSizeChange(event: SelectChangeEvent<number>): void {
+    table.setPageSize(Number(event.target.value));
+  }
 
   return (
     <TableContainer component={Paper} className={classes.tableContainer}>
@@ -88,18 +101,12 @@ export function Table<T>({ columns, data }: ITableProps<T>): React.ReactNode {
         </TableBody>
       </BaseTable>
       <TableFooter className={classes.tableFooter}>
-        <TablePagination
-          rowsPerPageOptions={[10, 20, 50]}
-          count={data.length}
-          rowsPerPage={pagination.pageSize}
-          page={pagination.pageIndex}
-          onPageChange={(_event, newPage) => {
-            table.setPageIndex(newPage);
-          }}
-          onRowsPerPageChange={(event) => {
-            table.setPageSize(Number(event.target.value));
-          }}
-          className={classes.tablePagination}
+        <Pagination
+          pageIndex={pagination.pageIndex}
+          pageSize={pagination.pageSize}
+          totalRows={data.length}
+          onPageChange={handlePageChange}
+          onPageSizeChange={handlePageSizeChange}
         />
       </TableFooter>
     </TableContainer>
