@@ -1,42 +1,26 @@
-import { useNavigate } from 'react-router-dom';
-
 import { Box } from '@mui/material';
 
-import { TableHeader } from '@/shared/table-header';
+import { Table } from '@/shared/table';
+import { Button } from '@/shared/button';
 
-import { DynamicTable } from '@/components/dynamic-table';
+import { SctionHeader } from '@/layouts/section-header';
 
-import {
-  materialFieldMap,
-  manufactorintRows,
-  materialTableHeaders,
-} from '../constants';
+import AddIcon from '@/assets/icon/add.svg?react';
+
+import { columns, manufactoringData } from '../constants';
 
 import { useStyles } from './styles';
 
-export function ManufacturingPart(): JSX.Element {
+export function ManufacturingPart(): React.ReactNode {
   const { classes } = useStyles();
-  const navigate = useNavigate();
-
-  function handleOpenAddProductPage(): void {
-    //TODO: additionaly we will send type of material which will be created
-    //TODO: consider using one function for all materials
-    navigate('/material/add-material');
-  }
 
   return (
     <Box className={classes.wrapper}>
-      <TableHeader
+      <SctionHeader
         title="Manufacturing part"
-        buttonText="Add BOM"
-        onButtonClick={handleOpenAddProductPage}
+        actions={<Button startIcon={<AddIcon />}>Add BOM</Button>}
       />
-      <DynamicTable
-        rows={manufactorintRows}
-        headers={materialTableHeaders}
-        fieldMap={materialFieldMap}
-        imageField="name"
-      />
+      <Table columns={columns} data={manufactoringData} />
     </Box>
   );
 }

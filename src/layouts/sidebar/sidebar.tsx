@@ -1,8 +1,8 @@
 import { Box } from '@mui/material';
 
-import { NavigationLinks } from '@/components/navigation-links';
-
 import Logo from '@/assets/icon/logo.svg?react';
+
+import { SidebarItems } from './sidebar-items';
 
 import { useStyles } from './styles';
 
@@ -14,7 +14,7 @@ export function Sidebar(): React.ReactNode {
       <Box className={classes.logoContainer}>
         <Logo />
       </Box>
-      <NavigationLinks />
+      <SidebarItems />
     </Box>
   );
 }

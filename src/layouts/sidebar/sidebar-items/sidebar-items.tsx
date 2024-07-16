@@ -4,11 +4,11 @@ import { Box, Typography } from '@mui/material';
 
 import { IconStyle } from '@/types/icon';
 
-import { NAV_LINKS } from '@/constants/navigation';
+import { SIDEBAR_ITEMS } from './constants';
 
 import { useStyles } from './styles';
 
-export function NavigationLinks(): React.ReactNode {
+export function SidebarItems(): React.ReactNode {
   const { classes, cx } = useStyles();
   const navigate = useNavigate();
   const location = useLocation();
@@ -25,7 +25,7 @@ export function NavigationLinks(): React.ReactNode {
 
   return (
     <Box>
-      {NAV_LINKS.map(({ icon: Icon, label, href, iconStyle }) => {
+      {SIDEBAR_ITEMS.map(({ icon: Icon, label, href, iconStyle }) => {
         const isActive = isLinkActive(href);
         const activeClass = getActiveClass(iconStyle);
 
