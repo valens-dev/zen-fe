@@ -31,14 +31,13 @@ export function Pagination({
   const endRow = Math.min((pageIndex + 1) * pageSize, totalRows);
 
   return (
-    <Box
-      display="flex"
-      justifyContent="space-between"
-      alignItems="center"
-      className={classes.container}
-    >
-      <Box display="flex" alignItems="center" gap="8px">
-        <Select value={pageSize} onChange={onPageSizeChange} size="small">
+    <Box className={classes.container}>
+      <Box className={classes.selectContainer}>
+        <Select
+          value={pageSize}
+          onChange={onPageSizeChange}
+          className={classes.select}
+        >
           <MenuItem value={10}>10</MenuItem>
           <MenuItem value={20}>20</MenuItem>
           <MenuItem value={50}>50</MenuItem>
