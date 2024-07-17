@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import { Box } from '@mui/material';
 
 import { Table } from '@/shared/table';
@@ -7,20 +9,24 @@ import { SctionHeader } from '@/layouts/section-header';
 
 import AddIcon from '@/assets/icon/add.svg?react';
 
-import { columns, productData } from '../constants';
+import { productData, MATERIAL_TABLE } from '../constants';
 
 import { useStyles } from './styles';
 
 export function Product(): React.ReactNode {
   const { classes } = useStyles();
+  const { t } = useTranslation();
+  const getColumns = MATERIAL_TABLE();
 
   return (
     <Box className={classes.wrapper}>
       <SctionHeader
-        title="Product"
-        actions={<Button startIcon={<AddIcon />}>Add Product</Button>}
+        title={t('material.product')}
+        actions={
+          <Button startIcon={<AddIcon />}>{t('material.buttonProduct')}</Button>
+        }
       />
-      <Table columns={columns} data={productData} />
+      <Table columns={getColumns} data={productData} />
     </Box>
   );
 }

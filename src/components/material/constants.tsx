@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import { createColumnHelper } from '@tanstack/react-table';
 
 import { Box, Typography } from '@mui/material';
@@ -515,48 +517,53 @@ export const manufactoringData = data.filter((row) => {
 
 const columnHelper = createColumnHelper<IProduct>();
 
-export const columns = [
-  columnHelper.accessor('name', {
-    header: 'Name',
-    cell: ({ row }) => {
-      const { imageUrl, name } = row.original;
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+export function MATERIAL_TABLE() {
+  const { t } = useTranslation();
 
-      return (
-        <Box display="flex" alignItems="center">
-          <LazyImage src={imageUrl} alt={name} height={24} width={34} />
-          <Typography sx={{ marginLeft: '8px' }}>{name}</Typography>
-        </Box>
-      );
-    },
-  }),
-  columnHelper.accessor('height', {
-    header: 'Height',
-    cell: ({ getValue }) => {
-      return getValue();
-    },
-  }),
-  columnHelper.accessor('material', {
-    header: 'Material',
-    cell: ({ getValue }) => {
-      return getValue();
-    },
-  }),
-  columnHelper.accessor('weight', {
-    header: 'Weight',
-    cell: ({ getValue }) => {
-      return getValue();
-    },
-  }),
-  columnHelper.accessor('stock', {
-    header: 'Stock',
-    cell: ({ getValue }) => {
-      return getValue();
-    },
-  }),
-  columnHelper.accessor('price', {
-    header: 'Price',
-    cell: ({ getValue }) => {
-      return getValue();
-    },
-  }),
-];
+  return [
+    columnHelper.accessor('name', {
+      header: 'Name',
+      cell: ({ row }) => {
+        const { imageUrl, name } = row.original;
+
+        return (
+          <Box display="flex" alignItems="center">
+            <LazyImage src={imageUrl} alt={name} height={24} width={34} />
+            <Typography sx={{ marginLeft: '8px' }}>{name}</Typography>
+          </Box>
+        );
+      },
+    }),
+    columnHelper.accessor('height', {
+      header: t('material.materialTable.height'),
+      cell: ({ getValue }) => {
+        return getValue();
+      },
+    }),
+    columnHelper.accessor('material', {
+      header: t('material.materialTable.material'),
+      cell: ({ getValue }) => {
+        return getValue();
+      },
+    }),
+    columnHelper.accessor('weight', {
+      header: t('material.materialTable.weight'),
+      cell: ({ getValue }) => {
+        return getValue();
+      },
+    }),
+    columnHelper.accessor('stock', {
+      header: t('material.materialTable.stock'),
+      cell: ({ getValue }) => {
+        return getValue();
+      },
+    }),
+    columnHelper.accessor('price', {
+      header: t('material.materialTable.price'),
+      cell: ({ getValue }) => {
+        return getValue();
+      },
+    }),
+  ];
+}

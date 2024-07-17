@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 import { Box, Typography } from '@mui/material';
@@ -12,6 +13,7 @@ export function SidebarItems(): React.ReactNode {
   const { classes, cx } = useStyles();
   const navigate = useNavigate();
   const location = useLocation();
+  const { t } = useTranslation();
 
   function isLinkActive(href: string): boolean {
     return location.pathname.includes(href);
@@ -45,7 +47,7 @@ export function SidebarItems(): React.ReactNode {
                 [classes.activeNavText]: isActive,
               })}
             >
-              {label}
+              {t(label)}
             </Typography>
           </Box>
         );

@@ -6,23 +6,28 @@ import IconStation from '@/assets/icon/station.svg?react';
 import IconMaterial from '@/assets/icon/material.svg?react';
 
 export const SIDEBAR_ITEMS = [
-  { icon: IconHome, iconStyle: IconStyle.Stroke, label: 'Home', href: 'home' },
+  {
+    icon: IconHome,
+    iconStyle: IconStyle.Stroke,
+    label: 'global.home',
+    href: 'home',
+  },
   {
     icon: IconOrder,
     iconStyle: IconStyle.Stroke,
-    label: 'Order',
+    label: 'global.order',
     href: 'order',
   },
   {
     icon: IconMaterial,
     iconStyle: IconStyle.Stroke,
-    label: 'Material',
+    label: 'global.material',
     href: 'material',
   },
   {
     icon: IconStation,
     iconStyle: IconStyle.Fill,
-    label: 'Station',
+    label: 'global.station',
     href: 'station',
   },
 ];
