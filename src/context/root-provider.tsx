@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
@@ -8,10 +8,10 @@ interface IRootProviderProps {
 
 const queryClient = new QueryClient();
 
-export function RootProvider({ children }: IRootProviderProps): JSX.Element {
+export function RootProvider({
+  children,
+}: IRootProviderProps): React.ReactNode {
   return (
-    <React.StrictMode>
-      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-    </React.StrictMode>
+    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
   );
 }
