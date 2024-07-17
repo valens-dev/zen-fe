@@ -4,12 +4,12 @@ export enum ProductType {
   PurchasingPart = 'purchasing-part',
 }
 
-export interface IAttribute {
+interface IAttribute {
   name: string;
   option: string;
 }
 
-export interface IValue {
+interface IValue {
   name: string;
   value: number;
   unit: string;
