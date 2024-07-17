@@ -1,12 +1,10 @@
-import axios from 'axios';
-
-import { type IMaterial } from '../types/material';
-import { type ProductTypeEnum } from '../enums/product-type';
+import { publicInstance } from '../instances';
+import { type IMaterial, type ProductType } from '../types/material';
 
 const baseUrl = '/api';
 
-async function fetchMaterial(productType: ProductTypeEnum): Promise<IMaterial> {
-  const response = await axios.get<IMaterial>(
+async function fetchMaterial(productType: ProductType): Promise<IMaterial> {
+  const response = await publicInstance.get<IMaterial>(
     `${baseUrl}/material?type=${productType}`,
   );
 
