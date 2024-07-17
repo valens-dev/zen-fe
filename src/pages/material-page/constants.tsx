@@ -6,11 +6,7 @@ import {
   manufactoringData,
 } from '@/components/material/constants';
 
-export enum MaterialType {
-  Product = 'product',
-  Manufacturing = 'manufacturing-part',
-  Purchasing = 'purchasing-part',
-}
+import { MaterialType } from '@/types/material';
 
 export const MATERIAL_TABS: { label: string; component: React.ElementType }[] =
   [
@@ -37,7 +33,7 @@ export const MATERIAL_TABS: { label: string; component: React.ElementType }[] =
             buttonText="Add BOM"
             columns={columns}
             data={manufactoringData}
-            materialType={MaterialType.Manufacturing}
+            materialType={MaterialType.ManufacturingPart}
           />
         );
       },
@@ -51,7 +47,7 @@ export const MATERIAL_TABS: { label: string; component: React.ElementType }[] =
             buttonText="Add Purchased Parts"
             columns={columns}
             data={purchasingData}
-            materialType={MaterialType.Purchasing}
+            materialType={MaterialType.PurchasingPart}
           />
         );
       },

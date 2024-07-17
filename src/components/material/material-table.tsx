@@ -2,13 +2,14 @@ import { useNavigate } from 'react-router-dom';
 
 import { type ColumnDef } from '@tanstack/react-table';
 
-import { Box, Button } from '@mui/material';
+import { Box } from '@mui/material';
 
 import { Table } from '@/shared/table';
+import { Button } from '@/shared/button';
 
 import { SctionHeader } from '@/layouts/section-header';
 
-import { type MaterialType } from '@/pages/material-page/constants';
+import { type MaterialType } from '@/types/material';
 
 import AddIcon from '@/assets/icon/add.svg?react';
 

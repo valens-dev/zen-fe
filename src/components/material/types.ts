@@ -1,8 +1,4 @@
-export enum MaterialType {
-  ManufactoringPart = 'manufactoring-part',
-  Product = 'product',
-  PurchasingPart = 'purchasing-part',
-}
+import { type MaterialType } from '@/types/material';
 
 export interface IProduct {
   imageUrl: string;
