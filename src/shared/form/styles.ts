@@ -8,6 +8,7 @@ export const useStyles = tss.create(({ theme }) => {
       backgroundColor: theme.palette.white.primary,
       borderTop: `1px solid ${theme.palette.border.primary}`,
       borderRadius: '16px',
+      width: '70%',
     },
     title: {
       fontWeight: theme.typography.fontWeight.medium,
