@@ -1,5 +1,6 @@
+import { type IMaterial, type ProductType } from '@/types/material';
+
 import { publicInstance } from '../instances';
-import { type IMaterial, type ProductType } from '../types/material';
 
 const baseUrl = '/api';
 
