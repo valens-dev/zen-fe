@@ -23,6 +23,8 @@ function useContext(): { theme: ITheme } {
       },
       border: {
         primary: '#E2E8F0',
+        secondary: '#132339',
+        tertiary: '#1570EF',
       },
       background: {
         primary: '#0045D6',
