@@ -1,19 +1,15 @@
 import { type IMaterial, type ProductType } from '@/types/material';
 
-import { publicInstance } from './instances';
+import { api } from './api';
 
 const baseUrl = '/material';
 
 async function getByType(productType: ProductType): Promise<IMaterial> {
-  const response = await publicInstance.get<IMaterial>(
-    `${baseUrl}?type=${productType}`,
-  );
+  const response = await api.get<IMaterial>(`${baseUrl}?type=${productType}`);
 
   return response.data;
 }
 
-const MaterialAPI = {
+export const MaterialAPI = {
   getByType,
 };
-
-export { MaterialAPI };
