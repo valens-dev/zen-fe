@@ -16,7 +16,6 @@ import {
   TableCell,
   TableHead,
   TableFooter,
-  TableContainer,
   Table as BaseTable,
   type SelectChangeEvent,
 } from '@mui/material';
@@ -61,8 +60,8 @@ export function Table<T>({ columns, data }: ITableProps<T>): React.ReactNode {
   }
 
   return (
-    <TableContainer component={Paper} className={classes.tableContainer}>
-      <BaseTable className={classes.baseTable}>
+    <>
+      <BaseTable component={Paper} className={classes.baseTable}>
         <TableHead>
           {table.getHeaderGroups().map((headerGroup) => {
             return (
@@ -99,20 +98,16 @@ export function Table<T>({ columns, data }: ITableProps<T>): React.ReactNode {
             );
           })}
         </TableBody>
-        <TableFooter>
-          <TableRow>
-            <TableCell colSpan={columns.length}>
-              <Pagination
-                pageIndex={pagination.pageIndex}
-                pageSize={pagination.pageSize}
-                totalRows={data.length}
-                onPageChange={handlePageChange}
-                onPageSizeChange={handlePageSizeChange}
-              />
-            </TableCell>
-          </TableRow>
-        </TableFooter>
       </BaseTable>
-    </TableContainer>
+      <TableFooter className={classes.tableFooter}>
+        <Pagination
+          pageIndex={pagination.pageIndex}
+          pageSize={pagination.pageSize}
+          totalRows={data.length}
+          onPageChange={handlePageChange}
+          onPageSizeChange={handlePageSizeChange}
+        />
+      </TableFooter>
+    </>
   );
 }

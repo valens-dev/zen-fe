@@ -2,16 +2,8 @@ import { tss } from '@/styles/theme';
 
 export const useStyles = tss.create(({ theme }) => {
   return {
-    tableContainer: {
-      width: '100%',
-      padding: '16px',
-      border: `1px solid ${theme.palette.border.primary}`,
-      borderRadius: '16px',
-      background: theme.palette.white.primary,
-    },
     baseTable: {
       width: '100%',
-      padding: '16px',
       border: `1px solid ${theme.palette.border.primary}`,
       borderRadius: '16px',
       overflow: 'hidden',
