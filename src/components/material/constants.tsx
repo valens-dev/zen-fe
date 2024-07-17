@@ -1,15 +1,13 @@
-import { useTranslation } from 'react-i18next';
-
-import {
-  createColumnHelper,
-  type AccessorKeyColumnDef,
-} from '@tanstack/react-table';
+import { t } from 'i18next';
+import { createColumnHelper } from '@tanstack/react-table';
 
 import { Box, Typography } from '@mui/material';
 
 import { LazyImage } from '@/shared/lazy-image/lazy-image';
 
-import { MaterialType, type IProduct } from './types';
+import { MaterialType } from '@/types/material';
+
+import { type IProduct } from './types';
 
 export function createData(
   imageUrl: string,
@@ -38,7 +36,7 @@ export const data: IProduct[] = [
     'https://via.placeholder.com/30',
     '32 cm',
     'Plastic',
-    MaterialType.ManufactoringPart,
+    MaterialType.ManufacturingPart,
     'Product 1',
     '$15.23',
     '48',
@@ -68,7 +66,7 @@ export const data: IProduct[] = [
     'https://via.placeholder.com/30',
     '90 cm',
     'Plastic',
-    MaterialType.ManufactoringPart,
+    MaterialType.ManufacturingPart,
     'Product 4',
     '$90.45',
     '21',
@@ -98,7 +96,7 @@ export const data: IProduct[] = [
     'https://via.placeholder.com/30',
     '23 cm',
     'Plastic',
-    MaterialType.ManufactoringPart,
+    MaterialType.ManufacturingPart,
     'Product 7',
     '$19.56',
     '98',
@@ -128,7 +126,7 @@ export const data: IProduct[] = [
     'https://via.placeholder.com/30',
     '67 cm',
     'Plastic',
-    MaterialType.ManufactoringPart,
+    MaterialType.ManufacturingPart,
     'Product 10',
     '$55.34',
     '49',
@@ -158,7 +156,7 @@ export const data: IProduct[] = [
     'https://via.placeholder.com/30',
     '56 cm',
     'Plastic',
-    MaterialType.ManufactoringPart,
+    MaterialType.ManufacturingPart,
     'Product 13',
     '$46.78',
     '38',
@@ -188,7 +186,7 @@ export const data: IProduct[] = [
     'https://via.placeholder.com/30',
     '90 cm',
     'Plastic',
-    MaterialType.ManufactoringPart,
+    MaterialType.ManufacturingPart,
     'Product 16',
     '$78.45',
     '67',
@@ -218,7 +216,7 @@ export const data: IProduct[] = [
     'https://via.placeholder.com/30',
     '67 cm',
     'Plastic',
-    MaterialType.ManufactoringPart,
+    MaterialType.ManufacturingPart,
     'Product 19',
     '$59.67',
     '31',
@@ -248,7 +246,7 @@ export const data: IProduct[] = [
     'https://via.placeholder.com/30',
     '23 cm',
     'Plastic',
-    MaterialType.ManufactoringPart,
+    MaterialType.ManufacturingPart,
     'Product 22',
     '$18.45',
     '92',
@@ -278,7 +276,7 @@ export const data: IProduct[] = [
     'https://via.placeholder.com/30',
     '34 cm',
     'Plastic',
-    MaterialType.ManufactoringPart,
+    MaterialType.ManufacturingPart,
     'Product 25',
     '$36.78',
     '54',
@@ -308,7 +306,7 @@ export const data: IProduct[] = [
     'https://via.placeholder.com/30',
     '67 cm',
     'Plastic',
-    MaterialType.ManufactoringPart,
+    MaterialType.ManufacturingPart,
     'Product 28',
     '$50.34',
     '80',
@@ -338,7 +336,7 @@ export const data: IProduct[] = [
     'https://via.placeholder.com/30',
     '78 cm',
     'Plastic',
-    MaterialType.ManufactoringPart,
+    MaterialType.ManufacturingPart,
     'Product 31',
     '$76.23',
     '48',
@@ -368,7 +366,7 @@ export const data: IProduct[] = [
     'https://via.placeholder.com/30',
     '90 cm',
     'Plastic',
-    MaterialType.ManufactoringPart,
+    MaterialType.ManufacturingPart,
     'Product 34',
     '$89.78',
     '20',
@@ -398,7 +396,7 @@ export const data: IProduct[] = [
     'https://via.placeholder.com/30',
     '23 cm',
     'Plastic',
-    MaterialType.ManufactoringPart,
+    MaterialType.ManufacturingPart,
     'Product 37',
     '$20.45',
     '58',
@@ -428,7 +426,7 @@ export const data: IProduct[] = [
     'https://via.placeholder.com/30',
     '78 cm',
     'Plastic',
-    MaterialType.ManufactoringPart,
+    MaterialType.ManufacturingPart,
     'Product 40',
     '$75.67',
     '64',
@@ -458,7 +456,7 @@ export const data: IProduct[] = [
     'https://via.placeholder.com/30',
     '34 cm',
     'Plastic',
-    MaterialType.ManufactoringPart,
+    MaterialType.ManufacturingPart,
     'Product 43',
     '$33.45',
     '86',
@@ -488,7 +486,7 @@ export const data: IProduct[] = [
     'https://via.placeholder.com/30',
     '78 cm',
     'Plastic',
-    MaterialType.ManufactoringPart,
+    MaterialType.ManufacturingPart,
     'Product 46',
     '$79.12',
     '63',
@@ -515,57 +513,53 @@ export const purchasingData = data.filter((row) => {
 });
 
 export const manufactoringData = data.filter((row) => {
-  return row.materialType === MaterialType.ManufactoringPart;
+  return row.materialType === MaterialType.ManufacturingPart;
 });
 
 const columnHelper = createColumnHelper<IProduct>();
 
-export function MATERIAL_TABLE(): AccessorKeyColumnDef<IProduct, string>[] {
-  const { t } = useTranslation();
+export const columns = [
+  columnHelper.accessor('name', {
+    header: 'Name',
+    cell: ({ row }) => {
+      const { imageUrl, name } = row.original;
 
-  return [
-    columnHelper.accessor('name', {
-      header: 'Name',
-      cell: ({ row }) => {
-        const { imageUrl, name } = row.original;
-
-        return (
-          <Box display="flex" alignItems="center">
-            <LazyImage src={imageUrl} alt={name} height={24} width={34} />
-            <Typography sx={{ marginLeft: '8px' }}>{name}</Typography>
-          </Box>
-        );
-      },
-    }),
-    columnHelper.accessor('height', {
-      header: t('material.materialTable.height'),
-      cell: ({ getValue }) => {
-        return getValue();
-      },
-    }),
-    columnHelper.accessor('material', {
-      header: t('material.materialTable.material'),
-      cell: ({ getValue }) => {
-        return getValue();
-      },
-    }),
-    columnHelper.accessor('weight', {
-      header: t('material.materialTable.weight'),
-      cell: ({ getValue }) => {
-        return getValue();
-      },
-    }),
-    columnHelper.accessor('stock', {
-      header: t('material.materialTable.stock'),
-      cell: ({ getValue }) => {
-        return getValue();
-      },
-    }),
-    columnHelper.accessor('price', {
-      header: t('material.materialTable.price'),
-      cell: ({ getValue }) => {
-        return getValue();
-      },
-    }),
-  ];
-}
+      return (
+        <Box display="flex" alignItems="center">
+          <LazyImage src={imageUrl} alt={name} height={24} width={34} />
+          <Typography sx={{ marginLeft: '8px' }}>{name}</Typography>
+        </Box>
+      );
+    },
+  }),
+  columnHelper.accessor('height', {
+    header: t('material.materialTable.height'),
+    cell: ({ getValue }) => {
+      return getValue();
+    },
+  }),
+  columnHelper.accessor('material', {
+    header: t('material.materialTable.material'),
+    cell: ({ getValue }) => {
+      return getValue();
+    },
+  }),
+  columnHelper.accessor('weight', {
+    header: t('material.materialTable.weight'),
+    cell: ({ getValue }) => {
+      return getValue();
+    },
+  }),
+  columnHelper.accessor('stock', {
+    header: t('material.materialTable.stock'),
+    cell: ({ getValue }) => {
+      return getValue();
+    },
+  }),
+  columnHelper.accessor('price', {
+    header: t('material.materialTable.price'),
+    cell: ({ getValue }) => {
+      return getValue();
+    },
+  }),
+];

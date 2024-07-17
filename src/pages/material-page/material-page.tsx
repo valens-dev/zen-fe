@@ -17,13 +17,12 @@ export default function MaterialPage(): React.ReactNode {
   const { classes } = useStyles();
   const { selectedTab, handleChange } = useTabSelection();
   const { t } = useTranslation();
-  const materialTabs = MATERIAL_TABS();
 
   return (
     <Box className={classes.wrapper}>
       <Header title={t('global.material')} />
       <TabsSection
-        tabs={materialTabs}
+        tabs={MATERIAL_TABS}
         selectedTab={selectedTab}
         handleChange={handleChange}
       />
