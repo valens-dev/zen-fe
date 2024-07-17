@@ -4,7 +4,9 @@ import { Box, Typography } from '@mui/material';
 
 import { LazyImage } from '@/shared/lazy-image/lazy-image';
 
-import { MaterialType, type IProduct } from './types';
+import { MaterialType } from '@/types/material';
+
+import { type IProduct } from './types';
 
 export function createData(
   imageUrl: string,
@@ -33,7 +35,7 @@ export const data: IProduct[] = [
     'https://via.placeholder.com/30',
     '32 cm',
     'Plastic',
-    MaterialType.ManufactoringPart,
+    MaterialType.ManufacturingPart,
     'Product 1',
     '$15.23',
     '48',
@@ -63,7 +65,7 @@ export const data: IProduct[] = [
     'https://via.placeholder.com/30',
     '90 cm',
     'Plastic',
-    MaterialType.ManufactoringPart,
+    MaterialType.ManufacturingPart,
     'Product 4',
     '$90.45',
     '21',
@@ -93,7 +95,7 @@ export const data: IProduct[] = [
     'https://via.placeholder.com/30',
     '23 cm',
     'Plastic',
-    MaterialType.ManufactoringPart,
+    MaterialType.ManufacturingPart,
     'Product 7',
     '$19.56',
     '98',
@@ -123,7 +125,7 @@ export const data: IProduct[] = [
     'https://via.placeholder.com/30',
     '67 cm',
     'Plastic',
-    MaterialType.ManufactoringPart,
+    MaterialType.ManufacturingPart,
     'Product 10',
     '$55.34',
     '49',
@@ -153,7 +155,7 @@ export const data: IProduct[] = [
     'https://via.placeholder.com/30',
     '56 cm',
     'Plastic',
-    MaterialType.ManufactoringPart,
+    MaterialType.ManufacturingPart,
     'Product 13',
     '$46.78',
     '38',
@@ -183,7 +185,7 @@ export const data: IProduct[] = [
     'https://via.placeholder.com/30',
     '90 cm',
     'Plastic',
-    MaterialType.ManufactoringPart,
+    MaterialType.ManufacturingPart,
     'Product 16',
     '$78.45',
     '67',
@@ -213,7 +215,7 @@ export const data: IProduct[] = [
     'https://via.placeholder.com/30',
     '67 cm',
     'Plastic',
-    MaterialType.ManufactoringPart,
+    MaterialType.ManufacturingPart,
     'Product 19',
     '$59.67',
     '31',
@@ -243,7 +245,7 @@ export const data: IProduct[] = [
     'https://via.placeholder.com/30',
     '23 cm',
     'Plastic',
-    MaterialType.ManufactoringPart,
+    MaterialType.ManufacturingPart,
     'Product 22',
     '$18.45',
     '92',
@@ -273,7 +275,7 @@ export const data: IProduct[] = [
     'https://via.placeholder.com/30',
     '34 cm',
     'Plastic',
-    MaterialType.ManufactoringPart,
+    MaterialType.ManufacturingPart,
     'Product 25',
     '$36.78',
     '54',
@@ -303,7 +305,7 @@ export const data: IProduct[] = [
     'https://via.placeholder.com/30',
     '67 cm',
     'Plastic',
-    MaterialType.ManufactoringPart,
+    MaterialType.ManufacturingPart,
     'Product 28',
     '$50.34',
     '80',
@@ -333,7 +335,7 @@ export const data: IProduct[] = [
     'https://via.placeholder.com/30',
     '78 cm',
     'Plastic',
-    MaterialType.ManufactoringPart,
+    MaterialType.ManufacturingPart,
     'Product 31',
     '$76.23',
     '48',
@@ -363,7 +365,7 @@ export const data: IProduct[] = [
     'https://via.placeholder.com/30',
     '90 cm',
     'Plastic',
-    MaterialType.ManufactoringPart,
+    MaterialType.ManufacturingPart,
     'Product 34',
     '$89.78',
     '20',
@@ -393,7 +395,7 @@ export const data: IProduct[] = [
     'https://via.placeholder.com/30',
     '23 cm',
     'Plastic',
-    MaterialType.ManufactoringPart,
+    MaterialType.ManufacturingPart,
     'Product 37',
     '$20.45',
     '58',
@@ -423,7 +425,7 @@ export const data: IProduct[] = [
     'https://via.placeholder.com/30',
     '78 cm',
     'Plastic',
-    MaterialType.ManufactoringPart,
+    MaterialType.ManufacturingPart,
     'Product 40',
     '$75.67',
     '64',
@@ -453,7 +455,7 @@ export const data: IProduct[] = [
     'https://via.placeholder.com/30',
     '34 cm',
     'Plastic',
-    MaterialType.ManufactoringPart,
+    MaterialType.ManufacturingPart,
     'Product 43',
     '$33.45',
     '86',
@@ -483,7 +485,7 @@ export const data: IProduct[] = [
     'https://via.placeholder.com/30',
     '78 cm',
     'Plastic',
-    MaterialType.ManufactoringPart,
+    MaterialType.ManufacturingPart,
     'Product 46',
     '$79.12',
     '63',
@@ -510,7 +512,7 @@ export const purchasingData = data.filter((row) => {
 });
 
 export const manufactoringData = data.filter((row) => {
-  return row.materialType === MaterialType.ManufactoringPart;
+  return row.materialType === MaterialType.ManufacturingPart;
 });
 
 const columnHelper = createColumnHelper<IProduct>();
