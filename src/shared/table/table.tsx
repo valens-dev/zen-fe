@@ -62,7 +62,7 @@ export function Table<T>({ columns, data }: ITableProps<T>): React.ReactNode {
 
   return (
     <TableContainer component={Paper} className={classes.tableContainer}>
-      <BaseTable component={Paper} className={classes.baseTable}>
+      <BaseTable className={classes.baseTable}>
         <TableHead>
           {table.getHeaderGroups().map((headerGroup) => {
             return (
@@ -99,16 +99,20 @@ export function Table<T>({ columns, data }: ITableProps<T>): React.ReactNode {
             );
           })}
         </TableBody>
+        <TableFooter>
+          <TableRow>
+            <TableCell colSpan={columns.length}>
+              <Pagination
+                pageIndex={pagination.pageIndex}
+                pageSize={pagination.pageSize}
+                totalRows={data.length}
+                onPageChange={handlePageChange}
+                onPageSizeChange={handlePageSizeChange}
+              />
+            </TableCell>
+          </TableRow>
+        </TableFooter>
       </BaseTable>
-      <TableFooter className={classes.tableFooter}>
-        <Pagination
-          pageIndex={pagination.pageIndex}
-          pageSize={pagination.pageSize}
-          totalRows={data.length}
-          onPageChange={handlePageChange}
-          onPageSizeChange={handlePageSizeChange}
-        />
-      </TableFooter>
     </TableContainer>
   );
 }
