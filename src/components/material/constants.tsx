@@ -1,6 +1,9 @@
 import { useTranslation } from 'react-i18next';
 
-import { createColumnHelper } from '@tanstack/react-table';
+import {
+  createColumnHelper,
+  type AccessorKeyColumnDef,
+} from '@tanstack/react-table';
 
 import { Box, Typography } from '@mui/material';
 
@@ -517,8 +520,7 @@ export const manufactoringData = data.filter((row) => {
 
 const columnHelper = createColumnHelper<IProduct>();
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export function MATERIAL_TABLE() {
+export function MATERIAL_TABLE(): AccessorKeyColumnDef<IProduct, string>[] {
   const { t } = useTranslation();
 
   return [
