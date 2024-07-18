@@ -1,10 +1,3 @@
-import { t } from 'i18next';
-import { createColumnHelper } from '@tanstack/react-table';
-
-import { Box, Typography } from '@mui/material';
-
-import { LazyImage } from '@/shared/lazy-image/lazy-image';
-
 import { MaterialType } from '@/types/material';
 
 import { type IProduct } from './types';
@@ -30,7 +23,6 @@ export function createData(
     weight,
   };
 }
-
 export const data: IProduct[] = [
   createData(
     'https://via.placeholder.com/30',
@@ -515,51 +507,3 @@ export const purchasingData = data.filter((row) => {
 export const manufactoringData = data.filter((row) => {
   return row.materialType === MaterialType.ManufacturingPart;
 });
-
-const columnHelper = createColumnHelper<IProduct>();
-
-export const columns = [
-  columnHelper.accessor('name', {
-    header: 'Name',
-    cell: ({ row }) => {
-      const { imageUrl, name } = row.original;
-
-      return (
-        <Box display="flex" alignItems="center">
-          <LazyImage src={imageUrl} alt={name} height={24} width={34} />
-          <Typography sx={{ marginLeft: '8px' }}>{name}</Typography>
-        </Box>
-      );
-    },
-  }),
-  columnHelper.accessor('height', {
-    header: t('material.materialTable.height'),
-    cell: ({ getValue }) => {
-      return getValue();
-    },
-  }),
-  columnHelper.accessor('material', {
-    header: t('material.materialTable.material'),
-    cell: ({ getValue }) => {
-      return getValue();
-    },
-  }),
-  columnHelper.accessor('weight', {
-    header: t('material.materialTable.weight'),
-    cell: ({ getValue }) => {
-      return getValue();
-    },
-  }),
-  columnHelper.accessor('stock', {
-    header: t('material.materialTable.stock'),
-    cell: ({ getValue }) => {
-      return getValue();
-    },
-  }),
-  columnHelper.accessor('price', {
-    header: t('material.materialTable.price'),
-    cell: ({ getValue }) => {
-      return getValue();
-    },
-  }),
-];

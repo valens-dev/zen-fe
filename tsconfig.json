@@ -11,6 +11,7 @@
       "@/types/*": ["types/*"],
       "@/hooks/*": ["hooks/*"],
       "@/shared/*": ["shared/*"],
+      "@/services/*": ["services/*"],
       "@/context/*": ["context/*"]
     },
     "target": "ES2020",

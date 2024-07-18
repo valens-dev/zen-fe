@@ -1,23 +1,20 @@
-import React from 'react';
-import { I18nextProvider } from 'react-i18next';
+import type React from 'react';
 
-import i18next from 'i18n';
-import { ThemeProvider } from '@emotion/react';
-
-import { theme } from '@/styles/theme';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 interface IRootProviderProps {
   children: React.ReactNode;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
+const queryClient = new QueryClient();
+
 export function RootProvider({
   children,
-}: IRootProviderProps): React.ReactElement {
+}: IRootProviderProps): React.ReactNode {
   return (
-    <React.StrictMode>
-      <ThemeProvider theme={theme}>
-        <I18nextProvider i18n={i18next}>{children}</I18nextProvider>
-      </ThemeProvider>
-    </React.StrictMode>
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
   );
 }
