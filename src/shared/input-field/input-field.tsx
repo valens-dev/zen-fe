@@ -46,6 +46,7 @@ export const InputField = forwardRef<HTMLElement, IGenericInputProps>(
           variant={variant}
           value={value}
           onChange={onChange}
+          fullWidth
           InputProps={{
             endAdornment: adornment ? (
               <InputAdornment position="end">{adornment}</InputAdornment>

@@ -1,4 +1,5 @@
 import type { ReactElement } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useForm, Controller, FormProvider } from 'react-hook-form';
 
 import {
@@ -21,8 +22,14 @@ import {
 
 import { useStyles } from './styles';
 
+interface ILocationState {
+  materialType: string;
+}
 export function MaterialForm(): ReactElement {
+  const location = useLocation();
   const { classes } = useStyles();
+
+  const { materialType } = location.state as ILocationState;
   const methods = useForm<IFormData>({
     defaultValues: initialValues,
   });
@@ -30,7 +37,7 @@ export function MaterialForm(): ReactElement {
   function onSubmit(data: IFormData): void {
     // Perform your submit logic here, such as sending data to an API
     // eslint-disable-next-line no-console
-    console.log(data);
+    console.log(materialType, data);
   }
 
   return (
