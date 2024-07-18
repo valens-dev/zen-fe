@@ -10,3 +10,12 @@ export interface IProduct {
   stock: string;
   weight: string;
 }
+
+export interface IOrder {
+  orderNumber: string;
+  orderDate: string;
+  customer: string;
+  amount: string;
+  deliveryDate: string;
+  status: string;
+}

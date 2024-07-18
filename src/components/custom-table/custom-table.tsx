@@ -1,5 +1,3 @@
-import { useNavigate } from 'react-router-dom';
-
 import { type ColumnDef } from '@tanstack/react-table';
 
 import { Box } from '@mui/material';
@@ -9,8 +7,6 @@ import { Button } from '@/shared/button';
 
 import { SctionHeader } from '@/layouts/section-header';
 
-import { type MaterialType } from '@/types/material';
-
 import AddIcon from '@/assets/icon/add.svg?react';
 
 import { useStyles } from './styles';
@@ -18,31 +14,26 @@ import { useStyles } from './styles';
 interface IMaterialTableProps<T> {
   title: string;
   buttonText: string;
-  materialType: MaterialType;
   columns: ColumnDef<T, string>[];
   data: T[];
+  onClick: () => void;
 }
 
-export function MaterialTable<T>({
+export function CustomTable<T>({
   title,
   buttonText,
-  materialType,
   data,
   columns,
+  onClick,
 }: IMaterialTableProps<T>): React.ReactNode {
   const { classes } = useStyles();
-  const navigate = useNavigate();
-
-  function handleOpenAddPage(): void {
-    navigate('/material/add-material', { state: { materialType } });
-  }
 
   return (
     <Box className={classes.wrapper}>
       <SctionHeader
         title={title}
         actions={
-          <Button onClick={handleOpenAddPage} startIcon={<AddIcon />}>
+          <Button onClick={onClick} startIcon={<AddIcon />}>
             {buttonText}
           </Button>
         }
