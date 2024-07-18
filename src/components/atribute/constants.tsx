@@ -1,3 +1,10 @@
+export interface IAttribute {
+  name: string;
+  option: string;
+}
+
+export type IAttributeOptions = Record<string, string[]>;
+
 export const ATTRIBUTE_NAMES = ['Farbe', 'Material', 'Größe'];
 
 export const ATTRIBUTE_OPTIONS: Record<string, string[]> = {

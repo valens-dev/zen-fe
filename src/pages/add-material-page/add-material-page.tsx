@@ -1,10 +1,8 @@
 import { Box } from '@mui/material';
 
-import { GenericForm } from '@/shared/form';
+import { MaterialForm } from '@/components/material-form';
 
 import { Header } from '@/layouts/header';
-
-import { formInputs, initialValues, type IFormData } from './constants';
 
 import { useStyles } from './styles';
 
@@ -12,20 +10,10 @@ import { useStyles } from './styles';
 export default function AddMaterialPage(): React.ReactNode {
   const { classes } = useStyles();
 
-  function handleSubmit(data: IFormData): void {
-    // TODO
-    // eslint-disable-next-line no-console
-    console.log('Form Data:', data);
-  }
-
   return (
     <Box className={classes.wrapper}>
       <Header title="Add material" />
-      <GenericForm<IFormData>
-        inputs={formInputs}
-        initialValues={initialValues}
-        onSubmit={handleSubmit}
-      />
+      <MaterialForm />
     </Box>
   );
 }

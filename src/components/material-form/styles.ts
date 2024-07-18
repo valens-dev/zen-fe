@@ -4,7 +4,6 @@ export const useStyles = tss.create(({ theme }) => {
   return {
     wrapper: {
       margin: '16px',
-      padding: '16px',
       backgroundColor: theme.palette.white.primary,
       borderTop: `1px solid ${theme.palette.border.primary}`,
       borderRadius: '16px',
@@ -16,15 +15,22 @@ export const useStyles = tss.create(({ theme }) => {
       color: theme.palette.text.primary,
       lineHeight: 1.5,
       height: '56px',
+      padding: '16px',
     },
     formContainer: {
       display: 'flex',
       flexDirection: 'column',
     },
-    componentContainer: {
+    inputRow: {
+      padding: '0 16px',
       display: 'flex',
-      flexWrap: 'wrap',
-      gap: 2,
+      justifyContent: 'space-between',
+      margin: '6px 0',
+    },
+    horisontalLine: {
+      padding: '16px',
+      borderTop: `1px solid ${theme.palette.border.primary}`,
+      borderBottom: `1px solid ${theme.palette.border.primary}`,
     },
     submitButton: {
       margin: '16px',

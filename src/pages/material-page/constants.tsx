@@ -1,10 +1,10 @@
-import { MaterialTable } from '@/components/material/material-table';
+import { MaterialTable } from '@/components/materialtable';
 import {
   columns,
   productData,
   purchasingData,
   manufactoringData,
-} from '@/components/material/constants';
+} from '@/components/materialtable/constants';
 
 import { MaterialType } from '@/types/material';
 

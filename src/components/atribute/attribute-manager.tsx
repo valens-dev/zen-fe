@@ -1,26 +1,26 @@
 import { useState, useEffect, forwardRef } from 'react';
 
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
+
+import { Button } from '@/shared/button';
 
 import AddIcon from '@/assets/icon/attribute.svg?react';
 
 import { AttributeRow } from './attribute-row';
 
-import { ATTRIBUTE_NAMES, ATTRIBUTE_OPTIONS } from './constants';
+import {
+  type IAttribute,
+  ATTRIBUTE_NAMES,
+  ATTRIBUTE_OPTIONS,
+  type IAttributeOptions,
+} from './constants';
 
 import { useStyles } from './styles';
-
-interface IAttribute {
-  name: string;
-  option: string;
-}
 
 interface IAttributeManagerProps {
   value: IAttribute[];
   onChange: (attributes: IAttribute[]) => void;
 }
-
-type IAttributeOptions = Record<string, string[]>;
 
 interface IAttributeState {
   names: string[];
@@ -30,7 +30,7 @@ interface IAttributeState {
 export const AttributeManager = forwardRef<
   HTMLDivElement,
   IAttributeManagerProps
->(function AttributeManager({ value, onChange }): React.ReactElement {
+>(function AttributeManager({ value, onChange }, ref): React.ReactElement {
   const { classes } = useStyles();
 
   const [attributes, setAttributes] = useState<IAttribute[]>(value);
@@ -100,7 +100,7 @@ export const AttributeManager = forwardRef<
   }
 
   return (
-    <Box className={classes.attributeWrapper}>
+    <Box className={classes.attributeWrapper} ref={ref}>
       <Typography className={classes.title}>Attribute</Typography>
       <Box className={classes.attributeContainer}>
         {attributes.map((attribute, index) => {

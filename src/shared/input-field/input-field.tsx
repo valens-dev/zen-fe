@@ -11,10 +11,9 @@ import {
 import { useStyles } from './styles';
 
 interface IGenericInputProps extends Omit<TextFieldProps, 'variant'> {
-  label: string;
   name: string;
-  type: string;
-  fullWidth?: boolean;
+  label?: string;
+  type?: string;
   adornment?: string;
   variant?: 'outlined' | 'filled' | 'standard';
 }
@@ -24,7 +23,7 @@ export const InputField = forwardRef<HTMLElement, IGenericInputProps>(
     {
       label,
       name,
-      type,
+      type = 'text',
       adornment,
       variant = 'outlined',
       value,

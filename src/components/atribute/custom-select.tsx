@@ -7,12 +7,12 @@ import {
   Popover,
   ListItem,
   Checkbox,
-  TextField,
-  ListItemIcon,
   ListItemText,
 } from '@mui/material';
 
-import MenuIcon from '@/assets/icon/menu.svg?react';
+import { InputField } from '@/shared/input-field';
+
+import AddIcon from '@/assets/icon/attribute.svg?react';
 
 import { useStyles } from './styles';
 
@@ -42,6 +42,7 @@ export function CustomSelect({
       onAddNew(newValue);
       setNewValue('');
       setIsAddingNew(false);
+      setAnchorEl(undefined);
     }
   }
 
@@ -57,7 +58,6 @@ export function CustomSelect({
   return (
     <Box className={classes.selectContainer}>
       <Button
-        aria-describedby={anchorEl ? 'custom-select-popover' : undefined}
         onClick={handleOpen}
         disabled={disabled}
         className={classes.attributeSelect}
@@ -69,9 +69,21 @@ export function CustomSelect({
         open={Boolean(anchorEl)}
         anchorEl={anchorEl}
         onClose={handleClose}
+        transitionDuration={0}
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'left',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'left',
+        }}
+        slotProps={{
+          paper: {
+            style: {
+              width: anchorEl?.clientWidth,
+            },
+          },
         }}
       >
         <List>
@@ -85,41 +97,38 @@ export function CustomSelect({
                 }}
                 className={classes.popoverOption}
               >
-                <ListItemIcon>
-                  <Checkbox
-                    edge="start"
-                    checked={option === value}
-                    tabIndex={-1}
-                    disableRipple
-                  />
-                </ListItemIcon>
-                <ListItemText primary={option} />
+                <Checkbox
+                  edge="start"
+                  checked={option === value}
+                  tabIndex={-1}
+                  disableRipple
+                  className={classes.optionCheckbox}
+                />
+                <ListItemText primary={option} className={classes.optionText} />
               </ListItem>
             );
           })}
           {isAddingNew ? (
-            <ListItem>
-              <TextField
+            <ListItem className={classes.attributeInput}>
+              <InputField
                 value={newValue}
+                name="attribute"
                 onChange={(e) => {
-                  return setNewValue(e.target.value);
+                  setNewValue(e.target.value);
                 }}
                 className={classes.newOptionInput}
               />
               <Button onClick={handleAddNewOption}>Add</Button>
             </ListItem>
           ) : (
-            <ListItem
+            <Button
               onClick={() => {
-                return setIsAddingNew(true);
+                setIsAddingNew(true);
               }}
-              className={classes.popoverOption}
+              className={classes.addButton}
             >
-              <ListItemIcon>
-                <MenuIcon />
-              </ListItemIcon>
-              <ListItemText primary="Add New" />
-            </ListItem>
+              <AddIcon /> Add New
+            </Button>
           )}
         </List>
       </Popover>

@@ -7,12 +7,9 @@ import DeleteIcon from '@/assets/icon/delete.svg?react';
 
 import { CustomSelect } from './custom-select';
 
-import { useStyles } from './styles';
+import { type IAttribute } from './constants';
 
-interface IAttribute {
-  name: string;
-  option: string;
-}
+import { useStyles } from './styles';
 
 interface IAttributeRowProps {
   attribute: IAttribute;

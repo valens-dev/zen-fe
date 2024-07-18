@@ -3,16 +3,17 @@ import { tss } from '@/styles/theme';
 export const useStyles = tss.create(({ theme }) => {
   return {
     attributeWrapper: {
-      padding: '16px 0',
-      borderTop: `1px solid ${theme.palette.border.primary}`,
+      margin: '10px 0',
+      border: `1px solid ${theme.palette.border.primary}`,
       borderRadius: '8px',
+      width: '100%',
     },
     attributeContainer: {
       display: 'flex',
       flexDirection: 'column',
     },
     title: {
-      margin: '0 0 16px 16px',
+      margin: '16px',
       fontWeight: theme.typography.fontWeight.medium,
       fontSize: '1rem',
     },
@@ -22,6 +23,7 @@ export const useStyles = tss.create(({ theme }) => {
       gap: '8px',
       width: '100%',
       borderTop: `1px solid ${theme.palette.border.primary}`,
+      borderBottom: `1px solid ${theme.palette.border.primary}`,
       height: '56px',
     },
     newOptionInput: {
@@ -37,10 +39,13 @@ export const useStyles = tss.create(({ theme }) => {
       flexShrink: 0,
     },
     addButton: {
-      margin: '12px 0 0 12px',
       display: 'flex',
       alignItems: 'center',
       gap: '8px',
+      padding: '12px 16px',
+      textTransform: 'none',
+      justifyContent: 'start',
+      width: '100%',
     },
     newOptionBox: {
       display: 'flex',
@@ -56,7 +61,7 @@ export const useStyles = tss.create(({ theme }) => {
       height: '32px',
       padding: '6px 8px',
       borderRadius: '8px',
-      borderTop: `1px solid ${theme.palette.border.primary}`,
+      border: `1px solid ${theme.palette.border.primary}`,
       textAlign: 'left',
       fontWeight: theme.typography.fontWeight.regular,
       fontSize: '0.875rem',
@@ -66,10 +71,23 @@ export const useStyles = tss.create(({ theme }) => {
       justifyContent: 'flex-start',
     },
     popoverOption: {
+      height: '40px',
+      margin: '2px',
       cursor: 'pointer',
       '&:hover': {
-        backgroundColor: theme.palette.main.primary,
+        backgroundColor: theme.palette.light.secondary,
       },
+    },
+    attributeInput: {
+      height: '40px',
+      padding: 0,
+    },
+    optionCheckbox: {
+      padding: '12px 10px 12px 14px',
+      color: theme.palette.border.primary,
+    },
+    optionText: {
+      color: theme.palette.main.primary,
     },
   };
 });
