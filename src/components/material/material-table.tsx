@@ -30,8 +30,8 @@ export function MaterialTable<T>({
   data,
   columns,
 }: IMaterialTableProps<T>): React.ReactNode {
-  const { classes } = useStyles();
   const navigate = useNavigate();
+  const { classes } = useStyles();
 
   function handleOpenAddPage(): void {
     navigate('/material/add-material', { state: { materialType } });

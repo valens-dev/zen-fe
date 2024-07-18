@@ -7,9 +7,10 @@ import { Box, Button } from '@mui/material';
 
 import { useStyles } from './styles';
 
-export function LanguageButtons(): JSX.Element {
-  const { classes } = useStyles();
+export function LanguageSwitcher(): JSX.Element {
   const { i18n } = useTranslation();
+  const { classes } = useStyles();
+
   const [selectedLanguage, setSelectedLanguage] = useState<string>(
     i18n.language,
   );
@@ -30,19 +31,19 @@ export function LanguageButtons(): JSX.Element {
   return (
     <Box className={classes.languageButtons}>
       <Button
-        size="small"
-        className={classes.button}
-        onClick={(): void => {
+        onClick={() => {
           handleChangeLanguage('en');
         }}
         variant={getVariant('en')}
+        className={classes.button}
+        size="small"
       >
         EN
       </Button>
       <Button
         size="small"
         className={classes.button}
-        onClick={(): void => {
+        onClick={() => {
           handleChangeLanguage('de');
         }}
         variant={getVariant('de')}

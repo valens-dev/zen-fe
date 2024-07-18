@@ -8,8 +8,8 @@ import { useStyles } from '../styles';
 
 /* eslint-disable import/no-default-export */
 export default function StationPage(): React.ReactNode {
-  const { classes } = useStyles();
   const { t } = useTranslation();
+  const { classes } = useStyles();
 
   return (
     <Box className={classes.wrapper}>

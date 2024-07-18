@@ -26,8 +26,8 @@ export function Pagination({
   onPageChange,
   onPageSizeChange,
 }: IPaginationProps): React.ReactNode {
-  const { classes } = useStyles();
   const { t } = useTranslation();
+  const { classes } = useStyles();
 
   const totalPages = Math.ceil(totalRows / pageSize);
   const startRow = pageIndex * pageSize + 1;

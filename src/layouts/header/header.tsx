@@ -1,6 +1,6 @@
 import { Box, Typography } from '@mui/material';
 
-import { LanguageButtons } from '@/components/language-buttons';
+import { LanguageSwitcher } from '@/components/language-switcher';
 
 import { useStyles } from './styles';
 
@@ -14,7 +14,7 @@ export function Header({ title }: IHeaderProps): React.ReactNode {
   return (
     <Box className={classes.header}>
       <Typography className={classes.title}>{title}</Typography>
-      <LanguageButtons />
+      <LanguageSwitcher />
     </Box>
   );
 }
