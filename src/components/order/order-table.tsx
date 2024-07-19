@@ -11,21 +11,23 @@ import { SctionHeader } from '@/layouts/section-header';
 
 import AddIcon from '@/assets/icon/add.svg?react';
 
+import { type IOrder } from './types';
+
 import { useStyles } from './styles';
 
-interface IMaterialTableProps<T> {
+interface IOrderTableProps<T> {
   title: string;
   buttonText: string;
   columns: ColumnDef<T, string>[];
-  data: T[];
+  data: IOrder[];
 }
 
-export function OrderTable<T>({
+export function OrderTable({
   title,
   buttonText,
   data,
   columns,
-}: IMaterialTableProps<T>): React.ReactNode {
+}: IOrderTableProps<IOrder>): React.ReactNode {
   const { classes } = useStyles();
   const navigate = useNavigate();
 

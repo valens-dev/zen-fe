@@ -1,12 +1,24 @@
-import { type MaterialType } from '@/types/material';
+export interface IOrder {
+  orderNumber: string;
+  orderDate: string;
+  customer: string;
+  amount: string;
+  deliveryDate: string;
+  status: string;
+}
 
-export interface IProduct {
-  imageUrl: string;
-  height: string;
-  material: string;
-  materialType: MaterialType;
-  name: string;
-  price: string;
-  stock: string;
-  weight: string;
+interface IStatusColor {
+  background: string;
+  text: string;
+}
+
+export interface IStatusColors {
+  Open: IStatusColor;
+  Ordered: IStatusColor;
+  'In Progress': IStatusColor;
+  'Ready to use': IStatusColor;
+  'Ready to ship': IStatusColor;
+  Sent: IStatusColor;
+  Delivered: IStatusColor;
+  Canceled: IStatusColor;
 }

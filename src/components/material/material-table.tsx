@@ -13,6 +13,8 @@ import { type MaterialType } from '@/types/material';
 
 import AddIcon from '@/assets/icon/add.svg?react';
 
+import { type IProduct } from './types';
+
 import { useStyles } from './styles';
 
 interface IMaterialTableProps<T> {
@@ -20,16 +22,16 @@ interface IMaterialTableProps<T> {
   buttonText: string;
   materialType: MaterialType;
   columns: ColumnDef<T, string>[];
-  data: T[];
+  data: IProduct[];
 }
 
-export function MaterialTable<T>({
+export function MaterialTable({
   title,
   buttonText,
   materialType,
   data,
   columns,
-}: IMaterialTableProps<T>): React.ReactNode {
+}: IMaterialTableProps<IProduct>): React.ReactNode {
   const { classes } = useStyles();
   const navigate = useNavigate();
 
