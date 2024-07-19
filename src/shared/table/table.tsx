@@ -5,6 +5,7 @@ import {
   useReactTable,
   type ColumnDef,
   getCoreRowModel,
+  getFilteredRowModel,
   type PaginationState,
   getPaginationRowModel,
 } from '@tanstack/react-table';
@@ -22,6 +23,7 @@ import {
 } from '@mui/material';
 
 import { Pagination } from './pagination';
+import { SearchBar } from './search/search';
 
 import { useStyles } from './styles';
 
@@ -38,15 +40,20 @@ export function Table<T>({ columns, data }: ITableProps<T>): React.ReactNode {
     pageSize: 10,
   });
 
+  const [globalFilter, setGlobalFilter] = useState<string>('');
+
   const table = useReactTable({
     state: {
       pagination,
+      globalFilter,
     },
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
     onPaginationChange: setPagination,
+    onGlobalFilterChange: setGlobalFilter,
   });
 
   function handlePageChange(
@@ -60,8 +67,19 @@ export function Table<T>({ columns, data }: ITableProps<T>): React.ReactNode {
     table.setPageSize(Number(event.target.value));
   }
 
+  function handleGlobalFilterChange(
+    event: React.ChangeEvent<HTMLInputElement>,
+  ): void {
+    setGlobalFilter(event.target.value);
+  }
+
   return (
     <TableContainer component={Paper} className={classes.tableContainer}>
+      <SearchBar
+        label="Search"
+        value={globalFilter}
+        onChange={handleGlobalFilterChange}
+      />
       <BaseTable className={classes.baseTable}>
         <TableHead>
           {table.getHeaderGroups().map((headerGroup) => {
@@ -105,7 +123,7 @@ export function Table<T>({ columns, data }: ITableProps<T>): React.ReactNode {
               <Pagination
                 pageIndex={pagination.pageIndex}
                 pageSize={pagination.pageSize}
-                totalRows={data.length}
+                totalRows={table.getFilteredRowModel().rows.length}
                 onPageChange={handlePageChange}
                 onPageSizeChange={handlePageSizeChange}
               />
