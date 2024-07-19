@@ -12,8 +12,8 @@ export const useStyles = tss.create(({ theme }) => {
     baseTable: {
       width: '100%',
       padding: '16px',
-      border: `1px solid ${theme.palette.border.primary}`,
       borderRadius: '16px',
+      border: `1px solid ${theme.palette.border.primary}`,
       overflow: 'hidden',
     },
     headerRow: {
