@@ -4,6 +4,7 @@ import IconHome from '@/assets/icon/home.svg?react';
 import IconOrder from '@/assets/icon/order.svg?react';
 import IconStation from '@/assets/icon/station.svg?react';
 import IconMaterial from '@/assets/icon/material.svg?react';
+import IconCustomers from '@/assets/icon/customers.svg?react';
 
 export const SIDEBAR_ITEMS = [
   { icon: IconHome, iconStyle: IconStyle.Stroke, label: 'Home', href: 'home' },
@@ -24,5 +25,11 @@ export const SIDEBAR_ITEMS = [
     iconStyle: IconStyle.Fill,
     label: 'Station',
     href: 'station',
+  },
+  {
+    icon: IconCustomers,
+    iconStyle: IconStyle.Stroke,
+    label: 'Customers',
+    href: 'customers',
   },
 ];
