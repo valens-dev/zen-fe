@@ -13,7 +13,7 @@ import { columns, customerData } from './constants';
 
 import { useStyles } from './styles';
 
-export function CustomersTable(): React.ReactNode {
+export function CustomerTable(): React.ReactNode {
   const navigate = useNavigate();
 
   const { classes } = useStyles();

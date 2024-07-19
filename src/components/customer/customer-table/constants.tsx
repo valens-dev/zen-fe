@@ -4,13 +4,7 @@ import { Box, Typography, LinearProgress } from '@mui/material';
 
 import { LazyImage } from '@/shared/lazy-image';
 
-interface ICustomer {
-  imageUrl: string;
-  name: string;
-  adherenceToDeliveryDates: string;
-  orders: string;
-  netTotal: string;
-}
+import { type ICustomer } from './types';
 
 export function createCustomerData(
   imageUrl: string,
@@ -131,7 +125,7 @@ export const columns = [
       const { imageUrl, name } = row.original;
 
       return (
-        <Box display="flex" alignItems="center" width="100%">
+        <Box display="flex" alignItems="center">
           <LazyImage src={imageUrl} alt={name} height={24} width={34} />
           <Typography sx={{ marginLeft: '8px' }}>{name}</Typography>
         </Box>
@@ -166,21 +160,13 @@ export const columns = [
   columnHelper.accessor('orders', {
     header: 'Orders',
     cell: ({ getValue }) => {
-      return (
-        <Box width="100%">
-          <Typography>{getValue()}</Typography>
-        </Box>
-      );
+      return getValue();
     },
   }),
   columnHelper.accessor('netTotal', {
     header: 'Net Total',
     cell: ({ getValue }) => {
-      return (
-        <Box width="100%">
-          <Typography>{getValue()}</Typography>
-        </Box>
-      );
+      return getValue();
     },
   }),
 ];

@@ -5,8 +5,6 @@ import { Box, CircularProgress } from '@mui/material';
 
 import { RootLayout } from '../layouts/root-layout';
 
-import CustomersPage from './customers-page/customers-page';
-
 const HomePage = lazy(() => {
   return import('@/pages/home-page/home-page');
 });
@@ -29,6 +27,10 @@ const OrderPage = lazy(() => {
 
 const AddOrderPage = lazy(() => {
   return import('@/pages/add-order-page/add-order-page');
+});
+
+const CustomersPage = lazy(() => {
+  return import('@/pages/customer-page/customer-page');
 });
 
 const AddCustomersPage = lazy(() => {
