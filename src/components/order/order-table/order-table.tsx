@@ -9,34 +9,30 @@ import { Button } from '@/shared/button';
 
 import { SctionHeader } from '@/layouts/section-header';
 
-import { type MaterialType } from '@/types/material';
-
 import AddIcon from '@/assets/icon/add.svg?react';
 
-import { type IProduct } from './types';
+import { type IOrder } from './types';
 
 import { useStyles } from './styles';
 
-interface IMaterialTableProps {
+interface IOrderTableProps {
   title: string;
   buttonText: string;
-  materialType: MaterialType;
-  columns: ColumnDef<IProduct, string>[];
-  data: IProduct[];
+  columns: ColumnDef<IOrder, string>[];
+  data: IOrder[];
 }
 
-export function MaterialTable({
+export function OrderTable({
   title,
   buttonText,
-  materialType,
   data,
   columns,
-}: IMaterialTableProps): React.ReactNode {
+}: IOrderTableProps): React.ReactNode {
   const { classes } = useStyles();
   const navigate = useNavigate();
 
   function handleOpenAddPage(): void {
-    navigate('/material/add-material', { state: { materialType } });
+    navigate('/order/add-order');
   }
 
   return (
