@@ -1,5 +1,5 @@
 import { OrderTable } from '@/components/order/order-table';
-import { columns, orderData } from '@/components/order/constants';
+import { columns, orderData } from '@/components/order/order-table/constants';
 
 export const ORDER_TABS: { label: string; component: React.ElementType }[] = [
   {
