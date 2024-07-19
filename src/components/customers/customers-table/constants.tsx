@@ -78,6 +78,48 @@ export const customerData: ICustomer[] = [
     '15',
     '$7890.12',
   ),
+  createCustomerData(
+    'https://via.placeholder.com/30',
+    'Customer 5',
+    '50',
+    '27',
+    '$5678.90',
+  ),
+  createCustomerData(
+    'https://via.placeholder.com/30',
+    'Customer 6',
+    '95',
+    '22',
+    '$6789.01',
+  ),
+  createCustomerData(
+    'https://via.placeholder.com/30',
+    'Customer 7',
+    '60',
+    '15',
+    '$7890.12',
+  ),
+  createCustomerData(
+    'https://via.placeholder.com/30',
+    'Customer 5',
+    '50',
+    '27',
+    '$5678.90',
+  ),
+  createCustomerData(
+    'https://via.placeholder.com/30',
+    'Customer 6',
+    '95',
+    '22',
+    '$6789.01',
+  ),
+  createCustomerData(
+    'https://via.placeholder.com/30',
+    'Customer 7',
+    '60',
+    '15',
+    '$7890.12',
+  ),
 ];
 
 const columnHelper = createColumnHelper<ICustomer>();
