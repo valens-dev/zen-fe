@@ -30,5 +30,11 @@ export const useStyles = tss.create(({ theme }) => {
       display: 'block',
       border: 'none',
     },
+    headerCell: {
+      color: theme.palette.main.primary,
+    },
+    bodyCell: {
+      color: theme.palette.text.primary,
+    },
   };
 });

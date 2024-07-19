@@ -87,7 +87,7 @@ export function Table<T>({ columns, data }: ITableProps<T>): React.ReactNode {
               <TableRow key={headerGroup.id} className={classes.headerRow}>
                 {headerGroup.headers.map((header) => {
                   return (
-                    <TableCell key={header.id}>
+                    <TableCell key={header.id} className={classes.headerCell}>
                       {flexRender(
                         header.column.columnDef.header,
                         header.getContext(),
@@ -105,7 +105,7 @@ export function Table<T>({ columns, data }: ITableProps<T>): React.ReactNode {
               <TableRow key={row.id}>
                 {row.getVisibleCells().map((cell) => {
                   return (
-                    <TableCell key={cell.id}>
+                    <TableCell key={cell.id} className={classes.bodyCell}>
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext(),

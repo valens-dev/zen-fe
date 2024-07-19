@@ -3,11 +3,11 @@ import { Box, Typography } from '@mui/material';
 import { useStyles } from './styles';
 
 interface ISectionHeaderProps {
-  title: string;
+  title?: string;
   actions: React.ReactNode;
 }
 
-export function SctionHeader({
+export function SectionHeader({
   title,
   actions,
 }: ISectionHeaderProps): React.ReactNode {
@@ -15,10 +15,12 @@ export function SctionHeader({
 
   return (
     <Box className={classes.wrapper}>
-      <Box>
-        <Typography className={classes.title}>{title}</Typography>
-      </Box>
-      <Box>{actions}</Box>
+      {title ? (
+        <Box>
+          <Typography className={classes.title}>{title}</Typography>
+        </Box>
+      ) : undefined}
+      <Box className={classes.actions}>{actions}</Box>
     </Box>
   );
 }

@@ -7,7 +7,7 @@ import { Box } from '@mui/material';
 import { Table } from '@/shared/table';
 import { Button } from '@/shared/button';
 
-import { SctionHeader } from '@/layouts/section-header';
+import { SectionHeader } from '@/layouts/section-header';
 
 import { type MaterialType } from '@/types/material';
 
@@ -41,7 +41,7 @@ export function MaterialTable({
 
   return (
     <Box className={classes.wrapper}>
-      <SctionHeader
+      <SectionHeader
         title={title}
         actions={
           <Button onClick={handleOpenAddPage} startIcon={<AddIcon />}>
