@@ -5,6 +5,7 @@ export const useStyles = tss.create(({ theme }) => {
     wrapper: {
       color: theme.palette.main.primary,
       height: '100%',
+      width: '100%',
     },
   };
 });

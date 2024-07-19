@@ -7,12 +7,16 @@ export const useStyles = tss.create(({ theme }) => {
       justifyContent: 'space-between',
       padding: '16px 0',
       alignItems: 'center',
+      width: '100%',
     },
     title: {
       fontWeight: theme.typography.fontWeight.semiBold,
       color: theme.palette.text.secondary,
       fontSize: '1.25rem',
       lineHeight: 1.5,
+    },
+    actions: {
+      marginLeft: 'auto',
     },
   };
 });

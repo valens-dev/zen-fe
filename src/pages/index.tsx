@@ -5,6 +5,8 @@ import { Box, CircularProgress } from '@mui/material';
 
 import { RootLayout } from '../layouts/root-layout';
 
+import CustomersPage from './customers-page/customers-page';
+
 const HomePage = lazy(() => {
   return import('@/pages/home-page/home-page');
 });
@@ -57,6 +59,7 @@ export function App(): React.ReactNode {
             <Route path="station" element={<StationPage />} />
             <Route path="order" element={<OrderPage />} />
             <Route path="order/add-order" element={<AddOrderPage />} />
+            <Route path="customers" element={<CustomersPage />} />
           </Route>
         </Routes>
       </Suspense>

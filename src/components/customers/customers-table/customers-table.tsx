@@ -1,7 +1,5 @@
 import { useNavigate } from 'react-router-dom';
 
-import { type ColumnDef } from '@tanstack/react-table';
-
 import { Box } from '@mui/material';
 
 import { Table } from '@/shared/table';
@@ -11,41 +9,29 @@ import { SectionHeader } from '@/layouts/section-header';
 
 import AddIcon from '@/assets/icon/add.svg?react';
 
-import { type IOrder } from './types';
+import { columns, customerData } from './constants';
 
 import { useStyles } from './styles';
 
-interface IOrderTableProps {
-  title: string;
-  buttonText: string;
-  columns: ColumnDef<IOrder, string>[];
-  data: IOrder[];
-}
-
-export function OrderTable({
-  title,
-  buttonText,
-  data,
-  columns,
-}: IOrderTableProps): React.ReactNode {
-  const { classes } = useStyles();
+export function CustomersTable(): React.ReactNode {
   const navigate = useNavigate();
 
+  const { classes } = useStyles();
+
   function handleOpenAddPage(): void {
-    navigate('/order/add-order');
+    navigate('/customers/add-customer');
   }
 
   return (
     <Box className={classes.wrapper}>
       <SectionHeader
-        title={title}
         actions={
           <Button onClick={handleOpenAddPage} startIcon={<AddIcon />}>
-            {buttonText}
+            Add Customer
           </Button>
         }
       />
-      <Table columns={columns} data={data} />
+      <Table columns={columns} data={customerData} />
     </Box>
   );
 }

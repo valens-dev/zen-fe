@@ -10,6 +10,7 @@ export const useStyles = tss.create(({ theme }) => {
       backgroundColor: theme.palette.light.secondary,
       marginTop: '12px',
       borderTopLeftRadius: '28px',
+      padding: '16px',
     },
   };
 });
