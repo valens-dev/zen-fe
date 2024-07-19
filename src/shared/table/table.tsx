@@ -22,9 +22,8 @@ import {
   type SelectChangeEvent,
 } from '@mui/material';
 
-import { SearchBar } from '../search/search';
-
 import { Pagination } from './pagination';
+import { SearchBar } from './search/search';
 
 import { useStyles } from './styles';
 
