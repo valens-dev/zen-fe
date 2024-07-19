@@ -4,7 +4,7 @@ import {
   productData,
   purchasingData,
   manufactoringData,
-} from '@/components/material/constants';
+} from '@/components/material/material-table/constants';
 
 import { MaterialType } from '@/types/material';
 
