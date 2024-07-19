@@ -17,11 +17,11 @@ import { type IProduct } from './types';
 
 import { useStyles } from './styles';
 
-interface IMaterialTableProps<T> {
+interface IMaterialTableProps {
   title: string;
   buttonText: string;
   materialType: MaterialType;
-  columns: ColumnDef<T, string>[];
+  columns: ColumnDef<IProduct, string>[];
   data: IProduct[];
 }
 
@@ -31,7 +31,7 @@ export function MaterialTable({
   materialType,
   data,
   columns,
-}: IMaterialTableProps<IProduct>): React.ReactNode {
+}: IMaterialTableProps): React.ReactNode {
   const { classes } = useStyles();
   const navigate = useNavigate();
 

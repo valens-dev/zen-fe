@@ -15,10 +15,10 @@ import { type IOrder } from './types';
 
 import { useStyles } from './styles';
 
-interface IOrderTableProps<T> {
+interface IOrderTableProps {
   title: string;
   buttonText: string;
-  columns: ColumnDef<T, string>[];
+  columns: ColumnDef<IOrder, string>[];
   data: IOrder[];
 }
 
@@ -27,7 +27,7 @@ export function OrderTable({
   buttonText,
   data,
   columns,
-}: IOrderTableProps<IOrder>): React.ReactNode {
+}: IOrderTableProps): React.ReactNode {
   const { classes } = useStyles();
   const navigate = useNavigate();
 
