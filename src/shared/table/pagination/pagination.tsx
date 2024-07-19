@@ -3,9 +3,14 @@ import {
   Select,
   MenuItem,
   Typography,
+  PaginationItem,
   type SelectChangeEvent,
   Pagination as BasePagination,
 } from '@mui/material';
+
+import PaginationDownIcon from '@/assets/icon/pagination-down.svg?react';
+import PaginationLeftIcon from '@/assets/icon/pagination-left.svg?react';
+import PaginationRightIcon from '@/assets/icon/pagination-right.svg?react';
 
 import { useStyles } from './styles';
 
@@ -37,6 +42,7 @@ export function Pagination({
           value={pageSize}
           onChange={onPageSizeChange}
           className={classes.select}
+          IconComponent={PaginationDownIcon}
         >
           <MenuItem value={10}>10</MenuItem>
           <MenuItem value={20}>20</MenuItem>
@@ -57,6 +63,17 @@ export function Pagination({
           page={pageIndex + 1}
           onChange={onPageChange}
           className={classes.pagination}
+          renderItem={(item) => {
+            return (
+              <PaginationItem
+                slots={{
+                  previous: PaginationLeftIcon,
+                  next: PaginationRightIcon,
+                }}
+                {...item}
+              />
+            );
+          }}
         />
       </Box>
     </Box>

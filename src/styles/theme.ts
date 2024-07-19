@@ -17,6 +17,7 @@ function useContext(): { theme: ITheme } {
         primary: '#EFF8FF',
         secondary: '#F8FAFC',
         tertiary: '#0055FF',
+        quaternary: '#175CD3',
       },
       text: {
         primary: '#132339',
