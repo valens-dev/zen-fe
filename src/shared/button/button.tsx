@@ -1,9 +1,12 @@
-import { type ButtonProps, Button as BaseButton } from '@mui/material';
+import {
+  Button as BaseButton,
+  type ButtonProps as MUIButtonProps,
+} from '@mui/material';
 
 import { useStyles } from './styles';
 
-interface IButtonProps extends Omit<ButtonProps, 'variant'> {
-  variant?: 'primary';
+interface IButtonProps extends Omit<MUIButtonProps, 'variant'> {
+  variant?: 'primary' | 'secondary';
 }
 
 export function Button({
