@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import { useTabSelection } from '@/hooks/use-tab-selection';
 
 import { Box } from '@mui/material';
@@ -8,18 +10,20 @@ import { Header } from '@/layouts/header';
 
 import { useStyles } from '../styles';
 
-import { MATERIAL_TABS } from './constants';
+import { getMaterialTabs } from './constants';
 
 /* eslint-disable import/no-default-export */
 export default function MaterialPage(): React.ReactNode {
+  const { t } = useTranslation();
   const { classes } = useStyles();
+
   const { selectedTab, handleChange } = useTabSelection();
 
   return (
     <Box className={classes.wrapper}>
-      <Header title="Material" />
+      <Header title={t('material.title')} />
       <TabsSection
-        tabs={MATERIAL_TABS}
+        tabs={getMaterialTabs(t)}
         selectedTab={selectedTab}
         handleChange={handleChange}
       />

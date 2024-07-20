@@ -1,4 +1,6 @@
-import { Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
+
+import { LanguageSwitcher } from '@/components/language-switcher';
 
 import { useStyles } from './styles';
 
@@ -9,5 +11,10 @@ interface IHeaderProps {
 export function Header({ title }: IHeaderProps): React.ReactNode {
   const { classes } = useStyles();
 
-  return <Typography className={classes.title}>{title}</Typography>;
+  return (
+    <Box>
+      <Typography className={classes.title}>{title}</Typography>
+      <LanguageSwitcher />
+    </Box>
+  );
 }

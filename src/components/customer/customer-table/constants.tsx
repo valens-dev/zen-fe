@@ -1,4 +1,4 @@
-import { createColumnHelper } from '@tanstack/react-table';
+import { type ColumnDef, createColumnHelper } from '@tanstack/react-table';
 
 import { Box, Typography, LinearProgress } from '@mui/material';
 
@@ -118,55 +118,59 @@ export const customerData: ICustomer[] = [
 
 const columnHelper = createColumnHelper<ICustomer>();
 
-export const columns = [
-  columnHelper.accessor('name', {
-    header: 'Name',
-    cell: ({ row }) => {
-      const { imageUrl, name } = row.original;
+export function getCustomerColumns(
+  t: (key: string) => string,
+): ColumnDef<ICustomer, string>[] {
+  return [
+    columnHelper.accessor('name', {
+      header: t('customer.customerTable.name'),
+      cell: ({ row }) => {
+        const { imageUrl, name } = row.original;
 
-      return (
-        <Box display="flex" alignItems="center">
-          <LazyImage src={imageUrl} alt={name} height={24} width={34} />
-          <Typography sx={{ marginLeft: '8px' }}>{name}</Typography>
-        </Box>
-      );
-    },
-  }),
-  columnHelper.accessor('adherenceToDeliveryDates', {
-    header: 'Adherence to Delivery Dates',
-    cell: ({ row }) => {
-      const { adherenceToDeliveryDates } = row.original;
+        return (
+          <Box display="flex" alignItems="center">
+            <LazyImage src={imageUrl} alt={name} height={24} width={34} />
+            <Typography sx={{ marginLeft: '8px' }}>{name}</Typography>
+          </Box>
+        );
+      },
+    }),
+    columnHelper.accessor('adherenceToDeliveryDates', {
+      header: t('customer.customerTable.adherenceToDeliveryDates'),
+      cell: ({ row }) => {
+        const { adherenceToDeliveryDates } = row.original;
 
-      return (
-        <Box display="flex" alignItems="center">
-          <LinearProgress
-            variant="determinate"
-            value={Number(adherenceToDeliveryDates)}
-            sx={{
-              width: '70%',
-              borderRadius: '20px',
-              marginRight: '8px',
-              '& .MuiLinearProgress-bar': {
-                backgroundColor: '#9A67E6',
-              },
-              backgroundColor: '#FFF',
-            }}
-          />
-          <Typography>{`${adherenceToDeliveryDates}%`}</Typography>
-        </Box>
-      );
-    },
-  }),
-  columnHelper.accessor('orders', {
-    header: 'Orders',
-    cell: ({ getValue }) => {
-      return getValue();
-    },
-  }),
-  columnHelper.accessor('netTotal', {
-    header: 'Net Total',
-    cell: ({ getValue }) => {
-      return getValue();
-    },
-  }),
-];
+        return (
+          <Box display="flex" alignItems="center">
+            <LinearProgress
+              variant="determinate"
+              value={Number(adherenceToDeliveryDates)}
+              sx={{
+                width: '70%',
+                borderRadius: '20px',
+                marginRight: '8px',
+                '& .MuiLinearProgress-bar': {
+                  backgroundColor: '#9A67E6',
+                },
+                backgroundColor: '#FFF',
+              }}
+            />
+            <Typography>{`${adherenceToDeliveryDates}%`}</Typography>
+          </Box>
+        );
+      },
+    }),
+    columnHelper.accessor('orders', {
+      header: t('customer.customerTable.orders'),
+      cell: ({ getValue }) => {
+        return getValue();
+      },
+    }),
+    columnHelper.accessor('netTotal', {
+      header: t('customer.customerTable.netTotal'),
+      cell: ({ getValue }) => {
+        return getValue();
+      },
+    }),
+  ];
+}

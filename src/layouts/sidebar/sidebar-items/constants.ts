@@ -6,30 +6,50 @@ import IconStation from '@/assets/icon/station.svg?react';
 import IconMaterial from '@/assets/icon/material.svg?react';
 import IconCustomers from '@/assets/icon/customers.svg?react';
 
-export const SIDEBAR_ITEMS = [
-  { icon: IconHome, iconStyle: IconStyle.Stroke, label: 'Home', href: 'home' },
-  {
-    icon: IconOrder,
-    iconStyle: IconStyle.Stroke,
-    label: 'Order',
-    href: 'order',
-  },
-  {
-    icon: IconMaterial,
-    iconStyle: IconStyle.Stroke,
-    label: 'Material',
-    href: 'material',
-  },
-  {
-    icon: IconStation,
-    iconStyle: IconStyle.Fill,
-    label: 'Station',
-    href: 'station',
-  },
-  {
-    icon: IconCustomers,
-    iconStyle: IconStyle.Stroke,
-    label: 'Customers',
-    href: 'customers',
-  },
-];
+interface ISidebarItem {
+  icon: React.FC<React.SVGProps<SVGSVGElement>>;
+  iconStyle: IconStyle;
+  labelKey: string;
+  href: string;
+  label?: string;
+}
+
+export function getSidebarItems(t: (key: string) => string): ISidebarItem[] {
+  return [
+    {
+      icon: IconHome,
+      iconStyle: IconStyle.Stroke,
+      labelKey: 'home.title',
+      href: 'home',
+    },
+    {
+      icon: IconOrder,
+      iconStyle: IconStyle.Stroke,
+      labelKey: 'order.title',
+      href: 'order',
+    },
+    {
+      icon: IconMaterial,
+      iconStyle: IconStyle.Stroke,
+      labelKey: 'material.title',
+      href: 'material',
+    },
+    {
+      icon: IconStation,
+      iconStyle: IconStyle.Fill,
+      labelKey: 'station.title',
+      href: 'station',
+    },
+    {
+      icon: IconCustomers,
+      iconStyle: IconStyle.Stroke,
+      labelKey: 'customer.title',
+      href: 'customers',
+    },
+  ].map((item) => {
+    return {
+      ...item,
+      label: t(item.labelKey),
+    };
+  });
+}

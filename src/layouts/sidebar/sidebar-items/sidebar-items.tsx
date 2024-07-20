@@ -1,17 +1,21 @@
+import { useTranslation } from 'react-i18next';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 import { Box, Typography } from '@mui/material';
 
 import { IconStyle } from '@/types/icon';
 
-import { SIDEBAR_ITEMS } from './constants';
+import { getSidebarItems } from './constants';
 
 import { useStyles } from './styles';
 
 export function SidebarItems(): React.ReactNode {
+  const { t } = useTranslation();
   const { classes, cx } = useStyles();
   const navigate = useNavigate();
   const location = useLocation();
+
+  const SIDEBAR_ITEMS = getSidebarItems(t);
 
   function isLinkActive(href: string): boolean {
     return location.pathname.includes(href);

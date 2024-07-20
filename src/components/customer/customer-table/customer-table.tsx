@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import { Box } from '@mui/material';
 
@@ -9,11 +10,12 @@ import { SectionHeader } from '@/layouts/section-header';
 
 import AddIcon from '@/assets/icon/add.svg?react';
 
-import { columns, customerData } from './constants';
+import { customerData, getCustomerColumns } from './constants';
 
 import { useStyles } from './styles';
 
 export function CustomerTable(): React.ReactNode {
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   const { classes } = useStyles();
@@ -27,11 +29,11 @@ export function CustomerTable(): React.ReactNode {
       <SectionHeader
         actions={
           <Button onClick={handleOpenAddPage} startIcon={<AddIcon />}>
-            Add Customer
+            {t('customer.addCustomer')}
           </Button>
         }
       />
-      <Table columns={columns} data={customerData} />
+      <Table columns={getCustomerColumns(t)} data={customerData} />
     </Box>
   );
 }

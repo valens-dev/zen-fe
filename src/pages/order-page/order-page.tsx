@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import { useTabSelection } from '@/hooks/use-tab-selection';
 
 import { Box } from '@mui/material';
@@ -8,18 +10,20 @@ import { Header } from '@/layouts/header';
 
 import { useStyles } from '../styles';
 
-import { ORDER_TABS } from './constants';
+import { getOrderTabs } from './constants';
 
 /* eslint-disable import/no-default-export */
 export default function OrderPage(): React.ReactNode {
+  const { t } = useTranslation();
   const { classes } = useStyles();
+
   const { selectedTab, handleChange } = useTabSelection();
 
   return (
     <Box className={classes.wrapper}>
       <Header title="Order" />
       <TabsSection
-        tabs={ORDER_TABS}
+        tabs={getOrderTabs(t)}
         selectedTab={selectedTab}
         handleChange={handleChange}
       />
