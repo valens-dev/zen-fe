@@ -12,7 +12,7 @@ export function Header({ title }: IHeaderProps): React.ReactNode {
   const { classes } = useStyles();
 
   return (
-    <Box>
+    <Box className={classes.header}>
       <Typography className={classes.title}>{title}</Typography>
       <LanguageSwitcher />
     </Box>
