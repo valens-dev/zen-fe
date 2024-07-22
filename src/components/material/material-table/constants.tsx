@@ -1,4 +1,5 @@
-import { createColumnHelper } from '@tanstack/react-table';
+import i18n from 'i18n';
+import { type ColumnDef, createColumnHelper } from '@tanstack/react-table';
 
 import { Box, Typography } from '@mui/material';
 
@@ -506,59 +507,59 @@ export const data: IProduct[] = [
 export const productData = data.filter((row) => {
   return row.materialType === MaterialType.Product;
 });
-
 export const purchasingData = data.filter((row) => {
   return row.materialType === MaterialType.PurchasingPart;
 });
-
 export const manufactoringData = data.filter((row) => {
   return row.materialType === MaterialType.ManufacturingPart;
 });
 
 const columnHelper = createColumnHelper<IProduct>();
 
-export const columns = [
-  columnHelper.accessor('name', {
-    header: 'Name',
-    cell: ({ row }) => {
-      const { imageUrl, name } = row.original;
+export function getMaterialColumns(): ColumnDef<IProduct, string>[] {
+  return [
+    columnHelper.accessor('name', {
+      header: i18n.t('material.materialTable.name'),
+      cell: ({ row }) => {
+        const { imageUrl, name } = row.original;
 
-      return (
-        <Box display="flex" alignItems="center">
-          <LazyImage src={imageUrl} alt={name} height={24} width={34} />
-          <Typography sx={{ marginLeft: '8px' }}>{name}</Typography>
-        </Box>
-      );
-    },
-  }),
-  columnHelper.accessor('height', {
-    header: 'Height',
-    cell: ({ getValue }) => {
-      return getValue();
-    },
-  }),
-  columnHelper.accessor('material', {
-    header: 'Material',
-    cell: ({ getValue }) => {
-      return getValue();
-    },
-  }),
-  columnHelper.accessor('weight', {
-    header: 'Weight',
-    cell: ({ getValue }) => {
-      return getValue();
-    },
-  }),
-  columnHelper.accessor('stock', {
-    header: 'Stock',
-    cell: ({ getValue }) => {
-      return getValue();
-    },
-  }),
-  columnHelper.accessor('price', {
-    header: 'Price',
-    cell: ({ getValue }) => {
-      return getValue();
-    },
-  }),
-];
+        return (
+          <Box display="flex" alignItems="center">
+            <LazyImage src={imageUrl} alt={name} height={24} width={34} />
+            <Typography sx={{ marginLeft: '8px' }}>{name}</Typography>
+          </Box>
+        );
+      },
+    }),
+    columnHelper.accessor('height', {
+      header: i18n.t('material.materialTable.height'),
+      cell: ({ getValue }) => {
+        return getValue();
+      },
+    }),
+    columnHelper.accessor('material', {
+      header: i18n.t('material.materialTable.material'),
+      cell: ({ getValue }) => {
+        return getValue();
+      },
+    }),
+    columnHelper.accessor('weight', {
+      header: i18n.t('material.materialTable.weight'),
+      cell: ({ getValue }) => {
+        return getValue();
+      },
+    }),
+    columnHelper.accessor('stock', {
+      header: i18n.t('material.materialTable.stock'),
+      cell: ({ getValue }) => {
+        return getValue();
+      },
+    }),
+    columnHelper.accessor('price', {
+      header: i18n.t('material.materialTable.price'),
+      cell: ({ getValue }) => {
+        return getValue();
+      },
+    }),
+  ];
+}

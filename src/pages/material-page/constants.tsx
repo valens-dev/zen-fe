@@ -1,23 +1,28 @@
+import i18n from 'i18n';
+
 import { MaterialTable } from '@/components/material/material-table';
 import {
-  columns,
   productData,
   purchasingData,
   manufactoringData,
+  getMaterialColumns,
 } from '@/components/material/material-table/constants';
 
 import { MaterialType } from '@/types/material';
 
-export const MATERIAL_TABS: { label: string; component: React.ElementType }[] =
-  [
+export function getMaterialTabs(): {
+  label: string;
+  component: React.ElementType;
+}[] {
+  return [
     {
-      label: 'Product',
+      label: i18n.t('material.product'),
       component: () => {
         return (
           <MaterialTable
-            title="Product"
-            buttonText="Add Product"
-            columns={columns}
+            title={i18n.t('material.product')}
+            buttonText={i18n.t('material.addProduct')}
+            columns={getMaterialColumns()}
             data={productData}
             materialType={MaterialType.Product}
           />
@@ -25,13 +30,13 @@ export const MATERIAL_TABS: { label: string; component: React.ElementType }[] =
       },
     },
     {
-      label: 'Manufacturing part',
+      label: i18n.t('material.manufacturingPart'),
       component: () => {
         return (
           <MaterialTable
-            title="Manufacturing part"
-            buttonText="Add BOM"
-            columns={columns}
+            title={i18n.t('material.manufacturingPart')}
+            buttonText={i18n.t('material.addManufacturingPart')}
+            columns={getMaterialColumns()}
             data={manufactoringData}
             materialType={MaterialType.ManufacturingPart}
           />
@@ -39,13 +44,13 @@ export const MATERIAL_TABS: { label: string; component: React.ElementType }[] =
       },
     },
     {
-      label: 'Purchasing part',
+      label: i18n.t('material.purchasingPart'),
       component: () => {
         return (
           <MaterialTable
-            title="Purchasing part"
-            buttonText="Add Purchased Parts"
-            columns={columns}
+            title={i18n.t('material.purchasingPart')}
+            buttonText={i18n.t('material.addPurchasingPart')}
+            columns={getMaterialColumns()}
             data={purchasingData}
             materialType={MaterialType.PurchasingPart}
           />
@@ -53,3 +58,4 @@ export const MATERIAL_TABS: { label: string; component: React.ElementType }[] =
       },
     },
   ];
+}
