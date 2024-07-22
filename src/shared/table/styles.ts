@@ -9,10 +9,14 @@ export const useStyles = tss.create(({ theme }) => {
       borderRadius: '16px',
       background: theme.palette.white.primary,
     },
+    tableWrapper: {
+      width: '100%',
+      border: `1px solid ${theme.palette.border.primary}`,
+      borderRadius: '16px',
+    },
     baseTable: {
       width: '100%',
       padding: '16px',
-      border: `1px solid ${theme.palette.border.primary}`,
       borderRadius: '16px',
       overflow: 'hidden',
     },
@@ -23,12 +27,13 @@ export const useStyles = tss.create(({ theme }) => {
     },
     tableFooter: {
       width: '100%',
-      display: 'block',
+      display: 'table',
     },
     tablePagination: {
       width: '100%',
-      display: 'block',
+      display: 'table',
       border: 'none',
+      padding: '0px',
     },
     headerCell: {
       color: theme.palette.main.primary,
