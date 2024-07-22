@@ -12,7 +12,7 @@ export const useStyles = tss.create(({ theme }) => {
     pagination: {
       '& .MuiPaginationItem-root': {
         borderRadius: '6px',
-        fontSize: '14px',
+        fontSize: '0.875rem',
         margin: '4px',
         border: `1px solid ${theme.palette.border.primary}`,
         backgroundColor: theme.palette.white.primary,

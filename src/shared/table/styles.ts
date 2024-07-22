@@ -8,12 +8,17 @@ export const useStyles = tss.create(({ theme }) => {
       border: `1px solid ${theme.palette.border.primary}`,
       borderRadius: '16px',
       background: theme.palette.white.primary,
+      boxSizing: 'border-box',
+    },
+    tableWrapper: {
+      width: '100%',
+      border: `1px solid ${theme.palette.border.primary}`,
+      borderRadius: '16px',
     },
     baseTable: {
       width: '100%',
       padding: '16px',
       borderRadius: '16px',
-      border: `1px solid ${theme.palette.border.primary}`,
       overflow: 'hidden',
     },
     headerRow: {
@@ -23,12 +28,13 @@ export const useStyles = tss.create(({ theme }) => {
     },
     tableFooter: {
       width: '100%',
-      display: 'block',
+      display: 'table',
     },
     tablePagination: {
       width: '100%',
-      display: 'block',
+      display: 'table',
       border: 'none',
+      padding: '0px',
     },
     headerCell: {
       color: theme.palette.main.primary,
