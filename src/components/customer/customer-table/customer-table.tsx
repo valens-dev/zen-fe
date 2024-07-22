@@ -33,7 +33,7 @@ export function CustomerTable(): React.ReactNode {
           </Button>
         }
       />
-      <Table columns={getCustomerColumns(t)} data={customerData} />
+      <Table columns={getCustomerColumns()} data={customerData} />
     </Box>
   );
 }

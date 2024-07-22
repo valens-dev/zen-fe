@@ -1,3 +1,4 @@
+import i18n from 'i18n';
 import { type ColumnDef, createColumnHelper } from '@tanstack/react-table';
 
 import { Box, Typography } from '@mui/material';
@@ -515,12 +516,10 @@ export const manufactoringData = data.filter((row) => {
 
 const columnHelper = createColumnHelper<IProduct>();
 
-export function getMaterialColumns(
-  t: (key: string) => string,
-): ColumnDef<IProduct, string>[] {
+export function getMaterialColumns(): ColumnDef<IProduct, string>[] {
   return [
     columnHelper.accessor('name', {
-      header: t('material.materialTable.name'),
+      header: i18n.t('material.materialTable.name'),
       cell: ({ row }) => {
         const { imageUrl, name } = row.original;
 
@@ -533,31 +532,31 @@ export function getMaterialColumns(
       },
     }),
     columnHelper.accessor('height', {
-      header: t('material.materialTable.height'),
+      header: i18n.t('material.materialTable.height'),
       cell: ({ getValue }) => {
         return getValue();
       },
     }),
     columnHelper.accessor('material', {
-      header: t('material.materialTable.material'),
+      header: i18n.t('material.materialTable.material'),
       cell: ({ getValue }) => {
         return getValue();
       },
     }),
     columnHelper.accessor('weight', {
-      header: t('material.materialTable.weight'),
+      header: i18n.t('material.materialTable.weight'),
       cell: ({ getValue }) => {
         return getValue();
       },
     }),
     columnHelper.accessor('stock', {
-      header: t('material.materialTable.stock'),
+      header: i18n.t('material.materialTable.stock'),
       cell: ({ getValue }) => {
         return getValue();
       },
     }),
     columnHelper.accessor('price', {
-      header: t('material.materialTable.price'),
+      header: i18n.t('material.materialTable.price'),
       cell: ({ getValue }) => {
         return getValue();
       },

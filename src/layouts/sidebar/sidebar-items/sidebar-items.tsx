@@ -1,5 +1,7 @@
-import { useTranslation } from 'react-i18next';
+import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+
+import i18n from 'i18n';
 
 import { Box, Typography } from '@mui/material';
 
@@ -9,13 +11,23 @@ import { getSidebarItems } from './constants';
 
 import { useStyles } from './styles';
 
-export function SidebarItems(): React.ReactNode {
-  const { t } = useTranslation();
+export function SidebarItems(): JSX.Element {
   const { classes, cx } = useStyles();
   const navigate = useNavigate();
   const location = useLocation();
+  const [sidebarItems, setSidebarItems] = useState(getSidebarItems());
 
-  const SIDEBAR_ITEMS = getSidebarItems(t);
+  useEffect(() => {
+    function handleLanguageChange(): void {
+      setSidebarItems(getSidebarItems());
+    }
+
+    i18n.on('languageChanged', handleLanguageChange);
+
+    return () => {
+      i18n.off('languageChanged', handleLanguageChange);
+    };
+  }, []);
 
   function isLinkActive(href: string): boolean {
     return location.pathname.includes(href);
@@ -29,7 +41,7 @@ export function SidebarItems(): React.ReactNode {
 
   return (
     <Box>
-      {SIDEBAR_ITEMS.map(({ icon: Icon, label, href, iconStyle }) => {
+      {sidebarItems.map(({ icon: Icon, label, href, iconStyle }) => {
         const isActive = isLinkActive(href);
         const activeClass = getActiveClass(iconStyle);
 

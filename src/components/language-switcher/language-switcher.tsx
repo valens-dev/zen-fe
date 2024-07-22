@@ -41,12 +41,12 @@ export function LanguageSwitcher(): React.ReactNode {
         EN
       </Button>
       <Button
-        size="small"
-        className={classes.button}
         onClick={() => {
           handleChangeLanguage('de');
         }}
         variant={getVariant('de')}
+        className={classes.button}
+        size="small"
       >
         DE
       </Button>

@@ -1,3 +1,5 @@
+import i18n from 'i18n';
+
 import { IconStyle } from '@/types/icon';
 
 import IconHome from '@/assets/icon/home.svg?react';
@@ -9,47 +11,41 @@ import IconCustomers from '@/assets/icon/customers.svg?react';
 interface ISidebarItem {
   icon: React.FC<React.SVGProps<SVGSVGElement>>;
   iconStyle: IconStyle;
-  labelKey: string;
+  label: string;
   href: string;
-  label?: string;
 }
 
-export function getSidebarItems(t: (key: string) => string): ISidebarItem[] {
+export function getSidebarItems(): ISidebarItem[] {
   return [
     {
       icon: IconHome,
       iconStyle: IconStyle.Stroke,
-      labelKey: 'home.title',
+      label: i18n.t('home.title'),
       href: 'home',
     },
     {
       icon: IconOrder,
       iconStyle: IconStyle.Stroke,
-      labelKey: 'order.title',
+      label: i18n.t('order.title'),
       href: 'order',
     },
     {
       icon: IconMaterial,
       iconStyle: IconStyle.Stroke,
-      labelKey: 'material.title',
+      label: i18n.t('material.title'),
       href: 'material',
     },
     {
       icon: IconStation,
       iconStyle: IconStyle.Fill,
-      labelKey: 'station.title',
+      label: i18n.t('station.title'),
       href: 'station',
     },
     {
       icon: IconCustomers,
       iconStyle: IconStyle.Stroke,
-      labelKey: 'customer.title',
+      label: i18n.t('customer.title'),
       href: 'customers',
     },
-  ].map((item) => {
-    return {
-      ...item,
-      label: t(item.labelKey),
-    };
-  });
+  ];
 }

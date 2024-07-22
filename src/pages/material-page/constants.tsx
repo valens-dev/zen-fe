@@ -1,3 +1,5 @@
+import i18n from 'i18n';
+
 import { MaterialTable } from '@/components/material/material-table';
 import {
   productData,
@@ -8,18 +10,19 @@ import {
 
 import { MaterialType } from '@/types/material';
 
-export function getMaterialTabs(
-  t: (key: string) => string,
-): { label: string; component: React.ElementType }[] {
+export function getMaterialTabs(): {
+  label: string;
+  component: React.ElementType;
+}[] {
   return [
     {
-      label: t('material.product'),
+      label: i18n.t('material.product'),
       component: () => {
         return (
           <MaterialTable
-            title={t('material.product')}
-            buttonText={t('material.addProduct')}
-            columns={getMaterialColumns(t)}
+            title={i18n.t('material.product')}
+            buttonText={i18n.t('material.addProduct')}
+            columns={getMaterialColumns()}
             data={productData}
             materialType={MaterialType.Product}
           />
@@ -27,13 +30,13 @@ export function getMaterialTabs(
       },
     },
     {
-      label: t('material.manufacturingPart'),
+      label: i18n.t('material.manufacturingPart'),
       component: () => {
         return (
           <MaterialTable
-            title={t('material.manufacturingPart')}
-            buttonText={t('material.addManufacturingPart')}
-            columns={getMaterialColumns(t)}
+            title={i18n.t('material.manufacturingPart')}
+            buttonText={i18n.t('material.addManufacturingPart')}
+            columns={getMaterialColumns()}
             data={manufactoringData}
             materialType={MaterialType.ManufacturingPart}
           />
@@ -41,13 +44,13 @@ export function getMaterialTabs(
       },
     },
     {
-      label: t('material.purchasingPart'),
+      label: i18n.t('material.purchasingPart'),
       component: () => {
         return (
           <MaterialTable
-            title={t('material.purchasingPart')}
-            buttonText={t('material.addPurchasingPart')}
-            columns={getMaterialColumns(t)}
+            title={i18n.t('material.purchasingPart')}
+            buttonText={i18n.t('material.addPurchasingPart')}
+            columns={getMaterialColumns()}
             data={purchasingData}
             materialType={MaterialType.PurchasingPart}
           />

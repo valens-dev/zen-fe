@@ -21,9 +21,9 @@ export default function OrderPage(): React.ReactNode {
 
   return (
     <Box className={classes.wrapper}>
-      <Header title="Order" />
+      <Header title={t('order.title')} />
       <TabsSection
-        tabs={getOrderTabs(t)}
+        tabs={getOrderTabs()}
         selectedTab={selectedTab}
         handleChange={handleChange}
       />

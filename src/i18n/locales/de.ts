@@ -37,7 +37,7 @@ export const de = {
     addOrder: 'Bestellung hinzufügen',
     productionOrder: 'Produktionsauftrag',
     addProductionOrder: 'Produktionsauftrag hinzufügen',
-    logisticsOrders: 'Logistikauftrag',
+    logisticsOrder: 'Logistikauftrag',
     addLogisticsOrder: 'Logistikauftrag hinzufügen',
     shipment: 'Sendung',
     addShipment: 'Sendung hinzufügen',

@@ -1,17 +1,20 @@
+import i18n from 'i18n';
+
 import { OrderTable } from '@/components/order/order-table';
 import { columns, orderData } from '@/components/order/order-table/constants';
 
-export function getOrderTabs(
-  t: (key: string) => string,
-): { label: string; component: React.ElementType }[] {
+export function getOrderTabs(): {
+  label: string;
+  component: React.ElementType;
+}[] {
   return [
     {
-      label: t('order.orders'),
+      label: i18n.t('order.orders'),
       component: () => {
         return (
           <OrderTable
-            title={t('order.orders')}
-            buttonText={t('order.addOrder')}
+            title={i18n.t('order.orders')}
+            buttonText={i18n.t('order.addOrder')}
             data={orderData}
             columns={columns}
           />
@@ -19,12 +22,12 @@ export function getOrderTabs(
       },
     },
     {
-      label: t('order.productionOrder'),
+      label: i18n.t('order.productionOrder'),
       component: () => {
         return (
           <OrderTable
-            title={t('order.productionOrder')}
-            buttonText={t('order.addProductionOrder')}
+            title={i18n.t('order.productionOrder')}
+            buttonText={i18n.t('order.addProductionOrder')}
             columns={columns}
             data={[]}
           />
@@ -32,12 +35,12 @@ export function getOrderTabs(
       },
     },
     {
-      label: t('order.logisticsOrders'),
+      label: i18n.t('order.logisticsOrder'),
       component: () => {
         return (
           <OrderTable
-            title={t('order.logisticsOrders')}
-            buttonText={t('order.addLogisticsOrder')}
+            title={i18n.t('order.logisticsOrder')}
+            buttonText={i18n.t('order.addLogisticsOrder')}
             columns={columns}
             data={[]}
           />
@@ -45,12 +48,12 @@ export function getOrderTabs(
       },
     },
     {
-      label: t('order.shipment'),
+      label: i18n.t('order.shipment'),
       component: () => {
         return (
           <OrderTable
-            title={t('order.shipment')}
-            buttonText={t('order.addShipment')}
+            title={i18n.t('order.shipment')}
+            buttonText={i18n.t('order.addShipment')}
             columns={columns}
             data={[]}
           />

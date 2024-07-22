@@ -1,3 +1,4 @@
+import i18n from 'i18n';
 import { type ColumnDef, createColumnHelper } from '@tanstack/react-table';
 
 import { Box, Typography, LinearProgress } from '@mui/material';
@@ -118,12 +119,10 @@ export const customerData: ICustomer[] = [
 
 const columnHelper = createColumnHelper<ICustomer>();
 
-export function getCustomerColumns(
-  t: (key: string) => string,
-): ColumnDef<ICustomer, string>[] {
+export function getCustomerColumns(): ColumnDef<ICustomer, string>[] {
   return [
     columnHelper.accessor('name', {
-      header: t('customer.customerTable.name'),
+      header: i18n.t('customer.customerTable.name'),
       cell: ({ row }) => {
         const { imageUrl, name } = row.original;
 
@@ -136,7 +135,7 @@ export function getCustomerColumns(
       },
     }),
     columnHelper.accessor('adherenceToDeliveryDates', {
-      header: t('customer.customerTable.adherenceToDeliveryDates'),
+      header: i18n.t('customer.customerTable.adherenceToDeliveryDates'),
       cell: ({ row }) => {
         const { adherenceToDeliveryDates } = row.original;
 
@@ -161,13 +160,13 @@ export function getCustomerColumns(
       },
     }),
     columnHelper.accessor('orders', {
-      header: t('customer.customerTable.orders'),
+      header: i18n.t('customer.customerTable.orders'),
       cell: ({ getValue }) => {
         return getValue();
       },
     }),
     columnHelper.accessor('netTotal', {
-      header: t('customer.customerTable.netTotal'),
+      header: i18n.t('customer.customerTable.netTotal'),
       cell: ({ getValue }) => {
         return getValue();
       },

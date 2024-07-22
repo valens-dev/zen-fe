@@ -23,7 +23,7 @@ export default function MaterialPage(): React.ReactNode {
     <Box className={classes.wrapper}>
       <Header title={t('material.title')} />
       <TabsSection
-        tabs={getMaterialTabs(t)}
+        tabs={getMaterialTabs()}
         selectedTab={selectedTab}
         handleChange={handleChange}
       />
