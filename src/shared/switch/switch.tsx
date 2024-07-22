@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 
-import { FormControlLabel, Switch as SwitchField } from '@mui/material';
+import { FormControlLabel, Switch as BaseSwitch } from '@mui/material';
 
 import { useStyles } from './styles';
 
@@ -18,7 +18,7 @@ export const Switch = forwardRef<HTMLElement, ISwitchProps>(function Switch(
   return (
     <FormControlLabel
       className={classes.formControlLabel}
-      control={<SwitchField {...props} name={name} inputRef={ref} />}
+      control={<BaseSwitch {...props} name={name} inputRef={ref} />}
       label={label}
     />
   );

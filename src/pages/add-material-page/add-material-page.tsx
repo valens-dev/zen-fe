@@ -6,7 +6,7 @@ import { Box } from '@mui/material';
 import { Button } from '@/shared/button';
 
 import { MaterialForm } from '@/components/material/material-form';
-import { type IFormData } from '@/components/material/material-form/constants';
+import { type IFormData } from '@/components/material/material-form/types';
 
 import { Header } from '@/layouts/header';
 import { FormHeader } from '@/layouts/form-header';
@@ -24,7 +24,7 @@ interface ILocationState {
 }
 
 // eslint-disable-next-line import/no-default-export
-export default function AddMaterialPage(): React.ReactElement {
+export default function AddMaterialPage(): React.ReactNode {
   const navigate = useNavigate();
   const location = useLocation();
   const { classes } = useStyles();

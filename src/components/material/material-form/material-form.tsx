@@ -10,13 +10,14 @@ import {
 } from '@mui/material';
 
 import { Input } from '@/shared/input';
-import { AttributeManager } from '@/shared/attribute-manager';
+import { DynamicValuesTable } from '@/shared/dynamic-values-table';
 
 import { ValueRow } from '@/components/value/value-row/value-row';
 import { type IAttribute } from '@/components/attribute/constants';
 import { AttributeRow } from '@/components/attribute/attribute-row/attribute-row';
 
-import { initialValues, type IFormData } from './constants';
+import { type IFormData } from './types';
+import { initialValues } from './constants';
 
 import { useStyles } from './styles';
 
@@ -124,7 +125,7 @@ const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
                 control={methods.control}
                 render={({ field }) => {
                   return (
-                    <AttributeManager
+                    <DynamicValuesTable
                       {...field}
                       title="Attributes"
                       onAddRow={() => {
@@ -155,7 +156,7 @@ const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
                           );
                         },
                       )}
-                    </AttributeManager>
+                    </DynamicValuesTable>
                   );
                 }}
               />
@@ -167,7 +168,7 @@ const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
                 control={methods.control}
                 render={({ field }) => {
                   return (
-                    <AttributeManager
+                    <DynamicValuesTable
                       {...field}
                       title="Values"
                       onAddRow={() => {
@@ -201,7 +202,7 @@ const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
                           />
                         );
                       })}
-                    </AttributeManager>
+                    </DynamicValuesTable>
                   );
                 }}
               />

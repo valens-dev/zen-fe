@@ -5,18 +5,19 @@ import {
   TextField,
   Typography,
   InputAdornment,
-  type TextFieldProps as MuiTextFieldProps,
+  type TextFieldProps,
 } from '@mui/material';
 
 import { useStyles } from './styles';
 
-export type IInputProps = MuiTextFieldProps & {
+interface IInputProps
+  extends Omit<TextFieldProps, 'InputProps' | 'InputLabelProps'> {
   name: string;
   label?: string;
   type?: string;
   adornment?: string;
   variant?: 'outlined' | 'filled' | 'standard';
-};
+}
 
 export const Input = forwardRef<HTMLElement, IInputProps>(function Input(
   {

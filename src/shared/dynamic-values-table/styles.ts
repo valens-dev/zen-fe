@@ -2,7 +2,7 @@ import { tss } from '@/styles/theme';
 
 export const useStyles = tss.create(({ theme }) => {
   return {
-    attributeWrapper: {
+    wrapper: {
       margin: '10px 0',
       border: `1px solid ${theme.palette.border.primary}`,
       borderRadius: '8px',

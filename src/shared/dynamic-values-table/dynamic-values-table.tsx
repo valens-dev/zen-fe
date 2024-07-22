@@ -1,4 +1,4 @@
-import { forwardRef, type ReactNode } from 'react';
+import { forwardRef } from 'react';
 
 import { Box, Typography } from '@mui/material';
 
@@ -8,15 +8,15 @@ import AddIcon from '@/assets/icon/attribute.svg?react';
 
 import { useStyles } from './styles';
 
-interface IAttributeManagerProps {
+interface IDynamicValuesTableProps {
   title: string;
   onAddRow: () => void;
-  children: ReactNode;
+  children: React.ReactNode;
 }
 
-export const AttributeManager = forwardRef<
+export const DynamicValuesTable = forwardRef<
   HTMLDivElement,
-  IAttributeManagerProps
+  IDynamicValuesTableProps
 >(function AttributeManager(
   { title, onAddRow, children },
   ref,
@@ -24,7 +24,7 @@ export const AttributeManager = forwardRef<
   const { classes } = useStyles();
 
   return (
-    <Box className={classes.attributeWrapper} ref={ref}>
+    <Box className={classes.wrapper} ref={ref}>
       <Typography className={classes.title}>{title}</Typography>
       <Box className={classes.attributeContainer}>{children}</Box>
       <Button onClick={onAddRow} className={classes.addButton}>

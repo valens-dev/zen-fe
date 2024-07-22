@@ -1,10 +1,6 @@
 import { MaterialType } from '@/types/material';
 
-interface IMaterialConfig {
-  title: string;
-  path: string;
-  buttonText: string;
-}
+import { type IMaterialConfig } from './types';
 
 export const materialConfig: Record<MaterialType, IMaterialConfig> = {
   [MaterialType.Product]: {
