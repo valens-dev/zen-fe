@@ -15,5 +15,13 @@ export const useStyles = tss.create(({ theme }) => {
         backgroundColor: theme.palette.background.primary,
       },
     },
+    secondary: {
+      border: `1px solid #E2E8F0`,
+      backgroundColor: theme.palette.white.primary,
+      color: theme.palette.text.primary,
+      '&:hover': {
+        backgroundColor: theme.palette.white.secondary,
+      },
+    },
   };
 });
