@@ -27,11 +27,11 @@ export const useStyles = tss.create(({ theme }) => {
     },
     tableFooter: {
       width: '100%',
-      display: 'table',
+      display: 'grid',
     },
     tablePagination: {
       width: '100%',
-      display: 'table',
+      display: 'grid',
       border: 'none',
       padding: '0px',
     },

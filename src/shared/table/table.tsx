@@ -17,7 +17,6 @@ import {
   TableBody,
   TableCell,
   TableHead,
-  TableFooter,
   TableContainer,
   Table as BaseTable,
   type SelectChangeEvent,
@@ -121,12 +120,9 @@ export function Table<T>({ columns, data }: ITableProps<T>): React.ReactNode {
           </TableBody>
         </BaseTable>
       </Box>
-      <TableFooter className={classes.tableFooter}>
-        <TableRow>
-          <TableCell
-            colSpan={columns.length}
-            className={classes.tablePagination}
-          >
+      <Box className={classes.tableFooter}>
+        <Box>
+          <Box className={classes.tablePagination}>
             <Pagination
               pageIndex={pagination.pageIndex}
               pageSize={pagination.pageSize}
@@ -134,9 +130,9 @@ export function Table<T>({ columns, data }: ITableProps<T>): React.ReactNode {
               onPageChange={handlePageChange}
               onPageSizeChange={handlePageSizeChange}
             />
-          </TableCell>
-        </TableRow>
-      </TableFooter>
+          </Box>
+        </Box>
+      </Box>
     </TableContainer>
   );
 }

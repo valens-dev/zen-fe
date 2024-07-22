@@ -53,7 +53,7 @@ export const useStyles = tss.create(({ theme }) => {
       },
       '& .MuiSelect-select': {
         fontWeight: theme.typography.fontWeight.regular,
-        fontSize: '14px',
+        fontSize: '0.875rem',
         color: theme.palette.main.primary,
         padding: '6px 8px',
       },
