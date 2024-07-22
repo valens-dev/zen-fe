@@ -13,10 +13,21 @@ export const useStyles = tss.create(({ theme }) => {
       '& .MuiPaginationItem-root': {
         borderRadius: '6px',
         margin: '4px',
+        border: `1px solid ${theme.palette.border.primary}`,
+        backgroundColor: theme.palette.white.primary,
+        '&:hover': {
+          backgroundColor: theme.palette.light.primary,
+          border: `1px solid ${theme.palette.light.tertiary}`,
+        },
+        fontSize: '0.875rem',
       },
-      '.Mui-selected ': {
+      '& .MuiPaginationItem-page.Mui-selected': {
         color: theme.palette.white.primary,
         backgroundColor: theme.palette.light.tertiary,
+        border: 'none',
+        '&:hover': {
+          backgroundColor: theme.palette.light.quaternary,
+        },
       },
     },
     selectContainer: {
@@ -26,9 +37,26 @@ export const useStyles = tss.create(({ theme }) => {
     },
     select: {
       height: '32px',
+      width: '64px',
       borderRadius: '8px',
-      padding: '6px, 8px, 6px, 8px',
+      border: `1px solid ${theme.palette.border.primary}`,
       color: theme.palette.main.primary,
+      '&:hover': {
+        backgroundColor: theme.palette.light.primary,
+        border: `1px solid ${theme.palette.light.tertiary}`,
+      },
+      '& .MuiOutlinedInput-notchedOutline': {
+        border: 'none',
+      },
+      '& .MuiSelect-icon': {
+        margin: '4px',
+      },
+      '& .MuiSelect-select': {
+        fontWeight: theme.typography.fontWeight.regular,
+        fontSize: '0.875rem',
+        color: theme.palette.main.primary,
+        padding: '6px 8px',
+      },
     },
   };
 });

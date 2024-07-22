@@ -11,12 +11,12 @@ import {
 } from '@tanstack/react-table';
 
 import {
+  Box,
   Paper,
   TableRow,
   TableBody,
   TableCell,
   TableHead,
-  TableFooter,
   TableContainer,
   Table as BaseTable,
   type SelectChangeEvent,
@@ -80,57 +80,59 @@ export function Table<T>({ columns, data }: ITableProps<T>): React.ReactNode {
         value={globalFilter}
         onChange={handleGlobalFilterChange}
       />
-      <BaseTable className={classes.baseTable}>
-        <TableHead>
-          {table.getHeaderGroups().map((headerGroup) => {
-            return (
-              <TableRow key={headerGroup.id} className={classes.headerRow}>
-                {headerGroup.headers.map((header) => {
-                  return (
-                    <TableCell key={header.id} className={classes.headerCell}>
-                      {flexRender(
-                        header.column.columnDef.header,
-                        header.getContext(),
-                      )}
-                    </TableCell>
-                  );
-                })}
-              </TableRow>
-            );
-          })}
-        </TableHead>
-        <TableBody>
-          {table.getRowModel().rows.map((row) => {
-            return (
-              <TableRow key={row.id}>
-                {row.getVisibleCells().map((cell) => {
-                  return (
-                    <TableCell key={cell.id} className={classes.bodyCell}>
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext(),
-                      )}
-                    </TableCell>
-                  );
-                })}
-              </TableRow>
-            );
-          })}
-        </TableBody>
-        <TableFooter>
-          <TableRow>
-            <TableCell colSpan={columns.length}>
-              <Pagination
-                pageIndex={pagination.pageIndex}
-                pageSize={pagination.pageSize}
-                totalRows={table.getFilteredRowModel().rows.length}
-                onPageChange={handlePageChange}
-                onPageSizeChange={handlePageSizeChange}
-              />
-            </TableCell>
-          </TableRow>
-        </TableFooter>
-      </BaseTable>
+      <Box className={classes.tableWrapper}>
+        <BaseTable className={classes.baseTable}>
+          <TableHead>
+            {table.getHeaderGroups().map((headerGroup) => {
+              return (
+                <TableRow key={headerGroup.id} className={classes.headerRow}>
+                  {headerGroup.headers.map((header) => {
+                    return (
+                      <TableCell key={header.id} className={classes.headerCell}>
+                        {flexRender(
+                          header.column.columnDef.header,
+                          header.getContext(),
+                        )}
+                      </TableCell>
+                    );
+                  })}
+                </TableRow>
+              );
+            })}
+          </TableHead>
+          <TableBody>
+            {table.getRowModel().rows.map((row) => {
+              return (
+                <TableRow key={row.id}>
+                  {row.getVisibleCells().map((cell) => {
+                    return (
+                      <TableCell key={cell.id} className={classes.bodyCell}>
+                        {flexRender(
+                          cell.column.columnDef.cell,
+                          cell.getContext(),
+                        )}
+                      </TableCell>
+                    );
+                  })}
+                </TableRow>
+              );
+            })}
+          </TableBody>
+        </BaseTable>
+      </Box>
+      <Box className={classes.tableFooter}>
+        <Box>
+          <Box className={classes.tablePagination}>
+            <Pagination
+              pageIndex={pagination.pageIndex}
+              pageSize={pagination.pageSize}
+              totalRows={table.getFilteredRowModel().rows.length}
+              onPageChange={handlePageChange}
+              onPageSizeChange={handlePageSizeChange}
+            />
+          </Box>
+        </Box>
+      </Box>
     </TableContainer>
   );
 }
