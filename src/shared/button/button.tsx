@@ -3,7 +3,7 @@ import { type ButtonProps, Button as BaseButton } from '@mui/material';
 import { useStyles } from './styles';
 
 interface IButtonProps extends Omit<ButtonProps, 'variant'> {
-  variant?: 'primary';
+  variant?: 'primary' | 'secondary';
 }
 
 export function Button({
