@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import {
   Box,
   Select,
@@ -24,6 +26,7 @@ export function Pagination({
   onPageChange,
   onPageSizeChange,
 }: IPaginationProps): React.ReactNode {
+  const { t } = useTranslation();
   const { classes } = useStyles();
 
   const totalPages = Math.ceil(totalRows / pageSize);
@@ -44,7 +47,11 @@ export function Pagination({
         </Select>
 
         <Typography>
-          {startRow} - {endRow} of {totalRows} results
+          {t('pagination.resultsInfo', {
+            startRow,
+            endRow,
+            totalRows,
+          })}
         </Typography>
       </Box>
 

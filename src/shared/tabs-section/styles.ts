@@ -2,14 +2,6 @@ import { tss } from '@/styles/theme';
 
 export const useStyles = tss.create(({ theme }) => {
   return {
-    title: {
-      paddingTop: '32px',
-      paddingLeft: '32px',
-      fontWeight: theme.typography.fontWeight.semiBold,
-      fontSize: '1.5rem',
-      lineHeight: 2.28,
-      marginBottom: '16px',
-    },
     tabs: {
       marginBottom: '0px',
       paddingLeft: '15px',

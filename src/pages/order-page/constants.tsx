@@ -1,57 +1,64 @@
+import i18n from 'i18n';
+
 import { OrderTable } from '@/components/order/order-table';
 import { columns, orderData } from '@/components/order/order-table/constants';
 
-export const ORDER_TABS: { label: string; component: React.ElementType }[] = [
-  {
-    label: 'Orders',
-    component: () => {
-      return (
-        <OrderTable
-          title="Orders"
-          buttonText="Add Order"
-          data={orderData}
-          columns={columns}
-        />
-      );
+export function getOrderTabs(): {
+  label: string;
+  component: React.ElementType;
+}[] {
+  return [
+    {
+      label: i18n.t('order.orders'),
+      component: () => {
+        return (
+          <OrderTable
+            title={i18n.t('order.orders')}
+            buttonText={i18n.t('order.addOrder')}
+            data={orderData}
+            columns={columns}
+          />
+        );
+      },
     },
-  },
-  {
-    label: 'Production orders',
-    component: () => {
-      return (
-        <OrderTable
-          title="Production orders"
-          buttonText="Add Production Order"
-          columns={columns}
-          data={[]}
-        />
-      );
+    {
+      label: i18n.t('order.productionOrder'),
+      component: () => {
+        return (
+          <OrderTable
+            title={i18n.t('order.productionOrder')}
+            buttonText={i18n.t('order.addProductionOrder')}
+            columns={columns}
+            data={[]}
+          />
+        );
+      },
     },
-  },
-  {
-    label: 'Logistics Orders',
-    component: () => {
-      return (
-        <OrderTable
-          title="Logistics Orders"
-          buttonText="Add Logistics Order"
-          columns={columns}
-          data={[]}
-        />
-      );
+    {
+      label: i18n.t('order.logisticsOrder'),
+      component: () => {
+        return (
+          <OrderTable
+            title={i18n.t('order.logisticsOrder')}
+            buttonText={i18n.t('order.addLogisticsOrder')}
+            columns={columns}
+            data={[]}
+          />
+        );
+      },
     },
-  },
-  {
-    label: 'Shipment',
-    component: () => {
-      return (
-        <OrderTable
-          title="Shipment"
-          buttonText="Add Shipment"
-          columns={columns}
-          data={[]}
-        />
-      );
+    {
+      label: i18n.t('order.shipment'),
+      component: () => {
+        return (
+          <OrderTable
+            title={i18n.t('order.shipment')}
+            buttonText={i18n.t('order.addShipment')}
+            columns={columns}
+            data={[]}
+          />
+        );
+      },
     },
-  },
-];
+  ];
+}

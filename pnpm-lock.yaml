@@ -23,6 +23,9 @@ dependencies:
   axios:
     specifier: ^1.7.2
     version: 1.7.2
+  i18next:
+    specifier: ^23.12.2
+    version: 23.12.2
   react:
     specifier: ^18.3.1
     version: 18.3.1
@@ -32,6 +35,9 @@ dependencies:
   react-hook-form:
     specifier: ^7.52.1
     version: 7.52.1(react@18.3.1)
+  react-i18next:
+    specifier: ^15.0.0
+    version: 15.0.0(i18next@23.12.2)(react-dom@18.3.1)(react@18.3.1)
   react-lazy-load-image-component:
     specifier: ^1.6.2
     version: 1.6.2(react@18.3.1)
@@ -369,6 +375,16 @@ packages:
     resolution:
       {
         integrity: sha512-UwgBRMjJP+xv857DCngvqXI3Iq6J4v0wXmwc6sapg+zyhbwmQX67LUEFrkK5tbyJ30jGuG3ZvWpBiB9LCy1kWw==,
+      }
+    engines: { node: '>=6.9.0' }
+    dependencies:
+      regenerator-runtime: 0.14.1
+    dev: false
+
+  /@babel/runtime@7.24.8:
+    resolution:
+      {
+        integrity: sha512-5F7SDGs1T72ZczbRwbGO9lQi0NLjQxzl6i4lJxLxfW9U5UluCSyEJeniWvnhl3/euNiqQVbo8zruhsDfid0esA==,
       }
     engines: { node: '>=6.9.0' }
     dependencies:
@@ -3882,6 +3898,15 @@ packages:
       }
     dev: true
 
+  /html-parse-stringify@3.0.1:
+    resolution:
+      {
+        integrity: sha512-KknJ50kTInJ7qIScF3jeaFRpMpE8/lfiTdzf/twXyPBLAGrLRTmkz3AdTnKeh40X8k9L2fdYwEp/42WGXIRGcg==,
+      }
+    dependencies:
+      void-elements: 3.1.0
+    dev: false
+
   /human-signals@5.0.0:
     resolution:
       {
@@ -3898,6 +3923,15 @@ packages:
     engines: { node: '>=18' }
     hasBin: true
     dev: true
+
+  /i18next@23.12.2:
+    resolution:
+      {
+        integrity: sha512-XIeh5V+bi8SJSWGL3jqbTEBW5oD6rbP5L+E7dVQh1MNTxxYef0x15rhJVcRb7oiuq4jLtgy2SD8eFlf6P2cmqg==,
+      }
+    dependencies:
+      '@babel/runtime': 7.24.7
+    dev: false
 
   /ignore@5.3.1:
     resolution:
@@ -5110,6 +5144,29 @@ packages:
       react: 18.3.1
     dev: false
 
+  /react-i18next@15.0.0(i18next@23.12.2)(react-dom@18.3.1)(react@18.3.1):
+    resolution:
+      {
+        integrity: sha512-2O3IgF4zivg57Q6p6i+ChDgJ371IDcEWbuWC6gvoh5NbkDMs0Q+O7RPr4v61+Se32E0V+LmtwePAeqWZW0bi6g==,
+      }
+    peerDependencies:
+      i18next: '>= 23.2.3'
+      react: '>= 16.8.0'
+      react-dom: '*'
+      react-native: '*'
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
+      react-native:
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.24.8
+      html-parse-stringify: 3.0.1
+      i18next: 23.12.2
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+    dev: false
+
   /react-is@16.13.1:
     resolution:
       {
@@ -6127,6 +6184,14 @@ packages:
     optionalDependencies:
       fsevents: 2.3.3
     dev: true
+
+  /void-elements@3.1.0:
+    resolution:
+      {
+        integrity: sha512-Dhxzh5HZuiHQhbvTW9AMetFfBHDMYpo23Uo9btPXgdYP+3T5S+p+jgNy7spra+veYhBP2dCSgxR/i2Y02h5/6w==,
+      }
+    engines: { node: '>=0.10.0' }
+    dev: false
 
   /which-boxed-primitive@1.0.2:
     resolution:
