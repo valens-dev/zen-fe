@@ -1,5 +1,3 @@
-// materialConstants.ts
-
 import { MaterialType } from '@/types/material';
 
 interface IMaterialConfig {
