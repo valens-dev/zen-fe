@@ -11,7 +11,7 @@ import { getSidebarItems } from './constants';
 
 import { useStyles } from './styles';
 
-export function SidebarItems(): JSX.Element {
+export function SidebarItems(): React.ReactNode {
   const { classes, cx } = useStyles();
   const navigate = useNavigate();
   const location = useLocation();
