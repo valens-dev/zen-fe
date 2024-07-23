@@ -3,7 +3,7 @@ import { tss } from '@/styles/theme';
 export const useStyles = tss.create(({ theme }) => {
   return {
     selectContainer: {
-      flexGrow: 1,
+      width: '100%',
     },
     attributeSelect: {
       width: '100%',
