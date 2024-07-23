@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { type ColumnDef } from '@tanstack/react-table';
+import { useMaterials } from '@/services/material-api';
+import { type ColumnDef, type PaginationState } from '@tanstack/react-table';
 
 import { Box } from '@mui/material';
 
@@ -9,11 +11,11 @@ import { Button } from '@/shared/button';
 
 import { SectionHeader } from '@/layouts/section-header';
 
-import { type MaterialType } from '@/types/material';
+import { type IProduct, type MaterialType } from '@/types/material';
 
 import AddIcon from '@/assets/icon/add.svg?react';
 
-import { type IProduct } from './types';
+import { transformMaterialsToProducts } from './utils';
 
 import { useStyles } from './styles';
 
@@ -22,21 +24,44 @@ interface IMaterialTableProps {
   buttonText: string;
   materialType: MaterialType;
   columns: ColumnDef<IProduct, string>[];
-  data: IProduct[];
 }
 
 export function MaterialTable({
   title,
   buttonText,
   materialType,
-  data,
   columns,
 }: IMaterialTableProps): React.ReactNode {
   const { classes } = useStyles();
   const navigate = useNavigate();
+  const [page, setPage] = useState<number>(0);
+  const [pageSize, setPageSize] = useState<number>(10);
+  const [globalFilter, setGlobalFilter] = useState<string>('');
+
+  const { data } = useMaterials({
+    page: page + 1,
+    limit: pageSize,
+    type: materialType,
+    name: globalFilter,
+  });
 
   function handleOpenAddPage(): void {
     navigate('/material/add-material', { state: { materialType } });
+  }
+
+  const transformedData = data ? transformMaterialsToProducts(data) : [];
+
+  function handlePaginationChange(
+    updater: PaginationState | ((old: PaginationState) => PaginationState),
+  ): void {
+    if (typeof updater === 'function') {
+      const newState = updater({ pageIndex: page, pageSize });
+      setPage(newState.pageIndex);
+      setPageSize(newState.pageSize);
+    } else {
+      setPage(updater.pageIndex);
+      setPageSize(updater.pageSize);
+    }
   }
 
   return (
@@ -49,7 +74,17 @@ export function MaterialTable({
           </Button>
         }
       />
-      <Table columns={columns} data={data} />
+      <Table
+        columns={columns}
+        data={transformedData}
+        pagination={{
+          pageIndex: page,
+          pageSize,
+          setPagination: handlePaginationChange,
+          globalFilter,
+          setGlobalFilter,
+        }}
+      />
     </Box>
   );
 }

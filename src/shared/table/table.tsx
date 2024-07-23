@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import {
   flexRender,
   useReactTable,
@@ -30,21 +28,30 @@ import { useStyles } from './styles';
 interface ITableProps<T> {
   columns: ColumnDef<T, string>[];
   data: T[];
+  pagination: {
+    pageIndex: number;
+    pageSize: number;
+    setPagination: (
+      pagination: PaginationState | ((old: PaginationState) => PaginationState),
+    ) => void;
+    globalFilter: string;
+    setGlobalFilter: (filter: string) => void;
+  };
 }
 
-export function Table<T>({ columns, data }: ITableProps<T>): React.ReactNode {
+export function Table<T>({
+  columns,
+  data,
+  pagination,
+}: ITableProps<T>): React.ReactNode {
   const { classes } = useStyles();
 
-  const [pagination, setPagination] = useState<PaginationState>({
-    pageIndex: 0,
-    pageSize: 10,
-  });
-
-  const [globalFilter, setGlobalFilter] = useState<string>('');
+  const { pageIndex, pageSize, setPagination, globalFilter, setGlobalFilter } =
+    pagination;
 
   const table = useReactTable({
     state: {
-      pagination,
+      pagination: { pageIndex, pageSize },
       globalFilter,
     },
     data,
@@ -60,11 +67,11 @@ export function Table<T>({ columns, data }: ITableProps<T>): React.ReactNode {
     _event: React.ChangeEvent<unknown>,
     page: number,
   ): void {
-    table.setPageIndex(page - 1);
+    setPagination({ pageIndex: page - 1, pageSize });
   }
 
   function handlePageSizeChange(event: SelectChangeEvent<number>): void {
-    table.setPageSize(Number(event.target.value));
+    setPagination({ pageIndex, pageSize: Number(event.target.value) });
   }
 
   function handleGlobalFilterChange(
@@ -124,8 +131,8 @@ export function Table<T>({ columns, data }: ITableProps<T>): React.ReactNode {
         <Box>
           <Box className={classes.tablePagination}>
             <Pagination
-              pageIndex={pagination.pageIndex}
-              pageSize={pagination.pageSize}
+              pageIndex={pageIndex}
+              pageSize={pageSize}
               totalRows={table.getFilteredRowModel().rows.length}
               onPageChange={handlePageChange}
               onPageSizeChange={handlePageSizeChange}
