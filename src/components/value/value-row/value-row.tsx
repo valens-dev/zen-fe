@@ -115,6 +115,13 @@ export function ValueRow({
         value={localValue.unit}
         onChange={handleUnitChange}
         className={classes.select}
+        displayEmpty
+        renderValue={(selected) => {
+          if (!selected) {
+            return 'Select';
+          }
+          return selected;
+        }}
       >
         {unitOptions.map((unit) => {
           return (
@@ -128,6 +135,8 @@ export function ValueRow({
         placeholder="Tolerance Min"
         name="toleranceMin"
         type="number"
+        min={0}
+        max={999_999}
         value={localValue.toleranceMin}
         onChange={handleToleranceMinChange}
       />
@@ -135,6 +144,8 @@ export function ValueRow({
         placeholder="Tolerance Max"
         name="toleranceMax"
         type="number"
+        min={0}
+        max={999_999}
         value={localValue.toleranceMax}
         onChange={handleToleranceMaxChange}
       />

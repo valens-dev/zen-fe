@@ -14,9 +14,11 @@ interface IInputProps
   extends Omit<TextFieldProps, 'InputProps' | 'InputLabelProps'> {
   name: string;
   label?: string;
-  type?: string;
   adornment?: string;
   variant?: 'outlined' | 'filled' | 'standard';
+  type?: 'text' | 'number';
+  min?: number;
+  max?: number;
 }
 
 export const Input = forwardRef<HTMLElement, IInputProps>(function Input(
@@ -26,6 +28,8 @@ export const Input = forwardRef<HTMLElement, IInputProps>(function Input(
     type = 'text',
     adornment,
     variant = 'outlined',
+    min,
+    max,
     value,
     onChange,
     ...props
@@ -33,6 +37,24 @@ export const Input = forwardRef<HTMLElement, IInputProps>(function Input(
   ref: React.Ref<HTMLElement>,
 ): React.ReactNode {
   const { classes } = useStyles();
+
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>): void {
+    const inputValue = event.target.value;
+
+    if (type === 'number') {
+      const numericValue = Number(inputValue);
+
+      if (
+        !Number.isNaN(numericValue) &&
+        ((min !== undefined && numericValue < min) ||
+          (max !== undefined && numericValue > max))
+      ) {
+        return;
+      }
+    }
+
+    onChange?.(event);
+  }
 
   return (
     <Box className={classes.inputContainer}>
@@ -45,7 +67,7 @@ export const Input = forwardRef<HTMLElement, IInputProps>(function Input(
         type={type}
         variant={variant}
         value={value}
-        onChange={onChange}
+        onChange={handleChange}
         fullWidth
         InputProps={{
           endAdornment: adornment ? (
@@ -58,6 +80,7 @@ export const Input = forwardRef<HTMLElement, IInputProps>(function Input(
         }}
         {...props}
         inputRef={ref}
+        inputProps={type === 'number' ? { min, max } : {}}
       />
     </Box>
   );
