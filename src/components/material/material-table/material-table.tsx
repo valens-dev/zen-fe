@@ -1,6 +1,8 @@
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { type ColumnDef } from '@tanstack/react-table';
+import { useMaterialContext } from '@/services/context/material-context';
 
 import { Box } from '@mui/material';
 
@@ -8,8 +10,6 @@ import { Table } from '@/shared/table';
 import { Button } from '@/shared/button';
 
 import { SectionHeader } from '@/layouts/section-header';
-
-import { type MaterialType } from '@/types/material';
 
 import AddIcon from '@/assets/icon/add.svg?react';
 
@@ -20,20 +20,24 @@ import { useStyles } from './styles';
 interface IMaterialTableProps {
   title: string;
   buttonText: string;
-  materialType: MaterialType;
+  materialType: 'product' | 'ManufacturingPart' | 'PurchasingPart';
   columns: ColumnDef<IProduct, string>[];
-  data: IProduct[];
 }
 
 export function MaterialTable({
   title,
   buttonText,
   materialType,
-  data,
   columns,
-}: IMaterialTableProps): React.ReactNode {
+}: IMaterialTableProps): JSX.Element {
   const { classes } = useStyles();
   const navigate = useNavigate();
+  const { materials, fetchMaterials } = useMaterialContext();
+
+  useEffect((): void => {
+    fetchMaterials({ type: materialType });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [materialType]);
 
   function handleOpenAddPage(): void {
     navigate('/material/add-material', { state: { materialType } });
@@ -49,7 +53,11 @@ export function MaterialTable({
           </Button>
         }
       />
-      <Table columns={columns} data={data} />
+      <Table
+        columns={columns}
+        data={materials as unknown as IProduct[]}
+        fetchData={fetchMaterials}
+      />
     </Box>
   );
 }

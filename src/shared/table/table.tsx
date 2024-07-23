@@ -27,12 +27,17 @@ import { SearchBar } from './search/search';
 
 import { useStyles } from './styles';
 
-interface ITableProps<T> {
+interface ITableProps<T, P> {
   columns: ColumnDef<T, string>[];
   data: T[];
+  fetchData?: (params: P) => void;
 }
 
-export function Table<T>({ columns, data }: ITableProps<T>): React.ReactNode {
+export function Table<T, P>({
+  columns,
+  data,
+  fetchData,
+}: ITableProps<T, P>): React.ReactNode {
   const { classes } = useStyles();
 
   const [pagination, setPagination] = useState<PaginationState>({
@@ -61,16 +66,27 @@ export function Table<T>({ columns, data }: ITableProps<T>): React.ReactNode {
     page: number,
   ): void {
     table.setPageIndex(page - 1);
+    fetchData?.({
+      page,
+    } as P);
   }
 
   function handlePageSizeChange(event: SelectChangeEvent<number>): void {
-    table.setPageSize(Number(event.target.value));
+    const pageSize = Number(event.target.value);
+    table.setPageSize(pageSize);
+    fetchData?.({
+      limit: pageSize,
+    } as P);
   }
 
   function handleGlobalFilterChange(
     event: React.ChangeEvent<HTMLInputElement>,
   ): void {
-    setGlobalFilter(event.target.value);
+    const filter = event.target.value;
+    setGlobalFilter(filter);
+    fetchData?.({
+      valueName: filter,
+    } as P);
   }
 
   return (

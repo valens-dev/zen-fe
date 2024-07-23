@@ -6,7 +6,7 @@ export interface IProduct {
   material: string;
   materialType: MaterialType;
   name: string;
-  price: string;
+  netPrice: string;
   stock: string;
   weight: string;
 }

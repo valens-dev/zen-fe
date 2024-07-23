@@ -1,5 +1,7 @@
 import axios, { type AxiosInstance } from 'axios';
 
+import { API_BASE_URL } from './constants';
+
 export const api: AxiosInstance = axios.create({
-  baseURL: 'https://zen-admin.valens.dev/api',
+  baseURL: API_BASE_URL,
 });
