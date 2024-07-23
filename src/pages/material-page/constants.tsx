@@ -10,6 +10,44 @@ import {
 
 import { MaterialType } from '@/types/material';
 
+const sortByOptions = [
+  {
+    title: 'Name',
+    values: [
+      { label: 'A - Z', value: 'asc' },
+      { label: 'Z - A', value: 'desc' },
+    ],
+  },
+  {
+    title: 'Weight',
+    values: [
+      { label: 'Lowest first', value: 'asc' },
+      { label: 'Highest first', value: 'desc' },
+    ],
+  },
+  {
+    title: 'Neto Price',
+    values: [
+      { label: 'Lowest first', value: 'asc' },
+      { label: 'Highest first', value: 'desc' },
+    ],
+  },
+  {
+    title: 'Height',
+    values: [
+      { label: 'Lowest first', value: 'asc' },
+      { label: 'Highest first', value: 'desc' },
+    ],
+  },
+  {
+    title: 'Material',
+    values: [
+      { label: 'A - Z', value: 'asc' },
+      { label: 'Z - A', value: 'desc' },
+    ],
+  },
+];
+
 export function getMaterialTabs(): {
   label: string;
   component: React.ElementType;
@@ -25,6 +63,7 @@ export function getMaterialTabs(): {
             columns={getMaterialColumns()}
             data={productData}
             materialType={MaterialType.Product}
+            sortByOptions={sortByOptions}
           />
         );
       },
@@ -39,6 +78,7 @@ export function getMaterialTabs(): {
             columns={getMaterialColumns()}
             data={manufactoringData}
             materialType={MaterialType.ManufacturingPart}
+            sortByOptions={sortByOptions}
           />
         );
       },
@@ -53,6 +93,7 @@ export function getMaterialTabs(): {
             columns={getMaterialColumns()}
             data={purchasingData}
             materialType={MaterialType.PurchasingPart}
+            sortByOptions={sortByOptions}
           />
         );
       },

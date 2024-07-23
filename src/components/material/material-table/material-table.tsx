@@ -6,6 +6,7 @@ import { Box } from '@mui/material';
 
 import { Table } from '@/shared/table';
 import { Button } from '@/shared/button';
+import { type ISortByOption } from '@/shared/table/sort/types';
 
 import { SectionHeader } from '@/layouts/section-header';
 
@@ -23,6 +24,7 @@ interface IMaterialTableProps {
   materialType: MaterialType;
   columns: ColumnDef<IProduct, string>[];
   data: IProduct[];
+  sortByOptions?: ISortByOption[];
 }
 
 export function MaterialTable({
@@ -31,6 +33,7 @@ export function MaterialTable({
   materialType,
   data,
   columns,
+  sortByOptions,
 }: IMaterialTableProps): React.ReactNode {
   const { classes } = useStyles();
   const navigate = useNavigate();
@@ -49,7 +52,9 @@ export function MaterialTable({
           </Button>
         }
       />
-      <Table columns={columns} data={data} />
+      {sortByOptions ? (
+        <Table columns={columns} data={data} sortByOptions={sortByOptions} />
+      ) : undefined}
     </Box>
   );
 }

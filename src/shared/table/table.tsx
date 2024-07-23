@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import {
   flexRender,
@@ -11,6 +11,7 @@ import {
 } from '@tanstack/react-table';
 
 import {
+  Box,
   Paper,
   TableRow,
   TableBody,
@@ -22,32 +23,55 @@ import {
   type SelectChangeEvent,
 } from '@mui/material';
 
+import { SortBy } from './sort/sort';
 import { Pagination } from './pagination';
 import { SearchBar } from './search/search';
+import { type ISortByOption } from './sort/types';
 
 import { useStyles } from './styles';
 
 interface ITableProps<T> {
   columns: ColumnDef<T, string>[];
   data: T[];
+  sortByOptions?: ISortByOption[];
 }
 
-export function Table<T>({ columns, data }: ITableProps<T>): React.ReactNode {
+export function Table<T>({
+  columns,
+  data,
+  sortByOptions,
+}: ITableProps<T>): React.ReactNode {
   const { classes } = useStyles();
-
   const [pagination, setPagination] = useState<PaginationState>({
     pageIndex: 0,
     pageSize: 10,
   });
-
   const [globalFilter, setGlobalFilter] = useState<string>('');
+  const [selectedSorts, setSelectedSorts] = useState<string[]>([]);
+
+  const sortedData = useMemo(() => {
+    if (selectedSorts.length === 0) {
+      return data;
+    }
+    const sorted = [...data];
+    for (const sort of selectedSorts) {
+      const [key, order] = sort.split('-') as [keyof T, string];
+      sorted.sort((a, b) => {
+        if (order === 'asc') {
+          return a[key] > b[key] ? 1 : -1;
+        }
+        return a[key] < b[key] ? 1 : -1;
+      });
+    }
+    return sorted;
+  }, [data, selectedSorts]);
 
   const table = useReactTable({
     state: {
       pagination,
       globalFilter,
     },
-    data,
+    data: sortedData,
     columns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
@@ -73,13 +97,26 @@ export function Table<T>({ columns, data }: ITableProps<T>): React.ReactNode {
     setGlobalFilter(event.target.value);
   }
 
+  function handleSortChange(values: string[]): void {
+    setSelectedSorts(values);
+  }
+
   return (
     <TableContainer component={Paper} className={classes.tableContainer}>
-      <SearchBar
-        label="Search"
-        value={globalFilter}
-        onChange={handleGlobalFilterChange}
-      />
+      <Box display="flex" justifyContent="space-between" alignItems="center">
+        {sortByOptions ? (
+          <SortBy
+            options={sortByOptions}
+            selectedSorts={selectedSorts}
+            onSortChange={handleSortChange}
+          />
+        ) : undefined}
+        <SearchBar
+          label="Search"
+          value={globalFilter}
+          onChange={handleGlobalFilterChange}
+        />
+      </Box>
       <BaseTable className={classes.baseTable}>
         <TableHead>
           {table.getHeaderGroups().map((headerGroup) => {

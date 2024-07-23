@@ -4,7 +4,7 @@ export const useStyles = tss.create(({ theme }) => {
   return {
     searchBar: {
       width: '100%',
-      marginBottom: '16px',
+      margin: '0 0 16px 6px',
       '& .MuiInputBase-root': {
         height: '40px',
         borderRadius: '12px',
