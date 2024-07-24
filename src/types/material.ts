@@ -9,9 +9,9 @@ interface IAttribute {
   option: string;
 }
 
-interface IValue {
+export interface IValue {
   name: string;
-  value: number;
+  value: string;
   unit: string;
   toleranceMin: number;
   toleranceMax: number;

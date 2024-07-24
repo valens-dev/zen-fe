@@ -23,6 +23,7 @@ import { MaterialType } from '@/types/material';
 
 import { type IFormData } from './types';
 import { initialValues } from './constants';
+import { checkLastRowFilled } from './utils';
 
 import { useStyles } from './styles';
 
@@ -38,7 +39,7 @@ const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
       defaultValues: initialValues,
     });
 
-    const [modalOpen, setModalOpen] = useState(false);
+    const [modalOpen, setModalOpen] = useState<boolean>(false);
 
     return (
       <FormProvider {...methods}>
@@ -138,10 +139,12 @@ const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
                       title="Attributes"
                       buttonText="Add row"
                       onAddRow={() => {
-                        return field.onChange([
-                          ...field.value,
-                          { name: '', option: '' },
-                        ]);
+                        if (checkLastRowFilled(field.value)) {
+                          return field.onChange([
+                            ...field.value,
+                            { name: '', option: '' },
+                          ]);
+                        }
                       }}
                     >
                       {field.value.map(
@@ -181,16 +184,18 @@ const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
                       title="Values"
                       buttonText="Add row"
                       onAddRow={() => {
-                        return field.onChange([
-                          ...field.value,
-                          {
-                            name: '',
-                            value: '',
-                            unit: '',
-                            toleranceMin: 0,
-                            toleranceMax: 0,
-                          },
-                        ]);
+                        if (checkLastRowFilled(field.value)) {
+                          return field.onChange([
+                            ...field.value,
+                            {
+                              name: '',
+                              value: '',
+                              unit: '',
+                              toleranceMin: 0,
+                              toleranceMax: 0,
+                            },
+                          ]);
+                        }
                       }}
                     >
                       {field.value.map((value, index) => {
