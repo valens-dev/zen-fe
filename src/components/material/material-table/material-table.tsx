@@ -1,8 +1,8 @@
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { useMaterials } from '@/services/material-api';
-import { type ColumnDef, type PaginationState } from '@tanstack/react-table';
+import { type ColumnDef } from '@tanstack/react-table';
+import { usePaginationAndFilter } from '@/hooks/use-pagination-and-filter';
 
 import { Box } from '@mui/material';
 
@@ -34,9 +34,14 @@ export function MaterialTable({
 }: IMaterialTableProps): React.ReactNode {
   const { classes } = useStyles();
   const navigate = useNavigate();
-  const [page, setPage] = useState<number>(0);
-  const [pageSize, setPageSize] = useState<number>(10);
-  const [globalFilter, setGlobalFilter] = useState<string>('');
+
+  const {
+    page,
+    pageSize,
+    globalFilter,
+    setGlobalFilter,
+    handlePaginationChange,
+  } = usePaginationAndFilter();
 
   const { data } = useMaterials({
     page: page + 1,
@@ -50,19 +55,6 @@ export function MaterialTable({
   }
 
   const transformedData = data ? transformMaterialsToProducts(data) : [];
-
-  function handlePaginationChange(
-    updater: PaginationState | ((old: PaginationState) => PaginationState),
-  ): void {
-    if (typeof updater === 'function') {
-      const newState = updater({ pageIndex: page, pageSize });
-      setPage(newState.pageIndex);
-      setPageSize(newState.pageSize);
-    } else {
-      setPage(updater.pageIndex);
-      setPageSize(updater.pageSize);
-    }
-  }
 
   return (
     <Box className={classes.wrapper}>
