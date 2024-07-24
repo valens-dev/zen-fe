@@ -15,7 +15,7 @@ export const useStyles = tss.create(({ theme }) => {
     },
     textField: {
       height: '40px',
-      border: '1px solid #E2E8F0',
+      border: `1px solid ${theme.palette.border.primary}`,
       borderRadius: '12px',
     },
   };

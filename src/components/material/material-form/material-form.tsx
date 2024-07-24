@@ -74,7 +74,14 @@ const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
                 control={methods.control}
                 render={({ field }) => {
                   return (
-                    <Input {...field} label="Enter neto price" adornment="€" />
+                    <Input
+                      {...field}
+                      type="number"
+                      min={0}
+                      max={999_999_999}
+                      label="Enter net price"
+                      adornment="€"
+                    />
                   );
                 }}
               />
@@ -82,7 +89,16 @@ const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
                 name="mwSt"
                 control={methods.control}
                 render={({ field }) => {
-                  return <Input {...field} label="Enter MwSt." adornment="%" />;
+                  return (
+                    <Input
+                      {...field}
+                      type="number"
+                      min={0}
+                      max={999_999_999}
+                      label="Enter VAT"
+                      adornment="%"
+                    />
+                  );
                 }}
               />
             </Box>
@@ -92,7 +108,14 @@ const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
                 control={methods.control}
                 render={({ field }) => {
                   return (
-                    <Input {...field} label="Enter weight" adornment="kg" />
+                    <Input
+                      {...field}
+                      type="number"
+                      min={0}
+                      max={999_999_999}
+                      label="Enter weight"
+                      adornment="kg"
+                    />
                   );
                 }}
               />
@@ -109,7 +132,9 @@ const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
                 name="comment"
                 control={methods.control}
                 render={({ field }) => {
-                  return <Input {...field} label="Enter comment" />;
+                  return (
+                    <Input {...field} label="Enter material description" />
+                  );
                 }}
               />
             </Box>

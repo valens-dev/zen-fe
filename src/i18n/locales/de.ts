@@ -44,6 +44,17 @@ export const de = {
   },
   station: {
     title: 'Station',
+    overview: 'Übersicht',
+    sequence: 'Reihenfolge',
+    stationLogin: 'Stationsanmeldung',
+    addProductionStation: 'Produktionsstation hinzufügen',
+    stationCard: {
+      title: 'Wareneingang',
+      checkIn: 'Einchecken',
+      workList: 'Arbeitsliste',
+      cycleTime: 'Zykluszeit',
+      edited: 'Bearbeitet',
+    },
   },
   home: {
     title: 'Startseite',

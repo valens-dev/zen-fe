@@ -9,7 +9,7 @@ export const initialValues: IFormData = {
   customsTariff: '',
   comment: '',
   packaging: false,
-  attributes: [{ name: '', option: '' }],
-  values: [{ name: '', value: '', unit: '', toleranceMin: 0, toleranceMax: 0 }],
+  attributes: [],
+  values: [],
   parts: [],
 };

@@ -1,5 +1,3 @@
-import { type ReactNode } from 'react';
-
 import { Box, Link, Breadcrumbs } from '@mui/material';
 
 import RightIcon from '@/assets/icon/arrow-right.svg?react';
@@ -8,7 +6,7 @@ import { useStyles } from './styles';
 
 interface IFormHeaderProps {
   path: string;
-  actions: ReactNode;
+  actions: React.ReactNode;
 }
 
 export function FormHeader({

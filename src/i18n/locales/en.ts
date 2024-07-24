@@ -44,6 +44,17 @@ export const en = {
   },
   station: {
     title: 'Station',
+    overview: 'Overview',
+    sequence: 'Sequence',
+    stationLogin: 'Station Login',
+    addProductionStation: 'Add Production Station',
+    stationCard: {
+      title: 'Incoming goods',
+      checkIn: 'Check-in',
+      workList: 'Worklist',
+      cycleTime: 'Cycle time',
+      edited: 'Edited',
+    },
   },
   home: {
     title: 'Home',

@@ -13,7 +13,7 @@ export const useStyles = tss.create(({ theme }) => {
       fontWeight: theme.typography.fontWeight.semiBold,
       fontSize: '1.5rem',
       lineHeight: 1.42,
-      color: theme.palette.text.secondary,
+      color: theme.palette.text.primary,
     },
   };
 });

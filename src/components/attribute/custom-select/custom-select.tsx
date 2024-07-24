@@ -3,13 +3,14 @@ import { useState, type SetStateAction } from 'react';
 import {
   Box,
   List,
-  Input,
   Button,
   Popover,
   ListItem,
   Checkbox,
   ListItemText,
 } from '@mui/material';
+
+import { Input } from '@/shared/input';
 
 import AddIcon from '@/assets/icon/attribute.svg?react';
 
