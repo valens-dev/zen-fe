@@ -17,4 +17,11 @@ export interface IFormData {
     toleranceMin: number;
     toleranceMax: number;
   }[];
+  parts: {
+    units: number;
+    unitType: string;
+    name: string;
+    imageUrl: string;
+    duration: number;
+  }[];
 }
