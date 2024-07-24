@@ -118,7 +118,7 @@ export function ValueRow({
         displayEmpty
         renderValue={(selected) => {
           if (!selected) {
-            return 'Select';
+            return 'Unit';
           }
           return selected;
         }}
