@@ -1,6 +1,6 @@
 import { tss } from '@/styles/theme';
 
-export const useStyles = tss.create(() => {
+export const useStyles = tss.create(({ theme }) => {
   return {
     wrapper: {
       width: '100%',
@@ -20,7 +20,7 @@ export const useStyles = tss.create(() => {
       fontSize: '14px',
       lineHeight: '20px',
       textDecoration: 'none',
-      color: '#475569',
+      color: theme.palette.main.primary,
       '&:not(:last-child)': {
         marginRight: '8px',
       },

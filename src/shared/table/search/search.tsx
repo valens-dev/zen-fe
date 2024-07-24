@@ -1,37 +1,27 @@
-import { type ChangeEvent } from 'react';
-
-import { TextField, IconButton, InputAdornment } from '@mui/material';
+import { TextField, InputAdornment } from '@mui/material';
 
 import SearchIcon from '@/assets/icon/search.svg?react';
 
 import { useStyles } from './styles';
 
-interface ISearchBarProps {
-  label: string;
+interface ISearchProps {
   value: string;
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export function SearchBar({
-  label,
-  value,
-  onChange,
-}: ISearchBarProps): React.ReactNode {
+export function Search({ value, onChange }: ISearchProps): React.ReactNode {
   const { classes } = useStyles();
 
   return (
     <TextField
-      className={classes.searchBar}
-      placeholder={label}
+      placeholder="Search"
       value={value}
-      variant="outlined"
       onChange={onChange}
+      className={classes.search}
       InputProps={{
         startAdornment: (
           <InputAdornment position="start">
-            <IconButton>
-              <SearchIcon />
-            </IconButton>
+            <SearchIcon />
           </InputAdornment>
         ),
       }}

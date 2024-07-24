@@ -16,7 +16,7 @@ export const useStyles = tss.create(({ theme }) => {
       },
     },
     secondary: {
-      border: `1px solid #E2E8F0`,
+      border: `1px solid ${theme.palette.border.primary}`,
       backgroundColor: theme.palette.white.primary,
       color: theme.palette.text.primary,
       '&:hover': {

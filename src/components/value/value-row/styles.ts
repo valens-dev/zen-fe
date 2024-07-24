@@ -21,13 +21,16 @@ export const useStyles = tss.create(({ theme }) => {
     },
     input: {
       margin: '8px',
-      width: '150px',
+      width: '100%',
       height: '32px',
     },
     select: {
+      color: theme.palette.main.primary,
       margin: '8px',
-      width: '150px',
-      height: '32px',
+      width: '100%',
+      height: '40px',
+      border: `1px solid ${theme.palette.border.primary}`,
+      borderRadius: '12px',
     },
   };
 });
