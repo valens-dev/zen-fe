@@ -1,7 +1,5 @@
 import { useNavigate } from 'react-router-dom';
 
-import { StationCard } from '@/common/station-card';
-
 import { Box } from '@mui/material';
 
 import { Button } from '@/shared/button';
@@ -9,6 +7,8 @@ import { Button } from '@/shared/button';
 import { SectionHeader } from '@/layouts/section-header';
 
 import AddIcon from '@/assets/icon/add.svg?react';
+
+import { StationCard } from './station-card';
 
 import { type IStation } from './types';
 
