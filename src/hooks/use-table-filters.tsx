@@ -1,6 +1,5 @@
-import { useState, type Dispatch, type SetStateAction } from 'react';
-
 import { type PaginationState } from '@tanstack/react-table';
+import { useState, type Dispatch, type SetStateAction } from 'react';
 
 interface IUseTableFilters {
   globalFilter: string;

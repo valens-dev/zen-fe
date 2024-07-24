@@ -1,8 +1,7 @@
 import { useNavigate } from 'react-router-dom';
+import { type ColumnDef } from '@tanstack/react-table';
 
 import { useMaterial } from '@/services/material';
-import { type ColumnDef } from '@tanstack/react-table';
-import { useTableFilters } from '@/hooks/use-table-filters';
 
 import { Box } from '@mui/material';
 
@@ -10,6 +9,8 @@ import { Table } from '@/shared/table';
 import { Button } from '@/shared/button';
 
 import { SectionHeader } from '@/layouts/section-header';
+
+import { useTableFilters } from '@/hooks/use-table-filters';
 
 import { type MaterialType } from '@/types/material';
 

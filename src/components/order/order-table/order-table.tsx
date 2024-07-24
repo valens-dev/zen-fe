@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom';
-
 import { type ColumnDef } from '@tanstack/react-table';
 
 import { Box } from '@mui/material';

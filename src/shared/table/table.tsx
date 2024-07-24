@@ -1,5 +1,4 @@
 import { type Dispatch, type SetStateAction } from 'react';
-
 import {
   flexRender,
   useReactTable,
