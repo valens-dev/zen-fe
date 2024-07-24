@@ -19,6 +19,8 @@ import { type IAttribute } from '@/components/attribute/constants';
 import { type IComponent } from '@/components/parts-list/constants';
 import { AttributeRow } from '@/components/attribute/attribute-row/attribute-row';
 
+import { MaterialType } from '@/types/material';
+
 import { type IFormData } from './types';
 import { initialValues } from './constants';
 
@@ -26,10 +28,11 @@ import { useStyles } from './styles';
 
 interface IMaterialFormProps {
   onSubmit: (data: IFormData) => void;
+  materialType: MaterialType;
 }
 
 const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
-  ({ onSubmit }, ref) => {
+  ({ onSubmit, materialType }, ref) => {
     const { classes } = useStyles();
     const methods = useForm<IFormData>({
       defaultValues: initialValues,
@@ -214,38 +217,40 @@ const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
               />
             </Box>
             <Divider />
-            <Box className={classes.inputRow}>
-              <Controller
-                name="parts"
-                control={methods.control}
-                render={({ field }) => {
-                  return (
-                    <DynamicValuesTable
-                      {...field}
-                      title="Components"
-                      buttonText="Add component"
-                      onAddRow={() => {
-                        return setModalOpen(true);
-                      }}
-                    >
-                      <PartsList
-                        data={field.value}
-                        onDeleteRow={(index) => {
-                          const newValues = [...field.value];
-                          newValues.splice(index, 1);
-                          field.onChange(newValues);
+            {materialType !== MaterialType.PurchasingPart && (
+              <Box className={classes.inputRow}>
+                <Controller
+                  name="parts"
+                  control={methods.control}
+                  render={({ field }) => {
+                    return (
+                      <DynamicValuesTable
+                        {...field}
+                        title="Components"
+                        buttonText="Add component"
+                        onAddRow={() => {
+                          return setModalOpen(true);
                         }}
-                        onChangeRow={(index, updatedValue) => {
-                          const newValues = [...field.value];
-                          newValues[index] = updatedValue;
-                          field.onChange(newValues);
-                        }}
-                      />
-                    </DynamicValuesTable>
-                  );
-                }}
-              />
-            </Box>
+                      >
+                        <PartsList
+                          data={field.value}
+                          onDeleteRow={(index) => {
+                            const newValues = [...field.value];
+                            newValues.splice(index, 1);
+                            field.onChange(newValues);
+                          }}
+                          onChangeRow={(index, updatedValue) => {
+                            const newValues = [...field.value];
+                            newValues[index] = updatedValue;
+                            field.onChange(newValues);
+                          }}
+                        />
+                      </DynamicValuesTable>
+                    );
+                  }}
+                />
+              </Box>
+            )}
             <Divider />
             <AddComponentModal
               open={modalOpen}

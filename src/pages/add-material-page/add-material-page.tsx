@@ -74,7 +74,11 @@ export default function AddMaterialPage(): React.ReactNode {
           </Box>
         }
       />
-      <MaterialForm onSubmit={handleSubmit} ref={formRef} />
+      <MaterialForm
+        onSubmit={handleSubmit}
+        ref={formRef}
+        materialType={materialType}
+      />
     </Box>
   );
 }
