@@ -61,28 +61,26 @@ export function Pagination({
         </Typography>
       </Box>
 
-      <Box>
-        <BasePagination
-          size="medium"
-          shape="rounded"
-          variant="outlined"
-          count={totalPages}
-          page={pageIndex + 1}
-          onChange={onPageChange}
-          className={classes.pagination}
-          renderItem={(item) => {
-            return (
-              <PaginationItem
-                slots={{
-                  previous: PaginationLeftIcon,
-                  next: PaginationRightIcon,
-                }}
-                {...item}
-              />
-            );
-          }}
-        />
-      </Box>
+      <BasePagination
+        size="medium"
+        shape="rounded"
+        variant="outlined"
+        className={classes.pagination}
+        count={totalPages}
+        page={pageIndex + 1}
+        onChange={onPageChange}
+        renderItem={(item) => {
+          return (
+            <PaginationItem
+              slots={{
+                previous: PaginationLeftIcon,
+                next: PaginationRightIcon,
+              }}
+              {...item}
+            />
+          );
+        }}
+      />
     </Box>
   );
 }

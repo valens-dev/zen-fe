@@ -3,43 +3,25 @@ import { tss } from '@/styles/theme';
 export const useStyles = tss.create(({ theme }) => {
   return {
     tableContainer: {
-      width: '100%',
-      padding: '16px',
-      border: `1px solid ${theme.palette.border.primary}`,
-      borderRadius: '16px',
       background: theme.palette.white.primary,
-    },
-    tableWrapper: {
-      width: '100%',
+      padding: '16px',
       border: `1px solid ${theme.palette.border.primary}`,
       borderRadius: '16px',
     },
+
     baseTable: {
-      width: '100%',
-      padding: '16px',
+      border: `1px solid ${theme.palette.border.primary}`,
       borderRadius: '16px',
+      borderCollapse: 'separate',
       overflow: 'hidden',
+
+      '& tr:last-of-type td': {
+        borderBottom: 'none',
+      },
     },
-    headerRow: {
-      height: '40px',
+
+    tableHead: {
       backgroundColor: theme.palette.light.secondary,
-      borderRadius: '0',
-    },
-    tableFooter: {
-      width: '100%',
-      display: 'grid',
-    },
-    tablePagination: {
-      width: '100%',
-      display: 'grid',
-      border: 'none',
-      padding: '0px',
-    },
-    headerCell: {
-      color: theme.palette.main.primary,
-    },
-    bodyCell: {
-      color: theme.palette.text.primary,
     },
   };
 });

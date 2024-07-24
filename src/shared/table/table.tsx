@@ -12,7 +12,6 @@ import {
 
 import {
   Box,
-  Paper,
   TableRow,
   TableBody,
   TableCell,
@@ -22,8 +21,8 @@ import {
   type SelectChangeEvent,
 } from '@mui/material';
 
+import { Search } from './search';
 import { Pagination } from './pagination';
-import { SearchBar } from './search/search';
 
 import { useStyles } from './styles';
 
@@ -56,6 +55,12 @@ export function Table<T>({ columns, data }: ITableProps<T>): React.ReactNode {
     onGlobalFilterChange: setGlobalFilter,
   });
 
+  function handleGlobalFilterChange(
+    event: React.ChangeEvent<HTMLInputElement>,
+  ): void {
+    setGlobalFilter(event.target.value);
+  }
+
   function handlePageChange(
     _event: React.ChangeEvent<unknown>,
     page: number,
@@ -67,72 +72,57 @@ export function Table<T>({ columns, data }: ITableProps<T>): React.ReactNode {
     table.setPageSize(Number(event.target.value));
   }
 
-  function handleGlobalFilterChange(
-    event: React.ChangeEvent<HTMLInputElement>,
-  ): void {
-    setGlobalFilter(event.target.value);
-  }
-
   return (
-    <TableContainer component={Paper} className={classes.tableContainer}>
-      <SearchBar
-        label="Search"
-        value={globalFilter}
-        onChange={handleGlobalFilterChange}
+    <TableContainer component={Box} className={classes.tableContainer}>
+      <Search value={globalFilter} onChange={handleGlobalFilterChange} />
+
+      <BaseTable className={classes.baseTable}>
+        <TableHead className={classes.tableHead}>
+          {table.getHeaderGroups().map((headerGroup) => {
+            return (
+              <TableRow key={headerGroup.id}>
+                {headerGroup.headers.map((header) => {
+                  return (
+                    <TableCell key={header.id}>
+                      {flexRender(
+                        header.column.columnDef.header,
+                        header.getContext(),
+                      )}
+                    </TableCell>
+                  );
+                })}
+              </TableRow>
+            );
+          })}
+        </TableHead>
+
+        <TableBody>
+          {table.getRowModel().rows.map((row) => {
+            return (
+              <TableRow key={row.id}>
+                {row.getVisibleCells().map((cell) => {
+                  return (
+                    <TableCell key={cell.id}>
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext(),
+                      )}
+                    </TableCell>
+                  );
+                })}
+              </TableRow>
+            );
+          })}
+        </TableBody>
+      </BaseTable>
+
+      <Pagination
+        pageIndex={pagination.pageIndex}
+        pageSize={pagination.pageSize}
+        totalRows={table.getFilteredRowModel().rows.length}
+        onPageChange={handlePageChange}
+        onPageSizeChange={handlePageSizeChange}
       />
-      <Box className={classes.tableWrapper}>
-        <BaseTable className={classes.baseTable}>
-          <TableHead>
-            {table.getHeaderGroups().map((headerGroup) => {
-              return (
-                <TableRow key={headerGroup.id} className={classes.headerRow}>
-                  {headerGroup.headers.map((header) => {
-                    return (
-                      <TableCell key={header.id} className={classes.headerCell}>
-                        {flexRender(
-                          header.column.columnDef.header,
-                          header.getContext(),
-                        )}
-                      </TableCell>
-                    );
-                  })}
-                </TableRow>
-              );
-            })}
-          </TableHead>
-          <TableBody>
-            {table.getRowModel().rows.map((row) => {
-              return (
-                <TableRow key={row.id}>
-                  {row.getVisibleCells().map((cell) => {
-                    return (
-                      <TableCell key={cell.id} className={classes.bodyCell}>
-                        {flexRender(
-                          cell.column.columnDef.cell,
-                          cell.getContext(),
-                        )}
-                      </TableCell>
-                    );
-                  })}
-                </TableRow>
-              );
-            })}
-          </TableBody>
-        </BaseTable>
-      </Box>
-      <Box className={classes.tableFooter}>
-        <Box>
-          <Box className={classes.tablePagination}>
-            <Pagination
-              pageIndex={pagination.pageIndex}
-              pageSize={pagination.pageSize}
-              totalRows={table.getFilteredRowModel().rows.length}
-              onPageChange={handlePageChange}
-              onPageSizeChange={handlePageSizeChange}
-            />
-          </Box>
-        </Box>
-      </Box>
     </TableContainer>
   );
 }
