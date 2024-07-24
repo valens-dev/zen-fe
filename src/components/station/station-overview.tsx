@@ -1,10 +1,10 @@
-import type React from 'react';
 import { useNavigate } from 'react-router-dom';
+
+import { StationCard } from '@/common/station-card';
 
 import { Box } from '@mui/material';
 
 import { Button } from '@/shared/button';
-import { StationCard } from '@/shared/station-card';
 
 import { SectionHeader } from '@/layouts/section-header';
 
@@ -46,7 +46,14 @@ export function StationOverview({
         {data.map((station) => {
           return (
             <Box key={station.id} className={classes.stationWrapper}>
-              <StationCard data={station} />
+              <StationCard
+                imageUrl={station.imageUrl}
+                customerName={station.customerName}
+                checkIn={station.checkIn}
+                workList={station.workList}
+                cycleTime={station.cycleTime}
+                edited={station.edited}
+              />
             </Box>
           );
         })}

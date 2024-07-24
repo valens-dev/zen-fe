@@ -3,11 +3,11 @@ import { useTranslation } from 'react-i18next';
 
 import { Box, Typography } from '@mui/material';
 
-import { LazyImage } from '../lazy-image';
+import { LazyImage } from '../../shared/lazy-image';
 
 import { useStyles } from './styles';
 
-interface IStationCardData {
+interface IStationCardProps {
   imageUrl: string;
   customerName: string;
   checkIn: string;
@@ -16,12 +16,14 @@ interface IStationCardData {
   edited: number;
 }
 
-interface IStationCardProps {
-  data: IStationCardData;
-}
-
-export function StationCard({ data }: IStationCardProps): React.ReactNode {
-  const { imageUrl, customerName, checkIn, workList, cycleTime, edited } = data;
+export function StationCard({
+  imageUrl,
+  customerName,
+  checkIn,
+  workList,
+  cycleTime,
+  edited,
+}: IStationCardProps): React.ReactNode {
   const { t } = useTranslation();
   const { classes } = useStyles();
 

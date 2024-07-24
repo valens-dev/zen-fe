@@ -12,7 +12,8 @@
       "@/hooks/*": ["hooks/*"],
       "@/shared/*": ["shared/*"],
       "@/services/*": ["services/*"],
-      "@/context/*": ["context/*"]
+      "@/context/*": ["context/*"],
+      "@/common/*": ["common/*"]
     },
     "target": "ES2020",
     "useDefineForClassFields": true,
