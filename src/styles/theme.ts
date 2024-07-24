@@ -21,12 +21,14 @@ function useContext(): { theme: ITheme } {
       },
       text: {
         primary: '#132339',
+        secondary: '#12B76A',
       },
       border: {
         primary: '#E2E8F0',
       },
       background: {
         primary: '#0045D6',
+        secondary: '#FAF7FF',
       },
     },
     typography: {
