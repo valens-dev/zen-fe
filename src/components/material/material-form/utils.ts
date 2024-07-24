@@ -1,4 +1,7 @@
 export function checkLastRowFilled<T>(rows: T[]): boolean {
+  if (rows.length === 0) {
+    return true;
+  }
   const lastIndex = rows.length - 1;
   const lastRow = rows[lastIndex];
 
