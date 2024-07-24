@@ -9,7 +9,7 @@ export function getOrderTabs(): {
 }[] {
   return [
     {
-      label: i18n.t('order.orders'),
+      label: `${i18n.t('order.orders')} -->`,
       component: () => {
         return (
           <OrderTable
@@ -48,7 +48,7 @@ export function getOrderTabs(): {
       },
     },
     {
-      label: i18n.t('order.shipment'),
+      label: `--> ${i18n.t('order.shipment')}`,
       component: () => {
         return (
           <OrderTable
