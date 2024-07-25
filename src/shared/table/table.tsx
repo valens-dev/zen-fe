@@ -26,7 +26,7 @@ import { useStyles } from './styles';
 interface ITableProps<T> {
   columns: ColumnDef<T, string>[];
   data?: T[];
-  totalCount?: number;
+  totalCount: number;
   globalFilter: string;
   setGlobalFilter: Dispatch<SetStateAction<string>>;
   pagination: PaginationState;

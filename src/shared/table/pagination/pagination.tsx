@@ -27,7 +27,7 @@ interface IPaginationProps {
 export function Pagination({
   pageIndex,
   pageSize,
-  totalRows = 0,
+  totalRows,
   onPageChange,
   onPageSizeChange,
 }: IPaginationProps): React.ReactNode {

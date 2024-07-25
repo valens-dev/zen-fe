@@ -81,7 +81,7 @@ export function MaterialTable({
       <Table
         columns={columns}
         data={materialData?.data}
-        totalCount={materialData?.totalCount}
+        totalCount={materialData?.totalCount ?? 0}
         globalFilter={globalFilter}
         setGlobalFilter={setGlobalFilter}
         pagination={pagination}
