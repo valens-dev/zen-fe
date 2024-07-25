@@ -1,12 +1,12 @@
 import { useTranslation } from 'react-i18next';
 
-import { useTabSelection } from '@/hooks/use-tab-selection';
-
 import { Box } from '@mui/material';
 
 import { TabsSection } from '@/shared/tabs-section';
 
 import { Header } from '@/layouts/header';
+
+import { useTabSelection } from '@/hooks/use-tab-selection';
 
 import { useStyles } from '../styles';
 

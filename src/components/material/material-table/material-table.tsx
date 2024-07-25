@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
-
 import { type ColumnDef } from '@tanstack/react-table';
+
+import { useMaterial } from '@/services/material';
 
 import { Box } from '@mui/material';
 
@@ -8,6 +9,8 @@ import { Table } from '@/shared/table';
 import { Button } from '@/shared/button';
 
 import { SectionHeader } from '@/layouts/section-header';
+
+import { useTableFilters } from '@/hooks/use-table-filters';
 
 import { type MaterialType } from '@/types/material';
 
@@ -22,21 +25,47 @@ interface IMaterialTableProps {
   buttonText: string;
   materialType: MaterialType;
   columns: ColumnDef<IProduct, string>[];
-  data: IProduct[];
 }
 
 export function MaterialTable({
   title,
   buttonText,
   materialType,
-  data,
   columns,
 }: IMaterialTableProps): React.ReactNode {
-  const { classes } = useStyles();
   const navigate = useNavigate();
+
+  const { classes } = useStyles();
+  const { globalFilter, setGlobalFilter, pagination, setPagination } =
+    useTableFilters();
+
+  const {
+    data: materialData,
+    isLoading,
+    isError,
+  } = useMaterial({
+    page: pagination.pageIndex + 1,
+    limit: pagination.pageSize,
+    name: globalFilter,
+    type: materialType,
+  });
 
   function handleOpenAddPage(): void {
     navigate('/material/add-material', { state: { materialType } });
+  }
+
+  /**
+   * TODO: Implement proper loadding state management
+   */
+  if (isLoading) {
+    return <Box>Loading</Box>;
+  }
+
+  /**
+   * TODO: Implement proper error state management
+   */
+  if (isError) {
+    return <Box>Error</Box>;
   }
 
   return (
@@ -49,7 +78,15 @@ export function MaterialTable({
           </Button>
         }
       />
-      <Table columns={columns} data={data} />
+      <Table
+        columns={columns}
+        data={materialData?.data}
+        totalCount={materialData?.totalCount ?? 0}
+        globalFilter={globalFilter}
+        setGlobalFilter={setGlobalFilter}
+        pagination={pagination}
+        setPagination={setPagination}
+      />
     </Box>
   );
 }
