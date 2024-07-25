@@ -1,6 +1,5 @@
-import { type IProduct } from '@/components/material/material-table/types';
-
 import { type IApiResponse } from '@/types/api';
+import { type IMaterial } from '@/types/material';
 
 import { api } from '../api';
 
@@ -10,8 +9,8 @@ const endpoint = '/material';
 
 async function getAll(
   params: IGetMaterialParams,
-): Promise<IApiResponse<IProduct[]>> {
-  const response = await api.get<IApiResponse<IProduct[]>>(endpoint, {
+): Promise<IApiResponse<IMaterial[]>> {
+  const response = await api.get<IApiResponse<IMaterial[]>>(endpoint, {
     params,
   });
 

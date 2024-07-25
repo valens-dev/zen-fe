@@ -17,6 +17,7 @@ import { type MaterialType } from '@/types/material';
 import AddIcon from '@/assets/icon/add.svg?react';
 
 import { type IProduct } from './types';
+import { transformMaterialsToProducts } from './utils';
 
 import { useStyles } from './styles';
 
@@ -80,7 +81,7 @@ export function MaterialTable({
       />
       <Table
         columns={columns}
-        data={materialData?.data}
+        data={transformMaterialsToProducts(materialData?.data)}
         totalCount={materialData?.totalCount ?? 0}
         globalFilter={globalFilter}
         setGlobalFilter={setGlobalFilter}
