@@ -9,7 +9,7 @@ interface IUseTableFilters {
 }
 
 export function useTableFilters(): IUseTableFilters {
-  const [globalFilter, setGlobalFilter] = useState<string>('');
+  const [globalFilter, setGlobalFilter] = useState('');
   const [pagination, setPagination] = useState<PaginationState>({
     pageIndex: 0,
     pageSize: 10,
