@@ -24,6 +24,9 @@ export const useStyles = tss.create(({ theme }) => {
       mb: 2,
       maxHeight: '70%',
       overflow: 'scroll',
+      '&::-webkit-scrollbar': {
+        width: '0',
+      },
     },
     footer: {
       display: 'flex',
