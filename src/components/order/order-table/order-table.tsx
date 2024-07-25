@@ -8,6 +8,8 @@ import { Button } from '@/shared/button';
 
 import { SectionHeader } from '@/layouts/section-header';
 
+import { useTableFilters } from '@/hooks/use-table-filters';
+
 import AddIcon from '@/assets/icon/add.svg?react';
 
 import { type IOrder } from './types';
@@ -27,8 +29,11 @@ export function OrderTable({
   data,
   columns,
 }: IOrderTableProps): React.ReactNode {
-  const { classes } = useStyles();
   const navigate = useNavigate();
+
+  const { classes } = useStyles();
+  const { globalFilter, setGlobalFilter, pagination, setPagination } =
+    useTableFilters();
 
   function handleOpenAddPage(): void {
     navigate('/order/add-order');
@@ -44,7 +49,15 @@ export function OrderTable({
           </Button>
         }
       />
-      <Table columns={columns} data={data} />
+      <Table
+        columns={columns}
+        data={data}
+        totalCount={10}
+        globalFilter={globalFilter}
+        setGlobalFilter={setGlobalFilter}
+        pagination={pagination}
+        setPagination={setPagination}
+      />
     </Box>
   );
 }
