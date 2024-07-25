@@ -1,11 +1,11 @@
+import { type IProduct } from '@/components/material/material-table/types';
+
 import {
   type IValue,
   type IMaterial,
   type IAttribute,
   type MaterialType,
 } from '@/types/material';
-
-import { type IProduct } from '../../components/material/material-table/types';
 
 export function transformMaterialsToProducts(
   materials?: IMaterial[],
