@@ -22,7 +22,18 @@ import { initialValues } from './constants';
 import { useStyles } from './styles';
 
 interface IMaterialFormProps {
-  onSubmit: (data: IFormData) => void;
+  onSubmit: (data: IFormData) => Promise<void>;
+}
+
+interface IFieldType {
+  onChange: (value: number) => void;
+}
+
+function handleNumberChange(
+  field: IFieldType,
+  e: React.ChangeEvent<HTMLInputElement>,
+): void {
+  field.onChange(Number.parseFloat(e.target.value));
 }
 
 const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
@@ -40,7 +51,10 @@ const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
           <Box
             component="form"
             ref={ref}
-            onSubmit={void methods.handleSubmit(onSubmit)}
+            onSubmit={(e: React.FormEvent<HTMLFormElement>): void => {
+              e.preventDefault();
+              void methods.handleSubmit(onSubmit)();
+            }}
             className={classes.formContainer}
           >
             <Box className={classes.inputRow}>
@@ -61,7 +75,7 @@ const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
             </Box>
             <Box className={classes.inputRow}>
               <Controller
-                name="netoPrice"
+                name="netPrice"
                 control={methods.control}
                 render={({ field }) => {
                   return (
@@ -72,12 +86,15 @@ const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
                       max={999_999_999}
                       label="Enter net price"
                       adornment="€"
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                        return handleNumberChange(field as IFieldType, e);
+                      }}
                     />
                   );
                 }}
               />
               <Controller
-                name="mwSt"
+                name="VAT"
                 control={methods.control}
                 render={({ field }) => {
                   return (
@@ -88,6 +105,9 @@ const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
                       max={999_999_999}
                       label="Enter VAT"
                       adornment="%"
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                        return handleNumberChange(field as IFieldType, e);
+                      }}
                     />
                   );
                 }}
@@ -106,12 +126,15 @@ const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
                       max={999_999_999}
                       label="Enter weight"
                       adornment="kg"
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                        return handleNumberChange(field as IFieldType, e);
+                      }}
                     />
                   );
                 }}
               />
               <Controller
-                name="customsTariff"
+                name="customsTarif"
                 control={methods.control}
                 render={({ field }) => {
                   return <Input {...field} label="Enter customs tariff" />;
@@ -120,7 +143,7 @@ const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
             </Box>
             <Box className={classes.inputRow}>
               <Controller
-                name="comment"
+                name="description"
                 control={methods.control}
                 render={({ field }) => {
                   return (
@@ -212,7 +235,8 @@ const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
                       {field.value.map((value, index) => {
                         return (
                           <ValueRow
-                            key={value.name}
+                            // eslint-disable-next-line react/no-array-index-key
+                            key={index}
                             value={value}
                             onDelete={() => {
                               const newValues = [...field.value];

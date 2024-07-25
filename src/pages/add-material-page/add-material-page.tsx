@@ -1,6 +1,8 @@
 import { useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
+import { MaterialAPI } from '@/services/material/api';
+
 import { Box } from '@mui/material';
 
 import { Button } from '@/shared/button';
@@ -11,7 +13,7 @@ import { type IFormData } from '@/components/material/material-form/types';
 import { Header } from '@/layouts/header';
 import { FormHeader } from '@/layouts/form-header';
 
-import { MaterialType } from '@/types/material';
+import { MaterialType, type IMaterial } from '@/types/material';
 
 import AddIcon from '@/assets/icon/add.svg?react';
 
@@ -35,11 +37,20 @@ export default function AddMaterialPage(): React.ReactNode {
     state?.materialType ?? MaterialType.Product;
   const config = materialConfig[materialType];
 
-  // eslint-disable-next-line unicorn/consistent-function-scoping
-  function handleSubmit(data: IFormData): void {
-    //TODO
-    // eslint-disable-next-line no-console
-    console.log('Form Data:', data);
+  async function handleSubmit(data: IFormData): Promise<void> {
+    try {
+      const extendedData = {
+        ...data,
+        type: materialType,
+        manufacturingParts: [],
+        purchasingParts: [],
+      };
+      await MaterialAPI.createMaterial(extendedData as IMaterial);
+      navigate('/material');
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.error('Error creating material:', error);
+    }
   }
 
   function handleButtonClick(): void {
@@ -74,7 +85,12 @@ export default function AddMaterialPage(): React.ReactNode {
           </Box>
         }
       />
-      <MaterialForm onSubmit={handleSubmit} ref={formRef} />
+      <MaterialForm
+        onSubmit={async (data) => {
+          await handleSubmit(data);
+        }}
+        ref={formRef}
+      />
     </Box>
   );
 }

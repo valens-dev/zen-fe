@@ -23,6 +23,15 @@ async function getAll(
   };
 }
 
+async function createMaterial(
+  data: IMaterial,
+): Promise<IApiResponse<IMaterial>> {
+  const response = await api.post<IApiResponse<IMaterial>>(endpoint, data);
+
+  return response.data;
+}
+
 export const MaterialAPI = {
   getAll,
+  createMaterial,
 };

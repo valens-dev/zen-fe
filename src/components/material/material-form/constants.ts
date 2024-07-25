@@ -2,13 +2,15 @@ import { type IFormData } from './types';
 
 export const initialValues: IFormData = {
   name: '',
-  materialNumber: '',
-  netoPrice: '',
-  mwSt: '',
-  weight: '',
-  customsTariff: '',
-  comment: '',
-  packaging: false,
-  attributes: [],
+  type: '',
   values: [],
+  attributes: [],
+  weight: undefined,
+  materialNumber: '',
+  netPrice: undefined,
+  VAT: undefined,
+  customsTarif: undefined,
+  description: '',
+  image: '',
+  packaging: false,
 };
