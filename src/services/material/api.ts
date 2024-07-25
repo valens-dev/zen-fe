@@ -11,7 +11,7 @@ const endpoint = '/material';
 async function getAll(
   params: IGetMaterialParams,
 ): Promise<IApiResponse<IProduct[]>> {
-  const response = await api.get<IApiResponse<IProduct[]>>(`${endpoint}`, {
+  const response = await api.get<IApiResponse<IProduct[]>>(endpoint, {
     params,
   });
 
