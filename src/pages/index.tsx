@@ -29,6 +29,11 @@ const AddOrderPage = lazy(() => {
   return import('@/pages/add-order-page/add-order-page');
 });
 
+const AddProductionStationPage = lazy(() => {
+  return import(
+    '@/pages/add-production-station-page/add-production-station-page'
+  );
+});
 const CustomersPage = lazy(() => {
   return import('@/pages/customer-page/customer-page');
 });
@@ -65,6 +70,10 @@ export function App(): React.ReactNode {
             <Route path="station" element={<StationPage />} />
             <Route path="order" element={<OrderPage />} />
             <Route path="order/add-order" element={<AddOrderPage />} />
+            <Route
+              path="station/add-production-station"
+              element={<AddProductionStationPage />}
+            />
             <Route path="customers" element={<CustomersPage />} />
             <Route
               path="customers/add-customer"

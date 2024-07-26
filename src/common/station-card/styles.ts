@@ -9,6 +9,9 @@ export const useStyles = tss.create(({ theme }) => {
       border: `1px solid ${theme.palette.border.primary}`,
       borderRadius: '16px',
       background: theme.palette.background.secondary,
+      '&:hover': {
+        border: `1px solid ${theme.palette.light.tertiary}`,
+      },
     },
     baseBox: {
       height: '100%',
