@@ -1,13 +1,10 @@
-import { useState } from 'react';
-
+import { type Dispatch, type SetStateAction } from 'react';
 import {
   flexRender,
   useReactTable,
   type ColumnDef,
   getCoreRowModel,
-  getFilteredRowModel,
   type PaginationState,
-  getPaginationRowModel,
 } from '@tanstack/react-table';
 
 import {
@@ -28,31 +25,38 @@ import { useStyles } from './styles';
 
 interface ITableProps<T> {
   columns: ColumnDef<T, string>[];
-  data: T[];
+  data?: T[];
+  totalCount: number;
+  globalFilter: string;
+  setGlobalFilter: Dispatch<SetStateAction<string>>;
+  pagination: PaginationState;
+  setPagination: Dispatch<SetStateAction<PaginationState>>;
 }
 
-export function Table<T>({ columns, data }: ITableProps<T>): React.ReactNode {
+export function Table<T>({
+  columns,
+  data,
+  totalCount,
+  pagination,
+  setPagination,
+  globalFilter,
+  setGlobalFilter,
+}: ITableProps<T>): React.ReactNode {
   const { classes } = useStyles();
-
-  const [pagination, setPagination] = useState<PaginationState>({
-    pageIndex: 0,
-    pageSize: 10,
-  });
-
-  const [globalFilter, setGlobalFilter] = useState<string>('');
 
   const table = useReactTable({
     state: {
-      pagination,
       globalFilter,
+      pagination,
     },
-    data,
+    data: data ?? [],
     columns,
+    rowCount: totalCount,
     getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
-    onPaginationChange: setPagination,
     onGlobalFilterChange: setGlobalFilter,
+    onPaginationChange: setPagination,
+    manualFiltering: true,
+    manualPagination: true,
   });
 
   function handleGlobalFilterChange(
@@ -65,11 +69,11 @@ export function Table<T>({ columns, data }: ITableProps<T>): React.ReactNode {
     _event: React.ChangeEvent<unknown>,
     page: number,
   ): void {
-    table.setPageIndex(page - 1);
+    setPagination({ ...pagination, pageIndex: page - 1 });
   }
 
   function handlePageSizeChange(event: SelectChangeEvent<number>): void {
-    table.setPageSize(Number(event.target.value));
+    setPagination({ ...pagination, pageSize: Number(event.target.value) });
   }
 
   return (
@@ -119,7 +123,7 @@ export function Table<T>({ columns, data }: ITableProps<T>): React.ReactNode {
       <Pagination
         pageIndex={pagination.pageIndex}
         pageSize={pagination.pageSize}
-        totalRows={table.getFilteredRowModel().rows.length}
+        totalRows={totalCount}
         onPageChange={handlePageChange}
         onPageSizeChange={handlePageSizeChange}
       />

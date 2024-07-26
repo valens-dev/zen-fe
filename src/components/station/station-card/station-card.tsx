@@ -1,9 +1,8 @@
-import type React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Box, Typography } from '@mui/material';
 
-import { LazyImage } from '../../shared/lazy-image';
+import { LazyImage } from '@/shared/lazy-image';
 
 import { useStyles } from './styles';
 

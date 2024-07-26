@@ -1,5 +1,6 @@
-import i18n from 'i18n';
 import { type ColumnDef, createColumnHelper } from '@tanstack/react-table';
+
+import i18n from 'i18n';
 
 import { Box, Typography, LinearProgress } from '@mui/material';
 
