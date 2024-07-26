@@ -6,30 +6,28 @@ import MenuIcon from '@/assets/icon/menu.svg?react';
 import DeleteIcon from '@/assets/icon/delete.svg?react';
 
 import { useStyles } from '../styles';
+import { type IAttribute } from '../constants';
 import { CustomSelect } from '../custom-select/custom-select';
-import {
-  type IAttribute,
-  ATTRIBUTE_NAMES,
-  ATTRIBUTE_OPTIONS,
-} from '../constants';
 
 interface IAttributeRowProps {
   attribute: IAttribute;
+  attributeNames: string[];
+  attributeOptions: Record<string, string[]>;
   onDelete: () => void;
   onChange: (updatedAttribute: IAttribute) => void;
 }
 
 export function AttributeRow({
   attribute,
+  attributeNames,
+  attributeOptions,
   onDelete,
   onChange,
 }: IAttributeRowProps): React.ReactNode {
   const { classes } = useStyles();
   const [localAttribute, setLocalAttribute] = useState<IAttribute>(attribute);
-  const [attributeOptions, setAttributeOptions] =
-    useState<string[]>(ATTRIBUTE_NAMES);
   const [options, setOptions] = useState<string[]>(
-    ATTRIBUTE_OPTIONS[attribute.name] || [],
+    attributeOptions[attribute.name] || [],
   );
 
   useEffect(() => {
@@ -45,13 +43,13 @@ export function AttributeRow({
   );
 
   function handleAddNewAttributeName(newName: string): void {
-    setAttributeOptions([...attributeOptions, newName]);
+    attributeNames.push(newName);
     updateAttribute({ ...localAttribute, name: newName, option: '' });
   }
 
   function handleAddNewOption(name: string, option: string): void {
-    const updatedOptions = [...(ATTRIBUTE_OPTIONS[name] || []), option];
-    ATTRIBUTE_OPTIONS[name] = updatedOptions;
+    const updatedOptions = [...(attributeOptions[name] || []), option];
+    attributeOptions[name] = updatedOptions;
     setOptions(updatedOptions);
     updateAttribute({ ...localAttribute, option });
   }
@@ -65,9 +63,9 @@ export function AttributeRow({
       </Box>
       <CustomSelect
         value={localAttribute.name}
-        options={attributeOptions}
+        options={attributeNames}
         onChange={(newName: string) => {
-          setOptions(ATTRIBUTE_OPTIONS[newName] || []);
+          setOptions(attributeOptions[newName] || []);
           updateAttribute({ ...localAttribute, name: newName, option: '' });
         }}
         onAddNew={handleAddNewAttributeName}
