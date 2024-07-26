@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { useMutation } from '@tanstack/react-query';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 import { MaterialAPI } from '@/services/material/api';
@@ -37,21 +38,24 @@ export default function AddMaterialPage(): React.ReactNode {
     state?.materialType ?? MaterialType.Product;
   const config = materialConfig[materialType];
 
-  async function handleSubmit(data: IFormData): Promise<void> {
-    try {
+  const mutation = useMutation({
+    mutationFn: async (data: IFormData) => {
       const extendedData = {
         ...data,
         type: materialType,
         manufacturingParts: [],
         purchasingParts: [],
       };
-      await MaterialAPI.createMaterial(extendedData as IMaterial);
+      return await MaterialAPI.createMaterial(extendedData as IMaterial);
+    },
+    onSuccess: () => {
       navigate('/material');
-    } catch (error) {
+    },
+    onError: (error) => {
       // eslint-disable-next-line no-console
       console.error('Error creating material:', error);
-    }
-  }
+    },
+  });
 
   function handleButtonClick(): void {
     if (formRef.current) {
@@ -86,8 +90,8 @@ export default function AddMaterialPage(): React.ReactNode {
         }
       />
       <MaterialForm
-        onSubmit={async (data) => {
-          await handleSubmit(data);
+        onSubmit={(data) => {
+          mutation.mutate(data);
         }}
         ref={formRef}
       />

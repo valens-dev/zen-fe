@@ -22,7 +22,7 @@ import { initialValues } from './constants';
 import { useStyles } from './styles';
 
 interface IMaterialFormProps {
-  onSubmit: (data: IFormData) => Promise<void>;
+  onSubmit: (data: IFormData) => void;
 }
 
 interface IFieldType {
@@ -51,8 +51,7 @@ const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
           <Box
             component="form"
             ref={ref}
-            onSubmit={(e: React.FormEvent<HTMLFormElement>): void => {
-              e.preventDefault();
+            onSubmit={(): void => {
               void methods.handleSubmit(onSubmit)();
             }}
             className={classes.formContainer}
