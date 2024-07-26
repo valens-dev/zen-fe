@@ -1,12 +1,15 @@
 import {
   useQuery,
+  useMutation,
   keepPreviousData,
   type UseQueryResult,
+  type UseMutationResult,
 } from '@tanstack/react-query';
 
 import { type IProduct } from '@/components/material/material-table/types';
 
 import { type IApiResponse } from '@/types/api';
+import { type IMaterial } from '@/types/material';
 
 import { MaterialAPI } from './api';
 
@@ -21,5 +24,17 @@ export function useMaterial(
       return MaterialAPI.getAll(params);
     },
     placeholderData: keepPreviousData,
+  });
+}
+
+export function useCreateMaterial(): UseMutationResult<
+  IApiResponse<IMaterial>,
+  Error,
+  IMaterial
+> {
+  return useMutation({
+    mutationFn: async (data: IMaterial) => {
+      return await MaterialAPI.create(data);
+    },
   });
 }

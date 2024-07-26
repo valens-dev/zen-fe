@@ -1,15 +1,13 @@
 import { useRef } from 'react';
-import { useMutation } from '@tanstack/react-query';
 import { useNavigate, useLocation } from 'react-router-dom';
 
-import { MaterialAPI } from '@/services/material/api';
+import { useCreateMaterial } from '@/services/material/hooks';
 
 import { Box } from '@mui/material';
 
 import { Button } from '@/shared/button';
 
 import { MaterialForm } from '@/components/material/material-form';
-import { type IFormData } from '@/components/material/material-form/types';
 
 import { Header } from '@/layouts/header';
 import { FormHeader } from '@/layouts/form-header';
@@ -38,24 +36,7 @@ export default function AddMaterialPage(): React.ReactNode {
     state?.materialType ?? MaterialType.Product;
   const config = materialConfig[materialType];
 
-  const mutation = useMutation({
-    mutationFn: async (data: IFormData) => {
-      const extendedData = {
-        ...data,
-        type: materialType,
-        manufacturingParts: [],
-        purchasingParts: [],
-      };
-      return await MaterialAPI.createMaterial(extendedData as IMaterial);
-    },
-    onSuccess: () => {
-      navigate('/material');
-    },
-    onError: (error) => {
-      // eslint-disable-next-line no-console
-      console.error('Error creating material:', error);
-    },
-  });
+  const mutation = useCreateMaterial();
 
   function handleButtonClick(): void {
     if (formRef.current) {
@@ -91,7 +72,13 @@ export default function AddMaterialPage(): React.ReactNode {
       />
       <MaterialForm
         onSubmit={(data) => {
-          mutation.mutate(data);
+          mutation.mutate({
+            ...data,
+            type: materialType,
+            manufacturingParts: [],
+            purchasingParts: [],
+          } as IMaterial);
+          navigate('/material');
         }}
         ref={formRef}
       />
