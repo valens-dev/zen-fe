@@ -29,7 +29,7 @@ export function StationOverview({
   const { classes } = useStyles();
 
   function handleOpenAddPage(): void {
-    navigate('/order/add-order');
+    navigate('/station/add-production-station');
   }
 
   return (

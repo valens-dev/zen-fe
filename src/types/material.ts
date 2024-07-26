@@ -1,10 +1,10 @@
 export enum MaterialType {
   Product = 'product',
-  ManufacturingPart = 'manufacturing-part',
-  PurchasingPart = 'purchasing-part',
+  ManufacturingPart = 'ManufacturingPart',
+  PurchasingPart = 'PurchasingPart',
 }
 
-interface IAttribute {
+export interface IAttribute {
   name: string;
   option: string;
 }

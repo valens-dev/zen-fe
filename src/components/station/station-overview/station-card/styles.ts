@@ -9,6 +9,9 @@ export const useStyles = tss.create(({ theme }) => {
       border: `1px solid ${theme.palette.border.primary}`,
       borderRadius: '16px',
       background: theme.palette.background.secondary,
+      '&:hover': {
+        border: `1px solid ${theme.palette.light.tertiary}`,
+      },
     },
     baseBox: {
       height: '100%',
@@ -45,7 +48,7 @@ export const useStyles = tss.create(({ theme }) => {
       borderRadius: '400px',
     },
     customerName: {
-      lineHeight: '24px',
+      lineHeight: 1.5,
       fontWeight: theme.typography.fontWeight.medium,
       fontSize: '1rem',
       textAlign: 'center',
@@ -70,7 +73,7 @@ export const useStyles = tss.create(({ theme }) => {
       fontSize: '0.875rem',
       color: theme.palette.main.primary,
       textAlign: 'left',
-      lineHeight: '20px',
+      lineHeight: 1.25,
     },
     boxValue: {
       fontWeight: theme.typography.fontWeight.semiBold,

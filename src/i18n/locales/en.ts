@@ -55,6 +55,15 @@ export const en = {
       cycleTime: 'Cycle time',
       edited: 'Edited',
     },
+    stationLoginForm: {
+      subtitle: 'Welcome back! Please enter your details to continue.',
+      usernameLabel: 'Username',
+      usernameInput: 'Enter username',
+      passwordLabel: 'Password',
+      passwordInput: 'Enter password',
+      forgotPassword: 'Forgot your password?',
+      submitButton: 'Next',
+    },
   },
   home: {
     title: 'Home',

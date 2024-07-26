@@ -1,17 +1,18 @@
 import { useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
+import { useCreateMaterial } from '@/services/material/hooks';
+
 import { Box } from '@mui/material';
 
 import { Button } from '@/shared/button';
 
 import { MaterialForm } from '@/components/material/material-form';
-import { type IFormData } from '@/components/material/material-form/types';
 
 import { Header } from '@/layouts/header';
 import { FormHeader } from '@/layouts/form-header';
 
-import { MaterialType } from '@/types/material';
+import { MaterialType, type IMaterial } from '@/types/material';
 
 import AddIcon from '@/assets/icon/add.svg?react';
 
@@ -35,12 +36,7 @@ export default function AddMaterialPage(): React.ReactNode {
     state?.materialType ?? MaterialType.Product;
   const config = materialConfig[materialType];
 
-  // eslint-disable-next-line unicorn/consistent-function-scoping
-  function handleSubmit(data: IFormData): void {
-    //TODO
-    // eslint-disable-next-line no-console
-    console.log('Form Data:', data);
-  }
+  const mutation = useCreateMaterial();
 
   function handleButtonClick(): void {
     if (formRef.current) {
@@ -75,9 +71,17 @@ export default function AddMaterialPage(): React.ReactNode {
         }
       />
       <MaterialForm
-        onSubmit={handleSubmit}
         ref={formRef}
         materialType={materialType}
+        onSubmit={(data) => {
+          mutation.mutate({
+            ...data,
+            type: materialType,
+            manufacturingParts: [],
+            purchasingParts: [],
+          } as IMaterial);
+          navigate('/material');
+        }}
       />
     </Box>
   );

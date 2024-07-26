@@ -1,22 +1,20 @@
 import { type IAttribute } from '@/components/attribute/constants';
 
+import { type IValue } from '@/types/material';
+
 export interface IFormData {
   name: string;
-  materialNumber: string;
-  netoPrice: string;
-  mwSt: string;
-  weight: string;
-  customsTariff: string;
-  comment: string;
-  packaging: boolean;
+  type: string;
+  values: IValue[];
   attributes: IAttribute[];
-  values: {
-    name: string;
-    value: string;
-    unit: string;
-    toleranceMin: number;
-    toleranceMax: number;
-  }[];
+  weight?: number;
+  materialNumber: string;
+  netPrice?: number;
+  VAT?: number;
+  customsTarif?: number;
+  description: string;
+  image: string;
+  packaging: boolean;
   parts: {
     units: number;
     unitType: string;
