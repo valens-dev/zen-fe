@@ -55,6 +55,16 @@ export const de = {
       cycleTime: 'Zykluszeit',
       edited: 'Bearbeitet',
     },
+    stationLoginForm: {
+      subtitle:
+        'Willkommen zurück! Bitte geben Sie Ihre Daten ein, um fortzufahren.',
+      usernameLabel: 'Benutzername',
+      usernameInput: 'Benutzernamen eingeben',
+      passwordLabel: 'Passwort',
+      passwordInput: 'Passwort eingeben',
+      forgotPassword: 'Passwort vergessen?',
+      submitButton: 'Weiter',
+    },
   },
   home: {
     title: 'Startseite',

@@ -1,4 +1,5 @@
 import { useState, forwardRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useForm, Controller, FormProvider } from 'react-hook-form';
 
 import { Box, Link, Typography, IconButton } from '@mui/material';
@@ -20,6 +21,7 @@ interface ILoginFormProps {
 
 const LoginForm = forwardRef<HTMLFormElement, ILoginFormProps>(
   ({ onSubmit }, ref) => {
+    const { t } = useTranslation();
     const { classes } = useStyles();
     const [passwordVisible, setPasswordVisible] = useState(false);
     const methods = useForm<ILoginFormData>({
@@ -34,9 +36,11 @@ const LoginForm = forwardRef<HTMLFormElement, ILoginFormProps>(
       <FormProvider {...methods}>
         <Box className={classes.wrapper}>
           <Box className={classes.headerBox}>
-            <Typography className={classes.title}>Station Login</Typography>
+            <Typography className={classes.title}>
+              {t('station.stationLogin')}
+            </Typography>
             <Typography className={classes.subtitle}>
-              Welcome back! Please enter your details to continue.
+              {t('station.stationLoginForm.subtitle')}
             </Typography>
           </Box>
           <Box
@@ -53,8 +57,8 @@ const LoginForm = forwardRef<HTMLFormElement, ILoginFormProps>(
                   return (
                     <Input
                       {...field}
-                      placeholder="Enter user name"
-                      label="User name"
+                      placeholder={t('station.stationLoginForm.usernameInput')}
+                      label={t('station.stationLoginForm.usernameLabel')}
                     />
                   );
                 }}
@@ -69,8 +73,8 @@ const LoginForm = forwardRef<HTMLFormElement, ILoginFormProps>(
                     <Input
                       {...field}
                       type={passwordVisible ? 'text' : 'password'}
-                      placeholder="Enter password"
-                      label="Password"
+                      placeholder={t('station.stationLoginForm.passwordInput')}
+                      label={t('station.stationLoginForm.passwordLabel')}
                       adornment={
                         <IconButton onClick={togglePasswordVisibility}>
                           {passwordVisible ? (
@@ -85,7 +89,9 @@ const LoginForm = forwardRef<HTMLFormElement, ILoginFormProps>(
                 }}
               />
               <Typography className={classes.forgotPassword}>
-                <Link href="/forgot-password">Forgot your password?</Link>
+                <Link href="/forgot-password">
+                  {t('station.stationLoginForm.forgotPassword')}
+                </Link>
               </Typography>
             </Box>
             <Box>
@@ -94,7 +100,7 @@ const LoginForm = forwardRef<HTMLFormElement, ILoginFormProps>(
                 variant="primary"
                 className={classes.submitButton}
               >
-                Next
+                {t('station.stationLoginForm.submitButton')}
               </Button>
             </Box>
           </Box>

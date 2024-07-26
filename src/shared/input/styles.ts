@@ -10,7 +10,7 @@ export const useStyles = tss.create(({ theme }) => {
     label: {
       fontSize: '0.75rem',
       fontWeight: theme.typography.fontWeight.medium,
-      lineHeight: '16px',
+      lineHeight: 1,
       marginBottom: '4px',
     },
     textField: {

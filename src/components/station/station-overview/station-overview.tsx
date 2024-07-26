@@ -8,7 +8,7 @@ import { SectionHeader } from '@/layouts/section-header';
 
 import AddIcon from '@/assets/icon/add.svg?react';
 
-import { StationCard } from '../station-card';
+import { StationCard } from './station-card';
 
 import { type IStation } from './types';
 

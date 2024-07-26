@@ -2,7 +2,7 @@ import i18n from 'i18n';
 
 import { Typography } from '@mui/material';
 
-import { LoginForm } from '@/components/station-login-form';
+import { LoginForm } from '@/components/station/station-login-form';
 import { StationOverview } from '@/components/station/station-overview';
 import { stationData } from '@/components/station/station-overview/constants';
 

@@ -23,7 +23,7 @@ export const useStyles = tss.create(({ theme }) => {
       fontWeight: theme.typography.fontWeight.semiBold,
       fontSize: '1.25rem',
       color: theme.palette.text.primary,
-      lineHeight: '24px',
+      lineHeight: 1.5,
       textAlign: 'center',
     },
     subtitle: {
@@ -31,7 +31,7 @@ export const useStyles = tss.create(({ theme }) => {
       fontWeight: theme.typography.fontWeight.regular,
       fontSize: '0.875rem',
       color: theme.palette.main.primary,
-      lineHeight: '20px',
+      lineHeight: 1.25,
       textAlign: 'center',
     },
     formContainer: {
@@ -52,7 +52,7 @@ export const useStyles = tss.create(({ theme }) => {
       marginTop: '12px',
       fontSize: '0.875rem',
       fontWeight: theme.typography.fontWeight.regular,
-      lineHeight: '20px',
+      lineHeight: 1.25,
       color: theme.palette.light.tertiary,
     },
     submitButton: {
@@ -63,7 +63,7 @@ export const useStyles = tss.create(({ theme }) => {
       color: theme.palette.white.primary,
       borderRadius: '12px',
       fontSize: '0.875rem',
-      lineHeight: '20px',
+      lineHeight: 1.25,
       fontWeight: theme.typography.fontWeight.regular,
       textAlign: 'center',
       border: 'none',
