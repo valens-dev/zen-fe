@@ -3,9 +3,14 @@ export interface IGroupedAttribute {
   options: string[];
 }
 
+export interface IGroupedAttributesResult {
+  attributeNames: string[];
+  attributeOptions: Record<string, string[]>;
+}
+
 export function groupAttributes(
   attributes: { name: string; option: string }[],
-): IGroupedAttribute[] {
+): IGroupedAttributesResult {
   const grouped: Record<string, Set<string>> = {};
 
   for (const { name, option } of attributes) {
@@ -16,10 +21,17 @@ export function groupAttributes(
     grouped[normalizedName].add(option);
   }
 
-  return Object.keys(grouped).map((name) => {
-    return {
-      name,
-      options: [...grouped[name]],
-    };
-  });
+  const attributeNames = Object.keys(grouped);
+  const attributeOptions = attributeNames?.reduce(
+    (acc, name) => {
+      acc[name] = [...grouped[name]];
+      return acc;
+    },
+    {} as Record<string, string[]>,
+  );
+
+  return {
+    attributeNames,
+    attributeOptions,
+  };
 }

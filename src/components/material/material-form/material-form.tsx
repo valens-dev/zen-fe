@@ -44,23 +44,7 @@ const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
     const methods = useForm<IFormData>({
       defaultValues: initialValues,
     });
-    const { data: attributes } = useAttributes();
-
-    const attributeNames = attributes
-      ? attributes?.map((attr) => {
-          return attr.name;
-        })
-      : [];
-
-    const attributeOptions: Record<string, string[]> = attributes
-      ? attributes?.reduce(
-          (acc, attr) => {
-            acc[attr.name] = attr.options;
-            return acc;
-          },
-          {} as Record<string, string[]>,
-        )
-      : {};
+    const { data: attributesData } = useAttributes();
 
     return (
       <FormProvider {...methods}>
@@ -208,8 +192,12 @@ const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
                               // eslint-disable-next-line react/no-array-index-key
                               key={index}
                               attribute={attribute}
-                              attributeNames={attributeNames}
-                              attributeOptions={attributeOptions}
+                              attributeNames={
+                                attributesData?.attributeNames ?? []
+                              }
+                              attributeOptions={
+                                attributesData?.attributeOptions ?? {}
+                              }
                               onDelete={() => {
                                 const newAttributes = [...field.value];
                                 newAttributes.splice(index, 1);
