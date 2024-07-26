@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import { forwardRef, type ReactNode } from 'react';
 
 import {
   Box,
@@ -14,9 +14,9 @@ interface IInputProps
   extends Omit<TextFieldProps, 'InputProps' | 'InputLabelProps'> {
   name: string;
   label?: string;
-  adornment?: string;
+  adornment?: ReactNode;
   variant?: 'outlined' | 'filled' | 'standard';
-  type?: 'text' | 'number';
+  type?: 'text' | 'number' | 'password';
   min?: number;
   max?: number;
 }
