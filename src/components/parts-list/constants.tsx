@@ -3,7 +3,6 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 import { Typography } from '@mui/material';
 
 import { Input } from '@/shared/input';
-import { LazyImage } from '@/shared/lazy-image';
 
 export interface IComponent {
   units: number;
@@ -65,17 +64,7 @@ export const columns = [
     id: 'name',
     label: 'Name',
     renderCell: (row: IComponent) => {
-      return (
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          <LazyImage
-            src={row.imageUrl}
-            alt={row.name}
-            effect="blur"
-            style={{ width: 38, height: 24, marginRight: 8 }}
-          />
-          <Typography>{row.name}</Typography>
-        </div>
-      );
+      return <Typography>{row.name}</Typography>;
     },
   },
   {

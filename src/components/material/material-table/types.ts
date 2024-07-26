@@ -1,6 +1,7 @@
 import { type MaterialType } from '@/types/material';
 
 export interface IProduct {
+  id: number;
   imageUrl: string;
   height: string;
   material: string;

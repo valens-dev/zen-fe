@@ -1,5 +1,6 @@
-import i18n from 'i18n';
 import { type ColumnDef, createColumnHelper } from '@tanstack/react-table';
+
+import i18n from 'i18n';
 
 import { Box, Checkbox, Typography } from '@mui/material';
 
@@ -15,7 +16,7 @@ export function getMaterialColumns(
 ): ColumnDef<IProduct, string>[] {
   function isSelected(row: IProduct): boolean {
     return selectedComponents.some((component) => {
-      return component.name === row.name;
+      return component.id === row.id;
     });
   }
 
@@ -23,7 +24,7 @@ export function getMaterialColumns(
     setSelectedComponents((prev) => {
       return isSelected(row)
         ? prev.filter((component) => {
-            return component.name !== row.name;
+            return component.id !== row.id;
           })
         : [...prev, row];
     });

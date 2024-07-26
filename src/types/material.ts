@@ -18,6 +18,7 @@ export interface IValue {
 }
 
 export interface IMaterial {
+  id: number;
   name: string;
   type: string;
   values: IValue[];

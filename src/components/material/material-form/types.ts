@@ -3,6 +3,7 @@ import { type IAttribute } from '@/components/attribute/constants';
 import { type IValue } from '@/types/material';
 
 export interface IFormData {
+  id: number;
   name: string;
   type: string;
   values: IValue[];

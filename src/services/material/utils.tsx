@@ -27,6 +27,7 @@ export function transformMaterialsToProducts(
       })?.option ?? '';
 
     return {
+      id: material.id,
       imageUrl: material.image,
       height: heightFormatted,
       material: materialValue,
