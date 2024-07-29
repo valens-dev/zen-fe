@@ -4,7 +4,7 @@ import { Typography } from '@mui/material';
 
 import { StationOverview } from '@/components/station';
 import { stationData } from '@/components/station/constants';
-import { StationSequence } from '@/components/station/station-sequence/station-sequence';
+import { StationSequence } from '@/components/station/station-sequence';
 
 export function getStationTabs(): {
   label: string;
