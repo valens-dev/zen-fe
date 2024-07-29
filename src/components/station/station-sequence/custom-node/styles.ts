@@ -2,7 +2,7 @@ import { tss } from '@/styles/theme';
 
 export const useStyles = tss.create(({ theme }) => {
   return {
-    root: {
+    wrapper: {
       border: `1px solid ${theme.palette.light.quinary}`,
       borderWidth: '0 0 0 5px',
       borderRadius: '12px',

@@ -19,7 +19,7 @@ export function CustomNode(props: ICustomNodeProps): React.ReactNode {
   const { classes } = useStyles();
 
   return (
-    <Box className={classes.root}>
+    <Box className={classes.wrapper}>
       <Box className={classes.textContainer}>
         <Typography className={classes.label}>{data.label}</Typography>
         <Typography className={classes.value}>{data.value}</Typography>
