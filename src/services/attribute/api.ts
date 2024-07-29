@@ -2,13 +2,13 @@ import { type IAttribute } from '@/types/material';
 
 import { api } from '../api';
 
-const attributeEndpoint = '/Material-attribute';
+const endpoint = '/Material-attribute';
 
-async function getAttributes(): Promise<IAttribute[]> {
-  const response = await api.get<IAttribute[]>(attributeEndpoint);
+async function getAll(): Promise<IAttribute[]> {
+  const response = await api.get<IAttribute[]>(endpoint);
   return response.data;
 }
 
 export const AttributeAPI = {
-  getAttributes,
+  getAll,
 };

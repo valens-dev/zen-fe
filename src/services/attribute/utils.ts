@@ -1,12 +1,4 @@
-export interface IGroupedAttribute {
-  name: string;
-  options: string[];
-}
-
-export interface IGroupedAttributesResult {
-  attributeNames: string[];
-  attributeOptions: Record<string, string[]>;
-}
+import { type IGroupedAttributesResult } from './types';
 
 export function groupAttributes(
   attributes: { name: string; option: string }[],
