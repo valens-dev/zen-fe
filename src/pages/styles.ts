@@ -11,8 +11,6 @@ export const useStyles = tss.create(({ theme }) => {
       marginTop: '12px',
       borderTopLeftRadius: '28px',
       minHeight: '100vh',
-    },
-    additionalPadding: {
       padding: '16px',
     },
   };

@@ -12,7 +12,7 @@ export default function AddProductionStationPage(): React.ReactNode {
   const { classes } = useStyles();
 
   return (
-    <Box className={`${classes.wrapper} ${classes.additionalPadding}`}>
+    <Box className={classes.wrapper}>
       <Header title={t('station.addProductionStation')} />
     </Box>
   );

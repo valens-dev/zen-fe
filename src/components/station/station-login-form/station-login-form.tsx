@@ -27,11 +27,6 @@ const LoginForm = forwardRef<HTMLFormElement, ILoginFormProps>(
     const methods = useForm<ILoginFormData>({
       defaultValues: initialValues,
     });
-    const {
-      control,
-      handleSubmit,
-      formState: { errors },
-    } = methods;
 
     function togglePasswordVisibility(): void {
       setPasswordVisible(!passwordVisible);
@@ -51,17 +46,22 @@ const LoginForm = forwardRef<HTMLFormElement, ILoginFormProps>(
           <Box
             component="form"
             ref={ref}
-            onSubmit={() => {
-              void handleSubmit(onSubmit)();
+            onSubmit={(e) => {
+              e.preventDefault();
+              void methods.handleSubmit(onSubmit)(e);
             }}
             className={classes.formContainer}
+            noValidate
           >
             <Box className={classes.inputRow}>
               <Controller
                 name="username"
-                control={control}
+                control={methods.control}
                 rules={{
-                  required: t('station.stationLoginForm.usernameRequired'),
+                  required: {
+                    value: true,
+                    message: t('station.stationLoginForm.usernameRequired'),
+                  },
                 }}
                 render={({ field }) => {
                   return (
@@ -69,8 +69,8 @@ const LoginForm = forwardRef<HTMLFormElement, ILoginFormProps>(
                       {...field}
                       placeholder={t('station.stationLoginForm.usernameInput')}
                       label={t('station.stationLoginForm.usernameLabel')}
-                      error={Boolean(errors.username)}
-                      helperText={errors.username?.message}
+                      error={Boolean(methods.formState.errors.username)}
+                      helperText={methods.formState.errors.username?.message}
                     />
                   );
                 }}
@@ -79,9 +79,12 @@ const LoginForm = forwardRef<HTMLFormElement, ILoginFormProps>(
             <Box className={classes.inputRow}>
               <Controller
                 name="password"
-                control={control}
+                control={methods.control}
                 rules={{
-                  required: t('station.stationLoginForm.passwordRequired'),
+                  required: {
+                    value: true,
+                    message: t('station.stationLoginForm.passwordRequired'),
+                  },
                 }}
                 render={({ field }) => {
                   return (
@@ -90,8 +93,8 @@ const LoginForm = forwardRef<HTMLFormElement, ILoginFormProps>(
                       type={passwordVisible ? 'text' : 'password'}
                       placeholder={t('station.stationLoginForm.passwordInput')}
                       label={t('station.stationLoginForm.passwordLabel')}
-                      error={Boolean(errors.password)}
-                      helperText={errors.password?.message}
+                      error={Boolean(methods.formState.errors.password)}
+                      helperText={methods.formState.errors.password?.message}
                       adornment={
                         <IconButton onClick={togglePasswordVisibility}>
                           {passwordVisible ? (
