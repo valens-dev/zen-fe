@@ -8,7 +8,6 @@ import {
   useNodesState,
   useEdgesState,
   type Connection,
-  ConnectionLineType,
   type OnNodesChange,
   type OnEdgesChange,
 } from '@xyflow/react';
@@ -78,10 +77,7 @@ export default function StationSequence(): React.ReactNode {
   const onConnect = useCallback(
     (params: Edge | Connection): void => {
       setEdges((eds) => {
-        return addEdge(
-          { ...params, type: ConnectionLineType.SmoothStep, animated: true },
-          eds,
-        );
+        return addEdge({ ...params }, eds);
       });
     },
     [setEdges],
@@ -95,7 +91,6 @@ export default function StationSequence(): React.ReactNode {
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
-        connectionLineType={ConnectionLineType.SmoothStep}
         fitView
       />
     </div>

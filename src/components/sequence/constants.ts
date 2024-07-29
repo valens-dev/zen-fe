@@ -1,5 +1,7 @@
+import { ConnectionLineType } from '@xyflow/react';
+
 const position = { x: 0, y: 0 };
-const edgeType = 'smoothstep';
+const edgeType = ConnectionLineType.Bezier;
 
 export const initialNodes = [
   {
