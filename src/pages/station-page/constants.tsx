@@ -1,8 +1,7 @@
 import i18n from 'i18n';
 
-import { Typography } from '@mui/material';
-
 import { LoginForm } from '@/components/station/station-login-form';
+import { StationSequence } from '@/components/station/station-sequence';
 import { StationOverview } from '@/components/station/station-overview';
 import { stationData } from '@/components/station/station-overview/constants';
 
@@ -26,7 +25,7 @@ export function getStationTabs(): {
     {
       label: i18n.t('station.sequence'),
       component: () => {
-        return <Typography>{i18n.t('station.sequence')}</Typography>;
+        return <StationSequence />;
       },
     },
     {
