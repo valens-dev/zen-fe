@@ -1,6 +1,8 @@
 import { forwardRef } from 'react';
 import { useForm, Controller, FormProvider } from 'react-hook-form';
 
+import { useAttributes } from '@/services/attribute';
+
 import {
   Box,
   Switch,
@@ -42,6 +44,7 @@ const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
     const methods = useForm<IFormData>({
       defaultValues: initialValues,
     });
+    const { data: attributesData } = useAttributes();
 
     return (
       <FormProvider {...methods}>
@@ -189,6 +192,12 @@ const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
                               // eslint-disable-next-line react/no-array-index-key
                               key={index}
                               attribute={attribute}
+                              attributeNames={
+                                attributesData?.attributeNames ?? []
+                              }
+                              attributeOptions={
+                                attributesData?.attributeOptions ?? {}
+                              }
                               onDelete={() => {
                                 const newAttributes = [...field.value];
                                 newAttributes.splice(index, 1);
