@@ -11,6 +11,7 @@ export const useStyles = tss.create(({ theme }) => {
       marginTop: '12px',
       borderTopLeftRadius: '28px',
       padding: '16px',
+      minHeight: '100vh',
     },
   };
 });
