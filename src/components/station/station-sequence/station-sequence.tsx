@@ -11,6 +11,8 @@ import '@xyflow/react/dist/style.css';
 
 import { Box } from '@mui/material';
 
+import { CustomNode } from './custom-node/custom-node';
+
 import { getLayoutedElements } from './utils';
 import { initialEdges, initialNodes } from './constants';
 
@@ -42,6 +44,7 @@ export function StationSequence(): React.ReactNode {
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
         fitView
+        nodeTypes={{ custom: CustomNode }}
       />
     </Box>
   );
