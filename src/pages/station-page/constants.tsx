@@ -4,6 +4,7 @@ import { Typography } from '@mui/material';
 
 import { StationOverview } from '@/components/station';
 import { stationData } from '@/components/station/constants';
+import StationSequence from '@/components/sequence/station-sequence';
 
 export function getStationTabs(): {
   label: string;
@@ -25,7 +26,7 @@ export function getStationTabs(): {
     {
       label: i18n.t('station.sequence'),
       component: () => {
-        return <Typography>{i18n.t('station.sequence')}</Typography>;
+        return <StationSequence />;
       },
     },
     {
