@@ -27,6 +27,11 @@ const LoginForm = forwardRef<HTMLFormElement, ILoginFormProps>(
     const methods = useForm<ILoginFormData>({
       defaultValues: initialValues,
     });
+    const {
+      control,
+      handleSubmit,
+      formState: { errors },
+    } = methods;
 
     function togglePasswordVisibility(): void {
       setPasswordVisible(!passwordVisible);
@@ -46,19 +51,26 @@ const LoginForm = forwardRef<HTMLFormElement, ILoginFormProps>(
           <Box
             component="form"
             ref={ref}
-            onSubmit={void methods.handleSubmit(onSubmit)}
+            onSubmit={() => {
+              void handleSubmit(onSubmit)();
+            }}
             className={classes.formContainer}
           >
             <Box className={classes.inputRow}>
               <Controller
                 name="username"
-                control={methods.control}
+                control={control}
+                rules={{
+                  required: t('station.stationLoginForm.usernameRequired'),
+                }}
                 render={({ field }) => {
                   return (
                     <Input
                       {...field}
                       placeholder={t('station.stationLoginForm.usernameInput')}
                       label={t('station.stationLoginForm.usernameLabel')}
+                      error={Boolean(errors.username)}
+                      helperText={errors.username?.message}
                     />
                   );
                 }}
@@ -67,7 +79,10 @@ const LoginForm = forwardRef<HTMLFormElement, ILoginFormProps>(
             <Box className={classes.inputRow}>
               <Controller
                 name="password"
-                control={methods.control}
+                control={control}
+                rules={{
+                  required: t('station.stationLoginForm.passwordRequired'),
+                }}
                 render={({ field }) => {
                   return (
                     <Input
@@ -75,6 +90,8 @@ const LoginForm = forwardRef<HTMLFormElement, ILoginFormProps>(
                       type={passwordVisible ? 'text' : 'password'}
                       placeholder={t('station.stationLoginForm.passwordInput')}
                       label={t('station.stationLoginForm.passwordLabel')}
+                      error={Boolean(errors.password)}
+                      helperText={errors.password?.message}
                       adornment={
                         <IconButton onClick={togglePasswordVisibility}>
                           {passwordVisible ? (

@@ -16,6 +16,22 @@ export const de = {
     addProduct: 'Produkt hinzufügen',
     addManufacturingPart: 'BOM hinzufügen',
     addPurchasingPart: 'Gekaufte Teile hinzufügen',
+    materialForm: {
+      nameLabel: 'Name',
+      namePlaceholder: 'Name eingeben',
+      materialNumberLabel: 'Materialnummer',
+      materialNumberPlaceholder: 'Materialnummer eingeben',
+      netPriceLabel: 'Nettopreis',
+      vatLabel: 'MwSt.',
+      weightLabel: 'Gewicht',
+      customTariffLabel: 'Zolltarif',
+      customTariffPlaceholder: 'Zolltarifnummer eingeben',
+      commentLabel: 'Kommentar',
+      commentPlaceholder: 'Kommentar eingeben',
+      packagingLabel: 'Verpackung',
+      attributesTitle: 'Attribute',
+      valuesTitle: 'Werte',
+    },
   },
   customer: {
     title: 'Kunde',
@@ -64,6 +80,9 @@ export const de = {
       passwordInput: 'Passwort eingeben',
       forgotPassword: 'Passwort vergessen?',
       submitButton: 'Weiter',
+      usernameRequired: 'Das Feld Benutzername ist erforderlich!',
+      passwordRequired: 'Das Feld Passwort ist erforderlich!',
+      passwordPattern: 'Das Passwort ist ungültig.',
     },
   },
   home: {
@@ -71,5 +90,8 @@ export const de = {
   },
   pagination: {
     resultsInfo: '{{startRow}} - {{endRow}} von {{totalRows}} Ergebnissen',
+  },
+  dynamicTable: {
+    addRow: 'Zeile hinzufügen',
   },
 };

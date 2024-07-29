@@ -1,4 +1,5 @@
 import { forwardRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useForm, Controller, FormProvider } from 'react-hook-form';
 
 import {
@@ -38,10 +39,17 @@ function handleNumberChange(
 
 const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
   ({ onSubmit }, ref) => {
+    const { t } = useTranslation();
     const { classes } = useStyles();
     const methods = useForm<IFormData>({
       defaultValues: initialValues,
     });
+
+    const {
+      control,
+      handleSubmit,
+      formState: { errors },
+    } = methods;
 
     return (
       <FormProvider {...methods}>
@@ -51,31 +59,53 @@ const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
           <Box
             component="form"
             ref={ref}
-            onSubmit={(): void => {
-              void methods.handleSubmit(onSubmit)();
+            onSubmit={(e) => {
+              e.preventDefault();
+              void handleSubmit(onSubmit)();
             }}
             className={classes.formContainer}
           >
             <Box className={classes.inputRow}>
               <Controller
                 name="name"
-                control={methods.control}
+                control={control}
+                rules={{ required: 'Name is required' }}
                 render={({ field }) => {
-                  return <Input {...field} label="Enter name" />;
+                  return (
+                    <Input
+                      {...field}
+                      label={t('material.materialForm.nameLabel')}
+                      placeholder={t('material.materialForm.namePlaceholder')}
+                      error={Boolean(errors.name)}
+                      helperText={errors.name?.message}
+                    />
+                  );
                 }}
               />
               <Controller
                 name="materialNumber"
-                control={methods.control}
+                control={control}
+                rules={{ required: 'Material number is required' }}
                 render={({ field }) => {
-                  return <Input {...field} label="Enter material number" />;
+                  return (
+                    <Input
+                      {...field}
+                      label={t('material.materialForm.materialNumberLabel')}
+                      placeholder={t(
+                        'material.materialForm.materialNumberPlaceholder',
+                      )}
+                      error={Boolean(errors.materialNumber)}
+                      helperText={errors.materialNumber?.message}
+                    />
+                  );
                 }}
               />
             </Box>
             <Box className={classes.inputRow}>
               <Controller
                 name="netPrice"
-                control={methods.control}
+                control={control}
+                rules={{ required: 'Net price is required' }}
                 render={({ field }) => {
                   return (
                     <Input
@@ -83,18 +113,21 @@ const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
                       type="number"
                       min={0}
                       max={999_999_999}
-                      label="Enter net price"
+                      label={t('material.materialForm.netPriceLabel')}
                       adornment="€"
                       onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                         return handleNumberChange(field as IFieldType, e);
                       }}
+                      error={Boolean(errors.netPrice)}
+                      helperText={errors.netPrice?.message}
                     />
                   );
                 }}
               />
               <Controller
                 name="VAT"
-                control={methods.control}
+                control={control}
+                rules={{ required: 'VAT is required' }}
                 render={({ field }) => {
                   return (
                     <Input
@@ -102,11 +135,13 @@ const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
                       type="number"
                       min={0}
                       max={999_999_999}
-                      label="Enter VAT"
+                      label={t('material.materialForm.vatLabel')}
                       adornment="%"
                       onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                         return handleNumberChange(field as IFieldType, e);
                       }}
+                      error={Boolean(errors.VAT)}
+                      helperText={errors.VAT?.message}
                     />
                   );
                 }}
@@ -115,7 +150,8 @@ const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
             <Box className={classes.inputRow}>
               <Controller
                 name="weight"
-                control={methods.control}
+                control={control}
+                rules={{ required: 'Weight is required' }}
                 render={({ field }) => {
                   return (
                     <Input
@@ -123,30 +159,52 @@ const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
                       type="number"
                       min={0}
                       max={999_999_999}
-                      label="Enter weight"
+                      label={t('material.materialForm.weightLabel')}
                       adornment="kg"
                       onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                         return handleNumberChange(field as IFieldType, e);
                       }}
+                      error={Boolean(errors.weight)}
+                      helperText={errors.weight?.message}
                     />
                   );
                 }}
               />
               <Controller
                 name="customsTarif"
-                control={methods.control}
+                control={control}
+                rules={{ required: 'Customs tariff is required' }}
                 render={({ field }) => {
-                  return <Input {...field} label="Enter customs tariff" />;
+                  return (
+                    <Input
+                      {...field}
+                      label={t('material.materialForm.customTariffLabel')}
+                      placeholder={t(
+                        'material.materialForm.customTariffPlaceholder',
+                      )}
+                      error={Boolean(errors.customsTarif)}
+                      helperText={errors.customsTarif?.message}
+                    />
+                  );
                 }}
               />
             </Box>
             <Box className={classes.inputRow}>
               <Controller
                 name="description"
-                control={methods.control}
+                control={control}
+                rules={{ required: 'Comment is required' }}
                 render={({ field }) => {
                   return (
-                    <Input {...field} label="Enter material description" />
+                    <Input
+                      {...field}
+                      label={t('material.materialForm.commentLabel')}
+                      placeholder={t(
+                        'material.materialForm.commentPlaceholder',
+                      )}
+                      error={Boolean(errors.description)}
+                      helperText={errors.description?.message}
+                    />
                   );
                 }}
               />
@@ -154,12 +212,12 @@ const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
             <Box className={classes.inputRow}>
               <Controller
                 name="packaging"
-                control={methods.control}
+                control={control}
                 render={({ field }) => {
                   return (
                     <FormControlLabel
                       control={<Switch {...field} checked={field.value} />}
-                      label="Packaging"
+                      label={t('material.materialForm.packagingLabel')}
                     />
                   );
                 }}
@@ -169,12 +227,12 @@ const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
             <Box className={classes.inputRow}>
               <Controller
                 name="attributes"
-                control={methods.control}
+                control={control}
                 render={({ field }) => {
                   return (
                     <DynamicValuesTable
                       {...field}
-                      title="Attributes"
+                      title={t('material.materialForm.attributesTitle')}
                       onAddRow={() => {
                         field.onChange([
                           ...field.value,
@@ -212,12 +270,12 @@ const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
             <Box className={classes.inputRow}>
               <Controller
                 name="values"
-                control={methods.control}
+                control={control}
                 render={({ field }) => {
                   return (
                     <DynamicValuesTable
                       {...field}
-                      title="Values"
+                      title={t('material.materialForm.valuesTitle')}
                       onAddRow={() => {
                         field.onChange([
                           ...field.value,

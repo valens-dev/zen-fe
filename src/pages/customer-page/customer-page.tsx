@@ -14,7 +14,7 @@ export default function CustomerPage(): React.ReactNode {
   const { classes } = useStyles();
 
   return (
-    <Box className={classes.wrapper}>
+    <Box className={`${classes.wrapper} ${classes.additionalPadding}`}>
       <Header title={t('customer.title')} />
       <CustomerTable />
     </Box>

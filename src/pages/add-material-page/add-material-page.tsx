@@ -46,7 +46,7 @@ export default function AddMaterialPage(): React.ReactNode {
   }
 
   return (
-    <Box className={classes.wrapper}>
+    <Box className={`${classes.wrapper} ${classes.additionalPadding}`}>
       <Header title={config.title} />
       <FormHeader
         path={config.path}

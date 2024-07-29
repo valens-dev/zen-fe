@@ -1,4 +1,5 @@
 import { forwardRef } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { Box, Typography } from '@mui/material';
 
@@ -22,13 +23,14 @@ export const DynamicValuesTable = forwardRef<
   ref,
 ): React.ReactNode {
   const { classes } = useStyles();
+  const { t } = useTranslation();
 
   return (
     <Box className={classes.wrapper} ref={ref}>
       <Typography className={classes.title}>{title}</Typography>
       <Box className={classes.attributeContainer}>{children}</Box>
       <Button onClick={onAddRow} className={classes.addButton}>
-        <AddIcon /> Add Row
+        <AddIcon /> {t('dynamicTable.addRow')}
       </Button>
     </Box>
   );

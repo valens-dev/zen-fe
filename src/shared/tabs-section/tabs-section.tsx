@@ -18,7 +18,7 @@ export function TabsSection({
   const ActiveTabComponent = tabs[selectedTab].component;
 
   return (
-    <>
+    <Box className={classes.wrapper}>
       <Tabs
         value={selectedTab}
         onChange={handleChange}
@@ -39,6 +39,6 @@ export function TabsSection({
       <Box className={classes.tabContent}>
         <ActiveTabComponent />
       </Box>
-    </>
+    </Box>
   );
 }
