@@ -22,6 +22,9 @@ export const useStyles = tss.create(({ theme }) => {
       top: '50%',
       transform: 'translateY(-50%)',
       background: theme.palette.light.quinary,
+      '&:hover': {
+        backgroundColor: theme.palette.light.quaternary,
+      },
     },
     avatar: {
       width: '32px',
