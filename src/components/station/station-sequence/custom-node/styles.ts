@@ -48,12 +48,18 @@ export const useStyles = tss.create(({ theme }) => {
       fontWeight: 'bold',
     },
     leftHandle: {
-      borderRadius: 0,
-      left: '-7px',
+      borderRadius: '20px',
+      marginLeft: '-7px',
+      '&.react-flow__handle': {
+        background: theme.palette.light.quaternary,
+      },
     },
     rightHandle: {
-      borderRadius: 0,
-      right: '-12px',
+      borderRadius: '20px',
+      marginRight: '-12px',
+      '&.react-flow__handle': {
+        background: theme.palette.light.quaternary,
+      },
     },
   };
 });
