@@ -86,25 +86,17 @@ export function Table<T>({
   function renderTableContent(): React.ReactNode {
     if (isError) {
       return (
-        <TableBody>
-          <TableRow>
-            <TableCell colSpan={columns.length} align="center">
-              <Error />
-            </TableCell>
-          </TableRow>
-        </TableBody>
+        <TableCell colSpan={columns.length} align="center">
+          <Error />
+        </TableCell>
       );
     }
 
     if (isLoading) {
       return (
-        <TableBody>
-          <TableRow>
-            <TableCell colSpan={columns.length} align="center">
-              <Loading />
-            </TableCell>
-          </TableRow>
-        </TableBody>
+        <TableCell colSpan={columns.length} align="center">
+          <Loading />
+        </TableCell>
       );
     }
 
