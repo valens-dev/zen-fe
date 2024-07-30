@@ -14,29 +14,30 @@ interface ICustomNodeProps extends NodeProps {
   };
 }
 
-export function CustomNode(props: ICustomNodeProps): React.ReactNode {
-  const { data } = props;
+export function CustomNode({
+  data: { label, value, avatarUrl },
+}: ICustomNodeProps): React.ReactNode {
   const { classes } = useStyles();
 
   return (
     <Box className={classes.wrapper}>
       <Box className={classes.textContainer}>
-        <Typography className={classes.label}>{data.label}</Typography>
-        <Typography className={classes.value}>{data.value}</Typography>
+        <Typography className={classes.label}>{label}</Typography>
+        <Typography className={classes.value}>{value}</Typography>
       </Box>
-      <Avatar src={data.avatarUrl} className={classes.avatar} />
+      <Avatar src={avatarUrl} className={classes.avatar} />
       <IconButton className={classes.iconButton}>
         <AddIcon color="primary" />
       </IconButton>
       <Handle
         type="target"
         position={Position.Left}
-        style={{ borderRadius: 0, left: '-7px' }}
+        className={classes.leftHandle}
       />
       <Handle
         type="source"
         position={Position.Right}
-        style={{ borderRadius: 0, right: '-12px' }}
+        className={classes.rightHandle}
       />
     </Box>
   );

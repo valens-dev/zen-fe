@@ -11,7 +11,7 @@ import '@xyflow/react/dist/style.css';
 
 import { Box } from '@mui/material';
 
-import { CustomNode } from './custom-node/custom-node';
+import { CustomNode } from './custom-node';
 
 import { getLayoutedElements } from './utils';
 import { initialEdges, initialNodes } from './constants';

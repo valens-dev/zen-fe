@@ -47,5 +47,13 @@ export const useStyles = tss.create(({ theme }) => {
       color: theme.palette.light.tertiary,
       fontWeight: 'bold',
     },
+    leftHandle: {
+      borderRadius: 0,
+      left: '-7px',
+    },
+    rightHandle: {
+      borderRadius: 0,
+      right: '-12px',
+    },
   };
 });
