@@ -18,6 +18,9 @@ import {
   type SelectChangeEvent,
 } from '@mui/material';
 
+import { Error } from '@/shared/status-components/error';
+import { Loading } from '@/shared/status-components/loading';
+
 import { Search } from './search';
 import { Pagination } from './pagination';
 
@@ -31,6 +34,8 @@ interface ITableProps<T> {
   setGlobalFilter: Dispatch<SetStateAction<string>>;
   pagination: PaginationState;
   setPagination: Dispatch<SetStateAction<PaginationState>>;
+  isLoading?: boolean;
+  isError?: boolean;
 }
 
 export function Table<T>({
@@ -41,6 +46,8 @@ export function Table<T>({
   setPagination,
   globalFilter,
   setGlobalFilter,
+  isLoading,
+  isError,
 }: ITableProps<T>): React.ReactNode {
   const { classes } = useStyles();
 
@@ -76,6 +83,50 @@ export function Table<T>({
     setPagination({ ...pagination, pageSize: Number(event.target.value) });
   }
 
+  function renderTableContent(): React.ReactNode {
+    if (isError) {
+      return (
+        <TableBody>
+          <TableRow>
+            <TableCell colSpan={columns.length} align="center">
+              <Error />
+            </TableCell>
+          </TableRow>
+        </TableBody>
+      );
+    }
+
+    if (isLoading) {
+      return (
+        <TableBody>
+          <TableRow>
+            <TableCell colSpan={columns.length} align="center">
+              <Loading />
+            </TableCell>
+          </TableRow>
+        </TableBody>
+      );
+    }
+
+    return (
+      <TableBody>
+        {table.getRowModel().rows.map((row) => {
+          return (
+            <TableRow key={row.id}>
+              {row.getVisibleCells().map((cell) => {
+                return (
+                  <TableCell key={cell.id}>
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </TableCell>
+                );
+              })}
+            </TableRow>
+          );
+        })}
+      </TableBody>
+    );
+  }
+
   return (
     <TableContainer component={Box} className={classes.tableContainer}>
       <Search value={globalFilter} onChange={handleGlobalFilterChange} />
@@ -100,24 +151,7 @@ export function Table<T>({
           })}
         </TableHead>
 
-        <TableBody>
-          {table.getRowModel().rows.map((row) => {
-            return (
-              <TableRow key={row.id}>
-                {row.getVisibleCells().map((cell) => {
-                  return (
-                    <TableCell key={cell.id}>
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext(),
-                      )}
-                    </TableCell>
-                  );
-                })}
-              </TableRow>
-            );
-          })}
-        </TableBody>
+        {renderTableContent()}
       </BaseTable>
 
       <Pagination

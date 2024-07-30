@@ -7,8 +7,6 @@ import { Box } from '@mui/material';
 
 import { Table } from '@/shared/table';
 import { Button } from '@/shared/button';
-import { Error } from '@/shared/status-components/error';
-import { Loading } from '@/shared/status-components/loading';
 
 import { SectionHeader } from '@/layouts/section-header';
 
@@ -56,14 +54,6 @@ export function MaterialTable({
     navigate('/material/add-material', { state: { materialType } });
   }
 
-  if (isLoading) {
-    return <Loading />;
-  }
-
-  if (isError) {
-    return <Error />;
-  }
-
   return (
     <Box className={classes.wrapper}>
       <SectionHeader
@@ -82,6 +72,8 @@ export function MaterialTable({
         setGlobalFilter={setGlobalFilter}
         pagination={pagination}
         setPagination={setPagination}
+        isLoading={isLoading}
+        isError={isError}
       />
     </Box>
   );
