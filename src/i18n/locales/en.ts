@@ -16,6 +16,25 @@ export const en = {
     addProduct: 'Add Product',
     addManufacturingPart: 'Add BOM',
     addPurchasingPart: 'Add Purchased Parts',
+    materialForm: {
+      nameLabel: 'Name',
+      namePlaceholder: 'Enter name',
+      materialNumberLabel: 'Material number',
+      materialNumberPlaceholder: 'Enter material number',
+      netPriceLabel: 'Net price',
+      netPricePlaceholder: 'Enter net price',
+      vatLabel: 'VAT',
+      vatPlaceholder: 'Enter VAT',
+      weightLabel: 'Weight',
+      weightPlaceholder: 'Enter weight',
+      customTariffLabel: 'Custom tariff',
+      customTariffPlaceholder: 'Enter custom tariff',
+      commentLabel: 'Comment',
+      commentPlaceholder: 'Enter comment',
+      packagingLabel: 'Packaging',
+      attributesTitle: 'Attributes',
+      valuesTitle: 'Values',
+    },
   },
   customer: {
     title: 'Customer',
@@ -63,6 +82,9 @@ export const en = {
       passwordInput: 'Enter password',
       forgotPassword: 'Forgot your password?',
       submitButton: 'Next',
+      usernameRequired: 'Username field is required!',
+      passwordRequired: 'Password field is required!',
+      passwordPattern: 'Password is not valid.',
     },
   },
   home: {
@@ -70,5 +92,8 @@ export const en = {
   },
   pagination: {
     resultsInfo: '{{startRow}} - {{endRow}} of {{totalRows}} results',
+  },
+  dynamicTable: {
+    addRow: 'Add Row',
   },
 };

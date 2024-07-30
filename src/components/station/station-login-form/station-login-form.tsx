@@ -2,6 +2,9 @@ import { useState, forwardRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useForm, Controller, FormProvider } from 'react-hook-form';
 
+import { yupResolver } from '@hookform/resolvers/yup';
+import { loginValidationSchema } from 'validation/station-login';
+
 import { Box, Link, Typography, IconButton } from '@mui/material';
 
 import { Input } from '@/shared/input';
@@ -26,6 +29,7 @@ const LoginForm = forwardRef<HTMLFormElement, ILoginFormProps>(
     const [passwordVisible, setPasswordVisible] = useState(false);
     const methods = useForm<ILoginFormData>({
       defaultValues: initialValues,
+      resolver: yupResolver(loginValidationSchema),
     });
 
     function togglePasswordVisibility(): void {
@@ -46,7 +50,9 @@ const LoginForm = forwardRef<HTMLFormElement, ILoginFormProps>(
           <Box
             component="form"
             ref={ref}
-            onSubmit={void methods.handleSubmit(onSubmit)}
+            onSubmit={(e): void => {
+              return void methods.handleSubmit(onSubmit)(e);
+            }}
             className={classes.formContainer}
           >
             <Box className={classes.inputRow}>
@@ -59,6 +65,7 @@ const LoginForm = forwardRef<HTMLFormElement, ILoginFormProps>(
                       {...field}
                       placeholder={t('station.stationLoginForm.usernameInput')}
                       label={t('station.stationLoginForm.usernameLabel')}
+                      error={Boolean(methods.formState.errors.username)}
                     />
                   );
                 }}
@@ -84,6 +91,7 @@ const LoginForm = forwardRef<HTMLFormElement, ILoginFormProps>(
                           )}
                         </IconButton>
                       }
+                      error={Boolean(methods.formState.errors.password)}
                     />
                   );
                 }}

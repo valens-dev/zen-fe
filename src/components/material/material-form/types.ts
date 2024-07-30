@@ -7,11 +7,11 @@ export interface IFormData {
   type: string;
   values: IValue[];
   attributes: IAttribute[];
-  weight?: number;
+  weight: number;
   materialNumber: string;
-  netPrice?: number;
-  VAT?: number;
-  customsTarif?: number;
+  netPrice: number;
+  VAT: number;
+  customsTarif?: string;
   description: string;
   image: string;
   packaging: boolean;
