@@ -83,24 +83,30 @@ export function Table<T>({
     setPagination({ ...pagination, pageSize: Number(event.target.value) });
   }
 
-  function renderTableContent(): React.ReactNode {
-    if (isError) {
-      return (
-        <TableCell colSpan={columns.length} align="center">
-          <Error />
-        </TableCell>
-      );
-    }
+  let tableContent: React.ReactNode;
 
-    if (isLoading) {
-      return (
-        <TableCell colSpan={columns.length} align="center">
-          <Loading />
-        </TableCell>
-      );
-    }
-
-    return (
+  if (isError) {
+    tableContent = (
+      <TableBody>
+        <TableRow>
+          <TableCell colSpan={columns.length} align="center">
+            <Error />
+          </TableCell>
+        </TableRow>
+      </TableBody>
+    );
+  } else if (isLoading) {
+    tableContent = (
+      <TableBody>
+        <TableRow>
+          <TableCell colSpan={columns.length} align="center">
+            <Loading />
+          </TableCell>
+        </TableRow>
+      </TableBody>
+    );
+  } else {
+    tableContent = (
       <TableBody>
         {table.getRowModel().rows.map((row) => {
           return (
@@ -143,7 +149,7 @@ export function Table<T>({
           })}
         </TableHead>
 
-        {renderTableContent()}
+        {tableContent}
       </BaseTable>
 
       <Pagination

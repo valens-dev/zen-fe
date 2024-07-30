@@ -43,14 +43,10 @@ const AddCustomersPage = lazy(() => {
   return import('@/pages/add-customer-page/add-customer-page');
 });
 
-function PageLoader(): React.ReactNode {
-  return <Loading />;
-}
-
 export function App(): React.ReactNode {
   return (
     <HashRouter>
-      <Suspense fallback={<PageLoader />}>
+      <Suspense fallback={<Loading />}>
         <Routes>
           <Route path="/" element={<RootLayout />}>
             <Route index element={<Navigate to="home" replace />} />
