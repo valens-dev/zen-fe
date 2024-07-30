@@ -18,6 +18,7 @@ interface IColor {
   secondary?: string;
   tertiary?: string;
   quaternary?: string;
+  quinary?: string;
 }
 
 interface IPalette {
