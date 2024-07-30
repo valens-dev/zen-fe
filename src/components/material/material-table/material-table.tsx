@@ -7,6 +7,8 @@ import { Box } from '@mui/material';
 
 import { Table } from '@/shared/table';
 import { Button } from '@/shared/button';
+import { Error } from '@/shared/status-components/error';
+import { Loading } from '@/shared/status-components/loading';
 
 import { SectionHeader } from '@/layouts/section-header';
 
@@ -54,18 +56,12 @@ export function MaterialTable({
     navigate('/material/add-material', { state: { materialType } });
   }
 
-  /**
-   * TODO: Implement proper loadding state management
-   */
   if (isLoading) {
-    return <Box>Loading</Box>;
+    return <Loading />;
   }
 
-  /**
-   * TODO: Implement proper error state management
-   */
   if (isError) {
-    return <Box>Error</Box>;
+    return <Error />;
   }
 
   return (

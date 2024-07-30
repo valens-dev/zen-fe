@@ -1,7 +1,7 @@
 import { lazy, Suspense } from 'react';
 import { Route, Routes, Navigate, HashRouter } from 'react-router-dom';
 
-import { Box, CircularProgress } from '@mui/material';
+import { Loading } from '@/shared/status-components/loading';
 
 import { RootLayout } from '../layouts/root-layout';
 
@@ -44,18 +44,7 @@ const AddCustomersPage = lazy(() => {
 });
 
 function PageLoader(): React.ReactNode {
-  return (
-    <Box
-      sx={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100vh',
-      }}
-    >
-      <CircularProgress />
-    </Box>
-  );
+  return <Loading />;
 }
 
 export function App(): React.ReactNode {
