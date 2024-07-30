@@ -26,7 +26,7 @@ export interface IMaterial {
   materialNumber: string;
   netPrice: number;
   VAT: number;
-  customsTarif: number;
+  customsTarif: string;
   description: string;
   image: string;
   packaging: boolean;
