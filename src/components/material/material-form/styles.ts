@@ -19,6 +19,7 @@ export const useStyles = tss.create(({ theme }) => {
     formContainer: {
       display: 'flex',
       flexDirection: 'column',
+      padding: '16px 0',
     },
     inputRow: {
       padding: '0 16px',

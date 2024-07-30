@@ -7,8 +7,8 @@ dagreGraph.setDefaultEdgeLabel(() => {
   return {};
 });
 
-const nodeWidth = 172;
-const nodeHeight = 36;
+const nodeWidth = 250;
+const nodeHeight = 75;
 
 export function getLayoutedElements(
   nodes: Node[],

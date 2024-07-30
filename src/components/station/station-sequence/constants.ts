@@ -6,38 +6,72 @@ const edgeType = ConnectionLineType.Bezier;
 export const initialNodes = [
   {
     id: '1',
-    type: 'input',
-    data: { label: 'input' },
+    type: 'custom',
+    data: {
+      label: 'input',
+      value: 1,
+      avatarUrl: 'https://via.placeholder.com/30',
+    },
     position,
   },
   {
     id: '2',
-    data: { label: 'node 2' },
+    type: 'custom',
+    data: {
+      label: 'node 2',
+      value: 2,
+      avatarUrl: 'https://via.placeholder.com/30',
+    },
     position,
   },
   {
     id: '2a',
-    data: { label: 'node 2a' },
+    type: 'custom',
+    data: {
+      label: 'node 2a',
+      value: 2.1,
+      avatarUrl: 'https://via.placeholder.com/30',
+    },
     position,
   },
   {
     id: '2b',
-    data: { label: 'node 2b' },
+    type: 'custom',
+    data: {
+      label: 'node 2b',
+      value: 2.2,
+      avatarUrl: 'https://via.placeholder.com/30',
+    },
     position,
   },
   {
     id: '2c',
-    data: { label: 'node 2c' },
+    type: 'custom',
+    data: {
+      label: 'node 2c',
+      value: 2.3,
+      avatarUrl: 'https://via.placeholder.com/30',
+    },
     position,
   },
   {
     id: '2d',
-    data: { label: 'node 2d' },
+    type: 'custom',
+    data: {
+      label: 'node 2d',
+      value: 2.4,
+      avatarUrl: 'https://via.placeholder.com/30',
+    },
     position,
   },
   {
     id: '3',
-    data: { label: 'node 3' },
+    type: 'custom',
+    data: {
+      label: 'node 3',
+      value: 3,
+      avatarUrl: 'https://via.placeholder.com/30',
+    },
     position,
   },
 ];

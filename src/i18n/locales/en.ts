@@ -96,4 +96,7 @@ export const en = {
   dynamicTable: {
     addRow: 'Add Row',
   },
+  error: {
+    missingData: 'Error loading data.',
+  },
 };

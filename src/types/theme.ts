@@ -18,6 +18,7 @@ interface IColor {
   secondary?: string;
   tertiary?: string;
   quaternary?: string;
+  quinary?: string;
 }
 
 interface IPalette {
@@ -27,6 +28,7 @@ interface IPalette {
   text: IColor;
   border: IColor;
   background: IColor;
+  error: IColor;
 }
 
 export interface ITheme {

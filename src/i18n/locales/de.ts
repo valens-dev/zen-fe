@@ -91,4 +91,7 @@ export const de = {
   pagination: {
     resultsInfo: '{{startRow}} - {{endRow}} von {{totalRows}} Ergebnissen',
   },
+  error: {
+    missingData: 'Fehler beim Laden der Daten.',
+  },
 };
