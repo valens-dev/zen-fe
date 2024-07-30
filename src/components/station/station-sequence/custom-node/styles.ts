@@ -50,10 +50,16 @@ export const useStyles = tss.create(({ theme }) => {
     leftHandle: {
       borderRadius: '20px',
       marginLeft: '-7px',
+      '&.react-flow__handle': {
+        background: theme.palette.light.quaternary,
+      },
     },
     rightHandle: {
       borderRadius: '20px',
       marginRight: '-12px',
+      '&.react-flow__handle': {
+        background: theme.palette.light.quaternary,
+      },
     },
   };
 });
