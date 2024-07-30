@@ -48,12 +48,12 @@ export const useStyles = tss.create(({ theme }) => {
       fontWeight: 'bold',
     },
     leftHandle: {
-      borderRadius: 0,
-      left: '-7px',
+      borderRadius: '20px',
+      marginLeft: '-7px',
     },
     rightHandle: {
-      borderRadius: 0,
-      right: '-12px',
+      borderRadius: '20px',
+      marginRight: '-12px',
     },
   };
 });
