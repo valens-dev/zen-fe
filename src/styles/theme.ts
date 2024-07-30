@@ -30,6 +30,9 @@ function useContext(): { theme: ITheme } {
         primary: '#0045D6',
         secondary: '#FAF7FF',
       },
+      error: {
+        primary: '#F04438',
+      },
     },
     typography: {
       fontWeight: {

@@ -71,4 +71,7 @@ export const en = {
   pagination: {
     resultsInfo: '{{startRow}} - {{endRow}} of {{totalRows}} results',
   },
+  error: {
+    missingData: 'Error loading data.',
+  },
 };
