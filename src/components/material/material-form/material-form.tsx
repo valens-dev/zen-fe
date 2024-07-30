@@ -5,7 +5,6 @@ import { useForm, Controller, FormProvider } from 'react-hook-form';
 import type * as yup from 'yup';
 import { useAttributes } from '@/services/attribute';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { materialShema } from 'validation/material-form';
 
 import {
   Box,
@@ -20,6 +19,7 @@ import { DynamicValuesTable } from '@/shared/dynamic-values-table';
 
 import { ValueRow } from '@/components/value/value-row/value-row';
 import { type IAttribute } from '@/components/attribute/constants';
+import { materialShema } from '@/components/validation/material-form';
 import { AttributeRow } from '@/components/attribute/attribute-row/attribute-row';
 
 import { type IFormData } from './types';

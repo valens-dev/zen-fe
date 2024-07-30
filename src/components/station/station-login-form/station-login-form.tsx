@@ -3,12 +3,13 @@ import { useTranslation } from 'react-i18next';
 import { useForm, Controller, FormProvider } from 'react-hook-form';
 
 import { yupResolver } from '@hookform/resolvers/yup';
-import { loginValidationSchema } from 'validation/station-login';
 
 import { Box, Link, Typography, IconButton } from '@mui/material';
 
 import { Input } from '@/shared/input';
 import { Button } from '@/shared/button';
+
+import { loginValidationSchema } from '@/components/validation/station-login';
 
 import EyeOpenIcon from '@/assets/icon/eye-open.svg?react';
 import EyeClosedIcon from '@/assets/icon/eye-closed.svg?react';
