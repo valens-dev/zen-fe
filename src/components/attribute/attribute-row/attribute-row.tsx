@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 
-import { Box, capitalize, IconButton } from '@mui/material';
+import { Box, IconButton } from '@mui/material';
 
 import MenuIcon from '@/assets/icon/menu.svg?react';
 import DeleteIcon from '@/assets/icon/delete.svg?react';
@@ -62,7 +62,7 @@ export function AttributeRow({
         </IconButton>
       </Box>
       <CustomSelect
-        value={capitalize(localAttribute.name)}
+        value={localAttribute.name}
         options={attributeNames}
         onChange={(newName: string) => {
           setOptions(attributeOptions[newName] || []);
@@ -71,7 +71,7 @@ export function AttributeRow({
         onAddNew={handleAddNewAttributeName}
       />
       <CustomSelect
-        value={capitalize(localAttribute.option)}
+        value={localAttribute.option}
         options={options}
         onChange={(newOption: string) => {
           updateAttribute({ ...localAttribute, option: newOption });

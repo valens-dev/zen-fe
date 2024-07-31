@@ -7,7 +7,6 @@ import {
   Popover,
   ListItem,
   Checkbox,
-  capitalize,
   ListItemText,
 } from '@mui/material';
 
@@ -105,10 +104,7 @@ export function CustomSelect({
                   disableRipple
                   className={classes.optionCheckbox}
                 />
-                <ListItemText
-                  primary={capitalize(option)}
-                  className={classes.optionText}
-                />
+                <ListItemText primary={option} className={classes.optionText} />
               </ListItem>
             );
           })}
