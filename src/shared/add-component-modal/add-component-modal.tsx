@@ -1,15 +1,15 @@
 import { useState } from 'react';
 
 import { useMaterial } from '@/services/material';
+import { transformMaterialsToProducts } from '@/services/material/utils';
 
 import { Box, Modal, Divider, Typography, IconButton } from '@mui/material';
 
-import { type IComponent } from '@/components/parts-list/constants';
 import { type IProduct } from '@/components/material/material-table/types';
 
 import { useTableFilters } from '@/hooks/use-table-filters';
 
-import { MaterialType } from '@/types/material';
+import { MaterialType, type IComponent } from '@/types/material';
 
 import CloseIcon from '@/assets/icon/close.svg?react';
 
@@ -41,11 +41,14 @@ export function AddComponentModal({
     const parts = selectedComponents.map((component) => {
       return {
         id: component.id,
-        units: 1,
+        quantity: 1,
         unitType: 'unit',
         name: component.name,
-        imageUrl: component.imageUrl,
+        imageUrl: [],
         duration: 1,
+        type: component.type,
+        manufacturingParts: component?.manufacturingPart,
+        purchasingParts: component?.purchasingPart,
       };
     });
     onSave(parts);
@@ -56,7 +59,7 @@ export function AddComponentModal({
     page: pagination.pageIndex + 1,
     limit: pagination.pageSize,
     name: globalFilter,
-    type: MaterialType.Product,
+    type: [MaterialType.ManufacturingPart, MaterialType.PurchasingPart],
   });
 
   return (
@@ -75,7 +78,7 @@ export function AddComponentModal({
               selectedComponents,
               setSelectedComponents,
             )}
-            data={materialData?.data}
+            data={transformMaterialsToProducts(materialData?.data)}
             totalCount={materialData?.totalCount ?? 0}
             globalFilter={globalFilter}
             setGlobalFilter={setGlobalFilter}

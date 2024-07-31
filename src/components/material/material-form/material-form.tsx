@@ -21,11 +21,10 @@ import { AddComponentModal } from '@/shared/add-component-modal/add-component-mo
 import { PartsList } from '@/components/parts-list/parts-list';
 import { ValueRow } from '@/components/value/value-row/value-row';
 import { type IAttribute } from '@/components/attribute/constants';
-import { type IComponent } from '@/components/parts-list/constants';
 import { materialShema } from '@/components/validation/material-form';
 import { AttributeRow } from '@/components/attribute/attribute-row/attribute-row';
 
-import { MaterialType } from '@/types/material';
+import { MaterialType, type IComponent } from '@/types/material';
 
 import { type IFormData } from './types';
 import { initialValues } from './constants';
@@ -290,8 +289,8 @@ const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
                               name: '',
                               value: '',
                               unit: '',
-                              toleranceMin: 0,
-                              toleranceMax: 0,
+                              toleranceMin: '',
+                              toleranceMax: '',
                             },
                           ]);
                         }

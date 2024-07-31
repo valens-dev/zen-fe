@@ -4,5 +4,5 @@ export interface IGetMaterialParams {
   page: number;
   limit: number;
   name?: string;
-  type: MaterialType;
+  type: MaterialType[];
 }

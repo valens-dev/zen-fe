@@ -1,11 +1,6 @@
 import { type IProduct } from '@/components/material/material-table/types';
 
-import {
-  type IValue,
-  type IMaterial,
-  type IAttribute,
-  type MaterialType,
-} from '@/types/material';
+import { type IValue, type IMaterial, type IAttribute } from '@/types/material';
 
 export function transformMaterialsToProducts(
   materials?: IMaterial[],
@@ -32,10 +27,14 @@ export function transformMaterialsToProducts(
       height: heightFormatted,
       material: materialValue,
       stock: 'In progress',
-      materialType: material.type as MaterialType,
+      materialType: material.type,
       name: material.name,
       price: `${material.netPrice}$`,
       weight: `${material.weight}kg`,
+      manufacturingPart: material.manufacturingPart,
+      purchasingPart: material.purchasingPart,
+      product: material.product,
+      type: material.type,
     };
   });
 }

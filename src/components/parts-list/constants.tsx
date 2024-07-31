@@ -4,41 +4,11 @@ import { Typography } from '@mui/material';
 
 import { Input } from '@/shared/input';
 
-export interface IComponent {
-  units: number;
-  unitType: string;
-  name: string;
-  imageUrl: string;
-  duration: number;
-}
-
-export const initialData: IComponent[] = [
-  {
-    units: 1,
-    unitType: 'Stk',
-    name: 'Lenker',
-    imageUrl: '/images/lenker.png',
-    duration: 50,
-  },
-  {
-    units: 1,
-    unitType: 'Stk',
-    name: 'Bremshebel',
-    imageUrl: '/images/bremshebel.png',
-    duration: 5,
-  },
-  {
-    units: 1,
-    unitType: 'Stk',
-    name: 'Sattel',
-    imageUrl: '/images/sattel.png',
-    duration: 15,
-  },
-];
+import { type IComponent } from '@/types/material';
 
 export const columns = [
   {
-    id: 'units',
+    id: 'quantity',
     label: 'Einheiten',
     renderCell: (
       row: IComponent,
@@ -47,13 +17,13 @@ export const columns = [
     ) => {
       return (
         <Input
-          name="unit"
-          placeholder="1"
           type="number"
-          value={row.units.toString()}
+          name="quantity"
+          placeholder="1"
+          value={row.quantity}
           sx={{ width: '100px' }}
           onChange={(e) => {
-            return handleChange(rowIndex, 'units', e.target.value);
+            return handleChange(rowIndex, 'quantity', e.target.value);
           }}
           adornment="Stk"
         />

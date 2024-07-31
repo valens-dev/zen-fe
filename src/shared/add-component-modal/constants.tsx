@@ -47,11 +47,11 @@ export function getMaterialColumns(
     columnHelper.accessor('name', {
       header: i18n.t('material.materialTable.name'),
       cell: ({ row }) => {
-        const { imageUrl, name } = row.original;
+        const { name } = row.original;
 
         return (
           <Box display="flex" alignItems="center">
-            <LazyImage src={imageUrl} alt={name} height={24} width={34} />
+            <LazyImage src="imageUrl" alt={name} height={24} width={34} />
             <Typography sx={{ marginLeft: '8px' }}>{name}</Typography>
           </Box>
         );

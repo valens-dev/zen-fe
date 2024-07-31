@@ -1,8 +1,8 @@
-import { type MaterialType } from '@/types/material';
+import { type IProductData, type MaterialType } from '@/types/material';
 
 export interface IProduct {
   id: number;
-  imageUrl: string;
+  imageUrl: object;
   height: string;
   material: string;
   materialType: MaterialType;
@@ -10,4 +10,8 @@ export interface IProduct {
   price: string;
   stock: string;
   weight: string;
+  type: MaterialType;
+  manufacturingPart?: IProductData;
+  purchasingPart?: IProductData;
+  product?: IProductData;
 }

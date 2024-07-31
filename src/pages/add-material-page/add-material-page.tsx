@@ -74,12 +74,35 @@ export default function AddMaterialPage(): React.ReactNode {
         ref={formRef}
         materialType={materialType}
         onSubmit={(data) => {
+          const { parts: _unusedParts, ...filteredData } = data;
+
+          const manufacturingParts = data.parts
+            .filter((part) => {
+              return part.type === MaterialType.ManufacturingPart;
+            })
+            .map((part) => {
+              return {
+                id: part?.manufacturingParts?.id,
+                quantity: part.quantity,
+              };
+            });
+          const purchasingParts = data.parts
+            .filter((part) => {
+              return part.type === MaterialType.PurchasingPart;
+            })
+            .map((part) => {
+              return {
+                id: part?.purchasingParts?.id,
+                quantity: part.quantity,
+              };
+            });
           mutation.mutate({
-            ...data,
+            ...filteredData,
             type: materialType,
-            manufacturingParts: [],
-            purchasingParts: [],
-          } as IMaterial);
+            manufacturingParts,
+            purchasingParts,
+          } as unknown as IMaterial);
+
           navigate('/material');
         }}
       />

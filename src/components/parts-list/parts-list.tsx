@@ -1,6 +1,8 @@
 import { FormTable } from '@/shared/form-table/form-table';
 
-import { columns, type IComponent } from './constants';
+import { type IComponent } from '@/types/material';
+
+import { columns } from './constants';
 
 interface IPartsListProps {
   data: IComponent[];

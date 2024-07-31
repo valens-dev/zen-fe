@@ -17,10 +17,14 @@ export interface IValue {
   toleranceMax: number;
 }
 
+export interface IProductData {
+  id: number;
+  typeId: string;
+}
 export interface IMaterial {
   id: number;
   name: string;
-  type: string;
+  type: MaterialType;
   values: IValue[];
   attributes: IAttribute[];
   weight: number;
@@ -29,6 +33,21 @@ export interface IMaterial {
   VAT: number;
   customsTarif: string;
   description: string;
-  image: string;
+  image: object;
   packaging: boolean;
+  manufacturingPart?: IProductData;
+  purchasingPart?: IProductData;
+  product?: IProductData;
+}
+
+export interface IComponent {
+  id: number;
+  quantity: number;
+  unitType: string;
+  name: string;
+  imageUrl: object;
+  duration: number;
+  type: MaterialType;
+  manufacturingParts?: IProductData;
+  purchasingParts?: IProductData;
 }
