@@ -24,6 +24,7 @@ export const useStyles = tss.create(({ theme }) => {
       height: '40px',
       margin: '2px',
       cursor: 'pointer',
+      textTransform: 'capitalize',
       '&:hover': {
         backgroundColor: theme.palette.light.secondary,
       },
