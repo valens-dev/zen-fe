@@ -50,23 +50,6 @@ export default function EditMaterialPage(): React.ReactNode {
     return <Loading />;
   }
 
-  const initialData: IFormData = {
-    id: materialData.id,
-    name: materialData.name,
-    type: materialData.type,
-    values: materialData.values,
-    attributes: materialData.attributes,
-    weight: materialData.weight,
-    materialNumber: materialData.materialNumber,
-    netPrice: materialData.netPrice,
-    VAT: materialData.VAT,
-    customsTarif: materialData.customsTarif,
-    description: materialData.description,
-    image: materialData.image,
-    packaging: materialData.packaging,
-    parts: [],
-  };
-
   return (
     <Box className={classes.wrapper}>
       <Header title={config.title} />
@@ -95,7 +78,7 @@ export default function EditMaterialPage(): React.ReactNode {
       <MaterialForm
         ref={formRef}
         materialType={materialType}
-        initialValues={initialData}
+        initialValues={materialData as IFormData}
         onSubmit={(data) => {
           // eslint-disable-next-line no-console
           console.log(data);
