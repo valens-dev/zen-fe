@@ -18,7 +18,7 @@ import { useStyles } from './styles';
 
 interface IOrderTableProps {
   title: string;
-  buttonText: string;
+  buttonText?: string;
   columns: ColumnDef<IOrder, string>[];
   data: IOrder[];
 }
@@ -44,9 +44,11 @@ export function OrderTable({
       <SectionHeader
         title={title}
         actions={
-          <Button onClick={handleOpenAddPage} startIcon={<AddIcon />}>
-            {buttonText}
-          </Button>
+          buttonText ? (
+            <Button onClick={handleOpenAddPage} startIcon={<AddIcon />}>
+              {buttonText}
+            </Button>
+          ) : undefined
         }
       />
       <Table

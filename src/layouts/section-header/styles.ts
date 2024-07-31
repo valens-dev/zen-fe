@@ -14,6 +14,7 @@ export const useStyles = tss.create(({ theme }) => {
       color: theme.palette.text.primary,
       fontSize: '1.25rem',
       lineHeight: 1.5,
+      height: '40px',
     },
     actions: {
       marginLeft: 'auto',
