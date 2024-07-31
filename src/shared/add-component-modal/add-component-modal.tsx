@@ -66,7 +66,9 @@ export function AddComponentModal({
     <Modal open={open} onClose={onClose}>
       <Box className={classes.wrapper}>
         <Box className={classes.header}>
-          <Typography variant="h6">Stücklistenkomponente hinzufügen</Typography>
+          <Typography className={classes.headerText}>
+            Stücklistenkomponente hinzufügen
+          </Typography>
           <IconButton onClick={onClose}>
             <CloseIcon />
           </IconButton>

@@ -7,7 +7,7 @@ export const useStyles = tss.create(({ theme }) => {
       marginTop: '8px',
     },
     sidebar: {
-      width: '22.45%',
+      width: '18.33%',
       height: '100vh',
       display: 'flex',
       flexDirection: 'column',

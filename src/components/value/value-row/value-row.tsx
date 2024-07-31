@@ -21,12 +21,16 @@ interface IValueRowProps {
   value: IValue;
   onDelete: () => void;
   onChange: (updatedValue: IValue) => void;
+  errors?: {
+    [key in keyof IValue]?: string;
+  };
 }
 
 export function ValueRow({
   value: valueProp,
   onDelete,
   onChange,
+  errors = {},
 }: IValueRowProps): React.ReactNode {
   const { classes } = useStyles();
   const unitOptions = ['kg', 'g', 'm', 'cm'];
@@ -65,6 +69,7 @@ export function ValueRow({
         name="name"
         value={valueProp.name}
         onChange={handleInputChange('name')}
+        error={Boolean(errors.name)}
       />
       <Input
         placeholder="Value"
@@ -74,6 +79,7 @@ export function ValueRow({
         max={999_999}
         value={valueProp.value}
         onChange={handleInputChange('value')}
+        error={Boolean(errors.value)}
       />
       <Select
         value={valueProp.unit}
@@ -88,6 +94,7 @@ export function ValueRow({
           }
           return selected;
         }}
+        error={Boolean(errors.unit)}
       >
         {unitOptions.map((unit) => {
           return (
@@ -105,6 +112,7 @@ export function ValueRow({
         max={999_999}
         value={valueProp.toleranceMin}
         onChange={handleInputChange('toleranceMin')}
+        error={Boolean(errors.toleranceMin)}
       />
       <Input
         placeholder="Tolerance Max"
@@ -114,6 +122,7 @@ export function ValueRow({
         max={999_999}
         value={valueProp.toleranceMax}
         onChange={handleInputChange('toleranceMax')}
+        error={Boolean(errors.toleranceMax)}
       />
       <Box className={classes.iconButton}>
         <IconButton onClick={onDelete}>

@@ -11,7 +11,7 @@ export interface IAttribute {
 
 export interface IValue {
   name: string;
-  value: string;
+  value: number;
   unit: string;
   toleranceMin: number;
   toleranceMax: number;
