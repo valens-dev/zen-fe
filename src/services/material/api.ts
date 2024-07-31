@@ -26,7 +26,14 @@ async function create(data: IMaterial): Promise<IApiResponse<IMaterial>> {
   return response.data;
 }
 
+async function getByIdAndType(id: number, type: string): Promise<IMaterial> {
+  const response = await api.get<IMaterial>(`${endpoint}/${type}/${id}`);
+
+  return response.data;
+}
+
 export const MaterialAPI = {
   getAll,
   create,
+  getByIdAndType,
 };

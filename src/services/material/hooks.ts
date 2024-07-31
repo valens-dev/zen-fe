@@ -36,3 +36,16 @@ export function useCreateMaterial(): UseMutationResult<
     },
   });
 }
+
+export function useMaterialByIdAndType(
+  id: number,
+  type: string,
+): UseQueryResult<IMaterial> {
+  return useQuery<IMaterial>({
+    queryKey: ['material', type, id],
+    queryFn: () => {
+      return MaterialAPI.getByIdAndType(id, type);
+    },
+    placeholderData: keepPreviousData,
+  });
+}

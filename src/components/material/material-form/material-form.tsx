@@ -27,7 +27,6 @@ import { AttributeRow } from '@/components/attribute/attribute-row/attribute-row
 import { MaterialType, type IComponent } from '@/types/material';
 
 import { type IFormData } from './types';
-import { initialValues } from './constants';
 import { checkLastRowFilled } from './utils';
 
 import { useStyles } from './styles';
@@ -35,6 +34,7 @@ import { useStyles } from './styles';
 interface IMaterialFormProps {
   onSubmit: (data: IFormData) => void;
   materialType: MaterialType;
+  initialValues: IFormData;
 }
 
 interface IFieldType {
@@ -49,7 +49,7 @@ function handleNumberChange(
 }
 
 const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
-  ({ onSubmit, materialType }, ref) => {
+  ({ onSubmit, materialType, initialValues }, ref) => {
     const { classes } = useStyles();
     const { t } = useTranslation();
     const methods = useForm<IFormData>({
@@ -239,7 +239,7 @@ const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
                         }
                       }}
                     >
-                      {field.value.map(
+                      {field?.value?.map(
                         (attribute: IAttribute, index: number) => {
                           return (
                             <AttributeRow
@@ -296,7 +296,7 @@ const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
                         }
                       }}
                     >
-                      {field.value.map((value, index) => {
+                      {field?.value?.map((value, index) => {
                         return (
                           <ValueRow
                             // eslint-disable-next-line react/no-array-index-key

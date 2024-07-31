@@ -26,6 +26,10 @@ import { Pagination } from './pagination';
 
 import { useStyles } from './styles';
 
+interface ITableData {
+  id: number;
+}
+
 interface ITableProps<T> {
   columns: ColumnDef<T, string>[];
   data?: T[];
@@ -36,9 +40,10 @@ interface ITableProps<T> {
   setPagination: Dispatch<SetStateAction<PaginationState>>;
   isLoading?: boolean;
   isError?: boolean;
+  onRowClick: (materialId: number) => void;
 }
 
-export function Table<T>({
+export function Table<T extends ITableData>({
   columns,
   data,
   totalCount,
@@ -48,6 +53,7 @@ export function Table<T>({
   setGlobalFilter,
   isLoading,
   isError,
+  onRowClick,
 }: ITableProps<T>): React.ReactNode {
   const { classes } = useStyles();
 
@@ -110,7 +116,12 @@ export function Table<T>({
       <TableBody>
         {table.getRowModel().rows.map((row) => {
           return (
-            <TableRow key={row.id}>
+            <TableRow
+              key={row.id}
+              onClick={() => {
+                return onRowClick(row.original.id);
+              }}
+            >
               {row.getVisibleCells().map((cell) => {
                 return (
                   <TableCell key={cell.id}>

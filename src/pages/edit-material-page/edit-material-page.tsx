@@ -1,19 +1,20 @@
 import { useRef } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
-import { useCreateMaterial } from '@/services/material/hooks';
+import { useMaterialByIdAndType } from '@/services/material';
 
 import { Box } from '@mui/material';
 
 import { Button } from '@/shared/button';
+import { Loading } from '@/shared/status-components/loading';
 
 import { MaterialForm } from '@/components/material/material-form';
-import { initialValues } from '@/components/material/material-form/constants';
+import { type IFormData } from '@/components/material/material-form/types';
 
 import { Header } from '@/layouts/header';
 import { FormHeader } from '@/layouts/form-header';
 
-import { MaterialType, type IMaterial } from '@/types/material';
+import { MaterialType } from '@/types/material';
 
 import AddIcon from '@/assets/icon/add.svg?react';
 
@@ -22,17 +23,16 @@ import { useStyles } from '../styles';
 import { materialConfig } from './constants';
 
 // eslint-disable-next-line import/no-default-export
-export default function AddMaterialPage(): React.ReactNode {
+export default function EditMaterialPage(): React.ReactNode {
   const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
   const { classes } = useStyles();
+  const [searchParams] = useSearchParams();
   const formRef = useRef<HTMLFormElement | null>(null);
 
-  const type = searchParams.get('materialType') as MaterialType;
+  const type = searchParams.get('type') as MaterialType;
   const materialType: MaterialType = type ?? MaterialType.Product;
   const config = materialConfig[materialType];
-
-  const mutation = useCreateMaterial();
+  const materialId = searchParams.get('id');
 
   function handleButtonClick(): void {
     if (formRef.current) {
@@ -40,6 +40,32 @@ export default function AddMaterialPage(): React.ReactNode {
       formRef.current.dispatchEvent(event);
     }
   }
+
+  const { data: materialData, isLoading } = useMaterialByIdAndType(
+    Number(materialId),
+    materialType,
+  );
+
+  if (isLoading || !materialData) {
+    return <Loading />;
+  }
+
+  const initialData: IFormData = {
+    id: materialData.id,
+    name: materialData.name,
+    type: materialData.type,
+    values: materialData.values,
+    attributes: materialData.attributes,
+    weight: materialData.weight,
+    materialNumber: materialData.materialNumber,
+    netPrice: materialData.netPrice,
+    VAT: materialData.VAT,
+    customsTarif: materialData.customsTarif,
+    description: materialData.description,
+    image: materialData.image,
+    packaging: materialData.packaging,
+    parts: [],
+  };
 
   return (
     <Box className={classes.wrapper}>
@@ -69,38 +95,10 @@ export default function AddMaterialPage(): React.ReactNode {
       <MaterialForm
         ref={formRef}
         materialType={materialType}
-        initialValues={initialValues}
+        initialValues={initialData}
         onSubmit={(data) => {
-          const { parts: _unusedParts, ...filteredData } = data;
-
-          const manufacturingParts = data.parts
-            .filter((part) => {
-              return part.type === MaterialType.ManufacturingPart;
-            })
-            .map((part) => {
-              return {
-                id: part?.manufacturingParts?.id,
-                quantity: part.quantity,
-              };
-            });
-          const purchasingParts = data.parts
-            .filter((part) => {
-              return part.type === MaterialType.PurchasingPart;
-            })
-            .map((part) => {
-              return {
-                id: part?.purchasingParts?.id,
-                quantity: part.quantity,
-              };
-            });
-          mutation.mutate({
-            ...filteredData,
-            type: materialType,
-            manufacturingParts,
-            purchasingParts,
-          } as unknown as IMaterial);
-
-          navigate('/material');
+          // eslint-disable-next-line no-console
+          console.log(data);
         }}
       />
     </Box>

@@ -58,7 +58,7 @@ export function FormTable<T>({
     (index: number, field: string, value: string) => {
       const updatedRow = { ...localData[index], [field]: value };
       setLocalData((prevData) => {
-        return prevData.map((row, i) => {
+        return prevData?.map((row, i) => {
           return i === index ? updatedRow : row;
         });
       });
@@ -84,7 +84,7 @@ export function FormTable<T>({
             </TableRow>
           </TableHead>
           <TableBody>
-            {localData.map((row, index) => {
+            {localData?.map((row, index) => {
               return (
                 // eslint-disable-next-line react/no-array-index-key
                 <TableRow key={index}>
