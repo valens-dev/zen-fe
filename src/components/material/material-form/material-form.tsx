@@ -183,6 +183,7 @@ const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
                       placeholder={t(
                         'material.materialForm.customTariffPlaceholder',
                       )}
+                      error={Boolean(methods.formState.errors.customsTarif)}
                     />
                   );
                 }}
@@ -312,6 +313,11 @@ const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
                               newValues[index] = updatedValue;
                               field.onChange(newValues);
                             }}
+                            errors={
+                              methods.formState.errors.values?.[
+                                index
+                              ] as Record<string, string>
+                            }
                           />
                         );
                       })}
