@@ -86,6 +86,7 @@ export function FormTable<T>({
           <TableBody>
             {localData.map((row, index) => {
               return (
+                // eslint-disable-next-line react/no-array-index-key
                 <TableRow key={index}>
                   {columns.map((column) => {
                     return (

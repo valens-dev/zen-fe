@@ -54,20 +54,6 @@ export function MaterialTable({
     navigate('/material/add-material', { state: { materialType } });
   }
 
-  /**
-   * TODO: Implement proper loadding state management
-   */
-  if (isLoading) {
-    return <Box>Loading</Box>;
-  }
-
-  /**
-   * TODO: Implement proper error state management
-   */
-  if (isError) {
-    return <Box>Error</Box>;
-  }
-
   return (
     <Box className={classes.wrapper}>
       <SectionHeader
@@ -86,6 +72,8 @@ export function MaterialTable({
         setGlobalFilter={setGlobalFilter}
         pagination={pagination}
         setPagination={setPagination}
+        isLoading={isLoading}
+        isError={isError}
       />
     </Box>
   );
