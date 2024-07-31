@@ -16,6 +16,11 @@ export const useStyles = tss.create(({ theme }) => {
     textField: {
       height: '40px',
       borderRadius: '12px',
+      '& input[type=number]::-webkit-outer-spin-button, & input[type=number]::-webkit-inner-spin-button':
+        {
+          WebkitAppearance: 'none',
+          margin: 0,
+        },
       '& .MuiOutlinedInput-notchedOutline': {
         border: `1px solid ${theme.palette.border.primary}`,
       },

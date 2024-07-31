@@ -2,16 +2,48 @@ import { type ColumnDef, createColumnHelper } from '@tanstack/react-table';
 
 import i18n from 'i18n';
 
-import { Box, Typography } from '@mui/material';
+import { Box, Checkbox, Typography } from '@mui/material';
 
-import { LazyImage } from '@/shared/lazy-image/lazy-image';
+import { type IProduct } from '@/components/material/material-table/types';
 
-import { type IProduct } from './types';
+import { LazyImage } from '../lazy-image';
 
 const columnHelper = createColumnHelper<IProduct>();
 
-export function getMaterialColumns(): ColumnDef<IProduct, string>[] {
+export function getMaterialColumns(
+  selectedComponents: IProduct[],
+  setSelectedComponents: React.Dispatch<React.SetStateAction<IProduct[]>>,
+): ColumnDef<IProduct, string>[] {
+  function isSelected(row: IProduct): boolean {
+    return selectedComponents.some((component) => {
+      return component.id === row.id;
+    });
+  }
+
+  function handleCheckboxChange(row: IProduct): void {
+    setSelectedComponents((prev) => {
+      return isSelected(row)
+        ? prev.filter((component) => {
+            return component.id !== row.id;
+          })
+        : [...prev, row];
+    });
+  }
+
   return [
+    columnHelper.display({
+      id: 'select',
+      cell: ({ row }) => {
+        return (
+          <Checkbox
+            checked={isSelected(row.original)}
+            onChange={() => {
+              return handleCheckboxChange(row.original);
+            }}
+          />
+        );
+      },
+    }),
     columnHelper.accessor('name', {
       header: i18n.t('material.materialTable.name'),
       cell: ({ row }) => {

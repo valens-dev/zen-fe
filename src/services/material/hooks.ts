@@ -6,8 +6,6 @@ import {
   type UseMutationResult,
 } from '@tanstack/react-query';
 
-import { type IProduct } from '@/components/material/material-table/types';
-
 import { type IApiResponse } from '@/types/api';
 import { type IMaterial } from '@/types/material';
 
@@ -17,8 +15,8 @@ import { type IGetMaterialParams } from './types';
 
 export function useMaterial(
   params: IGetMaterialParams,
-): UseQueryResult<IApiResponse<IProduct[]>> {
-  return useQuery<IApiResponse<IProduct[]>>({
+): UseQueryResult<IApiResponse<IMaterial[]>> {
+  return useQuery<IApiResponse<IMaterial[]>>({
     queryKey: ['material', params],
     queryFn: () => {
       return MaterialAPI.getAll(params);

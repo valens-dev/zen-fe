@@ -82,6 +82,12 @@ export function ValueRow({
         }}
         className={classes.select}
         displayEmpty
+        renderValue={(selected) => {
+          if (!selected) {
+            return 'Unit';
+          }
+          return selected;
+        }}
       >
         {unitOptions.map((unit) => {
           return (

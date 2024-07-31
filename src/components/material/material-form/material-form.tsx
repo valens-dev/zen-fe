@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import { useState, forwardRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useForm, Controller, FormProvider } from 'react-hook-form';
 
@@ -16,19 +16,25 @@ import {
 
 import { Input } from '@/shared/input';
 import { DynamicValuesTable } from '@/shared/dynamic-values-table';
+import { AddComponentModal } from '@/shared/add-component-modal/add-component-modal';
 
+import { PartsList } from '@/components/parts-list/parts-list';
 import { ValueRow } from '@/components/value/value-row/value-row';
 import { type IAttribute } from '@/components/attribute/constants';
 import { materialShema } from '@/components/validation/material-form';
 import { AttributeRow } from '@/components/attribute/attribute-row/attribute-row';
 
+import { MaterialType, type IComponent } from '@/types/material';
+
 import { type IFormData } from './types';
 import { initialValues } from './constants';
+import { checkLastRowFilled } from './utils';
 
 import { useStyles } from './styles';
 
 interface IMaterialFormProps {
   onSubmit: (data: IFormData) => void;
+  materialType: MaterialType;
 }
 
 interface IFieldType {
@@ -43,7 +49,7 @@ function handleNumberChange(
 }
 
 const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
-  ({ onSubmit }, ref) => {
+  ({ onSubmit, materialType }, ref) => {
     const { classes } = useStyles();
     const { t } = useTranslation();
     const methods = useForm<IFormData>({
@@ -51,6 +57,8 @@ const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
       resolver: yupResolver(materialShema as yup.ObjectSchema<IFormData>),
     });
     const { data: attributesData } = useAttributes();
+
+    const [modalOpen, setModalOpen] = useState<boolean>(false);
 
     return (
       <FormProvider {...methods}>
@@ -220,20 +228,22 @@ const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
                   return (
                     <DynamicValuesTable
                       {...field}
+                      buttonText={t('dynamicTable.addRow')}
                       title={t('material.materialForm.attributesTitle')}
                       onAddRow={() => {
-                        field.onChange([
-                          ...field.value,
-                          { name: '', option: '' },
-                        ]);
+                        if (checkLastRowFilled(field.value)) {
+                          return field.onChange([
+                            ...field.value,
+                            { name: '', option: '' },
+                          ]);
+                        }
                       }}
                     >
                       {field.value.map(
                         (attribute: IAttribute, index: number) => {
                           return (
                             <AttributeRow
-                              // eslint-disable-next-line react/no-array-index-key
-                              key={index}
+                              key={attribute.name}
                               attribute={attribute}
                               attributeNames={
                                 attributesData?.attributeNames ?? []
@@ -269,18 +279,21 @@ const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
                   return (
                     <DynamicValuesTable
                       {...field}
+                      buttonText="Add row"
                       title={t('material.materialForm.valuesTitle')}
                       onAddRow={() => {
-                        field.onChange([
-                          ...field.value,
-                          {
-                            name: '',
-                            value: '',
-                            unit: '',
-                            toleranceMin: '',
-                            toleranceMax: '',
-                          },
-                        ]);
+                        if (checkLastRowFilled(field.value)) {
+                          return field.onChange([
+                            ...field.value,
+                            {
+                              name: '',
+                              value: '',
+                              unit: '',
+                              toleranceMin: '',
+                              toleranceMax: '',
+                            },
+                          ]);
+                        }
                       }}
                     >
                       {field.value.map((value, index) => {
@@ -308,6 +321,53 @@ const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
               />
             </Box>
             <Divider />
+            {materialType !== MaterialType.PurchasingPart && (
+              <Box className={classes.inputRow}>
+                <Controller
+                  name="parts"
+                  control={methods.control}
+                  render={({ field }) => {
+                    return (
+                      <DynamicValuesTable
+                        {...field}
+                        title="Components"
+                        buttonText="Add component"
+                        onAddRow={() => {
+                          return setModalOpen(true);
+                        }}
+                      >
+                        <PartsList
+                          data={field.value}
+                          onDeleteRow={(index) => {
+                            const newValues = [...field.value];
+                            newValues.splice(index, 1);
+                            field.onChange(newValues);
+                          }}
+                          onChangeRow={(index, updatedValue) => {
+                            const newValues = [...field.value];
+                            newValues[index] = updatedValue;
+                            field.onChange(newValues);
+                          }}
+                        />
+                      </DynamicValuesTable>
+                    );
+                  }}
+                />
+              </Box>
+            )}
+            <Divider />
+            <AddComponentModal
+              open={modalOpen}
+              onClose={() => {
+                return setModalOpen(false);
+              }}
+              onSave={(newComponents: IComponent[]) => {
+                methods.setValue('parts', [
+                  ...methods.getValues('parts'),
+                  ...newComponents,
+                ]);
+              }}
+            />
           </Box>
         </Box>
       </FormProvider>
