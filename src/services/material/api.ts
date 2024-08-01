@@ -1,25 +1,22 @@
-import { type IProduct } from '@/components/material/material-table/types';
-
 import { type IApiResponse } from '@/types/api';
 import { type IMaterial } from '@/types/material';
 
 import { api } from '../api';
 
 import { type IGetMaterialParams } from './types';
-import { transformMaterialsToProducts } from './utils';
 
 const endpoint = '/material';
 
 async function getAll(
   params: IGetMaterialParams,
-): Promise<IApiResponse<IProduct[]>> {
+): Promise<IApiResponse<IMaterial[]>> {
   const response = await api.get<IApiResponse<IMaterial[]>>(endpoint, {
     params,
   });
 
   return {
     ...response.data,
-    data: transformMaterialsToProducts(response.data.data),
+    data: response.data.data,
   };
 }
 

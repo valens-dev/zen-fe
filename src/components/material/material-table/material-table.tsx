@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { type ColumnDef } from '@tanstack/react-table';
 
 import { useMaterial } from '@/services/material';
+import { transformMaterialsToProducts } from '@/services/material/utils';
 
 import { Box } from '@mui/material';
 
@@ -47,7 +48,7 @@ export function MaterialTable({
     page: pagination.pageIndex + 1,
     limit: pagination.pageSize,
     name: globalFilter,
-    type: materialType,
+    type: [materialType],
   });
 
   function handleOpenAddPage(): void {
@@ -66,7 +67,7 @@ export function MaterialTable({
       />
       <Table
         columns={columns}
-        data={materialData?.data}
+        data={transformMaterialsToProducts(materialData?.data)}
         totalCount={materialData?.totalCount ?? 0}
         globalFilter={globalFilter}
         setGlobalFilter={setGlobalFilter}

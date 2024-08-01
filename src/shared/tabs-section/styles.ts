@@ -24,6 +24,9 @@ export const useStyles = tss.create(({ theme }) => {
       '&.Mui-selected': {
         color: theme.palette.light.tertiary,
       },
+      '& svg path': {
+        stroke: theme.palette.light.tertiary,
+      },
     },
     line: {
       width: '100%',

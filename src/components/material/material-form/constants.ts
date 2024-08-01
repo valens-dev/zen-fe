@@ -9,8 +9,9 @@ export const initialValues: IFormData = {
   materialNumber: '',
   netPrice: 0,
   VAT: 19,
-  customsTarif: undefined,
+  customsTarif: '',
   description: '',
-  image: '',
+  image: [],
   packaging: false,
+  parts: [],
 };

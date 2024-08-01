@@ -17,13 +17,14 @@ export const useStyles = tss.create(({ theme }) => {
       fontSize: '0.875rem',
       lineHeight: '20px',
       color: theme.palette.text.primary,
-      textTransform: 'none',
+      textTransform: 'capitalize',
       justifyContent: 'flex-start',
     },
     popoverOption: {
       height: '40px',
       margin: '2px',
       cursor: 'pointer',
+      textTransform: 'capitalize',
       '&:hover': {
         backgroundColor: theme.palette.light.secondary,
       },
