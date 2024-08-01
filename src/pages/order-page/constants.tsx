@@ -1,15 +1,28 @@
+import type React from 'react';
+
 import i18n from 'i18n';
+
+import { Box } from '@mui/material';
 
 import { OrderTable } from '@/components/order/order-table';
 import { columns, orderData } from '@/components/order/order-table/constants';
 
+import IconForward from '@/assets/icon/forward.svg?react';
+
 export function getOrderTabs(): {
-  label: string;
+  id: number;
+  label: React.ReactNode;
   component: React.ElementType;
 }[] {
   return [
     {
-      label: `${i18n.t('order.orders')} -->`,
+      id: 1,
+      label: (
+        <Box display="flex" flexDirection="row" alignItems="center">
+          {i18n.t('order.orders')}
+          <IconForward />
+        </Box>
+      ),
       component: () => {
         return (
           <OrderTable
@@ -22,6 +35,7 @@ export function getOrderTabs(): {
       },
     },
     {
+      id: 2,
       label: i18n.t('order.productionOrder'),
       component: () => {
         return (
@@ -35,6 +49,7 @@ export function getOrderTabs(): {
       },
     },
     {
+      id: 3,
       label: i18n.t('order.logisticsOrder'),
       component: () => {
         return (
@@ -48,7 +63,13 @@ export function getOrderTabs(): {
       },
     },
     {
-      label: `--> ${i18n.t('order.shipment')}`,
+      id: 4,
+      label: (
+        <Box display="flex" flexDirection="row">
+          <IconForward />
+          {i18n.t('order.shipment')}
+        </Box>
+      ),
       component: () => {
         return (
           <OrderTable

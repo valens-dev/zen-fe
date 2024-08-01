@@ -6,11 +6,13 @@ import { getMaterialColumns } from '@/components/material/material-table/constan
 import { MaterialType } from '@/types/material';
 
 export function getMaterialTabs(): {
+  id: number;
   label: string;
   component: React.ElementType;
 }[] {
   return [
     {
+      id: 1,
       label: i18n.t('material.product'),
       component: () => {
         return (
@@ -24,6 +26,7 @@ export function getMaterialTabs(): {
       },
     },
     {
+      id: 2,
       label: i18n.t('material.manufacturingPart'),
       component: () => {
         return (
@@ -37,6 +40,7 @@ export function getMaterialTabs(): {
       },
     },
     {
+      id: 3,
       label: i18n.t('material.purchasingPart'),
       component: () => {
         return (
