@@ -1,8 +1,7 @@
-import { Box, Modal, IconButton, Typography } from '@mui/material';
+import { Box, IconButton, Typography } from '@mui/material';
 
-import { Button } from '@/shared/button';
+import { ReusableModal } from '@/shared/modal/modal';
 
-import CloseIcon from '@/assets/icon/close.svg?react';
 import DeleteIcon from '@/assets/icon/delete.svg?react';
 
 import { useStyles } from './styles';
@@ -22,35 +21,26 @@ export function DeleteStationModal({
   const { classes } = useStyles();
 
   return (
-    <Modal open={open} onClose={onClose}>
-      <Box className={classes.wrapper}>
-        <Box className={classes.iconContainer}>
-          <IconButton className={classes.closeIcon} onClick={onClose}>
-            <CloseIcon />
-          </IconButton>
-        </Box>
-        <Box className={classes.header}>
-          <IconButton className={classes.deleteIcon}>
-            <DeleteIcon />
-          </IconButton>
-          <Box className={classes.text}>
-            <Typography className={classes.title}>
-              Are you sure you want to delete station?
-            </Typography>
-            <Typography className={classes.subtitle}>
-              This action cannot be undone.
-            </Typography>
-          </Box>
-        </Box>
-        <Box className={classes.footer}>
-          <Button onClick={onClose} className={classes.cancelButton}>
-            Cancel
-          </Button>
-          <Button onClick={onDelete} className={classes.deleteButton}>
-            Delete
-          </Button>
+    <ReusableModal
+      open={open}
+      onClose={onClose}
+      primaryActionLabel="Delete"
+      onPrimaryAction={onDelete}
+      primaryActionClass={classes.deleteButton}
+    >
+      <Box className={classes.boxContainer}>
+        <IconButton className={classes.deleteIcon}>
+          <DeleteIcon />
+        </IconButton>
+        <Box className={classes.textBox}>
+          <Typography className={classes.text1}>
+            Are you sure you want to delete this station?
+          </Typography>
+          <Typography className={classes.text2}>
+            This action cannot be undone.
+          </Typography>
         </Box>
       </Box>
-    </Modal>
+    </ReusableModal>
   );
 }

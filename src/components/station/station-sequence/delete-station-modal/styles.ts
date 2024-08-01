@@ -2,33 +2,19 @@ import { tss } from '@/styles/theme';
 
 export const useStyles = tss.create(({ theme }) => {
   return {
-    wrapper: {
+    boxContainer: {
       display: 'flex',
       flexDirection: 'column',
-      width: '30%',
-      position: 'absolute',
-      top: '50%',
-      left: '50%',
-      transform: 'translate(-50%, -50%)',
-      border: `1px solid ${theme.palette.border.primary}`,
-      backgroundColor: theme.palette.white.primary,
-      borderRadius: '16px',
-    },
-    header: {
-      width: '100%',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      padding: '8px 16px 0 16px',
       gap: '12px',
+      alignItems: 'center',
     },
-    text: {
+    textBox: {
       display: 'flex',
       flexDirection: 'column',
       gap: '4px',
+      alignItems: 'center',
     },
-    title: {
+    text1: {
       width: '100%',
       fontWeight: theme.typography.fontWeight.medium,
       fontSize: '1rem',
@@ -36,18 +22,13 @@ export const useStyles = tss.create(({ theme }) => {
       lineHeight: 1.5,
       textAlign: 'center',
     },
-    subtitle: {
+    text2: {
       width: '100%',
       fontWeight: theme.typography.fontWeight.regular,
       fontSize: '0.875rem',
       color: theme.palette.main.primary,
       lineHeight: 1.5,
       textAlign: 'center',
-    },
-    footer: {
-      display: 'flex',
-      padding: '12px 16px',
-      gap: '12px',
     },
     deleteButton: {
       width: '100%',
@@ -61,22 +42,6 @@ export const useStyles = tss.create(({ theme }) => {
       border: `1px solid ${theme.palette.border.primary}`,
       backgroundColor: theme.palette.white.primary,
       color: 'red',
-      '&:hover': {
-        backgroundColor: theme.palette.white.secondary,
-      },
-    },
-    cancelButton: {
-      width: '100%',
-      height: '40px',
-      borderRadius: '12px',
-      padding: '8px 16px',
-      textTransform: 'none',
-      fontWeight: theme.typography.fontWeight.medium,
-      fontSize: '0.875rem',
-      lineHeight: 1.25,
-      border: `1px solid ${theme.palette.border.primary}`,
-      backgroundColor: theme.palette.white.primary,
-      color: theme.palette.text.primary,
       '&:hover': {
         backgroundColor: theme.palette.white.secondary,
       },
@@ -100,6 +65,5 @@ export const useStyles = tss.create(({ theme }) => {
         padding: 0,
       },
     },
-    closeIcon: {},
   };
 });
