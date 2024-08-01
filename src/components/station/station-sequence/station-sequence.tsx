@@ -1,3 +1,169 @@
+// import { useState } from 'react';
+// import {
+//   addEdge,
+//   ReactFlow,
+//   type Edge,
+//   useNodesState,
+//   useEdgesState,
+//   type Connection,
+// } from '@xyflow/react';
+
+// import '@xyflow/react/dist/style.css';
+
+// import { Box, Typography } from '@mui/material';
+
+// import { Button } from '@/shared/button';
+
+// import AddIcon from '@/assets/icon/attribute.svg?react';
+
+// import { CustomNode } from './custom-node';
+// import { CustomEdge } from './custom-edge';
+
+// import { getLayoutedElements } from './utils';
+// import { initialEdges, initialNodes } from './constants';
+
+// import { useStyles } from './styles';
+
+// const { nodes: layoutedNodes, edges: layoutedEdges } = getLayoutedElements(
+//   initialNodes,
+//   initialEdges,
+// );
+
+// export function StationSequence(): React.ReactNode {
+//   const [modalOpen1, setModalOpen1] = useState(false);
+//   const [modalOpen2, setModalOpen2] = useState(false);
+
+//   const { classes } = useStyles();
+
+//   const [nodes, _, onNodesChange] = useNodesState(layoutedNodes);
+//   const [edges, setEdges, onEdgesChange] = useEdgesState(layoutedEdges);
+
+//   function onConnect(params: Edge | Connection): void {
+//     setEdges((eds) => {
+//       return addEdge({ ...params }, eds);
+//     });
+//   }
+
+//   return (
+//     <Box className={classes.wrapper}>
+//       <Button
+//         onClick={() => {
+//           setModalOpen1(true);
+//         }}
+//       >
+//         <AddIcon /> Add New
+//       </Button>
+//       <Button
+//         onClick={() => {
+//           setModalOpen2(true);
+//         }}
+//       >
+//         <AddIcon /> Add New
+//       </Button>
+//       {modalOpen1 ? <Typography>Nesto</Typography> : undefined}
+//       {modalOpen2 ? <Typography>Nesto drugo</Typography> : undefined}
+//       <ReactFlow
+//         nodes={nodes}
+//         edges={edges}
+//         onNodesChange={onNodesChange}
+//         onEdgesChange={onEdgesChange}
+//         onConnect={onConnect}
+//         fitView
+//         nodeTypes={{ custom: CustomNode }}
+//         edgeTypes={{ custom: CustomEdge }}
+//       />
+//     </Box>
+//   );
+// }
+
+// import { useState } from 'react';
+// import {
+//   addEdge,
+//   ReactFlow,
+//   type Edge,
+//   useNodesState,
+//   useEdgesState,
+//   type Connection,
+// } from '@xyflow/react';
+
+// import '@xyflow/react/dist/style.css';
+
+// import { Box, Typography } from '@mui/material';
+
+// import { Button } from '@/shared/button';
+
+// import AddIcon from '@/assets/icon/attribute.svg?react';
+
+// import { CustomNode } from './custom-node';
+// import { CustomEdge } from './custom-edge';
+// import { AddStationModal } from './add-station-modal/add-station-modal';
+
+// import { getLayoutedElements } from './utils';
+// import { initialEdges, initialNodes } from './constants';
+
+// import { useStyles } from './styles';
+
+// const { nodes: layoutedNodes, edges: layoutedEdges } = getLayoutedElements(
+//   initialNodes,
+//   initialEdges,
+// );
+
+// export function StationSequence(): React.ReactNode {
+//   const [modalOpen1, setModalOpen1] = useState(false);
+//   const [modalOpen2, setModalOpen2] = useState(false);
+
+//   const { classes } = useStyles();
+
+//   const [nodes, _, onNodesChange] = useNodesState(layoutedNodes);
+//   const [edges, setEdges, onEdgesChange] = useEdgesState(layoutedEdges);
+
+//   function onConnect(params: Edge | Connection): void {
+//     setEdges((eds) => {
+//       return addEdge({ ...params }, eds);
+//     });
+//   }
+
+//   return (
+//     <Box className={classes.wrapper}>
+//       <Button
+//         onClick={() => {
+//           setModalOpen1(true);
+//         }}
+//       >
+//        Add New Station
+//       </Button>
+//       <Button
+//         onClick={() => {
+//           setModalOpen2(true);
+//         }}
+//       >
+//         <AddIcon /> button2
+//       </Button>
+//       <AddStationModal
+//         open={modalOpen1}
+//         onClose={() => {
+//           return setModalOpen1(false);
+//         }}
+//         onSave={() => {
+//           return setModalOpen1(false);
+//         }}
+//       />
+//       {modalOpen2 ? <Typography>Nesto drugo</Typography> : undefined}
+//       <ReactFlow
+//         nodes={nodes}
+//         edges={edges}
+//         onNodesChange={onNodesChange}
+//         onEdgesChange={onEdgesChange}
+//         onConnect={onConnect}
+//         fitView
+//         nodeTypes={{ custom: CustomNode }}
+//         edgeTypes={{ custom: CustomEdge }}
+//       />
+//     </Box>
+//   );
+// }
+
+import { useState } from 'react';
 import {
   addEdge,
   ReactFlow,
@@ -11,8 +177,14 @@ import '@xyflow/react/dist/style.css';
 
 import { Box } from '@mui/material';
 
+import { Button } from '@/shared/button';
+
+import AddIcon from '@/assets/icon/attribute.svg?react';
+
 import { CustomNode } from './custom-node';
 import { CustomEdge } from './custom-edge';
+import { AddStationModal } from './add-station-modal/add-station-modal';
+import { DeleteStationModal } from './delete-station-modal/delete-station-modal';
 
 import { getLayoutedElements } from './utils';
 import { initialEdges, initialNodes } from './constants';
@@ -25,6 +197,10 @@ const { nodes: layoutedNodes, edges: layoutedEdges } = getLayoutedElements(
 );
 
 export function StationSequence(): React.ReactNode {
+  const [modalOpen1, setModalOpen1] = useState(false);
+  const [modalOpen2, setModalOpen2] = useState(false);
+  const [selectedStation, setSelectedStation] = useState<string>('');
+
   const { classes } = useStyles();
 
   const [nodes, _, onNodesChange] = useNodesState(layoutedNodes);
@@ -36,8 +212,44 @@ export function StationSequence(): React.ReactNode {
     });
   }
 
+  function handleDelete(): void {
+    setModalOpen2(false);
+  }
+
   return (
     <Box className={classes.wrapper}>
+      <Button
+        onClick={() => {
+          setModalOpen1(true);
+        }}
+      >
+        <AddIcon /> Add New
+      </Button>
+      <Button
+        onClick={() => {
+          setSelectedStation('station_name');
+          setModalOpen2(true);
+        }}
+      >
+        <AddIcon /> Add another station
+      </Button>
+      <AddStationModal
+        open={modalOpen1}
+        onClose={() => {
+          return setModalOpen1(false);
+        }}
+        onSave={() => {
+          return setModalOpen1(false);
+        }}
+      />
+      <DeleteStationModal
+        open={modalOpen2}
+        stationName={selectedStation}
+        onClose={() => {
+          return setModalOpen2(false);
+        }}
+        onDelete={handleDelete}
+      />
       <ReactFlow
         nodes={nodes}
         edges={edges}
