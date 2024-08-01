@@ -1,6 +1,6 @@
 import { createColumnHelper } from '@tanstack/react-table';
 
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 
 import { type IOrder, type IStatusColors } from './types';
 
@@ -121,10 +121,8 @@ const columnHelper = createColumnHelper<IOrder>();
 export const columns = [
   columnHelper.accessor('orderNumber', {
     header: 'Order #',
-    cell: ({ row }) => {
-      const { orderNumber } = row.original;
-
-      return <Typography sx={{ color: '#0055FF' }}>{orderNumber}</Typography>;
+    cell: ({ getValue }) => {
+      return getValue();
     },
   }),
   columnHelper.accessor('orderDate', {
