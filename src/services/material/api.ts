@@ -35,8 +35,21 @@ async function getByIdAndType(
   return response.data;
 }
 
+async function update(
+  id: number,
+  data: IMaterial,
+): Promise<IApiResponse<IMaterial>> {
+  const response = await api.put<IApiResponse<IMaterial>>(
+    `${endpoint}/${id}`,
+    data,
+  );
+
+  return response.data;
+}
+
 export const MaterialAPI = {
   getAll,
   create,
   getByIdAndType,
+  update,
 };

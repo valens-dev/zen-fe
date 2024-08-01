@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
-import { useMaterialByIdAndType } from '@/services/material';
+import { useUpdateMaterial, useMaterialByIdAndType } from '@/services/material';
 
 import { Box } from '@mui/material';
 
@@ -9,11 +9,12 @@ import { Button } from '@/shared/button';
 import { Loading } from '@/shared/status-components/loading';
 
 import { MaterialForm } from '@/components/material/material-form';
+import { type IFormData } from '@/components/material/material-form/types';
 
 import { Header } from '@/layouts/header';
 import { FormHeader } from '@/layouts/form-header';
 
-import { MaterialType } from '@/types/material';
+import { MaterialType, type IMaterial } from '@/types/material';
 
 import AddIcon from '@/assets/icon/add.svg?react';
 
@@ -34,6 +35,13 @@ export default function EditMaterialPage(): React.ReactNode {
   const config = materialConfig[materialType];
   const materialId = searchParams.get('id');
 
+  const { data: materialData, isLoading } = useMaterialByIdAndType(
+    Number(materialId),
+    materialType,
+  );
+
+  const { mutate: updateMaterial } = useUpdateMaterial();
+
   function handleButtonClick(): void {
     if (formRef.current) {
       const event = new Event('submit', { bubbles: true });
@@ -41,10 +49,42 @@ export default function EditMaterialPage(): React.ReactNode {
     }
   }
 
-  const { data: materialData, isLoading } = useMaterialByIdAndType(
-    Number(materialId),
-    materialType,
-  );
+  function handleSubmit(data: IFormData): void {
+    if (materialId) {
+      const { parts, type: _unusedType, ...filteredData } = data;
+
+      const manufacturingParts = parts
+        .filter((part) => {
+          return part.type === MaterialType.ManufacturingPart;
+        })
+        .map((part) => {
+          return {
+            id: part?.id,
+            quantity: part.quantity,
+          };
+        });
+
+      const purchasingParts = parts
+        .filter((part) => {
+          return part.type === MaterialType.PurchasingPart;
+        })
+        .map((part) => {
+          return {
+            id: part?.id,
+            quantity: part.quantity,
+          };
+        });
+
+      updateMaterial({
+        id: Number(materialId),
+        data: {
+          ...filteredData,
+          manufacturingParts,
+          purchasingParts,
+        } as unknown as IMaterial,
+      });
+    }
+  }
 
   if (isLoading || !materialData) {
     return <Loading />;
@@ -79,10 +119,7 @@ export default function EditMaterialPage(): React.ReactNode {
         ref={formRef}
         materialType={materialType}
         initialValues={createInitialValues(materialData)}
-        onSubmit={(data) => {
-          // eslint-disable-next-line no-console
-          console.log(data);
-        }}
+        onSubmit={handleSubmit}
       />
     </Box>
   );

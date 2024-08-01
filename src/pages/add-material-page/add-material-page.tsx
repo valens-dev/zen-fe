@@ -71,9 +71,9 @@ export default function AddMaterialPage(): React.ReactNode {
         materialType={materialType}
         initialValues={initialValues}
         onSubmit={(data) => {
-          const { parts: _unusedParts, ...filteredData } = data;
+          const { parts, ...filteredData } = data;
 
-          const manufacturingParts = data.parts
+          const manufacturingParts = parts
             .filter((part) => {
               return part.type === MaterialType.ManufacturingPart;
             })
@@ -83,7 +83,7 @@ export default function AddMaterialPage(): React.ReactNode {
                 quantity: part.quantity,
               };
             });
-          const purchasingParts = data.parts
+          const purchasingParts = parts
             .filter((part) => {
               return part.type === MaterialType.PurchasingPart;
             })
@@ -93,6 +93,7 @@ export default function AddMaterialPage(): React.ReactNode {
                 quantity: part.quantity,
               };
             });
+
           mutation.mutate({
             ...filteredData,
             type: materialType,

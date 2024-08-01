@@ -18,8 +18,8 @@ export interface IValue {
 }
 
 export interface IProductData {
-  id: number;
-  typeId: string;
+  id?: number;
+  quantity: number;
 }
 export interface IMaterial {
   id: number;

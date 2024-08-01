@@ -49,3 +49,15 @@ export function useMaterialByIdAndType(
     placeholderData: keepPreviousData,
   });
 }
+
+export function useUpdateMaterial(): UseMutationResult<
+  IApiResponse<IMaterial>,
+  Error,
+  { id: number; data: IMaterial }
+> {
+  return useMutation({
+    mutationFn: async ({ id, data }) => {
+      return await MaterialAPI.update(id, data);
+    },
+  });
+}

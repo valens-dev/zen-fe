@@ -24,7 +24,7 @@ export function createInitialValues(materialData: IGetMaterialById): IFormData {
     parts: materialData.materialParts.map(
       (part: IComponentDetails): IComponent => {
         return {
-          id: part.material.id,
+          id: part.id,
           quantity: part.material.quantity,
           unitType: 'Stk',
           name: part.material.name,
