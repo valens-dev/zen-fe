@@ -14,8 +14,6 @@ import { Box } from '@mui/material';
 
 import { Button } from '@/shared/button';
 
-import AddIcon from '@/assets/icon/attribute.svg?react';
-
 import { CustomNode } from './custom-node';
 import { CustomEdge } from './custom-edge';
 import { AddStationModal } from './add-station-modal/add-station-modal';
@@ -58,7 +56,7 @@ export function StationSequence(): React.ReactNode {
           setModalOpen1(true);
         }}
       >
-        <AddIcon /> Add New
+        Add new station
       </Button>
       <Button
         onClick={() => {
@@ -66,7 +64,7 @@ export function StationSequence(): React.ReactNode {
           setModalOpen2(true);
         }}
       >
-        <AddIcon /> Add another station
+        Delete station
       </Button>
       <AddStationModal
         open={modalOpen1}

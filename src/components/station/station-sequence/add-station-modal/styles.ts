@@ -16,6 +16,7 @@ export const useStyles = tss.create(({ theme }) => {
     },
     header: {
       width: '100%',
+      height: '56px',
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',

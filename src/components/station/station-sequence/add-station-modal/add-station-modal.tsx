@@ -5,10 +5,13 @@ import {
   Modal,
   Checkbox,
   Typography,
+  IconButton,
   FormControlLabel,
 } from '@mui/material';
 
 import { Button } from '@/shared/button';
+
+import CloseIcon from '@/assets/icon/close.svg?react';
 
 import { getStationOptions } from './constants';
 
@@ -48,6 +51,9 @@ export function AddStationModal({
       <Box className={classes.wrapper}>
         <Box className={classes.header}>
           <Typography className={classes.title}>Add Station</Typography>
+          <IconButton>
+            <CloseIcon />
+          </IconButton>
         </Box>
         <Box className={classes.container}>
           {getStationOptions().map((station) => {

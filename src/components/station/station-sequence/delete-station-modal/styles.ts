@@ -81,7 +81,7 @@ export const useStyles = tss.create(({ theme }) => {
         backgroundColor: theme.palette.white.secondary,
       },
     },
-    iconContainer: {
+    deleteIcon: {
       height: '40px',
       width: '40px',
       background: '#FEF3F2',
@@ -89,5 +89,17 @@ export const useStyles = tss.create(({ theme }) => {
         stroke: '#F04438',
       },
     },
+    iconContainer: {
+      height: '44px',
+      width: '100%',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'end',
+      padding: '18px 22px 6px 0',
+      '& .MuiIconButton-root': {
+        padding: 0,
+      },
+    },
+    closeIcon: {},
   };
 });

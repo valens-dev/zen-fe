@@ -2,6 +2,7 @@ import { Box, Modal, IconButton, Typography } from '@mui/material';
 
 import { Button } from '@/shared/button';
 
+import CloseIcon from '@/assets/icon/close.svg?react';
 import DeleteIcon from '@/assets/icon/delete.svg?react';
 
 import { useStyles } from './styles';
@@ -23,8 +24,13 @@ export function DeleteStationModal({
   return (
     <Modal open={open} onClose={onClose}>
       <Box className={classes.wrapper}>
+        <Box className={classes.iconContainer}>
+          <IconButton className={classes.closeIcon} onClick={onClose}>
+            <CloseIcon />
+          </IconButton>
+        </Box>
         <Box className={classes.header}>
-          <IconButton className={classes.iconContainer}>
+          <IconButton className={classes.deleteIcon}>
             <DeleteIcon />
           </IconButton>
           <Box className={classes.text}>
