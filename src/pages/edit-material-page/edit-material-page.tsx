@@ -9,7 +9,6 @@ import { Button } from '@/shared/button';
 import { Loading } from '@/shared/status-components/loading';
 
 import { MaterialForm } from '@/components/material/material-form';
-import { type IFormData } from '@/components/material/material-form/types';
 
 import { Header } from '@/layouts/header';
 import { FormHeader } from '@/layouts/form-header';
@@ -21,6 +20,7 @@ import AddIcon from '@/assets/icon/add.svg?react';
 import { useStyles } from '../styles';
 
 import { materialConfig } from './constants';
+import { createInitialValues } from './utils';
 
 // eslint-disable-next-line import/no-default-export
 export default function EditMaterialPage(): React.ReactNode {
@@ -78,7 +78,7 @@ export default function EditMaterialPage(): React.ReactNode {
       <MaterialForm
         ref={formRef}
         materialType={materialType}
-        initialValues={materialData as IFormData}
+        initialValues={createInitialValues(materialData)}
         onSubmit={(data) => {
           // eslint-disable-next-line no-console
           console.log(data);

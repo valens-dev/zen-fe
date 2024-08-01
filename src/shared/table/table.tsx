@@ -40,7 +40,7 @@ interface ITableProps<T> {
   setPagination: Dispatch<SetStateAction<PaginationState>>;
   isLoading?: boolean;
   isError?: boolean;
-  onRowClick: (materialId: number) => void;
+  onRowClick?: (materialId: number) => void;
 }
 
 export function Table<T extends ITableData>({
@@ -119,7 +119,9 @@ export function Table<T extends ITableData>({
             <TableRow
               key={row.id}
               onClick={() => {
-                return onRowClick(row.original.id);
+                if (onRowClick) {
+                  return onRowClick(row.original.id);
+                }
               }}
             >
               {row.getVisibleCells().map((cell) => {

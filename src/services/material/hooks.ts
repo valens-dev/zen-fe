@@ -7,7 +7,7 @@ import {
 } from '@tanstack/react-query';
 
 import { type IApiResponse } from '@/types/api';
-import { type IMaterial } from '@/types/material';
+import { type IMaterial, type IGetMaterialById } from '@/types/material';
 
 import { MaterialAPI } from './api';
 
@@ -40,8 +40,8 @@ export function useCreateMaterial(): UseMutationResult<
 export function useMaterialByIdAndType(
   id: number,
   type: string,
-): UseQueryResult<IMaterial> {
-  return useQuery<IMaterial>({
+): UseQueryResult<IGetMaterialById> {
+  return useQuery<IGetMaterialById>({
     queryKey: ['material', type, id],
     queryFn: () => {
       return MaterialAPI.getByIdAndType(id, type);

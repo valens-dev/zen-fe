@@ -1,5 +1,5 @@
 import { type IApiResponse } from '@/types/api';
-import { type IMaterial } from '@/types/material';
+import { type IMaterial, type IGetMaterialById } from '@/types/material';
 
 import { api } from '../api';
 
@@ -26,8 +26,11 @@ async function create(data: IMaterial): Promise<IApiResponse<IMaterial>> {
   return response.data;
 }
 
-async function getByIdAndType(id: number, type: string): Promise<IMaterial> {
-  const response = await api.get<IMaterial>(`${endpoint}/${type}/${id}`);
+async function getByIdAndType(
+  id: number,
+  type: string,
+): Promise<IGetMaterialById> {
+  const response = await api.get<IGetMaterialById>(`${endpoint}/${type}/${id}`);
 
   return response.data;
 }
