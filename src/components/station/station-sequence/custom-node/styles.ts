@@ -61,5 +61,10 @@ export const useStyles = tss.create(({ theme }) => {
         background: theme.palette.light.quaternary,
       },
     },
+    stationIcon: {
+      '& path': {
+        stroke: theme.palette.main.primary,
+      },
+    },
   };
 });

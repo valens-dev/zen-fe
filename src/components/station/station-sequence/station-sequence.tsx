@@ -1,10 +1,11 @@
-import { useState } from 'react';
 import {
   addEdge,
   ReactFlow,
   type Edge,
   useNodesState,
   useEdgesState,
+  type EdgeProps,
+  type NodeProps,
   type Connection,
 } from '@xyflow/react';
 
@@ -12,12 +13,8 @@ import '@xyflow/react/dist/style.css';
 
 import { Box } from '@mui/material';
 
-import { Button } from '@/shared/button';
-
-import { CustomNode } from './custom-node';
 import { CustomEdge } from './custom-edge';
-import { AddStationModal } from './add-station-modal/add-station-modal';
-import { DeleteStationModal } from './delete-station-modal/delete-station-modal';
+import { CustomNode, type ICustomNodeProps } from './custom-node';
 
 import { getLayoutedElements } from './utils';
 import { initialEdges, initialNodes } from './constants';
@@ -30,59 +27,77 @@ const { nodes: layoutedNodes, edges: layoutedEdges } = getLayoutedElements(
 );
 
 export function StationSequence(): React.ReactNode {
-  const [modalOpen1, setModalOpen1] = useState(false);
-  const [modalOpen2, setModalOpen2] = useState(false);
-  const [selectedStation, setSelectedStation] = useState<string>('');
-
   const { classes } = useStyles();
 
-  const [nodes, _, onNodesChange] = useNodesState(layoutedNodes);
+  const [nodes, setNodes, onNodesChange] = useNodesState(layoutedNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(layoutedEdges);
 
   function onConnect(params: Edge | Connection): void {
     setEdges((eds) => {
-      return addEdge({ ...params }, eds);
+      return addEdge({ ...params, type: 'custom' }, eds);
     });
   }
 
-  function handleDelete(): void {
-    setModalOpen2(false);
+  function handleDeleteNode(nodeId: string): void {
+    setNodes((nds) => {
+      return nds.filter((node) => {
+        return node.id !== nodeId;
+      });
+    });
+    setEdges((eds) => {
+      return eds.filter((edge) => {
+        return edge.source !== nodeId && edge.target !== nodeId;
+      });
+    });
+  }
+
+  function handleDeleteEdge(edgeId: string): void {
+    setEdges((eds) => {
+      return eds.filter((edge) => {
+        return edge.id !== edgeId;
+      });
+    });
+  }
+
+  function handleAddNode(newNode: {
+    label: string;
+    value: number;
+    avatarUrl: string;
+  }): void {
+    const newNodeId = `node-${nodes.length + 1}`;
+    const newNodeData = {
+      id: newNodeId,
+      type: 'custom',
+      data: newNode,
+      position: { x: 0, y: 0 },
+    };
+
+    setNodes((nds) => {
+      return [...nds, newNodeData];
+    });
+  }
+
+  function customEdgeComponent(edgeProps: EdgeProps): React.ReactNode {
+    return <CustomEdge {...edgeProps} onDelete={handleDeleteEdge} />;
+  }
+
+  function customNodeComponent(nodeProps: NodeProps): React.ReactNode {
+    const customNodeProps: ICustomNodeProps = {
+      ...nodeProps,
+      data: nodeProps.data as {
+        label: string;
+        value: number;
+        avatarUrl: string;
+      },
+      onDelete: handleDeleteNode,
+      onAdd: handleAddNode,
+    };
+
+    return <CustomNode {...customNodeProps} />;
   }
 
   return (
     <Box className={classes.wrapper}>
-      <Button
-        onClick={() => {
-          setModalOpen1(true);
-        }}
-      >
-        Add new station
-      </Button>
-      <Button
-        onClick={() => {
-          setSelectedStation('station_name');
-          setModalOpen2(true);
-        }}
-      >
-        Delete station
-      </Button>
-      <AddStationModal
-        open={modalOpen1}
-        onClose={() => {
-          setModalOpen1(false);
-        }}
-        onSave={() => {
-          setModalOpen1(false);
-        }}
-      />
-      <DeleteStationModal
-        open={modalOpen2}
-        stationName={selectedStation}
-        onClose={() => {
-          setModalOpen2(false);
-        }}
-        onDelete={handleDelete}
-      />
       <ReactFlow
         nodes={nodes}
         edges={edges}
@@ -90,8 +105,8 @@ export function StationSequence(): React.ReactNode {
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
         fitView
-        nodeTypes={{ custom: CustomNode }}
-        edgeTypes={{ custom: CustomEdge }}
+        nodeTypes={{ custom: customNodeComponent }}
+        edgeTypes={{ custom: customEdgeComponent }}
       />
     </Box>
   );
