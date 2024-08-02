@@ -2,6 +2,9 @@ import { tss } from '@/styles/theme';
 
 export const useStyles = tss.create(({ theme }) => {
   return {
+    wrapper: {
+      width: '100%',
+    },
     tabs: {
       marginBottom: '0px',
       paddingLeft: '15px',
@@ -28,8 +31,7 @@ export const useStyles = tss.create(({ theme }) => {
     line: {
       width: '100%',
       borderTop: `1px solid ${theme.palette.border.primary}`,
-      marginTop: '-1px',
-      margin: '0 16px',
+      margin: '0',
     },
     tabContent: {
       width: '100%',

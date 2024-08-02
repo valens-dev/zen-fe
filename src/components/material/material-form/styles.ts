@@ -27,11 +27,6 @@ export const useStyles = tss.create(({ theme }) => {
       justifyContent: 'space-between',
       margin: '6px 0',
     },
-    horisontalLine: {
-      padding: '16px',
-      borderTop: `1px solid ${theme.palette.border.primary}`,
-      borderBottom: `1px solid ${theme.palette.border.primary}`,
-    },
     submitButton: {
       margin: '16px',
     },

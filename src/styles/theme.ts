@@ -33,6 +33,8 @@ function useContext(): { theme: ITheme } {
       },
       error: {
         primary: '#F04438',
+        secondary: '#FEF3F2',
+        tertiary: '#F04438',
       },
     },
     typography: {
