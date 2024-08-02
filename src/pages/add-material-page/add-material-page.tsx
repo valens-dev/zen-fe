@@ -12,6 +12,8 @@ import { MaterialForm } from '@/components/material/material-form';
 import { Header } from '@/layouts/header';
 import { FormHeader } from '@/layouts/form-header';
 
+import { useAlert } from '@/hooks/use-alert';
+
 import { MaterialType, type IMaterial } from '@/types/material';
 
 import AddIcon from '@/assets/icon/add.svg?react';
@@ -29,6 +31,7 @@ export default function AddMaterialPage(): React.ReactNode {
   const navigate = useNavigate();
   const location = useLocation();
   const { classes } = useStyles();
+  const { showAlert } = useAlert();
   const formRef = useRef<HTMLFormElement | null>(null);
 
   const state = location.state as ILocationState | undefined;
@@ -96,14 +99,24 @@ export default function AddMaterialPage(): React.ReactNode {
                 quantity: part.quantity,
               };
             });
-          mutation.mutate({
-            ...filteredData,
-            type: materialType,
-            manufacturingParts,
-            purchasingParts,
-          } as unknown as IMaterial);
 
-          navigate('/material');
+          mutation.mutate(
+            {
+              ...filteredData,
+              type: materialType,
+              manufacturingParts,
+              purchasingParts,
+            } as unknown as IMaterial,
+            {
+              onSuccess: () => {
+                showAlert('Material created successfully!', 'success');
+                navigate('/material');
+              },
+              onError: () => {
+                showAlert('Failed to create material.', 'error');
+              },
+            },
+          );
         }}
       />
     </Box>
