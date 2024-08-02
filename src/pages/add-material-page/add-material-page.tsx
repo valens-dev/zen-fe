@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import { useCreateMaterial } from '@/services/material/hooks';
 
@@ -8,6 +8,7 @@ import { Box } from '@mui/material';
 import { Button } from '@/shared/button';
 
 import { MaterialForm } from '@/components/material/material-form';
+import { initialValues } from '@/components/material/material-form/constants';
 
 import { Header } from '@/layouts/header';
 import { FormHeader } from '@/layouts/form-header';
@@ -22,21 +23,16 @@ import { useStyles } from '../styles';
 
 import { materialConfig } from './constants';
 
-interface ILocationState {
-  materialType: MaterialType;
-}
-
 // eslint-disable-next-line import/no-default-export
 export default function AddMaterialPage(): React.ReactNode {
   const navigate = useNavigate();
-  const location = useLocation();
+  const [searchParams] = useSearchParams();
   const { classes } = useStyles();
   const { showAlert } = useAlert();
   const formRef = useRef<HTMLFormElement | null>(null);
 
-  const state = location.state as ILocationState | undefined;
-  const materialType: MaterialType =
-    state?.materialType ?? MaterialType.Product;
+  const type = searchParams.get('materialType') as MaterialType;
+  const materialType: MaterialType = type ?? MaterialType.Product;
   const config = materialConfig[materialType];
 
   const mutation = useCreateMaterial();
@@ -76,10 +72,11 @@ export default function AddMaterialPage(): React.ReactNode {
       <MaterialForm
         ref={formRef}
         materialType={materialType}
+        initialValues={initialValues}
         onSubmit={(data) => {
-          const { parts: _unusedParts, ...filteredData } = data;
+          const { parts, ...filteredData } = data;
 
-          const manufacturingParts = data.parts
+          const manufacturingParts = parts
             .filter((part) => {
               return part.type === MaterialType.ManufacturingPart;
             })
@@ -89,7 +86,7 @@ export default function AddMaterialPage(): React.ReactNode {
                 quantity: part.quantity,
               };
             });
-          const purchasingParts = data.parts
+          const purchasingParts = parts
             .filter((part) => {
               return part.type === MaterialType.PurchasingPart;
             })

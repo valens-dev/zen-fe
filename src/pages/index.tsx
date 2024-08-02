@@ -43,6 +43,10 @@ const AddCustomersPage = lazy(() => {
   return import('@/pages/add-customer-page/add-customer-page');
 });
 
+const EditMaterialPage = lazy(() => {
+  return import('@/pages/edit-material-page/edit-material-page');
+});
+
 export function App(): React.ReactNode {
   return (
     <HashRouter>
@@ -64,6 +68,10 @@ export function App(): React.ReactNode {
             <Route
               path="customers/add-customer"
               element={<AddCustomersPage />}
+            />
+            <Route
+              path="material/edit-material"
+              element={<EditMaterialPage />}
             />
           </Route>
         </Routes>

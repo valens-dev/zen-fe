@@ -52,7 +52,11 @@ export function MaterialTable({
   });
 
   function handleOpenAddPage(): void {
-    navigate('/material/add-material', { state: { materialType } });
+    navigate(`/material/add-material?materialType=${materialType}`);
+  }
+
+  function handleMaterialClick(materialId: number): void {
+    navigate(`/material/edit-material?id=${materialId}&type=${materialType}`);
   }
 
   return (
@@ -75,6 +79,7 @@ export function MaterialTable({
         setPagination={setPagination}
         isLoading={isLoading}
         isError={isError}
+        onRowClick={handleMaterialClick}
       />
     </Box>
   );

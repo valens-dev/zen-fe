@@ -1,6 +1,13 @@
 import { type IProduct } from '@/components/material/material-table/types';
 
-import { type IValue, type IMaterial, type IAttribute } from '@/types/material';
+import {
+  type IValue,
+  MaterialType,
+  type IMaterial,
+  type IComponent,
+  type IAttribute,
+  type IProductData,
+} from '@/types/material';
 
 export function transformMaterialsToProducts(
   materials?: IMaterial[],
@@ -37,4 +44,33 @@ export function transformMaterialsToProducts(
       type: material.type,
     };
   });
+}
+
+export function categorizeParts(parts: IComponent[]): {
+  manufacturingParts: IProductData[];
+  purchasingParts: IProductData[];
+} {
+  const manufacturingParts: IProductData[] = parts
+    .filter((part) => {
+      return part.type === MaterialType.ManufacturingPart;
+    })
+    .map((part) => {
+      return {
+        id: part?.manufacturingParts?.id,
+        quantity: part.quantity,
+      };
+    });
+
+  const purchasingParts: IProductData[] = parts
+    .filter((part) => {
+      return part.type === MaterialType.PurchasingPart;
+    })
+    .map((part) => {
+      return {
+        id: part?.purchasingParts?.id,
+        quantity: part.quantity,
+      };
+    });
+
+  return { manufacturingParts, purchasingParts };
 }
