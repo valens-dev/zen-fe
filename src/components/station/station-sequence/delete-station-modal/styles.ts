@@ -49,9 +49,9 @@ export const useStyles = tss.create(({ theme }) => {
     deleteIcon: {
       height: '40px',
       width: '40px',
-      background: '#FEF3F2',
+      background: theme.palette.error.secondary,
       '& svg path': {
-        stroke: '#F04438',
+        stroke: theme.palette.error.tertiary,
       },
     },
     iconContainer: {

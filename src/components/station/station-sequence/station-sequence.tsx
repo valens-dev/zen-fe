@@ -69,17 +69,17 @@ export function StationSequence(): React.ReactNode {
       <AddStationModal
         open={modalOpen1}
         onClose={() => {
-          return setModalOpen1(false);
+          setModalOpen1(false);
         }}
         onSave={() => {
-          return setModalOpen1(false);
+          setModalOpen1(false);
         }}
       />
       <DeleteStationModal
         open={modalOpen2}
         stationName={selectedStation}
         onClose={() => {
-          return setModalOpen2(false);
+          setModalOpen2(false);
         }}
         onDelete={handleDelete}
       />

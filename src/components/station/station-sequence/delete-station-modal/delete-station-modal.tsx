@@ -1,6 +1,6 @@
 import { Box, IconButton, Typography } from '@mui/material';
 
-import { ReusableModal } from '@/shared/modal/modal';
+import { Modal } from '@/shared/modal/modal';
 
 import DeleteIcon from '@/assets/icon/delete.svg?react';
 
@@ -21,7 +21,7 @@ export function DeleteStationModal({
   const { classes } = useStyles();
 
   return (
-    <ReusableModal
+    <Modal
       open={open}
       onClose={onClose}
       primaryActionLabel="Delete"
@@ -41,6 +41,6 @@ export function DeleteStationModal({
           </Typography>
         </Box>
       </Box>
-    </ReusableModal>
+    </Modal>
   );
 }

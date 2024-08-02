@@ -1,6 +1,10 @@
-import { type ReactNode } from 'react';
-
-import { Box, Modal, Button, IconButton, Typography } from '@mui/material';
+import {
+  Box,
+  Button,
+  IconButton,
+  Typography,
+  Modal as BaseModal,
+} from '@mui/material';
 
 import CloseIcon from '@/assets/icon/close.svg?react';
 
@@ -10,13 +14,13 @@ interface IModalProps {
   open: boolean;
   onClose: () => void;
   title?: string;
-  children: ReactNode;
+  children: React.ReactNode;
   primaryActionLabel: string;
   onPrimaryAction: () => void;
   primaryActionClass?: string;
 }
 
-export function ReusableModal({
+export function Modal({
   open,
   onClose,
   title,
@@ -28,7 +32,7 @@ export function ReusableModal({
   const { classes } = useStyles();
 
   return (
-    <Modal open={open} onClose={onClose}>
+    <BaseModal open={open} onClose={onClose}>
       <Box className={classes.wrapper}>
         <Box className={classes.header}>
           <Typography className={classes.title}>{title}</Typography>
@@ -49,6 +53,6 @@ export function ReusableModal({
           </Button>
         </Box>
       </Box>
-    </Modal>
+    </BaseModal>
   );
 }

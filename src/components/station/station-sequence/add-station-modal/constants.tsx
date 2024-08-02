@@ -1,7 +1,4 @@
-interface IStationOptions {
-  label: React.ReactNode;
-  value: string;
-}
+import { type IStationOptions } from './types';
 
 export function getStationOptions(): IStationOptions[] {
   return [

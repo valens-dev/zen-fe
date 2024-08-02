@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { Box, Divider, Checkbox, FormControlLabel } from '@mui/material';
 
-import { ReusableModal } from '@/shared/modal/modal';
+import { Modal } from '@/shared/modal/modal';
 
 import { getStationOptions } from './constants';
 
@@ -38,7 +38,7 @@ export function AddStationModal({
   }
 
   return (
-    <ReusableModal
+    <Modal
       open={open}
       onClose={onClose}
       title="Add Station"
@@ -57,7 +57,7 @@ export function AddStationModal({
                 <Checkbox
                   checked={selectedStations.includes(station.value)}
                   onChange={() => {
-                    return handleCheckboxChange(station.value);
+                    handleCheckboxChange(station.value);
                   }}
                 />
               }
@@ -67,6 +67,6 @@ export function AddStationModal({
         })}
       </Box>
       <Divider />
-    </ReusableModal>
+    </Modal>
   );
 }
