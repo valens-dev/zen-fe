@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import { useCreateMaterial } from '@/services/material/hooks';
@@ -15,6 +16,7 @@ import { FormHeader } from '@/layouts/form-header';
 
 import { useAlert } from '@/hooks/use-alert';
 
+import { AlertSeverity } from '@/types/alert';
 import { MaterialType, type IMaterial } from '@/types/material';
 
 import AddIcon from '@/assets/icon/add.svg?react';
@@ -25,6 +27,8 @@ import { materialConfig } from './constants';
 
 // eslint-disable-next-line import/no-default-export
 export default function AddMaterialPage(): React.ReactNode {
+  const { t } = useTranslation();
+
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const { classes } = useStyles();
@@ -103,14 +107,14 @@ export default function AddMaterialPage(): React.ReactNode {
               type: materialType,
               manufacturingParts,
               purchasingParts,
-            } as unknown as IMaterial,
+            } as IMaterial,
             {
               onSuccess: () => {
-                showAlert('Material created successfully!', 'success');
+                showAlert(t('message.success'), AlertSeverity.Success);
                 navigate('/material');
               },
               onError: () => {
-                showAlert('Failed to create material.', 'error');
+                showAlert(t('message.error'), AlertSeverity.Error);
               },
             },
           );

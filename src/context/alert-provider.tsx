@@ -1,18 +1,11 @@
-import {
-  useMemo,
-  useState,
-  useCallback,
-  createContext,
-  type ReactNode,
-} from 'react';
+import { useMemo, useState, useCallback, createContext } from 'react';
 
-import { Snackbar, type AlertProps, Alert as MuiAlert } from '@mui/material';
+import { Snackbar, Alert as BaseAlert } from '@mui/material';
+
+import { AlertSeverity } from '@/types/alert';
 
 export interface IAlertContextType {
-  showAlert: (
-    alertMessage: string,
-    alertSeverity: AlertProps['severity'],
-  ) => void;
+  showAlert: (alertMessage: string, alertSeverity: AlertSeverity) => void;
 }
 
 export const AlertContext = createContext<IAlertContextType | undefined>(
@@ -22,14 +15,14 @@ export const AlertContext = createContext<IAlertContextType | undefined>(
 export function AlertProvider({
   children,
 }: {
-  children: ReactNode;
-}): ReactNode {
+  children: React.ReactNode;
+}): React.ReactNode {
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState('');
-  const [severity, setSeverity] = useState<AlertProps['severity']>('info');
+  const [severity, setSeverity] = useState<AlertSeverity>(AlertSeverity.Info);
 
   const showAlert = useCallback(
-    (alertMessage: string, alertSeverity: AlertProps['severity']): void => {
+    (alertMessage: string, alertSeverity: AlertSeverity): void => {
       setMessage(alertMessage);
       setSeverity(alertSeverity);
       setOpen(true);
@@ -54,9 +47,9 @@ export function AlertProvider({
         onClose={handleClose}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
       >
-        <MuiAlert onClose={handleClose} severity={severity}>
+        <BaseAlert onClose={handleClose} severity={severity}>
           {message}
-        </MuiAlert>
+        </BaseAlert>
       </Snackbar>
     </AlertContext.Provider>
   );

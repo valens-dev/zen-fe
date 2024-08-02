@@ -96,7 +96,9 @@ export const en = {
   dynamicTable: {
     addRow: 'Add Row',
   },
-  error: {
+  message: {
+    error: 'Failed to create material.',
+    success: 'Material created successfully',
     missingData: 'Error loading data.',
   },
 };

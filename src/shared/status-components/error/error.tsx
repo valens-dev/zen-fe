@@ -11,7 +11,7 @@ export function Error(): React.ReactNode {
   return (
     <Box className={classes.loadingContainer}>
       <Typography className={classes.errorText}>
-        {t('error.missingData')}
+        {t('message.missingData')}
       </Typography>
     </Box>
   );
