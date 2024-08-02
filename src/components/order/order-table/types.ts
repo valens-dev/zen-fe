@@ -1,4 +1,5 @@
 export interface IOrder {
+  id: number;
   orderNumber: string;
   orderDate: string;
   customer: string;

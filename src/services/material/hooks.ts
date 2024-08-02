@@ -7,7 +7,7 @@ import {
 } from '@tanstack/react-query';
 
 import { type IApiResponse } from '@/types/api';
-import { type IMaterial } from '@/types/material';
+import { type IMaterial, type IGetMaterialById } from '@/types/material';
 
 import { MaterialAPI } from './api';
 
@@ -33,6 +33,31 @@ export function useCreateMaterial(): UseMutationResult<
   return useMutation({
     mutationFn: async (data: IMaterial) => {
       return await MaterialAPI.create(data);
+    },
+  });
+}
+
+export function useMaterialByIdAndType(
+  id: number,
+  type: string,
+): UseQueryResult<IGetMaterialById> {
+  return useQuery<IGetMaterialById>({
+    queryKey: ['material', type, id],
+    queryFn: () => {
+      return MaterialAPI.getByIdAndType(id, type);
+    },
+    placeholderData: keepPreviousData,
+  });
+}
+
+export function useUpdateMaterial(): UseMutationResult<
+  IApiResponse<IMaterial>,
+  Error,
+  { id: number; data: IMaterial }
+> {
+  return useMutation({
+    mutationFn: async ({ id, data }) => {
+      return await MaterialAPI.update(id, data);
     },
   });
 }
