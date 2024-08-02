@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import { useCreateMaterial } from '@/services/material/hooks';
@@ -13,6 +14,9 @@ import { initialValues } from '@/components/material/material-form/constants';
 import { Header } from '@/layouts/header';
 import { FormHeader } from '@/layouts/form-header';
 
+import { useAlert } from '@/hooks/use-alert';
+
+import { AlertSeverity } from '@/types/alert';
 import { MaterialType, type IMaterial } from '@/types/material';
 
 import AddIcon from '@/assets/icon/add.svg?react';
@@ -23,9 +27,12 @@ import { materialConfig } from './constants';
 
 // eslint-disable-next-line import/no-default-export
 export default function AddMaterialPage(): React.ReactNode {
+  const { t } = useTranslation();
+
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const { classes } = useStyles();
+  const { showAlert } = useAlert();
   const formRef = useRef<HTMLFormElement | null>(null);
 
   const type = searchParams.get('materialType') as MaterialType;
@@ -94,14 +101,23 @@ export default function AddMaterialPage(): React.ReactNode {
               };
             });
 
-          mutation.mutate({
-            ...filteredData,
-            type: materialType,
-            manufacturingParts,
-            purchasingParts,
-          } as unknown as IMaterial);
-
-          navigate('/material');
+          mutation.mutate(
+            {
+              ...filteredData,
+              type: materialType,
+              manufacturingParts,
+              purchasingParts,
+            } as IMaterial,
+            {
+              onSuccess: () => {
+                showAlert(t('message.success'), AlertSeverity.Success);
+                navigate('/material');
+              },
+              onError: () => {
+                showAlert(t('message.error'), AlertSeverity.Error);
+              },
+            },
+          );
         }}
       />
     </Box>

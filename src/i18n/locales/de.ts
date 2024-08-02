@@ -91,7 +91,9 @@ export const de = {
   pagination: {
     resultsInfo: '{{startRow}} - {{endRow}} von {{totalRows}} Ergebnissen',
   },
-  error: {
+  message: {
+    error: 'Material konnte nicht erstellt werden!',
+    success: 'Material erfolgreich erstellt.',
     missingData: 'Fehler beim Laden der Daten.',
   },
 };
