@@ -17,6 +17,7 @@ export function createCustomerData(
   netTotal: string,
 ): ICustomer {
   return {
+    id,
     imageUrl,
     name,
     adherenceToDeliveryDates,
