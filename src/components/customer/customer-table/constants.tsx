@@ -9,6 +9,7 @@ import { LazyImage } from '@/shared/lazy-image';
 import { type ICustomer } from './types';
 
 export function createCustomerData(
+  id: number,
   imageUrl: string,
   name: string,
   adherenceToDeliveryDates: string,
@@ -26,6 +27,7 @@ export function createCustomerData(
 
 export const customerData: ICustomer[] = [
   createCustomerData(
+    1,
     'https://via.placeholder.com/30',
     'Customer 1',
     '60',
@@ -33,6 +35,7 @@ export const customerData: ICustomer[] = [
     '$1234.56',
   ),
   createCustomerData(
+    2,
     'https://via.placeholder.com/30',
     'Customer 2',
     '80',
@@ -40,6 +43,7 @@ export const customerData: ICustomer[] = [
     '$2345.67',
   ),
   createCustomerData(
+    3,
     'https://via.placeholder.com/30',
     'Customer 3',
     '90',
@@ -47,6 +51,7 @@ export const customerData: ICustomer[] = [
     '$3456.78',
   ),
   createCustomerData(
+    4,
     'https://via.placeholder.com/30',
     'Customer 4',
     '100',
@@ -54,6 +59,7 @@ export const customerData: ICustomer[] = [
     '$4567.89',
   ),
   createCustomerData(
+    5,
     'https://via.placeholder.com/30',
     'Customer 5',
     '50',
@@ -61,6 +67,7 @@ export const customerData: ICustomer[] = [
     '$5678.90',
   ),
   createCustomerData(
+    6,
     'https://via.placeholder.com/30',
     'Customer 6',
     '95',
@@ -68,6 +75,7 @@ export const customerData: ICustomer[] = [
     '$6789.01',
   ),
   createCustomerData(
+    7,
     'https://via.placeholder.com/30',
     'Customer 7',
     '60',
@@ -75,6 +83,7 @@ export const customerData: ICustomer[] = [
     '$7890.12',
   ),
   createCustomerData(
+    8,
     'https://via.placeholder.com/30',
     'Customer 5',
     '50',
@@ -82,6 +91,7 @@ export const customerData: ICustomer[] = [
     '$5678.90',
   ),
   createCustomerData(
+    9,
     'https://via.placeholder.com/30',
     'Customer 6',
     '95',
@@ -89,6 +99,7 @@ export const customerData: ICustomer[] = [
     '$6789.01',
   ),
   createCustomerData(
+    10,
     'https://via.placeholder.com/30',
     'Customer 7',
     '60',
@@ -96,6 +107,7 @@ export const customerData: ICustomer[] = [
     '$7890.12',
   ),
   createCustomerData(
+    11,
     'https://via.placeholder.com/30',
     'Customer 5',
     '50',
@@ -103,6 +115,7 @@ export const customerData: ICustomer[] = [
     '$5678.90',
   ),
   createCustomerData(
+    12,
     'https://via.placeholder.com/30',
     'Customer 6',
     '95',
@@ -110,6 +123,7 @@ export const customerData: ICustomer[] = [
     '$6789.01',
   ),
   createCustomerData(
+    13,
     'https://via.placeholder.com/30',
     'Customer 7',
     '60',
