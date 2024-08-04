@@ -53,7 +53,7 @@ export function AddMaterialModal<T>({
         type: component.type,
         manufacturingParts: component?.manufacturingPart,
         purchasingParts: component?.purchasingPart,
-        netPrice: component?.price,
+        netPrice: component?.netPrice,
       } as T;
     });
     onSave(parts);

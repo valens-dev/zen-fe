@@ -1,14 +1,6 @@
-export interface IPosition {
-  productId: number;
-  manufacturingPartId: number;
-  quantity: number;
-  unit: string;
-  netPrice: number;
-  useInventory: boolean;
-  name?: string;
-}
+import { type IPosition } from '@/components/order/order-form/types';
 
-export interface IFormInputs {
+export interface IOrder {
   deliveryAddress: {
     houseNumber: string;
     street: string;

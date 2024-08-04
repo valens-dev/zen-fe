@@ -38,7 +38,11 @@ export default function OrderForm({
 }: IOrderFormProps): React.ReactNode {
   const { t } = useTranslation();
   const { classes } = useStyles();
-  const { getValues, setValue } = useFormContext<IFormInputs>();
+  const {
+    getValues,
+    setValue,
+    formState: { errors },
+  } = useFormContext<IFormInputs>();
 
   const [modalOpen, setModalOpen] = useState<boolean>(false);
 
@@ -59,7 +63,7 @@ export default function OrderForm({
 
       <Box className={classes.inputRow}>
         <Controller
-          name="deliveryAdress.adressSufix"
+          name="deliveryAddress.addressSufix"
           control={control}
           render={({ field }) => {
             return <Input {...field} label={t('form.street')} />;
@@ -68,7 +72,7 @@ export default function OrderForm({
         <FormControl fullWidth margin="normal">
           <InputLabel>{t('form.country')}</InputLabel>
           <Controller
-            name="deliveryAdress.countryId"
+            name="deliveryAddress.countryId"
             control={control}
             render={({ field }) => {
               return (
@@ -85,7 +89,7 @@ export default function OrderForm({
 
       <Box className={classes.inputRow}>
         <Controller
-          name="deliveryAdress.street"
+          name="deliveryAddress.street"
           control={control}
           render={({ field }) => {
             return (
@@ -94,7 +98,7 @@ export default function OrderForm({
           }}
         />
         <Controller
-          name="deliveryAdress.houseNumber"
+          name="deliveryAddress.houseNumber"
           control={control}
           render={({ field }) => {
             return (
@@ -106,14 +110,14 @@ export default function OrderForm({
 
       <Box className={classes.inputRow}>
         <Controller
-          name="deliveryAdress.zipCode"
+          name="deliveryAddress.zipCode"
           control={control}
           render={({ field }) => {
             return <Input {...field} label={t('form.zipCode')} />;
           }}
         />
         <Controller
-          name="deliveryAdress.place"
+          name="deliveryAddress.place"
           control={control}
           render={({ field }) => {
             return <Input {...field} label={t('form.place')} />;
@@ -191,6 +195,7 @@ export default function OrderForm({
                 onAddRow={() => {
                   return setModalOpen(true);
                 }}
+                error={Boolean(errors.positions)}
               >
                 <PositionsList
                   data={field.value}

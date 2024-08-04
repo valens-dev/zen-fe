@@ -7,12 +7,11 @@ export interface IProduct {
   material: string;
   materialType: MaterialType;
   name: string;
-  price: string;
+  netPrice: string;
   stock: string;
   weight: string;
   type: MaterialType;
   manufacturingPart?: IProductData;
   purchasingPart?: IProductData;
   product?: IProductData;
-  netPrice: string;
 }

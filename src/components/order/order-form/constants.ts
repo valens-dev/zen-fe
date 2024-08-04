@@ -1,13 +1,13 @@
 import { type IFormInputs } from './types';
 
 export const initialValues: IFormInputs = {
-  deliveryAdress: {
+  deliveryAddress: {
     houseNumber: '',
     street: '',
-    zipCode: '',
+    zipCode: 0,
     place: '',
     countryId: 0,
-    adressSufix: '',
+    addressSufix: '',
   },
   dateOfDelivery: '',
   comment: '',

@@ -26,5 +26,8 @@ export const useStyles = tss.create(({ theme }) => {
       justifyContent: 'start',
       width: '100%',
     },
+    error: {
+      border: `1px solid ${theme.palette.error.primary}`,
+    },
   };
 });
