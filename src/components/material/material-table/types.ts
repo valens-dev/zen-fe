@@ -14,4 +14,5 @@ export interface IProduct {
   manufacturingPart?: IProductData;
   purchasingPart?: IProductData;
   product?: IProductData;
+  netPrice: string;
 }

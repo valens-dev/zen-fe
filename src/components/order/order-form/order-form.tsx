@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Controller, type Control } from 'react-hook-form';
+import { Controller, type Control, useFormContext } from 'react-hook-form';
 
 import {
   Box,
@@ -14,8 +15,14 @@ import {
 } from '@mui/material';
 
 import { Input } from '@/shared/input';
+import { DynamicValuesTable } from '@/shared/dynamic-values-table';
+import { AddMaterialModal } from '@/shared/add-material-modal/add-material-modal';
 
-import { type IFormInputs } from './types';
+import { MaterialType } from '@/types/material';
+
+import { PositionsList } from '../positions-list.tsx/positions-list';
+
+import { type IPosition, type IFormInputs } from './types';
 
 import { useStyles } from './styles';
 
@@ -31,11 +38,9 @@ export default function OrderForm({
 }: IOrderFormProps): React.ReactNode {
   const { t } = useTranslation();
   const { classes } = useStyles();
+  const { getValues, setValue } = useFormContext<IFormInputs>();
 
-  //const { fields } = useFieldArray({
-  // control,
-  //  name: 'positions',
-  // });
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
 
   return (
     <form onSubmit={void onSubmit} className={classes.wrapper}>
@@ -44,7 +49,7 @@ export default function OrderForm({
       <Typography className={classes.title}>Delivery address</Typography>
       <Box className={classes.inputRow}>
         <Controller
-          name="name"
+          name="customerName"
           control={control}
           render={({ field }) => {
             return <Input {...field} label={t('form.customerName')} />;
@@ -54,7 +59,7 @@ export default function OrderForm({
 
       <Box className={classes.inputRow}>
         <Controller
-          name="street"
+          name="deliveryAdress.adressSufix"
           control={control}
           render={({ field }) => {
             return <Input {...field} label={t('form.street')} />;
@@ -63,7 +68,7 @@ export default function OrderForm({
         <FormControl fullWidth margin="normal">
           <InputLabel>{t('form.country')}</InputLabel>
           <Controller
-            name="countryId"
+            name="deliveryAdress.countryId"
             control={control}
             render={({ field }) => {
               return (
@@ -80,7 +85,16 @@ export default function OrderForm({
 
       <Box className={classes.inputRow}>
         <Controller
-          name="houseNumber"
+          name="deliveryAdress.street"
+          control={control}
+          render={({ field }) => {
+            return (
+              <Input {...field} label={t('form.houseNumber')} type="number" />
+            );
+          }}
+        />
+        <Controller
+          name="deliveryAdress.houseNumber"
           control={control}
           render={({ field }) => {
             return (
@@ -92,14 +106,14 @@ export default function OrderForm({
 
       <Box className={classes.inputRow}>
         <Controller
-          name="zipCode"
+          name="deliveryAdress.zipCode"
           control={control}
           render={({ field }) => {
             return <Input {...field} label={t('form.zipCode')} />;
           }}
         />
         <Controller
-          name="place"
+          name="deliveryAdress.place"
           control={control}
           render={({ field }) => {
             return <Input {...field} label={t('form.place')} />;
@@ -109,7 +123,7 @@ export default function OrderForm({
 
       <Divider className={classes.divider} />
       <Box className={classes.headerRow}>
-        <Typography className={classes.title}>Delivery address</Typography>
+        <Typography className={classes.title}>Order details</Typography>
 
         <Controller
           name="prioritizeOrder"
@@ -143,16 +157,18 @@ export default function OrderForm({
           }}
         />
       </Box>
+      <Divider />
+      <Typography className={classes.title}>Shipping</Typography>
       <Box className={classes.inputRow}>
         <Controller
-          name="shippingMethod"
+          name="shipment.shippingMethod"
           control={control}
           render={({ field }) => {
             return <Input {...field} label={t('form.shippingMethod')} />;
           }}
         />
         <Controller
-          name="incotermId"
+          name="shipment.incotermId"
           control={control}
           render={({ field }) => {
             return (
@@ -162,7 +178,50 @@ export default function OrderForm({
         />
       </Box>
       <Divider className={classes.divider} />
-
+      <Box className={classes.inputRow}>
+        <Controller
+          name="positions"
+          control={control}
+          render={({ field }) => {
+            return (
+              <DynamicValuesTable
+                {...field}
+                title="Components"
+                buttonText="Add component"
+                onAddRow={() => {
+                  return setModalOpen(true);
+                }}
+              >
+                <PositionsList
+                  data={field.value}
+                  onDeleteRow={(index) => {
+                    const newValues = [...field.value];
+                    newValues.splice(index, 1);
+                    field.onChange(newValues);
+                  }}
+                  onChangeRow={(index, updatedValue) => {
+                    const newValues = [...field.value];
+                    newValues[index] = updatedValue;
+                    field.onChange(newValues);
+                  }}
+                />
+              </DynamicValuesTable>
+            );
+          }}
+        />
+      </Box>
+      <AddMaterialModal
+        title={t('material.materialForm.componentTitle')}
+        primaryActionLabel={t('material.materialForm.add')}
+        open={modalOpen}
+        materialTypes={[MaterialType.Product, MaterialType.ManufacturingPart]}
+        onClose={() => {
+          setModalOpen(false);
+        }}
+        onSave={(newPositions: IPosition[]) => {
+          setValue('positions', [...getValues('positions'), ...newPositions]);
+        }}
+      />
       <Box />
     </form>
   );

@@ -7,6 +7,7 @@ export const useStyles = tss.create(({ theme }) => {
       flexDirection: 'column',
       gap: '12px',
       alignItems: 'center',
+      padding: '0 80px',
     },
     textBox: {
       display: 'flex',

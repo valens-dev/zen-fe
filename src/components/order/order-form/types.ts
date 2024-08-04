@@ -1,24 +1,29 @@
-interface IPosition {
+export interface IPosition {
   productId: number;
   manufacturingPartId: number;
   quantity: number;
   unit: string;
   netPrice: number;
   useInventory: boolean;
+  name: string;
 }
 
 export interface IFormInputs {
-  name: string;
-  adress: string;
-  countryId: number;
-  street: string;
-  houseNumber: string;
-  zipCode: string;
-  place: string;
+  deliveryAdress: {
+    houseNumber: string;
+    street: string;
+    zipCode: string;
+    place: string;
+    countryId: number;
+    adressSufix: string;
+  };
   dateOfDelivery: string;
   comment: string;
   prioritizeOrder: boolean;
   positions: IPosition[];
-  shippingMethod: string;
-  incotermId: number;
+  customerName: string;
+  shipment: {
+    shippingMethod: string;
+    incotermId: number;
+  };
 }

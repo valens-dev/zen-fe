@@ -34,6 +34,8 @@ export const de = {
       packagingLabel: 'Verpackung',
       attributesTitle: 'Attribute',
       valuesTitle: 'Werte',
+      add: 'Hinzufügen',
+      componentTitle: 'Stücklistenkomponente hinzufügen',
     },
   },
   customer: {
