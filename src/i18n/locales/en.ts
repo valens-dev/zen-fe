@@ -54,8 +54,10 @@ export const en = {
     title: 'Order',
     orders: 'Orders',
     addOrder: 'Add Order',
-    productionOrder: 'Production order',
-    logisticsOrder: 'Logistics order',
+    productionOrder: 'Production Orders',
+    addProductionOrder: 'Add Production Order',
+    logisticsOrder: 'Logistics Orders',
+    addLogisticsOrder: 'Add logistics order',
     shipment: 'Shipment',
     addShipment: 'Add shipment',
   },
@@ -94,7 +96,9 @@ export const en = {
   dynamicTable: {
     addRow: 'Add Row',
   },
-  error: {
+  message: {
+    error: 'Failed to create material.',
+    success: 'Material created successfully',
     missingData: 'Error loading data.',
   },
 };

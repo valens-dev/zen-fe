@@ -16,6 +16,7 @@ const statusColors: IStatusColors = {
 };
 
 function createOrderData(
+  id: number,
   orderNumber: string,
   orderDate: string,
   customer: string,
@@ -24,6 +25,7 @@ function createOrderData(
   status: string,
 ): IOrder {
   return {
+    id,
     orderNumber,
     orderDate,
     customer,
@@ -35,6 +37,7 @@ function createOrderData(
 
 export const orderData: IOrder[] = [
   createOrderData(
+    1,
     'ORD001',
     '2023-01-15',
     'Customer A',
@@ -43,6 +46,7 @@ export const orderData: IOrder[] = [
     'Sent',
   ),
   createOrderData(
+    2,
     'ORD002',
     '2023-01-16',
     'Customer B',
@@ -51,6 +55,7 @@ export const orderData: IOrder[] = [
     'Delivered',
   ),
   createOrderData(
+    3,
     'ORD003',
     '2023-01-17',
     'Customer C',
@@ -59,6 +64,7 @@ export const orderData: IOrder[] = [
     'In Progress',
   ),
   createOrderData(
+    4,
     'ORD004',
     '2023-01-18',
     'Customer D',
@@ -67,6 +73,7 @@ export const orderData: IOrder[] = [
     'Open',
   ),
   createOrderData(
+    5,
     'ORD005',
     '2023-01-19',
     'Customer E',
@@ -75,6 +82,7 @@ export const orderData: IOrder[] = [
     'Canceled',
   ),
   createOrderData(
+    6,
     'ORD006',
     '2023-01-20',
     'Customer F',
@@ -83,6 +91,7 @@ export const orderData: IOrder[] = [
     'Ready to ship',
   ),
   createOrderData(
+    7,
     'ORD007',
     '2023-01-21',
     'Customer G',
@@ -91,6 +100,7 @@ export const orderData: IOrder[] = [
     'Sent',
   ),
   createOrderData(
+    8,
     'ORD008',
     '2023-01-22',
     'Customer H',
@@ -99,6 +109,7 @@ export const orderData: IOrder[] = [
     'Ordered',
   ),
   createOrderData(
+    9,
     'ORD009',
     '2023-01-23',
     'Customer I',
@@ -107,6 +118,7 @@ export const orderData: IOrder[] = [
     'Ready to use',
   ),
   createOrderData(
+    10,
     'ORD010',
     '2023-01-24',
     'Customer J',

@@ -18,8 +18,8 @@ export interface IValue {
 }
 
 export interface IProductData {
-  id: number;
-  typeId: string;
+  id?: number;
+  quantity: number;
 }
 export interface IMaterial {
   id: number;
@@ -50,4 +50,22 @@ export interface IComponent {
   type: MaterialType;
   manufacturingParts?: IProductData;
   purchasingParts?: IProductData;
+}
+
+export interface IMaterialWithQuantity extends IMaterial {
+  quantity: number;
+}
+
+export interface IComponentDetails {
+  id: number;
+  createdAt: string;
+  updatedAt: string;
+  deletedAt: string | null;
+  typeId: string;
+  material: IMaterialWithQuantity;
+}
+
+export interface IGetMaterialById extends IMaterial {
+  materialDto: IMaterial;
+  materialParts: IComponentDetails[];
 }

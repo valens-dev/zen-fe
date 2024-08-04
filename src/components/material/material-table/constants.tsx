@@ -18,7 +18,7 @@ export function getMaterialColumns(): ColumnDef<IProduct, string>[] {
         const { name } = row.original;
 
         return (
-          <Box display="flex" alignItems="center">
+          <Box display="flex" alignItems="center" textTransform="capitalize">
             <LazyImage src="imageUrl" alt={name} height={24} width={34} />
             <Typography sx={{ marginLeft: '8px' }}>{name}</Typography>
           </Box>

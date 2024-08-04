@@ -6,11 +6,13 @@ import { StationOverview } from '@/components/station/station-overview';
 import { stationData } from '@/components/station/station-overview/constants';
 
 export function getStationTabs(): {
+  id: number;
   label: string;
   component: React.ElementType;
 }[] {
   return [
     {
+      id: 1,
       label: i18n.t('station.overview'),
       component: () => {
         return (
@@ -23,12 +25,14 @@ export function getStationTabs(): {
       },
     },
     {
+      id: 2,
       label: i18n.t('station.sequence'),
       component: () => {
         return <StationSequence />;
       },
     },
     {
+      id: 3,
       label: i18n.t('station.stationLogin'),
       component: () => {
         return (
