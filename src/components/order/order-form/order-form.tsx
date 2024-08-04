@@ -56,7 +56,13 @@ export default function OrderForm({
           name="customerName"
           control={control}
           render={({ field }) => {
-            return <Input {...field} label={t('form.customerName')} />;
+            return (
+              <Input
+                {...field}
+                label={t('form.customerName')}
+                error={Boolean(errors.customerName)}
+              />
+            );
           }}
         />
       </Box>
@@ -66,7 +72,7 @@ export default function OrderForm({
           name="deliveryAddress.addressSufix"
           control={control}
           render={({ field }) => {
-            return <Input {...field} label={t('form.street')} />;
+            return <Input {...field} label={t('form.adresssuffix')} />;
           }}
         />
         <FormControl fullWidth margin="normal">
@@ -79,7 +85,6 @@ export default function OrderForm({
                 <Select {...field} label={t('form.country')}>
                   <MenuItem value={0}>USA</MenuItem>
                   <MenuItem value={1}>Canada</MenuItem>
-                  {/* Add more countries as needed */}
                 </Select>
               );
             }}
@@ -93,7 +98,11 @@ export default function OrderForm({
           control={control}
           render={({ field }) => {
             return (
-              <Input {...field} label={t('form.houseNumber')} type="number" />
+              <Input
+                {...field}
+                label={t('form.street')}
+                error={Boolean(errors.deliveryAddress?.street)}
+              />
             );
           }}
         />
@@ -102,7 +111,12 @@ export default function OrderForm({
           control={control}
           render={({ field }) => {
             return (
-              <Input {...field} label={t('form.houseNumber')} type="number" />
+              <Input
+                {...field}
+                label={t('form.houseNumber')}
+                type="number"
+                error={Boolean(errors.deliveryAddress?.houseNumber)}
+              />
             );
           }}
         />

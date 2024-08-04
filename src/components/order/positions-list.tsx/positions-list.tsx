@@ -1,13 +1,13 @@
 import { FormTable } from '@/shared/form-table/form-table';
 
-import { type IPosition } from '../order-form/types';
+import { type IMaterialOrder } from '@/types/material';
 
 import { columns } from './constants';
 
 interface IPositionsListProps {
-  data: IPosition[];
+  data: IMaterialOrder[];
   onDeleteRow: (index: number) => void;
-  onChangeRow: (index: number, updatedRow: IPosition) => void;
+  onChangeRow: (index: number, updatedRow: IMaterialOrder) => void;
 }
 
 export function PositionsList({

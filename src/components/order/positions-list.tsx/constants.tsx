@@ -4,14 +4,14 @@ import { Switch, Typography } from '@mui/material';
 
 import { Input } from '@/shared/input';
 
-import { type IPosition } from '../order-form/types';
+import { type IMaterialOrder } from '@/types/material';
 
 export const columns = [
   {
     id: 'quantity',
     label: 'Einheiten',
     renderCell: (
-      row: IPosition,
+      row: IMaterialOrder,
       rowIndex: number,
       handleChange: (index: number, field: string, value: string) => void,
     ) => {
@@ -33,14 +33,14 @@ export const columns = [
   {
     id: 'name',
     label: 'Name',
-    renderCell: (row: IPosition) => {
+    renderCell: (row: IMaterialOrder) => {
       return <Typography>{row.name}</Typography>;
     },
   },
   {
     id: 'netPrice',
     label: 'Neto Price',
-    renderCell: (row: IPosition) => {
+    renderCell: (row: IMaterialOrder) => {
       return <Typography>{row.netPrice}</Typography>;
     },
   },
@@ -48,13 +48,13 @@ export const columns = [
     id: 'useInventory',
     label: 'Stock Use (Log. Order)',
     renderCell: (
-      row: IPosition,
+      row: IMaterialOrder,
       rowIndex: number,
       handleChange: (index: number, field: string, value: boolean) => void,
     ) => {
       return (
         <Switch
-          checked={row.useInventory ?? false}
+          checked={row.useInventory}
           onChange={(e) => {
             return handleChange(rowIndex, 'useInventory', e.target.checked);
           }}

@@ -1,6 +1,8 @@
+import { type IMaterialOrder } from '@/types/material';
+
 export interface IPosition {
-  productId: number;
-  manufacturingPartId: number;
+  productId?: number;
+  manufacturingPartId?: number;
   quantity: number;
   unit: string;
   netPrice: number;
@@ -20,7 +22,7 @@ export interface IFormInputs {
   dateOfDelivery: string;
   comment: string;
   prioritizeOrder: boolean;
-  positions: IPosition[];
+  positions: IMaterialOrder[];
   customerName: string;
   shipment: {
     shippingMethod: string;
