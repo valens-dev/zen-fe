@@ -9,6 +9,7 @@ import {
   type Connection,
 } from '@xyflow/react';
 
+import { v4 as uuidv4 } from 'uuid';
 import '@xyflow/react/dist/style.css';
 
 import { Box } from '@mui/material';
@@ -64,7 +65,7 @@ export function StationSequence(): React.ReactNode {
     value: number;
     avatarUrl: string;
   }): void {
-    const newNodeId = `node-${nodes.length + 1}`;
+    const newNodeId: string = uuidv4();
     const newNodeData = {
       id: newNodeId,
       type: 'custom',

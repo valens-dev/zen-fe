@@ -22,7 +22,7 @@ export function SequenceMenu({
   onClose,
   menuItems,
 }: ISequenceMenuProps): React.ReactNode {
-  const { classes } = useStyles();
+  const { cx, classes } = useStyles();
 
   return (
     <Menu
@@ -43,11 +43,13 @@ export function SequenceMenu({
         return (
           <MenuItem
             key={item.text}
-            className={`${classes.menuItem} ${item.isDelete ? classes.delete : ''}`}
+            className={cx(classes.menuItem, {
+              [classes.delete]: item.isDelete,
+            })}
             onClick={item.onClick}
           >
             <Box className={classes.iconContainer}>{item.icon}</Box>
-            <Typography className={item.isDelete ? classes.delete : ''}>
+            <Typography className={cx({ [classes.delete]: item.isDelete })}>
               {item.text}
             </Typography>
           </MenuItem>

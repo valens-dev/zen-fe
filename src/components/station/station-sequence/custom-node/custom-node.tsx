@@ -31,8 +31,8 @@ export function CustomNode({
 }: ICustomNodeProps): React.ReactNode {
   const { classes } = useStyles();
 
-  const [modalOpen1, setModalOpen1] = useState(false);
-  const [modalOpen2, setModalOpen2] = useState(false);
+  const [addModalOpen, setAddModalOpen] = useState(false);
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<HTMLElement | undefined>();
 
   function handleIconButtonClick(event: React.MouseEvent<HTMLElement>): void {
@@ -51,7 +51,7 @@ export function CustomNode({
       text: 'Add station',
       isDelete: false,
       onClick: () => {
-        return setModalOpen1(true);
+        return setAddModalOpen(true);
       },
     },
     {
@@ -59,7 +59,7 @@ export function CustomNode({
       text: 'Delete station',
       isDelete: true,
       onClick: () => {
-        return setModalOpen2(true);
+        return setDeleteModalOpen(true);
       },
     },
   ];
@@ -97,12 +97,12 @@ export function CustomNode({
       />
 
       <AddStationModal
-        open={modalOpen1}
+        open={addModalOpen}
         onClose={() => {
-          return setModalOpen1(false);
+          setAddModalOpen(false);
         }}
         onSave={() => {
-          return onAdd({
+          onAdd({
             label: 'randomLabel',
             value: 2,
             avatarUrl: 'https://via.placeholder.com/30',
@@ -111,13 +111,13 @@ export function CustomNode({
       />
 
       <DeleteStationModal
-        open={modalOpen2}
+        open={deleteModalOpen}
         stationName={label}
         onClose={() => {
-          return setModalOpen2(false);
+          setDeleteModalOpen(false);
         }}
         onDelete={() => {
-          setModalOpen2(false);
+          setDeleteModalOpen(false);
           onDelete(id);
         }}
       />
