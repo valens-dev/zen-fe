@@ -52,7 +52,7 @@ export function SortBy({
         {option.title}
       </ListSubheader>,
       ...option.values.map((value) => {
-        const itemValue = `${value.value}`;
+        const itemValue = `${option.title.toLowerCase()}-${value.value}`;
         const isSelected = selectedValues.includes(itemValue);
         return (
           <MenuItem

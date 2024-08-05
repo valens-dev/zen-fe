@@ -1,4 +1,4 @@
-import { useState, type Dispatch, type SetStateAction } from 'react';
+import { type Dispatch, type SetStateAction } from 'react';
 import {
   flexRender,
   useReactTable,
@@ -42,6 +42,8 @@ interface ITableProps<T> {
   setGlobalFilter: Dispatch<SetStateAction<string>>;
   pagination: PaginationState;
   setPagination: Dispatch<SetStateAction<PaginationState>>;
+  sorting: SortingState;
+  setSorting: Dispatch<SetStateAction<SortingState>>;
   isLoading?: boolean;
   isError?: boolean;
   onRowClick?: (materialId: number) => void;
@@ -56,13 +58,14 @@ export function Table<T extends ITableData>({
   setPagination,
   globalFilter,
   setGlobalFilter,
+  sorting,
+  setSorting,
   isLoading,
   isError,
   onRowClick,
   sortOptions,
 }: ITableProps<T>): React.ReactNode {
   const { classes } = useStyles();
-  const [sorting, setSorting] = useState<SortingState>([]);
   const table = useReactTable({
     state: {
       globalFilter,
@@ -100,11 +103,16 @@ export function Table<T extends ITableData>({
 
   function handleSortChange(event: SelectChangeEvent<string[]>): void {
     const value = event.target.value as string[];
-    const newSorting = value.map((v) => {
-      const [id, desc] = v.split('-');
-      return { id, desc: desc === 'desc' };
-    });
-    setSorting(newSorting);
+
+    if (Array.isArray(value) && value.length > 0) {
+      const newSorting = value.map((v) => {
+        const [id, desc] = v.split('-');
+        return { id, desc: desc === 'desc' };
+      });
+      setSorting(newSorting);
+    } else {
+      setSorting([]);
+    }
   }
 
   function handleClearSorting(): void {

@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { type ColumnDef } from '@tanstack/react-table';
+import { type ColumnDef, type SortingState } from '@tanstack/react-table';
 
 import { useMaterial } from '@/services/material';
 import { transformMaterialsToProducts } from '@/services/material/utils';
@@ -41,6 +42,16 @@ export function MaterialTable({
   const { globalFilter, setGlobalFilter, pagination, setPagination } =
     useTableFilters();
 
+  // Ensure the correct type for SortingState
+  const [sorting, setSorting] = useState<SortingState>([]);
+
+  const sortFields = sorting.map((sort) => {
+    return sort.id;
+  });
+  const sortFieldsOrders = sorting.map((sort) => {
+    return sort.desc ? 'desc' : 'asc';
+  });
+
   const {
     data: materialData,
     isLoading,
@@ -50,7 +61,8 @@ export function MaterialTable({
     limit: pagination.pageSize,
     name: globalFilter,
     type: [materialType],
-    //sort:
+    sortFields,
+    sortFieldsOrders,
   });
 
   function handleOpenAddPage(): void {
@@ -79,6 +91,8 @@ export function MaterialTable({
         setGlobalFilter={setGlobalFilter}
         pagination={pagination}
         setPagination={setPagination}
+        sorting={sorting}
+        setSorting={setSorting}
         isLoading={isLoading}
         isError={isError}
         onRowClick={handleMaterialClick}

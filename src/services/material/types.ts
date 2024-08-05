@@ -5,5 +5,6 @@ export interface IGetMaterialParams {
   limit: number;
   name?: string;
   type: MaterialType[];
-  //sort: type;
+  sortFields?: string[];
+  sortFieldsOrders?: ('asc' | 'desc')[];
 }

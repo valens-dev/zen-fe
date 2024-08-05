@@ -51,7 +51,6 @@ const columnHelper = createColumnHelper<IProduct>();
 export function getMaterialColumns(): ColumnDef<IProduct, string>[] {
   return [
     columnHelper.accessor('name', {
-      id: 'name',
       header: i18n.t('material.materialTable.name'),
       cell: ({ row }) => {
         const { name } = row.original;
@@ -65,35 +64,30 @@ export function getMaterialColumns(): ColumnDef<IProduct, string>[] {
       },
     }),
     columnHelper.accessor('height', {
-      id: 'height',
       header: i18n.t('material.materialTable.height'),
       cell: ({ getValue }) => {
         return getValue();
       },
     }),
     columnHelper.accessor('material', {
-      id: 'material',
       header: i18n.t('material.materialTable.material'),
       cell: ({ getValue }) => {
         return getValue();
       },
     }),
     columnHelper.accessor('weight', {
-      id: 'weight',
       header: i18n.t('material.materialTable.weight'),
       cell: ({ getValue }) => {
         return getValue();
       },
     }),
     columnHelper.accessor('stock', {
-      id: 'stock',
       header: i18n.t('material.materialTable.stock'),
       cell: ({ getValue }) => {
         return getValue();
       },
     }),
     columnHelper.accessor('price', {
-      id: 'price',
       header: i18n.t('material.materialTable.price'),
       cell: ({ getValue }) => {
         return getValue();
