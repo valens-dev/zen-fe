@@ -2,19 +2,18 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Controller, type Control, useFormContext } from 'react-hook-form';
 
+import { useCountries } from '@/services/country';
+
 import {
   Box,
-  Select,
   Switch,
   Divider,
-  MenuItem,
-  InputLabel,
   Typography,
-  FormControl,
   FormControlLabel,
 } from '@mui/material';
 
 import { Input } from '@/shared/input';
+import { Select } from '@/shared/select';
 import { DynamicValuesTable } from '@/shared/dynamic-values-table';
 import { AddMaterialModal } from '@/shared/add-material-modal/add-material-modal';
 
@@ -46,11 +45,17 @@ export default function OrderForm({
 
   const [modalOpen, setModalOpen] = useState<boolean>(false);
 
+  const { data: countryData } = useCountries();
+
   return (
     <form onSubmit={void onSubmit} className={classes.wrapper}>
-      <Typography className={classes.title}>Add New Product</Typography>
+      <Typography className={classes.title}>
+        {t('order.orderForm.createNewOrder')}
+      </Typography>
       <Divider />
-      <Typography className={classes.title}>Delivery address</Typography>
+      <Typography className={classes.title}>
+        {t('order.orderForm.deliveryAddress')}
+      </Typography>
       <Box className={classes.inputRow}>
         <Controller
           name="customerName"
@@ -59,7 +64,7 @@ export default function OrderForm({
             return (
               <Input
                 {...field}
-                label={t('form.customerName')}
+                label={t('order.orderForm.name')}
                 error={Boolean(errors.customerName)}
               />
             );
@@ -72,24 +77,26 @@ export default function OrderForm({
           name="deliveryAddress.addressSufix"
           control={control}
           render={({ field }) => {
-            return <Input {...field} label={t('form.adresssuffix')} />;
+            return (
+              <Input {...field} label={t('order.orderForm.addressSuffix')} />
+            );
           }}
         />
-        <FormControl fullWidth margin="normal">
-          <InputLabel>{t('form.country')}</InputLabel>
-          <Controller
-            name="deliveryAddress.countryId"
-            control={control}
-            render={({ field }) => {
-              return (
-                <Select {...field} label={t('form.country')}>
-                  <MenuItem value={0}>USA</MenuItem>
-                  <MenuItem value={1}>Canada</MenuItem>
-                </Select>
-              );
-            }}
-          />
-        </FormControl>
+        <Controller
+          name="deliveryAddress.countryId"
+          control={control}
+          render={({ field }) => {
+            return (
+              <Select
+                {...field}
+                label={t('order.orderForm.country')}
+                name="country"
+                className={classes.select}
+                options={countryData}
+              />
+            );
+          }}
+        />
       </Box>
 
       <Box className={classes.inputRow}>
@@ -100,7 +107,7 @@ export default function OrderForm({
             return (
               <Input
                 {...field}
-                label={t('form.street')}
+                label={t('order.orderForm.street')}
                 error={Boolean(errors.deliveryAddress?.street)}
               />
             );
@@ -113,7 +120,7 @@ export default function OrderForm({
             return (
               <Input
                 {...field}
-                label={t('form.houseNumber')}
+                label={t('order.orderForm.houseNumber')}
                 type="number"
                 error={Boolean(errors.deliveryAddress?.houseNumber)}
               />
@@ -127,21 +134,23 @@ export default function OrderForm({
           name="deliveryAddress.zipCode"
           control={control}
           render={({ field }) => {
-            return <Input {...field} label={t('form.zipCode')} />;
+            return <Input {...field} label={t('order.orderForm.zipCode')} />;
           }}
         />
         <Controller
           name="deliveryAddress.place"
           control={control}
           render={({ field }) => {
-            return <Input {...field} label={t('form.place')} />;
+            return <Input {...field} label={t('order.orderForm.place')} />;
           }}
         />
       </Box>
 
       <Divider className={classes.divider} />
       <Box className={classes.headerRow}>
-        <Typography className={classes.title}>Order details</Typography>
+        <Typography className={classes.title}>
+          {t('order.orderForm.orderDetails')}
+        </Typography>
 
         <Controller
           name="prioritizeOrder"
@@ -149,7 +158,7 @@ export default function OrderForm({
           render={({ field }) => {
             return (
               <FormControlLabel
-                label={t('form.prioritizeOrder')}
+                label={t('order.orderForm.prioritizeOrder')}
                 control={<Switch {...field} checked={field.value} />}
                 labelPlacement="start"
               />
@@ -162,7 +171,13 @@ export default function OrderForm({
           name="dateOfDelivery"
           control={control}
           render={({ field }) => {
-            return <Input {...field} label={t('form.dateOfDelivery')} />;
+            return (
+              <Input
+                {...field}
+                type="date"
+                label={t('order.orderForm.deliveryDate')}
+              />
+            );
           }}
         />
       </Box>
@@ -171,18 +186,22 @@ export default function OrderForm({
           name="comment"
           control={control}
           render={({ field }) => {
-            return <Input {...field} label={t('form.comment')} />;
+            return <Input {...field} label={t('order.orderForm.note')} />;
           }}
         />
       </Box>
       <Divider />
-      <Typography className={classes.title}>Shipping</Typography>
+      <Typography className={classes.title}>
+        {t('order.orderForm.shipping')}
+      </Typography>
       <Box className={classes.inputRow}>
         <Controller
           name="shipment.shippingMethod"
           control={control}
           render={({ field }) => {
-            return <Input {...field} label={t('form.shippingMethod')} />;
+            return (
+              <Input {...field} label={t('order.orderForm.shippingMethod')} />
+            );
           }}
         />
         <Controller
@@ -190,7 +209,11 @@ export default function OrderForm({
           control={control}
           render={({ field }) => {
             return (
-              <Input {...field} label={t('form.incotermId')} type="number" />
+              <Input
+                {...field}
+                label={t('order.orderForm.incoterm')}
+                type="number"
+              />
             );
           }}
         />
@@ -204,8 +227,8 @@ export default function OrderForm({
             return (
               <DynamicValuesTable
                 {...field}
-                title="Components"
-                buttonText="Add component"
+                title={t('order.orderForm.positions')}
+                buttonText={t('order.orderForm.addPosition')}
                 onAddRow={() => {
                   return setModalOpen(true);
                 }}
