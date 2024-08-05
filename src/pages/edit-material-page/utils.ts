@@ -7,21 +7,23 @@ import {
 } from '@/types/material';
 
 export function createInitialValues(materialData: IGetMaterialById): IFormData {
+  const { materialDto, materialParts } = materialData;
+
   return {
-    id: materialData.materialDto.id,
-    name: materialData.materialDto.name,
-    type: materialData.materialDto.type,
-    values: materialData.materialDto.values,
-    attributes: materialData.materialDto.attributes,
-    weight: materialData.materialDto.weight,
-    materialNumber: materialData.materialDto.materialNumber,
-    netPrice: materialData.materialDto.netPrice,
-    VAT: materialData.materialDto.VAT,
-    customsTarif: materialData.materialDto.customsTarif,
-    description: materialData.materialDto.description,
-    image: materialData.materialDto.image,
-    packaging: materialData.materialDto.packaging,
-    parts: materialData.materialParts.map(
+    id: materialDto.id,
+    name: materialDto.name,
+    type: materialDto.type,
+    values: materialDto.values,
+    attributes: materialDto.attributes,
+    weight: materialDto.weight,
+    materialNumber: materialDto.materialNumber,
+    netPrice: materialDto.netPrice,
+    VAT: materialDto.VAT,
+    customsTarif: materialDto.customsTarif,
+    description: materialDto.description,
+    image: materialDto.image,
+    packaging: materialDto.packaging,
+    parts: materialParts.map(
       ({ quantity, part }: IComponentDetails): IComponent => {
         const { material } = part;
         return {
