@@ -49,7 +49,7 @@ export function getMaterialColumns(): ColumnDef<IProduct, string>[] {
         return getValue();
       },
     }),
-    columnHelper.accessor('price', {
+    columnHelper.accessor('netPrice', {
       header: i18n.t('material.materialTable.price'),
       cell: ({ getValue }) => {
         return getValue();
