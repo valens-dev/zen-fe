@@ -16,6 +16,6 @@ export const initialValues: IFormInputs = {
   customerName: '',
   shipment: {
     shippingMethod: '',
-    incotermId: 0,
+    incotermId: 1,
   },
 };
