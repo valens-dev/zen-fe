@@ -22,17 +22,18 @@ export function createInitialValues(materialData: IGetMaterialById): IFormData {
     image: materialData.materialDto.image,
     packaging: materialData.materialDto.packaging,
     parts: materialData.materialParts.map(
-      (part: IComponentDetails): IComponent => {
+      ({ quantity, part }: IComponentDetails): IComponent => {
+        const { material } = part;
         return {
-          id: part.id,
-          quantity: part.material.quantity,
+          id: material.id,
+          quantity,
           unitType: 'Stk',
-          name: part.material.name,
-          imageUrl: part.material.image,
+          name: material.name,
+          imageUrl: material.image,
           duration: 2,
-          type: part.material.type,
-          manufacturingParts: part.material?.manufacturingPart,
-          purchasingParts: part.material?.purchasingPart,
+          type: material.type,
+          manufacturingParts: material?.manufacturingPart,
+          purchasingParts: material?.purchasingPart,
         };
       },
     ),

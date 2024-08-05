@@ -59,7 +59,7 @@ export default function EditMaterialPage(): React.ReactNode {
         })
         .map((part) => {
           return {
-            id: part?.id,
+            id: part?.manufacturingParts?.id,
             quantity: part.quantity,
           };
         });
@@ -70,7 +70,7 @@ export default function EditMaterialPage(): React.ReactNode {
         })
         .map((part) => {
           return {
-            id: part?.id,
+            id: part?.purchasingParts?.id,
             quantity: part.quantity,
           };
         });
