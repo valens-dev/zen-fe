@@ -16,7 +16,7 @@ interface IInputProps
   label?: string;
   adornment?: ReactNode;
   variant?: 'outlined' | 'filled' | 'standard';
-  type?: 'text' | 'number' | 'password';
+  type?: 'text' | 'number' | 'password' | 'date';
   min?: number;
   max?: number;
 }

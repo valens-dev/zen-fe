@@ -31,5 +31,20 @@ export const useStyles = tss.create(({ theme }) => {
       alignItems: 'center',
       padding: '0 16px 0 0',
     },
+    select: {
+      color: theme.palette.main.primary,
+      margin: '0',
+      padding: '0',
+      width: '100%',
+      height: '40px',
+      border: `1px solid ${theme.palette.border.primary}`,
+      borderRadius: '12px',
+    },
+    label: {
+      fontSize: '0.75rem',
+      fontWeight: theme.typography.fontWeight.medium,
+      lineHeight: 1,
+      marginBottom: '4px',
+    },
   };
 });
