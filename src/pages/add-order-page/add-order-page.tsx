@@ -18,7 +18,10 @@ import { initialValues } from '@/components/order/order-form/constants';
 import { Header } from '@/layouts/header';
 import { FormHeader } from '@/layouts/form-header';
 
+import { useAlert } from '@/hooks/use-alert';
+
 import { type IOrder } from '@/types/order';
+import { AlertSeverity } from '@/types/alert';
 
 import AddIcon from '@/assets/icon/add.svg?react';
 
@@ -30,7 +33,9 @@ import { transformProductsToPositions } from './utils';
 export default function AddOrderPage(): React.ReactNode {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const { showAlert } = useAlert();
   const { classes } = useStyles();
+
   const methods = useForm<IFormInputs>({
     defaultValues: initialValues,
     resolver: yupResolver(orderFormSchema as yup.ObjectSchema<IFormInputs>),
@@ -45,11 +50,11 @@ export default function AddOrderPage(): React.ReactNode {
 
     createOrder({ ...filteredData, positions: positionsData } as IOrder, {
       onSuccess: () => {
-        // Handle successful order creation, e.g., navigate to the orders list
-        navigate('/orders');
+        showAlert(t('message.success'), AlertSeverity.Success);
+        navigate('/order');
       },
       onError: () => {
-        // Handle error during order creation
+        showAlert(t('message.error'), AlertSeverity.Error);
       },
     });
   }
@@ -67,7 +72,7 @@ export default function AddOrderPage(): React.ReactNode {
           <Box>
             <Button
               onClick={() => {
-                return navigate('/orders');
+                return navigate('/order');
               }}
               variant="secondary"
             >
