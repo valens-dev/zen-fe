@@ -16,15 +16,16 @@ import {
 
 import { Input } from '@/shared/input';
 import { DynamicValuesTable } from '@/shared/dynamic-values-table';
-import { AddComponentModal } from '@/shared/add-component-modal/add-component-modal';
+import { AddMaterialModal } from '@/shared/add-material-modal/add-material-modal';
 
-import { PartsList } from '@/components/parts-list/parts-list';
 import { ValueRow } from '@/components/value/value-row/value-row';
 import { type IAttribute } from '@/components/attribute/constants';
 import { materialShema } from '@/components/validation/material-form';
 import { AttributeRow } from '@/components/attribute/attribute-row/attribute-row';
 
 import { MaterialType, type IComponent } from '@/types/material';
+
+import { PartsList } from '../parts-list/parts-list';
 
 import { type IFormData } from './types';
 import { checkLastRowFilled } from './utils';
@@ -362,7 +363,13 @@ const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
               </Box>
             )}
             <Divider />
-            <AddComponentModal
+            <AddMaterialModal
+              title={t('material.materialForm.componentTitle')}
+              primaryActionLabel={t('material.materialForm.add')}
+              materialTypes={[
+                MaterialType.ManufacturingPart,
+                MaterialType.PurchasingPart,
+              ]}
               open={modalOpen}
               onClose={() => {
                 return setModalOpen(false);

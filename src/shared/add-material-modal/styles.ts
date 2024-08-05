@@ -22,7 +22,7 @@ export const useStyles = tss.create(({ theme }) => {
     tableContainer: {
       display: 'flex',
       justifyContent: 'space-between',
-      maxHeight: '70%',
+      maxHeight: '264px',
       margin: '0',
       overflow: 'scroll',
       '&::-webkit-scrollbar': {
@@ -41,6 +41,21 @@ export const useStyles = tss.create(({ theme }) => {
       fontSize: '1rem',
       fontWeight: theme.typography.fontWeight.medium,
       lineHeight: 1.5,
+    },
+    addButton: {
+      width: '100%',
+      height: '40px',
+      borderRadius: '12px',
+      padding: '8px 16px',
+      textTransform: 'none',
+      fontWeight: theme.typography.fontWeight.medium,
+      fontSize: '0.875rem',
+      lineHeight: 1.25,
+      backgroundColor: theme.palette.light.tertiary,
+      color: theme.palette.white.primary,
+      '&:hover': {
+        backgroundColor: theme.palette.background.primary,
+      },
     },
   };
 });

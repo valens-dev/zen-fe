@@ -34,6 +34,8 @@ export const en = {
       packagingLabel: 'Packaging',
       attributesTitle: 'Attributes',
       valuesTitle: 'Values',
+      add: 'Add',
+      componentTitle: 'Add Bill of Materials Component',
     },
   },
   customer: {

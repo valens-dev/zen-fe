@@ -5,7 +5,6 @@ export const useStyles = tss.create(({ theme }) => {
     wrapper: {
       display: 'flex',
       flexDirection: 'column',
-      width: '30%',
       position: 'absolute',
       top: '50%',
       left: '50%',
@@ -36,9 +35,16 @@ export const useStyles = tss.create(({ theme }) => {
       flexDirection: 'column',
     },
     footer: {
-      display: 'flex',
       padding: '12px 16px',
       gap: '12px',
+    },
+    primary: {
+      display: 'flex',
+    },
+    secondary: {
+      display: 'flex',
+      width: '50%',
+      marginLeft: 'auto',
     },
     addButton: {
       width: '100%',

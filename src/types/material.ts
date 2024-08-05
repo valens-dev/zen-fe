@@ -56,6 +56,11 @@ export interface IMaterialWithQuantity extends IMaterial {
   quantity: number;
 }
 
+export type IMaterialOrder = Partial<IMaterialWithQuantity> & {
+  useInventory: boolean;
+  unit: string;
+};
+
 export interface IComponentDetails {
   id: number;
   createdAt: string;
