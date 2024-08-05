@@ -34,6 +34,8 @@ export const en = {
       packagingLabel: 'Packaging',
       attributesTitle: 'Attributes',
       valuesTitle: 'Values',
+      add: 'Add',
+      componentTitle: 'Add Bill of Materials Component',
     },
   },
   customer: {
@@ -96,7 +98,9 @@ export const en = {
   dynamicTable: {
     addRow: 'Add Row',
   },
-  error: {
+  message: {
+    error: 'Failed to create material.',
+    success: 'Material created successfully',
     missingData: 'Error loading data.',
   },
 };

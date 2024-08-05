@@ -41,7 +41,6 @@ export function getOrderTabs(): {
         return (
           <OrderTable
             title={i18n.t('order.productionOrder')}
-            buttonText={i18n.t('order.addProductionOrder')}
             columns={columns}
             data={[]}
           />
@@ -55,7 +54,6 @@ export function getOrderTabs(): {
         return (
           <OrderTable
             title={i18n.t('order.logisticsOrder')}
-            buttonText={i18n.t('order.addLogisticsOrder')}
             columns={columns}
             data={[]}
           />

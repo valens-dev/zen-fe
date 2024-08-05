@@ -4,6 +4,8 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import i18next from '../i18n';
 
+import { AlertProvider } from './alert-provider';
+
 interface IRootProviderProps {
   children: React.ReactNode;
 }
@@ -16,8 +18,10 @@ export function RootProvider({
   return (
     <I18nextProvider i18n={i18next}>
       <QueryClientProvider client={queryClient}>
-        {children}
-        <ReactQueryDevtools initialIsOpen={false} />
+        <AlertProvider>
+          {children}
+          <ReactQueryDevtools initialIsOpen={false} />
+        </AlertProvider>
       </QueryClientProvider>
     </I18nextProvider>
   );

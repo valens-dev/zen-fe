@@ -18,6 +18,7 @@ interface IModalProps {
   primaryActionLabel: string;
   onPrimaryAction: () => void;
   primaryActionClass?: string;
+  footerStyle?: 'primary' | 'secondary';
 }
 
 export function Modal({
@@ -28,6 +29,7 @@ export function Modal({
   primaryActionLabel,
   onPrimaryAction,
   primaryActionClass,
+  footerStyle = 'primary',
 }: IModalProps): React.ReactNode {
   const { classes } = useStyles();
 
@@ -41,7 +43,7 @@ export function Modal({
           </IconButton>
         </Box>
         <Box className={classes.container}>{children}</Box>
-        <Box className={classes.footer}>
+        <Box className={`${classes.footer} ${classes[footerStyle]}`}>
           <Button onClick={onClose} className={classes.cancelButton}>
             Cancel
           </Button>

@@ -36,7 +36,7 @@ export function transformMaterialsToProducts(
       stock: 'In progress',
       materialType: material.type,
       name: material.name,
-      price: `${material.netPrice}$`,
+      netPrice: material.netPrice.toString(),
       weight: `${material.weight}kg`,
       manufacturingPart: material.manufacturingPart,
       purchasingPart: material.purchasingPart,

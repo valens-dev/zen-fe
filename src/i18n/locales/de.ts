@@ -34,6 +34,8 @@ export const de = {
       packagingLabel: 'Verpackung',
       attributesTitle: 'Attribute',
       valuesTitle: 'Werte',
+      add: 'Hinzufügen',
+      componentTitle: 'Stücklistenkomponente hinzufügen',
     },
   },
   customer: {
@@ -55,9 +57,7 @@ export const de = {
     orders: 'Bestellungen',
     addOrder: 'Bestellung hinzufügen',
     productionOrder: 'Produktionsauftrag',
-    addProductionOrder: 'Produktionsauftrag hinzufügen',
     logisticsOrder: 'Logistikauftrag',
-    addLogisticsOrder: 'Logistikauftrag hinzufügen',
     shipment: 'Sendung',
     addShipment: 'Sendung hinzufügen',
   },
@@ -91,7 +91,9 @@ export const de = {
   pagination: {
     resultsInfo: '{{startRow}} - {{endRow}} von {{totalRows}} Ergebnissen',
   },
-  error: {
+  message: {
+    error: 'Material konnte nicht erstellt werden!',
+    success: 'Material erfolgreich erstellt.',
     missingData: 'Fehler beim Laden der Daten.',
   },
 };

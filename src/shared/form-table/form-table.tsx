@@ -22,7 +22,11 @@ interface IColumn<T> {
   renderCell: (
     row: T,
     rowIndex: number,
-    handleChange: (index: number, field: string, value: string) => void,
+    handleChange: (
+      index: number,
+      field: string,
+      value: string | boolean,
+    ) => void,
   ) => React.ReactNode;
 }
 
@@ -55,7 +59,7 @@ export function FormTable<T>({
   );
 
   const handleChange = useCallback(
-    (index: number, field: string, value: string) => {
+    (index: number, field: string, value: string | boolean) => {
       const updatedRow = { ...localData[index], [field]: value };
       setLocalData((prevData) => {
         return prevData?.map((row, i) => {
