@@ -18,6 +18,7 @@ import { type MaterialType } from '@/types/material';
 import AddIcon from '@/assets/icon/add.svg?react';
 
 import { type IProduct } from './types';
+import { sortByOptions } from './constants';
 
 import { useStyles } from './styles';
 
@@ -49,6 +50,7 @@ export function MaterialTable({
     limit: pagination.pageSize,
     name: globalFilter,
     type: [materialType],
+    //sort:
   });
 
   function handleOpenAddPage(): void {
@@ -80,6 +82,7 @@ export function MaterialTable({
         isLoading={isLoading}
         isError={isError}
         onRowClick={handleMaterialClick}
+        sortOptions={sortByOptions}
       />
     </Box>
   );
