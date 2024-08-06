@@ -49,7 +49,7 @@ export function MaterialTable({
     return sort.id;
   });
   const sortFieldsOrders = sorting.map((sort) => {
-    return sort.desc ? 'desc' : 'asc';
+    return sort.desc ? 'DESC' : 'ASC';
   });
 
   const {

@@ -1,7 +1,4 @@
 export interface ISortByOption {
   title: string;
-  values: {
-    label: string;
-    value: string;
-  }[];
+  values: { accessor: string; direction: string; label: string }[];
 }

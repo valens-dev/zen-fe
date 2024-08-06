@@ -44,7 +44,7 @@ export const useStyles = tss.create(({ theme }) => {
       alignItems: 'center',
     },
     iconContainer: {
-      width: 20,
+      minWidth: '36px',
       textAlign: 'center',
     },
     itemLabel: {

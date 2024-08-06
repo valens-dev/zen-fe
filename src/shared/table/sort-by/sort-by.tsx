@@ -20,7 +20,7 @@ import { useStyles } from './styles';
 
 interface ISortByOption {
   title: string;
-  values: { value: string; label: string }[];
+  values: { accessor: string; direction: string; label: string }[];
 }
 
 interface ISortByProps {
@@ -39,7 +39,10 @@ export function SortBy({
   const { classes } = useStyles();
 
   const selectedValues = sorting.map((s) => {
-    return `${s.id}-${s.desc ? 'desc' : 'asc'}`;
+    return JSON.stringify({
+      accessor: s.id,
+      direction: s.desc ? 'DESC' : 'ASC',
+    });
   });
 
   const renderOptions = options.flatMap((option) => {
@@ -52,7 +55,7 @@ export function SortBy({
         {option.title}
       </ListSubheader>,
       ...option.values.map((value) => {
-        const itemValue = `${option.title.toLowerCase()}-${value.value}`;
+        const itemValue = JSON.stringify(value);
         const isSelected = selectedValues.includes(itemValue);
         return (
           <MenuItem

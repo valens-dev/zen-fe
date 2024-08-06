@@ -101,13 +101,22 @@ export function Table<T extends ITableData>({
     setPagination({ ...pagination, pageSize: Number(event.target.value) });
   }
 
+  interface ISortValue {
+    accessor: string;
+    direction: string;
+  }
+
   function handleSortChange(event: SelectChangeEvent<string[]>): void {
     const value = event.target.value as string[];
 
     if (Array.isArray(value) && value.length > 0) {
       const newSorting = value.map((v) => {
-        const [id, desc] = v.split('-');
-        return { id, desc: desc === 'desc' };
+        const parsedValue = JSON.parse(v) as ISortValue;
+        const { accessor, direction } = parsedValue;
+        return {
+          id: accessor,
+          desc: direction === 'DESC',
+        };
       });
       setSorting(newSorting);
     } else {
