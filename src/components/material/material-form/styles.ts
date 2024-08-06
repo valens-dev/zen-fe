@@ -4,7 +4,7 @@ export const useStyles = tss.create(({ theme }) => {
   return {
     wrapper: {
       backgroundColor: theme.palette.white.primary,
-      borderTop: `1px solid ${theme.palette.border.primary}`,
+      border: `1px solid ${theme.palette.border.primary}`,
       borderRadius: '16px',
       width: '70%',
     },
@@ -29,6 +29,9 @@ export const useStyles = tss.create(({ theme }) => {
     },
     submitButton: {
       margin: '16px',
+    },
+    divider: {
+      borderColor: theme.palette.border.primary,
     },
   };
 });

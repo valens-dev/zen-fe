@@ -65,7 +65,7 @@ const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
       <FormProvider {...methods}>
         <Box className={classes.wrapper}>
           <Typography className={classes.title}>Add New Product</Typography>
-          <Divider />
+          <Divider className={classes.divider} />
           <Box
             component="form"
             ref={ref}
@@ -221,7 +221,7 @@ const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
                 }}
               />
             </Box>
-            <Divider />
+            <Divider className={classes.divider} />
             <Box className={classes.inputRow}>
               <Controller
                 name="attributes"
@@ -272,7 +272,7 @@ const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
                 }}
               />
             </Box>
-            <Divider />
+            <Divider className={classes.divider} />
             <Box className={classes.inputRow}>
               <Controller
                 name="values"
@@ -327,7 +327,7 @@ const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
                 }}
               />
             </Box>
-            <Divider />
+            <Divider className={classes.divider} />
             {materialType !== MaterialType.PurchasingPart && (
               <Box className={classes.inputRow}>
                 <Controller
@@ -362,7 +362,7 @@ const MaterialForm = forwardRef<HTMLFormElement, IMaterialFormProps>(
                 />
               </Box>
             )}
-            <Divider />
+
             <AddMaterialModal
               title={t('material.materialForm.componentTitle')}
               primaryActionLabel={t('material.materialForm.add')}
