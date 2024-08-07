@@ -42,7 +42,6 @@ export function MaterialTable({
   const { globalFilter, setGlobalFilter, pagination, setPagination } =
     useTableFilters();
 
-  // Ensure the correct type for SortingState
   const [sorting, setSorting] = useState<SortingState>([]);
 
   const sortFields = sorting.map((sort) => {
