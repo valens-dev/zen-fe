@@ -1,26 +1,36 @@
+import { useMemo } from 'react';
+
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { PieChart } from '@mui/x-charts/PieChart';
 
-import { type IEmployeeCardProps } from './types';
+import { type IEmployeeCategory, type IEmployeeCardProps } from './types';
 
 import { useStyles } from './styles';
 
 const pieParams = { height: 300, margin: { right: 5 } };
+
+function generatePieData(
+  categories: IEmployeeCategory[],
+): { value: number; color: string }[] {
+  return categories.map((category) => {
+    return {
+      value: category.count,
+      color: category.color,
+    };
+  });
+}
 
 export function DonutChart({
   totalEmployees,
   categories,
 }: IEmployeeCardProps): React.ReactNode {
   const { classes } = useStyles();
-  const pieData = categories.map((category) => {
-    return {
-      value: category.count,
-      color: category.color,
-    };
-  });
+
+  const pieData = useMemo(() => {
+    return generatePieData(categories);
+  }, [categories]);
 
   return (
     <Stack className={classes.stack}>

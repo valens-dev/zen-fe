@@ -1,7 +1,11 @@
 import i18n from 'i18n';
 
-import { employeeRole } from '@/components/team/team-overview/employee-card/constants';
 import { EmployeeCard } from '@/components/team/team-overview/employee-card/employee-card';
+
+export const employeeRole = [
+  { id: 1, name: 'Operations', count: 10, color: '#3f51b5' },
+  { id: 2, name: 'Administration', count: 2, color: '#00bcd4' },
+];
 
 export function getTeamTabs(): {
   id: number;

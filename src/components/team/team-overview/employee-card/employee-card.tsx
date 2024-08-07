@@ -9,7 +9,7 @@ import { useStyles } from './styles';
 export function EmployeeCard({
   totalEmployees,
   categories,
-}: IEmployeeCardProps): JSX.Element {
+}: IEmployeeCardProps): React.ReactNode {
   const { classes } = useStyles();
 
   return (
