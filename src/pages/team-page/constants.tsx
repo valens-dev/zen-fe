@@ -1,6 +1,6 @@
 import i18n from 'i18n';
 
-import { EmployeeCard } from '@/components/team/team-overview/employee-card/employee-card';
+import { EmployeeCard } from '@/components/team/team-overview/employee-card';
 
 export const employeeRole = [
   { id: 1, name: 'Operations', count: 10, color: '#3f51b5' },
