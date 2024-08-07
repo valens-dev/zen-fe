@@ -30,7 +30,6 @@ function useContext(): { theme: ITheme } {
       background: {
         primary: '#0045D6',
         secondary: '#FAF7FF',
-        tertiary: '#F0F9FF',
       },
       error: {
         primary: '#F04438',

@@ -3,7 +3,6 @@ import i18n from 'i18n';
 import { IconStyle } from '@/types/icon';
 
 import IconHome from '@/assets/icon/home.svg?react';
-import IconTeam from '@/assets/icon/team.svg?react';
 import IconOrder from '@/assets/icon/order.svg?react';
 import IconStation from '@/assets/icon/station.svg?react';
 import IconMaterial from '@/assets/icon/material.svg?react';
@@ -47,12 +46,6 @@ export function getSidebarItems(): ISidebarItem[] {
       iconStyle: IconStyle.Stroke,
       label: i18n.t('customer.title'),
       href: 'customers',
-    },
-    {
-      icon: IconTeam,
-      iconStyle: IconStyle.Stroke,
-      label: i18n.t('team.title'),
-      href: 'team',
     },
   ];
 }

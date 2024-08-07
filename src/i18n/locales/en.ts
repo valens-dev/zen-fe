@@ -123,11 +123,4 @@ export const en = {
     success: 'Material created successfully',
     missingData: 'Error loading data.',
   },
-  team: {
-    title: 'Team',
-    overview: 'Overview',
-    development: 'Development',
-    records: 'Records',
-    userRights: 'User Rights',
-  },
 };

@@ -47,10 +47,6 @@ const EditMaterialPage = lazy(() => {
   return import('@/pages/edit-material-page/edit-material-page');
 });
 
-const TeamPage = lazy(() => {
-  return import('@/pages/team-page/team-page');
-});
-
 export function App(): React.ReactNode {
   return (
     <HashRouter>
@@ -77,7 +73,6 @@ export function App(): React.ReactNode {
               path="material/edit-material"
               element={<EditMaterialPage />}
             />
-            <Route path="team" element={<TeamPage />} />
           </Route>
         </Routes>
       </Suspense>
