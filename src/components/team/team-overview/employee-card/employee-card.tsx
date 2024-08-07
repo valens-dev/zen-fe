@@ -1,8 +1,6 @@
-import type React from 'react';
+import { Box, Button, Typography } from '@mui/material';
 
-import { Box, Divider, Typography, CircularProgress } from '@mui/material';
-
-import { Button } from '@/shared/button';
+import { DonutChart } from './donut-chart';
 
 import { type IEmployeeCardProps } from './types';
 
@@ -11,51 +9,43 @@ import { useStyles } from './styles';
 export function EmployeeCard({
   totalEmployees,
   categories,
-}: IEmployeeCardProps): React.ReactNode {
+}: IEmployeeCardProps): JSX.Element {
   const { classes } = useStyles();
 
   return (
     <Box className={classes.containerBox}>
       <Box className={classes.header}>
         <Typography className={classes.title}>Employees</Typography>
-        <Button variant="secondary">View all</Button>
+        <Button className={classes.button}>
+          <Typography className={classes.buttonText}>View all</Typography>
+        </Button>
       </Box>
-      <Divider className={classes.divider} />
       <Box className={classes.contentContainer}>
-        <Box className={classes.circularProgress}>
-          <CircularProgress
-            variant="determinate"
-            value={100}
-            size={80}
-            thickness={4}
-          />
-          <Box className={classes.circleLabel}>
-            <Typography variant="h5">{totalEmployees}</Typography>
-          </Box>
-        </Box>
+        <DonutChart totalEmployees={totalEmployees} categories={categories} />
         <Box className={classes.infoContainer}>
-          <Box className={classes.category}>
-            <Box className={classes.categoryContainer}>
-              <Box
-                className={classes.dot}
-                style={{ backgroundColor: categories[0].color }}
-              />
-              <Typography variant="body1">{categories[0].name}</Typography>
-            </Box>
-            <Typography variant="body2" className={classes.employeeCount}>
-              {categories[0].count} employees
-            </Typography>
-          </Box>
-          <Box className={classes.category}>
-            <Box
-              className={classes.dot}
-              style={{ backgroundColor: categories[1].color }}
-            />
-            <Typography variant="body1">{categories[1].name}</Typography>
-            <Typography variant="body2" className={classes.employeeCount}>
-              {categories[1].count} employees
-            </Typography>
-          </Box>
+          {categories.map((category) => {
+            return (
+              <Box key={category.id} className={classes.category}>
+                <Box className={classes.categoryContainer}>
+                  <Box
+                    className={classes.dot}
+                    style={{ backgroundColor: category.color }}
+                  />
+                  <Typography className={classes.employeeRole}>
+                    {category.name}
+                  </Typography>
+                </Box>
+                <Box className={classes.text}>
+                  <Typography className={classes.employeeCount}>
+                    {category.count}
+                  </Typography>
+                  <Typography className={classes.employeeText}>
+                    employees
+                  </Typography>
+                </Box>
+              </Box>
+            );
+          })}
         </Box>
       </Box>
     </Box>
