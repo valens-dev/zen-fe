@@ -21,7 +21,9 @@ export function EmployeeCard({
         </Button>
       </Box>
       <Box className={classes.contentContainer}>
-        <DonutChart totalEmployees={totalEmployees} categories={categories} />
+        <Box className={classes.pieContainer}>
+          <DonutChart totalEmployees={totalEmployees} categories={categories} />
+        </Box>
         <Box className={classes.infoContainer}>
           {categories.map((category) => {
             return (
