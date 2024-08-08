@@ -20,7 +20,13 @@ module.exports = {
     'plugin:unicorn/recommended',
     'prettier',
   ],
-  ignorePatterns: ['dist', '.eslintrc.cjs'],
+  ignorePatterns: [
+    'dist',
+    '.eslintrc.cjs',
+    'tsconfig.node.tsbuildinfo',
+    'vite.config.d.ts',
+    'vite.config.js',
+  ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',
