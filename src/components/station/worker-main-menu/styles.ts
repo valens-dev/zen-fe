@@ -51,7 +51,6 @@ export const useStyles = tss.create(({ theme }) => {
     theIconArrow: {
       width: '32px',
       height: '32px',
-      // margin: '0 0 0 40%',
     },
     rightBoxes: {
       width: '48%',

@@ -60,7 +60,6 @@ export function AnonymousForm({ onSubmit }: IComponentProps): React.ReactNode {
                 return (
                   <Input
                     {...field}
-                    //   className={classes.inputRow}
                     placeholder={t('station.anonymouseForm.suggestion')}
                     error={Boolean(methods.formState.errors.suggestion)}
                   />
@@ -71,7 +70,6 @@ export function AnonymousForm({ onSubmit }: IComponentProps): React.ReactNode {
           <Box>
             <Button className={classes.btnSend} type="submit" variant="primary">
               <Typography className={classes.btnText}>
-                {/* {t('station.stationLoginForm.submitButton')} */}
                 {t('station.anonymouseForm.send')}
               </Typography>
               <IconSend />

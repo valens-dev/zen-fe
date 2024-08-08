@@ -51,7 +51,6 @@ export const useStyles = tss.create(({ theme }) => {
       margin: '2% 0 0 0',
     },
     tabIndicator: {
-      // backgroundColor: theme.palette.light.tertiary,
       display: 'none',
     },
   };

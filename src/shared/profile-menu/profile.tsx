@@ -1,14 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import {
-  Box,
-  Menu,
-  Button,
-  // Avatar,
-  MenuItem,
-  Typography,
-} from '@mui/material';
+import { Box, Menu, Button, MenuItem, Typography } from '@mui/material';
 
 import { LanguageSwitcher } from '@/components/language-switcher';
 
@@ -22,7 +15,7 @@ import { getUserMenuItems } from './constants';
 import { useStyles } from './styles';
 
 export function UserMenu(): React.ReactNode {
-  const [anchorEl, setAnchorEl] = useState<HTMLElement | string>('');
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const open = Boolean(anchorEl);
   const { classes } = useStyles();
   const navigate = useNavigate();
@@ -33,20 +26,15 @@ export function UserMenu(): React.ReactNode {
   }
 
   function handleClose(): void {
-    setAnchorEl('');
+    setAnchorEl(null);
   }
   function navigateBack(): void {
     navigate('/station');
   }
-  function userImage(): JSX.Element {
+  function userImage(alt: string, src: string): JSX.Element {
     return (
       <Box className={classes.imageContainer}>
-        <LazyImage
-          alt="altName"
-          // src="@/assets/icon/profile.png"
-          src="https://via.placeholder.com/30"
-          className={classes.image}
-        />
+        <LazyImage alt={alt} src={src} className={classes.image} />
       </Box>
     );
   }
@@ -56,8 +44,7 @@ export function UserMenu(): React.ReactNode {
     <Box sx={{ display: 'flex', alignItems: 'center' }}>
       <Button
         onClick={handleClick}
-        startIcon={userImage()}
-        // startIcon={<Avatar sx={{ bgcolor: '#4c6ef5' }}>JJ</Avatar>}
+        startIcon={userImage('altName', 'https://via.placeholder.com/30')}
         endIcon={open ? <IconArrowDropUp /> : <IconArrowDropDown />}
         sx={{
           textTransform: 'none',
