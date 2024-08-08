@@ -50,6 +50,7 @@ const EditMaterialPage = lazy(() => {
 const TeamPage = lazy(() => {
   return import('@/pages/team-page/team-page');
 });
+
 const WorkerMainMenuPage = lazy(() => {
   return import('@/pages/worker-main-menu-page/worker-main-menu-page');
 });

@@ -10,7 +10,7 @@ import { AnonymousForm } from './anonymous-form';
 
 import { useStyles } from './styles';
 
-export function WorkerMainMenu() {
+export function WorkerMainMenu(): React.ReactNode {
   const { classes } = useStyles();
   const { t } = useTranslation();
 

@@ -1,4 +1,5 @@
 // import i18n from 'i18n';
+//will add transltaion later
 
 import { WorkerMainMenu } from '@/components/station/worker-main-menu/worker-main-menu';
 

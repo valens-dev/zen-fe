@@ -24,9 +24,9 @@ export const useStyles = tss.create(({ theme }) => {
       margin: '16px auto 0 auto',
       justifyContent: 'space-between',
       alignItems: 'center',
-      '&>div': {
+      '& > div': {
         display: 'flex',
-        fontSize: '24px',
+        fontSize: '1.5rem',
         alignItems: 'center',
         justifyItems: 'baseline',
         flexDirection: 'row',
