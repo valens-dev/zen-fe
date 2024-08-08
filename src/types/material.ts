@@ -63,11 +63,10 @@ export type IMaterialOrder = Partial<IMaterialWithQuantity> & {
 
 export interface IComponentDetails {
   id: number;
-  createdAt: string;
-  updatedAt: string;
-  deletedAt: string | null;
-  typeId: string;
-  material: IMaterialWithQuantity;
+  quantity: number;
+  part: {
+    material: IMaterial;
+  };
 }
 
 export interface IGetMaterialById extends IMaterial {
