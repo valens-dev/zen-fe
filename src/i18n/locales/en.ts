@@ -84,6 +84,15 @@ export const en = {
     },
   },
   station: {
+    manufacturing: 'Station Manufacturing',
+    break: 'Break',
+    anonymouseForm: {
+      topic: 'Enter topic',
+      suggestion: 'Enter your suggestioin for improvement here',
+      send: 'Send',
+    },
+    pinboard: 'Pinboard',
+    anonymousSuggestionForm: 'Anonymous suggestion for improvement',
     title: 'Station',
     overview: 'Overview',
     sequence: 'Sequence',

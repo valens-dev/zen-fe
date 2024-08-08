@@ -82,6 +82,15 @@ export const de = {
     },
   },
   station: {
+    manufacturing: 'Stationsbau',
+    break: 'Pause',
+    pinboard: 'Opslagstavle',
+    anonymousSuggestionForm: 'Anonyme Verbesserungsvorschlag',
+    anonymouseForm: {
+      topic: 'Thema eingeben',
+      suggestion: 'Geben Sie hier Ihren Verbesserungsvorschlag ein',
+      send: 'Senden',
+    },
     title: 'Station',
     overview: 'Übersicht',
     sequence: 'Reihenfolge',

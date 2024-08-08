@@ -1,5 +1,6 @@
 import { useState, forwardRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import { useForm, Controller, FormProvider } from 'react-hook-form';
 
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -32,9 +33,14 @@ const LoginForm = forwardRef<HTMLFormElement, ILoginFormProps>(
       defaultValues: initialValues,
       resolver: yupResolver(loginValidationSchema),
     });
+    const navigate = useNavigate();
 
     function togglePasswordVisibility(): void {
       setPasswordVisible(!passwordVisible);
+    }
+
+    function navigateToNextPage(): void {
+      navigate(`/test/worker-main-menu`);
     }
 
     return (
@@ -108,6 +114,7 @@ const LoginForm = forwardRef<HTMLFormElement, ILoginFormProps>(
                 type="submit"
                 variant="primary"
                 className={classes.submitButton}
+                onClick={navigateToNextPage}
               >
                 {t('station.stationLoginForm.submitButton')}
               </Button>

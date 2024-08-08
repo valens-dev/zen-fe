@@ -50,6 +50,9 @@ const EditMaterialPage = lazy(() => {
 const TeamPage = lazy(() => {
   return import('@/pages/team-page/team-page');
 });
+const WorkerMainMenuPage = lazy(() => {
+  return import('@/pages/worker-main-menu-page/worker-main-menu-page');
+});
 
 export function App(): React.ReactNode {
   return (
@@ -78,6 +81,10 @@ export function App(): React.ReactNode {
               element={<EditMaterialPage />}
             />
             <Route path="team" element={<TeamPage />} />
+            <Route
+              path="test/worker-main-menu"
+              element={<WorkerMainMenuPage />}
+            />
           </Route>
         </Routes>
       </Suspense>
