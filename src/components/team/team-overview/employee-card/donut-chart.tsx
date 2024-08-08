@@ -9,7 +9,7 @@ import { type IEmployeeCategory, type IEmployeeCardProps } from './types';
 
 import { useStyles } from './styles';
 
-const pieParams = { height: 300, margin: { right: 5 } };
+const pieParams = { height: 210 };
 
 function generatePieData(
   categories: IEmployeeCategory[],
@@ -33,13 +33,13 @@ export function DonutChart({
   }, [categories]);
 
   return (
-    <Stack className={classes.stack}>
-      <Box className={classes.chartBox}>
+    <Stack>
+      <Box>
         <PieChart
           series={[
             {
               data: pieData,
-              innerRadius: 80,
+              innerRadius: 70,
               outerRadius: 100,
               paddingAngle: 0,
               cornerRadius: 0,

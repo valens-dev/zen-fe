@@ -2,6 +2,11 @@ import { tss } from '@/styles/theme';
 
 export const useStyles = tss.create(({ theme }) => {
   return {
+    pieContainer: {
+      width: '100%',
+      height: '100%',
+      position: 'relative',
+    },
     containerBox: {
       display: 'flex',
       flexDirection: 'column',
@@ -51,16 +56,9 @@ export const useStyles = tss.create(({ theme }) => {
       padding: '0px 16px 16px 16px',
       gap: '8px',
     },
-    chartBox: {
-      flexGrow: 1,
-      position: 'relative',
-      '& .css-172kpif-MuiResponsiveChart-container': {
-        height: '200px',
-      },
-    },
     textBox: {
       position: 'absolute',
-      top: '47%',
+      top: '50%',
       left: '50%',
       transform: 'translate(-50%, -50%)',
       display: 'flex',
@@ -120,13 +118,6 @@ export const useStyles = tss.create(({ theme }) => {
       lineHeigt: 1.25,
       fontWeight: theme.typography.fontWeight.regular,
       color: theme.palette.text.primary,
-    },
-    stack: {
-      display: 'flex',
-      flexDirection: 'row',
-      width: '100%',
-      height: '150px',
-      textAlign: 'center',
     },
   };
 });
