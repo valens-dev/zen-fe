@@ -5,4 +5,6 @@ export interface IGetMaterialParams {
   limit: number;
   name?: string;
   type: MaterialType[];
+  heightFilter?: { min: number; max: number };
+  materialFilter?: string[];
 }

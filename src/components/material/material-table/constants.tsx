@@ -6,6 +6,9 @@ import { Box, Typography } from '@mui/material';
 
 import { LazyImage } from '@/shared/lazy-image/lazy-image';
 
+// import './styles.css';
+import { ColumnHeader } from './column-header';
+
 import { type IProduct } from './types';
 
 const columnHelper = createColumnHelper<IProduct>();
@@ -26,13 +29,27 @@ export function getMaterialColumns(): ColumnDef<IProduct, string>[] {
       },
     }),
     columnHelper.accessor('height', {
-      header: i18n.t('material.materialTable.height'),
+      header: () => {
+        return (
+          <ColumnHeader
+            title={i18n.t('material.materialTable.height')}
+            type="range"
+          />
+        );
+      },
       cell: ({ getValue }) => {
         return getValue();
       },
     }),
     columnHelper.accessor('material', {
-      header: i18n.t('material.materialTable.material'),
+      header: () => {
+        return (
+          <ColumnHeader
+            title={i18n.t('material.materialTable.material')}
+            type="material"
+          />
+        );
+      },
       cell: ({ getValue }) => {
         return getValue();
       },
