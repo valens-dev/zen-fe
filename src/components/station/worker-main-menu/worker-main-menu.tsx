@@ -10,45 +10,54 @@ import { AnonymousForm } from './anonymous-form';
 
 import { useStyles } from './styles';
 
-export function WorkerMainMenu(): React.ReactNode {
+interface IWorkerComponentProps {
+  title: string;
+}
+
+export function WorkerMainMenu({
+  title,
+}: IWorkerComponentProps): React.ReactNode {
   const { classes } = useStyles();
   const { t } = useTranslation();
 
-  const subtitle = 'Pleaso do not forget to clean up!';
+  const subtitle = t('station.pinboardSubtitle');
 
   return (
-    <Box className={classes.wrapper}>
-      <Box className={classes.leftBoxes}>
-        <Box className={classes.contentWrapper}>
-          <Box>
-            <IconGears className={classes.theIconGear} />
-            {t('station.manufacturing')}
+    <Box className={classes.container}>
+      <Typography className={classes.theTitle}>{title}</Typography>
+      <Box className={classes.wrapper}>
+        <Box className={classes.leftBoxes}>
+          <Box className={classes.contentWrapper}>
+            <Box>
+              <IconGears className={classes.theIconGear} />
+              {t('station.manufacturing')}
+            </Box>
+            <IconArrowRight className={classes.theIconArrow} />
           </Box>
-          <IconArrowRight className={classes.theIconArrow} />
-        </Box>
-        <Box className={classes.contentWrapper}>
-          <Box>
-            <IconPause />
-            {t('station.break')}
+          <Box className={classes.contentWrapper}>
+            <Box>
+              <IconPause />
+              {t('station.break')}
+            </Box>
+            <IconArrowRight className={classes.theIconArrow} />
           </Box>
-          <IconArrowRight className={classes.theIconArrow} />
         </Box>
-      </Box>
-      <Box className={classes.rightBoxes}>
-        <Box className={classes.pinboardWrapper}>
-          <Typography fontSize={24}>{t('station.pinboard')}</Typography>
-          <Typography>{subtitle}</Typography>
-        </Box>
-        <Box className={classes.anonymoousWrapper}>
-          <Typography fontSize={24}>
-            {t('station.anonymousSuggestionForm')}
-          </Typography>
-          <AnonymousForm
-            onSubmit={(data) => {
-              // eslint-disable-next-line no-console
-              console.log(data);
-            }}
-          />
+        <Box className={classes.rightBoxes}>
+          <Box className={classes.pinboardWrapper}>
+            <Typography fontSize={24}>{t('station.pinboard')}</Typography>
+            <Typography>{subtitle}</Typography>
+          </Box>
+          <Box className={classes.anonymoousWrapper}>
+            <Typography fontSize={24}>
+              {t('station.anonymousSuggestionForm')}
+            </Typography>
+            <AnonymousForm
+              onSubmit={(data) => {
+                // eslint-disable-next-line no-console
+                console.log(data);
+              }}
+            />
+          </Box>
         </Box>
       </Box>
     </Box>

@@ -91,6 +91,7 @@ export const de = {
       suggestion: 'Geben Sie hier Ihren Verbesserungsvorschlag ein',
       send: 'Senden',
     },
+    pinboardSubtitle: 'Bitte das Aufräumen nicht vergessen!',
     title: 'Station',
     overview: 'Übersicht',
     sequence: 'Reihenfolge',
@@ -124,5 +125,9 @@ export const de = {
     error: 'Material konnte nicht erstellt werden!',
     success: 'Material erfolgreich erstellt.',
     missingData: 'Fehler beim Laden der Daten.',
+  },
+  profile: {
+    view: 'Profil anzeigen',
+    logOut: 'Ausloggen',
   },
 };

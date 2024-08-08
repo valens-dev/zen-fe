@@ -19,7 +19,7 @@ interface IComponentProps {
   onSubmit: (data: IAnonymousData) => void;
 }
 
-export function AnonymousForm({ onSubmit }: IComponentProps) {
+export function AnonymousForm({ onSubmit }: IComponentProps): React.ReactNode {
   const { t } = useTranslation();
   const { classes } = useStyles();
   const methods = useForm<IAnonymousData>({

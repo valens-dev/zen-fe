@@ -2,6 +2,14 @@ import { tss } from '@/styles/theme';
 
 export const useStyles = tss.create(({ theme }) => {
   return {
+    container: {
+      display: 'flex',
+      flexDirection: 'column',
+      fontSize: '1.5rem',
+    },
+    theTitle: {
+      fontSize: '1.5rem',
+    },
     wrapper: {
       display: 'flex',
       flexDirection: 'row',

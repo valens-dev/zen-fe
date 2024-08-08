@@ -86,13 +86,14 @@ export const en = {
   station: {
     manufacturing: 'Station Manufacturing',
     break: 'Break',
+    pinboard: 'Pinboard',
+    anonymousSuggestionForm: 'Anonymous suggestion for improvement',
     anonymouseForm: {
       topic: 'Enter topic',
       suggestion: 'Enter your suggestioin for improvement here',
       send: 'Send',
     },
-    pinboard: 'Pinboard',
-    anonymousSuggestionForm: 'Anonymous suggestion for improvement',
+    pinboardSubtitle: 'Please do not forget to clean up!',
     title: 'Station',
     overview: 'Overview',
     sequence: 'Sequence',
@@ -138,5 +139,9 @@ export const en = {
     development: 'Development',
     records: 'Records',
     userRights: 'User Rights',
+  },
+  profile: {
+    view: 'View Profile',
+    logOut: 'Log Out',
   },
 };
