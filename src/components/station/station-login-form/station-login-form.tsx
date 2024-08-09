@@ -40,7 +40,7 @@ const LoginForm = forwardRef<HTMLFormElement, ILoginFormProps>(
     }
 
     function navigateToNextPage(): void {
-      navigate(`/test/worker-main-menu`);
+      navigate(`/station/worker-main-menu`);
     }
 
     return (

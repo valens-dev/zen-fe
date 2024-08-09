@@ -83,7 +83,7 @@ export function App(): React.ReactNode {
             />
             <Route path="team" element={<TeamPage />} />
             <Route
-              path="test/worker-main-menu"
+              path="station/worker-main-menu"
               element={<WorkerMainMenuPage />}
             />
           </Route>
