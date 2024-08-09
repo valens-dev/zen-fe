@@ -4,6 +4,8 @@ import {
   useReactTable,
   type ColumnDef,
   getCoreRowModel,
+  getSortedRowModel,
+  type SortingState,
   type PaginationState,
 } from '@tanstack/react-table';
 
@@ -23,6 +25,8 @@ import { Loading } from '@/shared/status-components/loading';
 
 import { Search } from './search';
 import { Pagination } from './pagination';
+import { SortBy } from './sort-by/sort-by';
+import { type ISortByOption } from './sort-by/types';
 
 import { useStyles } from './styles';
 
@@ -38,9 +42,12 @@ interface ITableProps<T> {
   setGlobalFilter: Dispatch<SetStateAction<string>>;
   pagination: PaginationState;
   setPagination: Dispatch<SetStateAction<PaginationState>>;
+  sorting: SortingState;
+  setSorting: Dispatch<SetStateAction<SortingState>>;
   isLoading?: boolean;
   isError?: boolean;
   onRowClick?: (materialId: number) => void;
+  sortOptions: ISortByOption[];
 }
 
 export function Table<T extends ITableData>({
@@ -51,23 +58,28 @@ export function Table<T extends ITableData>({
   setPagination,
   globalFilter,
   setGlobalFilter,
+  sorting,
+  setSorting,
   isLoading,
   isError,
   onRowClick,
+  sortOptions,
 }: ITableProps<T>): React.ReactNode {
   const { classes } = useStyles();
-
   const table = useReactTable({
     state: {
       globalFilter,
       pagination,
+      sorting,
     },
     data: data ?? [],
     columns,
     rowCount: totalCount,
     getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
     onGlobalFilterChange: setGlobalFilter,
     onPaginationChange: setPagination,
+    onSortingChange: setSorting,
     manualFiltering: true,
     manualPagination: true,
   });
@@ -87,6 +99,33 @@ export function Table<T extends ITableData>({
 
   function handlePageSizeChange(event: SelectChangeEvent<number>): void {
     setPagination({ ...pagination, pageSize: Number(event.target.value) });
+  }
+
+  interface ISortValue {
+    accessor: string;
+    direction: string;
+  }
+
+  function handleSortChange(event: SelectChangeEvent<string[]>): void {
+    const value = event.target.value as string[];
+
+    if (Array.isArray(value) && value.length > 0) {
+      const newSorting = value.map((v) => {
+        const parsedValue = JSON.parse(v) as ISortValue;
+        const { accessor, direction } = parsedValue;
+        return {
+          id: accessor,
+          desc: direction === 'DESC',
+        };
+      });
+      setSorting(newSorting);
+    } else {
+      setSorting([]);
+    }
+  }
+
+  function handleClearSorting(): void {
+    setSorting([]);
   }
 
   let tableContent: React.ReactNode;
@@ -140,7 +179,15 @@ export function Table<T extends ITableData>({
 
   return (
     <TableContainer component={Box} className={classes.tableContainer}>
-      <Search value={globalFilter} onChange={handleGlobalFilterChange} />
+      <Box display="flex" justifyContent="space-between" alignItems="center">
+        <SortBy
+          options={sortOptions}
+          sorting={sorting}
+          handleSortChange={handleSortChange}
+          handleClear={handleClearSorting}
+        />
+        <Search value={globalFilter} onChange={handleGlobalFilterChange} />
+      </Box>
 
       <BaseTable className={classes.baseTable}>
         <TableHead className={classes.tableHead}>
@@ -161,10 +208,8 @@ export function Table<T extends ITableData>({
             );
           })}
         </TableHead>
-
         {tableContent}
       </BaseTable>
-
       <Pagination
         pageIndex={pagination.pageIndex}
         pageSize={pagination.pageSize}

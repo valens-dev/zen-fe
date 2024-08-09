@@ -8,6 +8,44 @@ import { LazyImage } from '@/shared/lazy-image/lazy-image';
 
 import { type IProduct } from './types';
 
+export const sortByOptions = [
+  {
+    title: 'Name',
+    values: [
+      { label: 'A - Z', accessor: 'name', direction: 'ASC' },
+      { label: 'Z - A', accessor: 'name', direction: 'DESC' },
+    ],
+  },
+  {
+    title: 'Weight',
+    values: [
+      { label: 'Lowest first', accessor: 'weight', direction: 'ASC' },
+      { label: 'Highest first', accessor: 'weight', direction: 'DESC' },
+    ],
+  },
+  {
+    title: 'Neto Price',
+    values: [
+      { label: 'Lowest first', accessor: 'netPrice', direction: 'ASC' },
+      { label: 'Highest first', accessor: 'netPrice', direction: 'DESC' },
+    ],
+  },
+  {
+    title: 'Height',
+    values: [
+      { label: 'Lowest first', accessor: 'height', direction: 'ASC' },
+      { label: 'Highest first', accessor: 'height', direction: 'DESC' },
+    ],
+  },
+  {
+    title: 'Material',
+    values: [
+      { label: 'A - Z', accessor: 'material', direction: 'ASC' },
+      { label: 'Z - A', accessor: 'material', direction: 'DESC' },
+    ],
+  },
+];
+
 const columnHelper = createColumnHelper<IProduct>();
 
 export function getMaterialColumns(): ColumnDef<IProduct, string>[] {
