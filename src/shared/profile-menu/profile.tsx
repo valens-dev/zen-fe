@@ -15,7 +15,7 @@ import { getUserMenuItems } from './constants';
 import { useStyles } from './styles';
 
 export function UserMenu(): React.ReactNode {
-  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | undefined>();
   const open = Boolean(anchorEl);
   const { classes } = useStyles();
   const navigate = useNavigate();
@@ -26,7 +26,7 @@ export function UserMenu(): React.ReactNode {
   }
 
   function handleClose(): void {
-    setAnchorEl(null);
+    setAnchorEl(undefined);
   }
   function navigateBack(): void {
     navigate('/station');
