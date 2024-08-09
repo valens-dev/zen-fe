@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 import { Box, Button, Typography } from '@mui/material';
 
 import { DonutChart } from './donut-chart';
@@ -11,12 +13,17 @@ export function EmployeeCard({
   categories,
 }: IEmployeeCardProps): React.ReactNode {
   const { classes } = useStyles();
+  const navigate = useNavigate();
+
+  function handleOpenAddPage(): void {
+    navigate('/team/view-employees-page');
+  }
 
   return (
     <Box className={classes.containerBox}>
       <Box className={classes.header}>
         <Typography className={classes.title}>Employees</Typography>
-        <Button className={classes.button}>
+        <Button onClick={handleOpenAddPage} className={classes.button}>
           <Typography className={classes.buttonText}>View all</Typography>
         </Button>
       </Box>
