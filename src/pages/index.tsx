@@ -17,6 +17,10 @@ const AddMaterialPage = lazy(() => {
   return import('@/pages/add-material-page/add-material-page');
 });
 
+const EditMaterialPage = lazy(() => {
+  return import('@/pages/edit-material-page/edit-material-page');
+});
+
 const StationPage = lazy(() => {
   return import('@/pages/station-page/station-page');
 });
@@ -43,12 +47,12 @@ const AddCustomersPage = lazy(() => {
   return import('@/pages/add-customer-page/add-customer-page');
 });
 
-const EditMaterialPage = lazy(() => {
-  return import('@/pages/edit-material-page/edit-material-page');
-});
-
 const TeamPage = lazy(() => {
   return import('@/pages/team-page/team-page');
+});
+
+const ViewEmployeesPage = lazy(() => {
+  return import('@/pages/view-employees-page/view-employees-page');
 });
 
 export function App(): React.ReactNode {
@@ -61,6 +65,10 @@ export function App(): React.ReactNode {
             <Route path="home" element={<HomePage />} />
             <Route path="material" element={<MaterialPage />} />
             <Route path="material/add-material" element={<AddMaterialPage />} />
+            <Route
+              path="material/edit-material"
+              element={<EditMaterialPage />}
+            />
             <Route path="station" element={<StationPage />} />
             <Route
               path="station/add-production-station"
@@ -73,11 +81,11 @@ export function App(): React.ReactNode {
               path="customers/add-customer"
               element={<AddCustomersPage />}
             />
-            <Route
-              path="material/edit-material"
-              element={<EditMaterialPage />}
-            />
             <Route path="team" element={<TeamPage />} />
+            <Route
+              path="team/view-employees-page"
+              element={<ViewEmployeesPage />}
+            />
           </Route>
         </Routes>
       </Suspense>

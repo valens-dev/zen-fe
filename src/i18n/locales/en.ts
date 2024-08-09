@@ -129,5 +129,20 @@ export const en = {
     development: 'Development',
     records: 'Records',
     userRights: 'User Rights',
+    employeeCard: {
+      title: 'Employees',
+      viewButton: 'View all',
+      operation: 'Operation',
+      administration: 'Administration',
+      text: 'employees',
+    },
+    employeeTable: {
+      title: 'Employees',
+      exportButton: 'Export',
+      firstName: 'First Name',
+      lastName: 'Last Name',
+      group: 'Group',
+      status: 'Status',
+    },
   },
 };

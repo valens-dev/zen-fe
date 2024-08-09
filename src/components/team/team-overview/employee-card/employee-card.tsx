@@ -1,3 +1,6 @@
+import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+
 import { Box, Button, Typography } from '@mui/material';
 
 import { DonutChart } from './donut-chart';
@@ -10,14 +13,24 @@ export function EmployeeCard({
   totalEmployees,
   categories,
 }: IEmployeeCardProps): React.ReactNode {
+  const { t } = useTranslation();
   const { classes } = useStyles();
+  const navigate = useNavigate();
+
+  function handleOpenAddPage(): void {
+    navigate('/team/view-employees-page');
+  }
 
   return (
     <Box className={classes.containerBox}>
       <Box className={classes.header}>
-        <Typography className={classes.title}>Employees</Typography>
-        <Button className={classes.button}>
-          <Typography className={classes.buttonText}>View all</Typography>
+        <Typography className={classes.title}>
+          {t('team.employeeCard.title')}
+        </Typography>
+        <Button onClick={handleOpenAddPage} className={classes.button}>
+          <Typography className={classes.buttonText}>
+            {t('team.employeeCard.viewButton')}
+          </Typography>
         </Button>
       </Box>
       <Box className={classes.contentContainer}>
@@ -42,7 +55,7 @@ export function EmployeeCard({
                     {category.count}
                   </Typography>
                   <Typography className={classes.employeeText}>
-                    employees
+                    {t('team.employeeCard.text')}
                   </Typography>
                 </Box>
               </Box>
