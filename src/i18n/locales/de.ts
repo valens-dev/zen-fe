@@ -116,4 +116,25 @@ export const de = {
     success: 'Material erfolgreich erstellt.',
     missingData: 'Fehler beim Laden der Daten.',
   },
+  team: {
+    title: 'Team',
+    overview: 'Übersicht',
+    development: 'Entwicklung',
+    records: 'Aufzeichnungen',
+    userRights: 'Benutzerrechte',
+    employeeCard: {
+      title: 'Mitarbeiter',
+      viewButton: 'Alle anzeigen',
+      operation: 'Betrieb',
+      administration: 'Verwaltung',
+      text: 'Mitarbeiter',
+    },
+    employeeTable: {
+      title: 'Mitarbeiter',
+      firstName: 'Vorname',
+      lastName: 'Nachname',
+      group: 'Gruppe',
+      status: 'Status',
+    },
+  },
 };

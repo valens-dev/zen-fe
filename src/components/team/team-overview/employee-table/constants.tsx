@@ -1,5 +1,7 @@
 import { type ColumnDef, createColumnHelper } from '@tanstack/react-table';
 
+import i18n from 'i18n';
+
 import { Box, Typography } from '@mui/material';
 
 import { LazyImage } from '@/shared/lazy-image';
@@ -53,7 +55,7 @@ const columnHelper = createColumnHelper<IEmployee>();
 export function getEmployeeColumns(): ColumnDef<IEmployee, string>[] {
   return [
     columnHelper.accessor('firstName', {
-      header: 'First Name',
+      header: i18n.t('team.employeeTable.firstName'),
       cell: ({ row }) => {
         const { imageUrl, firstName } = row.original;
 
@@ -66,19 +68,19 @@ export function getEmployeeColumns(): ColumnDef<IEmployee, string>[] {
       },
     }),
     columnHelper.accessor('lastName', {
-      header: 'Last Name',
+      header: i18n.t('team.employeeTable.lastName'),
       cell: ({ getValue }) => {
         return getValue();
       },
     }),
     columnHelper.accessor('group', {
-      header: 'Group',
+      header: i18n.t('team.employeeTable.group'),
       cell: ({ getValue }) => {
         return getValue();
       },
     }),
     columnHelper.accessor('status', {
-      header: 'Status',
+      header: i18n.t('team.employeeTable.status'),
       cell: ({ getValue }) => {
         const status = getValue();
         if (!statusColors[status as keyof IStatusColors]) {

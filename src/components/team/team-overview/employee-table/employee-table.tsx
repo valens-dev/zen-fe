@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import { Box } from '@mui/material';
 
 import { Table } from '@/shared/table';
@@ -14,6 +16,7 @@ import { employeeData, getEmployeeColumns } from './constants';
 import { useStyles } from './styles';
 
 export function EmployeeTable(): React.ReactNode {
+  const { t } = useTranslation();
   const { classes } = useStyles();
   const { globalFilter, setGlobalFilter, pagination, setPagination } =
     useTableFilters();
@@ -23,7 +26,7 @@ export function EmployeeTable(): React.ReactNode {
       <SectionHeader
         actions={
           <Button variant="secondary" startIcon={<ExportIcon />}>
-            Export
+            {t('team.employeeTable.exportButton')}
           </Button>
         }
       />
